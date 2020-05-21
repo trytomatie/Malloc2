@@ -1,0 +1,575 @@
+fileFormatVersion: 2
+guid: b1c719953c5e28d4ba96877b0e7756ce
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6153126187728839167
+    second: spr_dirkdieleg_1-sheet_0
+  - first:
+      213: -7151674981201376982
+    second: spr_dirkdieleg_1-sheet_1
+  - first:
+      213: -6753187112719493353
+    second: spr_dirkdieleg_1-sheet_2
+  - first:
+      213: -1646603422902966539
+    second: spr_dirkdieleg_1-sheet_3
+  - first:
+      213: -7139970247147070971
+    second: spr_dirkdieleg_1-sheet_4
+  - first:
+      213: 2662340429522156973
+    second: spr_dirkdieleg_1-sheet_5
+  - first:
+      213: 4125259312033700013
+    second: spr_dirkdieleg_1-sheet_6
+  - first:
+      213: 5826049485393725275
+    second: spr_dirkdieleg_1-sheet_7
+  - first:
+      213: -699732378243631374
+    second: spr_dirkdieleg_1-sheet_8
+  - first:
+      213: -4667385385842929497
+    second: spr_dirkdieleg_1-sheet_9
+  - first:
+      213: -8229003739827618337
+    second: spr_dirkdieleg_1-sheet_10
+  - first:
+      213: -1762082289253359885
+    second: spr_dirkdieleg_1-sheet_11
+  - first:
+      213: -4085454591921811624
+    second: spr_dirkdieleg_1-sheet_12
+  - first:
+      213: -9094312403902607401
+    second: spr_dirkdieleg_1-sheet_13
+  - first:
+      213: 5292537012476185736
+    second: spr_dirkdieleg_1-sheet_14
+  - first:
+      213: -6139691958969717615
+    second: spr_dirkdieleg_1-sheet_15
+  - first:
+      213: -8727898396573193388
+    second: spr_dirkdieleg_1-sheet_16
+  - first:
+      213: -5021964670918593030
+    second: spr_dirkdieleg_1-sheet_0
+  - first:
+      213: 1967414679989451883
+    second: spr_dirkdieleg_1-sheet_1
+  - first:
+      213: -7040657322089716068
+    second: spr_dirkdieleg_1-sheet_2
+  - first:
+      213: -327251977487338745
+    second: spr_dirkdieleg_1-sheet_3
+  - first:
+      213: 2605726849932341324
+    second: spr_dirkdieleg_1-sheet_4
+  - first:
+      213: 1596066012696766748
+    second: spr_dirkdieleg_1-sheet_5
+  - first:
+      213: -4155249542273908926
+    second: spr_dirkdieleg_1-sheet_6
+  - first:
+      213: -5903179628793510488
+    second: spr_dirkdieleg_1-sheet_7
+  - first:
+      213: 4665353215975701352
+    second: spr_dirkdieleg_1-sheet_8
+  - first:
+      213: 1062391552144522112
+    second: spr_dirkdieleg_1-sheet_9
+  - first:
+      213: 3301443831450146103
+    second: spr_dirkdieleg_1-sheet_10
+  - first:
+      213: -2314122089025326558
+    second: spr_dirkdieleg_1-sheet_11
+  - first:
+      213: -4731094321790523027
+    second: spr_dirkdieleg_1-sheet_12
+  - first:
+      213: -5254522506855480315
+    second: spr_dirkdieleg_1-sheet_13
+  - first:
+      213: 9135893052728205382
+    second: spr_dirkdieleg_1-sheet_14
+  - first:
+      213: 3504893511078861656
+    second: spr_dirkdieleg_1-sheet_15
+  - first:
+      213: -7675851062797382918
+    second: spr_dirkdieleg_1-sheet_16
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spr_dirkdieleg_1-sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 50
+        width: 60
+        height: 25
+      alignment: 9
+      pivot: {x: 0.8459018, y: 0.3850188}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af5f5534db56e4ab0800000000000000
+      internalID: -5021964670918593030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_dirkdieleg_1-sheet_1
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 50
+        width: 60
+        height: 25
+      alignment: 9
+      pivot: {x: 0.8459018, y: 0.3850188}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6cf8a64a39ad4b10800000000000000
+      internalID: 1967414679989451883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_dirkdieleg_1-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 50
+        width: 60
+        height: 25
+      alignment: 9
+      pivot: {x: 0.8459018, y: 0.3850188}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c96e693f77f8a4e90800000000000000
+      internalID: -7040657322089716068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_dirkdieleg_1-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 50
+        width: 60
+        height: 25
+      alignment: 9
+      pivot: {x: 0.8459018, y: 0.3850188}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 703b2d17f0e557bf0800000000000000
+      internalID: -327251977487338745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_dirkdieleg_1-sheet_4
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 50
+        width: 60
+        height: 25
+      alignment: 9
+      pivot: {x: 0.8459018, y: 0.3850188}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c403ae7a3c6692420800000000000000
+      internalID: 2605726849932341324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_dirkdieleg_1-sheet_5
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 50
+        width: 60
+        height: 25
+      alignment: 9
+      pivot: {x: 0.8459018, y: 0.3850188}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c196ddc059d562610800000000000000
+      internalID: 1596066012696766748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_dirkdieleg_1-sheet_6
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 50
+        width: 60
+        height: 25
+      alignment: 9
+      pivot: {x: 0.8459018, y: 0.3850188}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24fb8a78e869556c0800000000000000
+      internalID: -4155249542273908926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_dirkdieleg_1-sheet_7
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 50
+        width: 60
+        height: 25
+      alignment: 9
+      pivot: {x: 0.8459018, y: 0.3850188}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a5c07c6761b31ea0800000000000000
+      internalID: -5903179628793510488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_dirkdieleg_1-sheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 25
+        width: 60
+        height: 25
+      alignment: 9
+      pivot: {x: 0.8459018, y: 0.3850188}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86b35f5280aaeb040800000000000000
+      internalID: 4665353215975701352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_dirkdieleg_1-sheet_9
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 25
+        width: 60
+        height: 25
+      alignment: 9
+      pivot: {x: 0.8459018, y: 0.3850188}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08b33f5ec7f5ebe00800000000000000
+      internalID: 1062391552144522112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_dirkdieleg_1-sheet_10
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 25
+        width: 60
+        height: 25
+      alignment: 9
+      pivot: {x: 0.8459018, y: 0.3850188}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7359d734ca511dd20800000000000000
+      internalID: 3301443831450146103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_dirkdieleg_1-sheet_11
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 25
+        width: 60
+        height: 25
+      alignment: 9
+      pivot: {x: 0.8459018, y: 0.3850188}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 222b2c4883692efd0800000000000000
+      internalID: -2314122089025326558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_dirkdieleg_1-sheet_12
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 25
+        width: 60
+        height: 25
+      alignment: 9
+      pivot: {x: 0.8459018, y: 0.3850188}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d69eeced7c6c75eb0800000000000000
+      internalID: -4731094321790523027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_dirkdieleg_1-sheet_13
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 25
+        width: 60
+        height: 25
+      alignment: 9
+      pivot: {x: 0.8459018, y: 0.3850188}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5048592ae9f2417b0800000000000000
+      internalID: -5254522506855480315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_dirkdieleg_1-sheet_14
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 25
+        width: 60
+        height: 25
+      alignment: 9
+      pivot: {x: 0.8459018, y: 0.3850188}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 640e2d1d35639ce70800000000000000
+      internalID: 9135893052728205382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_dirkdieleg_1-sheet_15
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 25
+        width: 60
+        height: 25
+      alignment: 9
+      pivot: {x: 0.8459018, y: 0.3850188}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85b5d6f1412e3a030800000000000000
+      internalID: 3504893511078861656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_dirkdieleg_1-sheet_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 60
+        height: 25
+      alignment: 9
+      pivot: {x: 0.8459018, y: 0.3850188}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afa48257026e97590800000000000000
+      internalID: -7675851062797382918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

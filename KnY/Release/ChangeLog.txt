@@ -1,0 +1,16 @@
+v0.01
+- Release
+v0.02
+- Added Pathfinding
+- UI Fixes
+v0.03
+- UI Fixes
+- Overhaul of Basic Enemy Ai
+- Start Menu
+- Temporary Intro
+- Temporary Music
+v0.04
+- More Items added
+- Added procedurally generated Dungeon mode (WIP!)
+- Updated AI
+- Updated AI-Follower
