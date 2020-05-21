@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventoryDragHandler : MonoBehaviour, IDragHandler, IEndDragHandler
+public class UI_InventoryDragHandler : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     public void OnDrag(PointerEventData eventData)
     {

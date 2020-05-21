@@ -1,39 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour {
 
     public List<Item> items = new List<Item>();
     public bool isPlayerInventory = false;
-
-    private InventoryUiManager inventoryUiManager;
-
-    public InventoryUiManager InventoryUiManager
-    {
-        get
-        {
-            if(inventoryUiManager == null)
-            {
-                inventoryUiManager = GameObject.FindObjectOfType<InventoryUiManager>();
-            }
-            return inventoryUiManager;
-        }
-
-        set
-        {
-            inventoryUiManager = value;
-        }
-    }
-
-    // Use this for initialization
-    void Start () {
-    }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void AddItem(Item item)
     {
@@ -61,8 +34,8 @@ public class Inventory : MonoBehaviour {
     {
         if(isPlayerInventory)
         {
-            InventoryUiManager.ClearInventoryDisplays();
-            InventoryUiManager.FillInventoryDisplays();
+            UI_ArtifactManager.ClearInventoryDisplays();
+            UI_ArtifactManager.FillInventoryDisplays();
         }
     }
 }

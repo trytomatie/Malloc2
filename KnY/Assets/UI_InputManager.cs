@@ -48,6 +48,7 @@ public class UI_InputManager : MonoBehaviour
             {
                 CloseInventory();
             }
+            UI_ArtifactDisplayDescriptionPopup.DespawnAllInstances();
         }
         
     }
