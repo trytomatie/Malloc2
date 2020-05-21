@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryUiManager : MonoBehaviour
+public class UI_ArtifactManager : MonoBehaviour
 {
     public List<GameObject> inventoryDisplays;
     public Inventory playerInventory;
@@ -14,20 +14,26 @@ public class InventoryUiManager : MonoBehaviour
         playerInventory = FindObjectOfType<PlayerController>().GetComponent<Inventory>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// Clears Artifact-Displays
+    /// </summary>
     public void ClearInventoryDisplays()
     {
+        List<GameObject> removalList = new List<GameObject>();
         foreach(GameObject go in inventoryDisplays)
         {
+            removalList.Add(go);
+        }
+        foreach(GameObject go in removalList)
+        {
+            inventoryDisplays.Remove(go);
             Destroy(go);
         }
     }
 
+    /// <summary>
+    /// Fills Arifact-Displays
+    /// </summary>
     public void FillInventoryDisplays()
     {
         int xPos = 40;

@@ -18,12 +18,13 @@ public class UI_MiniHpBarManager : MonoBehaviour
 
     void LateUpdate()
     {
-        transform.position = new Vector3(statusmanager.transform.position.x, statusmanager.transform.position.y + heigthOffset, 0);
-        timer -= Time.deltaTime;
-        if(timer < 0)
+        if (timer < 0 || statusmanager == null)
         {
             Destroy(gameObject);
         }
+        transform.position = new Vector3(statusmanager.transform.position.x, statusmanager.transform.position.y + heigthOffset, 0);
+        timer -= Time.deltaTime;
+
     }
 
 

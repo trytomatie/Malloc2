@@ -38,26 +38,8 @@ public class PlayerController : MonoBehaviour
     private Spline2DComponent splineHandler;
 
     public float style1Cd = 0;
-    private float style2Cd = 0;
-    private float style3Cd = 0;
-    private float style4Cd = 0;
-    private float style5Cd = 0;
-    private float style6Cd = 0;
-    private float style7Cd = 0;
-    private float style8Cd = 0;
-    private float style9Cd = 0;
-    private float style10Cd = 0;
 
     private float style1CdStatic = 1;
-    private float style2CdStatic = 0;
-    private float style3CdStatic = 0;
-    private float style4CdStatic = 0;
-    private float style5CdStatic = 0;
-    private float style6CdStatic = 0;
-    private float style7CdStatic = 0;
-    private float style8CdStatic = 0;
-    private float style9CdStatic = 0;
-    private float style10CdStatic = 0;
 
 
     // Use this for initialization
@@ -75,12 +57,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         MovementInput();
         BattleInput();
         InteractionInput();
         UpdateTimers();
-
     }
 
     /// <summary>

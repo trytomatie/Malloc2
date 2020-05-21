@@ -30,7 +30,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Alpha: 0.035
-    - _Fade: -0.045762204
+    - _Fade: 0
     - _OutlineThickness: 1
     - _ShowOutline: 1
     m_Colors:

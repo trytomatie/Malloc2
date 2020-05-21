@@ -592,7 +592,7 @@ GameObject:
   - component: {fileID: 200487601}
   - component: {fileID: 200487600}
   m_Layer: 5
-  m_Name: Scroll View
+  m_Name: Inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1493,7 +1493,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -167.30002, y: -89.899994}
+  m_AnchoredPosition: {x: -167.30002, y: -89.89996}
   m_SizeDelta: {x: 58, y: 58}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &752171583
@@ -3623,6 +3623,7 @@ GameObject:
   - component: {fileID: 1533916373}
   - component: {fileID: 1533916372}
   - component: {fileID: 1533916376}
+  - component: {fileID: 1533916377}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3738,6 +3739,19 @@ MonoBehaviour:
   levelText: {fileID: 1981214007}
   statusmanager: {fileID: 2021715884}
   hpBar: {fileID: 1638431632}
+--- !u!114 &1533916377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533916371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 696e39eb3a29d4d45af0777c20115b05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 200487598}
 --- !u!1 &1539696677
 GameObject:
   m_ObjectHideFlags: 0
@@ -5736,7 +5750,7 @@ GameObject:
   - component: {fileID: 2065325885}
   - component: {fileID: 2065325884}
   m_Layer: 5
-  m_Name: Inventory
+  m_Name: ArtifactDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
