@@ -18,7 +18,7 @@ public class Interactable_Item : MonoBehaviour
         
     }
 
-    private void Interact()
+    private void Interact(GameObject g)
     {
         Item item = Item.GenerateItem(_itemId);
         // TODO: make it dynamic for other GameObject interactors

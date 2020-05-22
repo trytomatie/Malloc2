@@ -7,7 +7,7 @@ public class Interactable : MonoBehaviour
 {
 
     private bool disabled;
-    public delegate void CustomInteractable();
+    public delegate void CustomInteractable(GameObject o);
     public CustomInteractable _customInteractableMethod;
     public int _numberOfUses = 2;
     public string _interactablePopupMessage = "Pickup";
@@ -15,6 +15,8 @@ public class Interactable : MonoBehaviour
     public Vector3 _popupMessageOffset = new Vector3(0, 0.07f, 0);
 
     private static GameObject popUp;
+
+    public bool successfullInteraction = false;
 
     public bool Disabled
     {
@@ -85,7 +87,7 @@ public class Interactable : MonoBehaviour
     /// <summary>
     /// Call Interaction with Object
     /// </summary>
-    public void Interact()
+    public void Interact(GameObject g)
     {
         if (_numberOfUses <= 0 || Disabled)
         {
@@ -94,12 +96,11 @@ public class Interactable : MonoBehaviour
         if (_customInteractableMethod == null)
         {
             print("No Interaction Set!");
-            _numberOfUses--;
         }
         else
         {
-            _customInteractableMethod.Invoke();
-            _numberOfUses--;
+            _customInteractableMethod.Invoke(g);
+            successfullInteraction = true;
         }
     }
 

@@ -46,7 +46,11 @@ public class MyDebug : MonoBehaviour {
         {
             SceneManager.LoadScene(0);
         }
-        if(Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            FindObjectOfType<PlayerController>().GetComponent<Statusmanager>().Mana += 10000;
+        }
+        if (Input.GetKeyDown(KeyCode.X))
         {
             if(coloring)
             {

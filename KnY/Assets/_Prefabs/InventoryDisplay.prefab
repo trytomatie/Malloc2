@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4777194516239103189}
   - component: {fileID: 1213060190306112837}
   - component: {fileID: -5457278033372691971}
+  - component: {fileID: 8018744098914753552}
   m_Layer: 5
   m_Name: InventoryDisplay
   m_TagString: Untagged
@@ -34,8 +35,8 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -358.3, y: -0.2000122}
   m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -72,7 +73,7 @@ MonoBehaviour:
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
-  m_FillClockwise: 1
+  m_FillClockwise: 0
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
@@ -88,8 +89,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93a3d869b136069429e56dac9166948d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 0
-  descriptionDisplayPrefab: {fileID: 0}
+--- !u!114 &8018744098914753552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4217920002952486998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 749b56e90a96c0f4c8f3d86cd25c008a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4952724036840836763
 GameObject:
   m_ObjectHideFlags: 0

@@ -49,6 +49,7 @@ public class UI_InputManager : MonoBehaviour
                 CloseInventory();
             }
             UI_ArtifactDisplayDescriptionPopup.DespawnAllInstances();
+            GameObject.Find("ItemContextMenu").transform.position = new Vector3(10000,10000,10000);
         }
         
     }

@@ -68,7 +68,20 @@ public class BaseEnemyAI : MonoBehaviour
         while (true)
         {
             randomChance = UnityEngine.Random.Range(0, 100);
-            yield return new WaitForSeconds(0.25f * Director.TimeScale());
+            CullingOnDistnace();
+            yield return new WaitForSeconds(0.25f);
+        }
+    }
+
+    private void CullingOnDistnace()
+    {
+        if(Vector2.Distance(Camera.main.transform.position,transform.position) > 2)
+        {
+            GetComponent<SpriteRenderer>().enabled = false;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().enabled = true;
         }
     }
 
@@ -255,6 +268,7 @@ public class BaseEnemyAI : MonoBehaviour
 
     public bool CheckLineOfSight()
     {
+        // If target is destroyed it throws an error here! FIX That TODO!
         Vector2 targetDirection = CalculateNormalizedDirection(transform.position, (Vector2)Target.transform.position + Target.GetComponent<Collider2D>().offset);
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, targetDirection);
         foreach (RaycastHit2D hit in hits)

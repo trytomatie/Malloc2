@@ -245,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6026b99a136e4b548b665a6263c818b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 30
   spawnItem: {fileID: 5585321029906761668, guid: cf4a06c858751394e82610013f604c53,
     type: 3}
   chanceForCommonItem: 90

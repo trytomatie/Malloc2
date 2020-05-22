@@ -183,7 +183,11 @@ public class SpawnDirector : MonoBehaviour
         while(spawnLocationList.Count > 0 && spawnsLeft > 0)
         {
             Transform spawnLocation = spawnLocationList[rnd.Next(0, spawnLocationList.Count)];
-            Instantiate(interactablePool[rnd.Next(0, interactablePool.Count)], spawnLocation.transform.position, Quaternion.identity);
+            Interactable g = Instantiate(interactablePool[rnd.Next(0, interactablePool.Count)], spawnLocation.transform.position, Quaternion.identity);
+            if(g.GetComponent<Interactable_Chest>() != null)
+            {
+                g.GetComponent<Interactable_Chest>().cost *= wave;
+            }
             spawnLocationList.Remove(spawnLocation);
             spawnsLeft--;
             

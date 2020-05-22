@@ -79,7 +79,7 @@ public class SpawnDirector_Room : MonoBehaviour
         mob = mobPool[i];
         int level = 1;
         int exploredChunks = mapGenerator.ExploredChunks.Count;
-        level = rnd.Next(Mathf.Clamp(exploredChunks/3 - 4, 0, exploredChunks/3), exploredChunks/3 + 1);
+        level = Mathf.CeilToInt(exploredChunks/3);
         Transform location = spawnLocation;
         GameObject monster = Instantiate(mob.instance, location.transform.position, Quaternion.identity);
         monster.GetComponent<Statusmanager>().level = level;

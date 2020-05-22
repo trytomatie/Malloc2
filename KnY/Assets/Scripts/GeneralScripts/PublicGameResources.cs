@@ -13,6 +13,8 @@ public class PublicGameResources : MonoBehaviour {
     public Material[] itemDescriptionMaterials;
     public static int FLOOR_LAYER = -9999;
     public GameObject corruptedAmethystFollower;
+    public GameObject blackMarble;
+    public GameObject itemContextMenuItem;
 	// Use this for initialization
 	void Awake () {
 		if(instance == null)
@@ -63,5 +65,12 @@ public class PublicGameResources : MonoBehaviour {
 
     }
 
+    public static Vector2 CalculateNormalizedDirection(Vector2 origin, Vector2 target)
+    {
+        float distance = Vector2.Distance(target, origin);
+        Vector2 heading = target - origin;
+        Vector2 direction = heading / distance;
+        return direction;
+    }
 
 }

@@ -8,9 +8,10 @@ using UnityEngine.UI;
 /// <summary>
 /// Handles Artifact Descriptions
 /// </summary>
-public class UI_ArtifactDisplayOnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UI_ArtifactDisplayOnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     private GameObject descriptionDisplay;
+    private GameObject contextMenu;
     private bool mouseEntered = false;
     public Item item;
 
@@ -20,7 +21,7 @@ public class UI_ArtifactDisplayOnHover : MonoBehaviour, IPointerEnterHandler, IP
         {
             if(descriptionDisplay == null)
             {
-                descriptionDisplay = GameObject.Find("ItemDescriptionWindow");
+                descriptionDisplay = GameObject.Find("ItemDescriptionPopupWindow");
             }
             return descriptionDisplay;
         }
@@ -28,6 +29,23 @@ public class UI_ArtifactDisplayOnHover : MonoBehaviour, IPointerEnterHandler, IP
         set
         {
             descriptionDisplay = value;
+        }
+    }
+
+    public GameObject ContextMenu
+    {
+        get
+        {
+            if (contextMenu == null)
+            {
+                contextMenu = GameObject.Find("ItemContextMenu");
+            }
+            return contextMenu;
+        }
+
+        set
+        {
+            contextMenu = value;
         }
     }
 
@@ -50,5 +68,14 @@ public class UI_ArtifactDisplayOnHover : MonoBehaviour, IPointerEnterHandler, IP
     {
         UI_ArtifactDisplayDescriptionPopup.DespawnAllInstances();
         mouseEntered = false;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if(eventData.button == PointerEventData.InputButton.Right)
+        {
+            ContextMenu.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            item.InstanciateContextMenu();
+        }
     }
 }

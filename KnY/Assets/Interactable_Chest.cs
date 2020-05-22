@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Interactable_Chest : MonoBehaviour {
 
+    public int cost = 3;
     public GameObject spawnItem;
     public int chanceForCommonItem = 90;
     public int chanceForUncommonItem = 10;
@@ -12,26 +13,32 @@ public class Interactable_Chest : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         GetComponent<Interactable>()._customInteractableMethod = Interact;
-	}
+        GetComponent<Interactable>()._interactablePopupMessage += " (" + cost + " mana)";
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
 
-    private void Interact()
+    private void Interact(GameObject g)
     {
+        if(g.GetComponent<Statusmanager>().Mana < cost)
+        {
+            return;
+        }
+        g.GetComponent<Statusmanager>().Mana -= cost;
         GetComponent<Animator>().SetBool("isOpen", true);
         GetComponent<Interactable>().Disabled = true;
         GetComponent<Interactable>()._customInteractableMethod = SecondInteract;
-        GetComponent<Interactable>()._interactablePopupMessage = "Take";
         if(spawnItem != null)
         {
             StartCoroutine(SpawnItem());
         }
     }
 
-    private void SecondInteract()
+    private void SecondInteract(GameObject g)
     {
         GetComponent<Interactable>().Disabled = true;
     }

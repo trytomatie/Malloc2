@@ -99,7 +99,6 @@ public class DamageObject : MonoBehaviour {
                     if (procItem.procChance >= rnd)
                     {
                         procItem.ProcEffect(other.gameObject);
-                        print(item.itemName);
                     }
                         
                 }
@@ -141,7 +140,6 @@ public class DamageObject : MonoBehaviour {
         float damageMultiplier = 100f / (100f + otherStatus.defence);
         // Calculat damage
         int damageDealt = Mathf.RoundToInt((damage * damageMultiplier) + rndDamage);
-        print(damageDealt);
         return damageDealt;
     }
 

@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
         splineHandler = GameObject.Find("SplineHandler").GetComponent<Spline2DComponent>();
         _myStatus = GetComponent<Statusmanager>();
         _interactionRadius = GameObject.Find("InteractionRadius");
-
+        GetComponent<Inventory>().AddItem(new Item_BlackMarble());
     }
 
     // Update is called once per frame
@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_interactionRadius.GetComponent<InteractionRadius>()._target != null)
         {
-            _interactionRadius.GetComponent<InteractionRadius>()._target.Interact();
+            _interactionRadius.GetComponent<InteractionRadius>()._target.Interact(gameObject);
         }
     }
 

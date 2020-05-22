@@ -1,4 +1,5 @@
 ﻿using Pathfinding;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +13,7 @@ public class MapGenerator : MonoBehaviour
     public List<GameObject> chunkTiles = new List<GameObject>();
     public List<float> likelyhoodTable = new List<float>();
     [ReadOnly]
-    public int combinedLikelyhood;
+    private int combinedLikelyhood;
 
 
     public System.Random seed = new System.Random(1337);
@@ -26,8 +27,8 @@ public class MapGenerator : MonoBehaviour
     private List<int> negativeXSeedMap = new List<int>();
     private List<int> negativeYSeedMap = new List<int>();
 
-    private Dictionary<Vector2, GameObject> chunkMap = new Dictionary<Vector2, GameObject>();
-    private Dictionary<Vector2, GameObject> exploredChunks = new Dictionary<Vector2, GameObject>();
+    public Dictionary<Vector2, GameObject> chunkMap = new Dictionary<Vector2, GameObject>(); // Chunks that are generated
+    public Dictionary<Vector2, GameObject> exploredChunks = new Dictionary<Vector2, GameObject>(); // The Chunks the player Has visited physicaly
     public Vector2 currentCameraCoords = new Vector2();
     private float CHUNKSIZE = 4.8f;
 
@@ -106,20 +107,24 @@ public class MapGenerator : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         SetSeeds();
         foreach(int l in likelyhoodTable)
         {
             combinedLikelyhood += l;
         }
+        int x = (int)Mathf.Round((Camera.main.transform.position.x / CHUNKSIZE));
+        int y = (int)Mathf.Round((Camera.main.transform.position.y / CHUNKSIZE));
+        CurrentCameraCoords = new Vector2(x, y);
+        GetClosestChunk(4, 2,0);
     }
 
     void SetSeeds()
     {
         xSeed = new System.Random(seed.Next());
-        ySeed = new System.Random(seed.Next());
         negativeXSeed = new System.Random(seed.Next());
+        ySeed = new System.Random(seed.Next());
         negativeYSeed = new System.Random(seed.Next());
     }
 
@@ -148,7 +153,7 @@ public class MapGenerator : MonoBehaviour
         chunkMap.Add(coords, Instantiate(chunkTiles[id], coords * CHUNKSIZE, Quaternion.identity, mapParent));
     }
 
-    private int GetSeededChunkId(Vector2 coords)
+    public int GetSeededChunkId(Vector2 coords)
     {
         CheckSeedMap(coords);
         int x = 0;
@@ -171,7 +176,7 @@ public class MapGenerator : MonoBehaviour
         }
         // print(x + " | " + y);
         int chunkId = 0; // new System.Random(x + y).Next(0, chunkTiles.Count);
-        int likelyHood = new System.Random(x + y).Next(0, combinedLikelyhood+1);
+        int likelyHood = new System.Random(x - y).Next(0, combinedLikelyhood+1);
         int i = 0;
         int likelyhoodMemory = 0;
         // print(likelyHood);
@@ -185,6 +190,118 @@ public class MapGenerator : MonoBehaviour
             i++;
         }
         return chunkId;
+    }
+
+    public Vector2 GetClosestChunk(int chunkId, int radius,int ignoreRadius,List<Vector2>ignoreList)
+    {
+        int x = (int)CurrentCameraCoords.x;
+        int y = (int)CurrentCameraCoords.y;
+        Vector2 foundChunk = Vector2.zero;
+        float distanceToClosestChunk = 10000;
+        for(int sX = x+ radius; sX > x- radius; sX--)
+        {
+            for (int sY = y + radius; sY > y - radius; sY--)
+            {
+                
+                Vector2 vector = new Vector2(sX, sY);
+                if ((sX < x + ignoreRadius && sX > x - ignoreRadius) && (sY < y + ignoreRadius && sY > y - ignoreRadius)|| ignoreList.Contains(vector))
+                {
+                    continue;
+                }
+                if (chunkId == GetSeededChunkId(vector))
+                {
+                    float distanceToFoundChunk = Vector2.Distance(currentCameraCoords, vector);
+                    if (distanceToFoundChunk < distanceToClosestChunk)
+                    {
+                        distanceToClosestChunk = distanceToFoundChunk;
+                        foundChunk = vector;
+                    }
+                }
+            }
+        }
+        return foundChunk;
+    }
+
+    public Dictionary<Vector2,bool> GetAllChunksOfType(int chunkId,int radius,int ignoreRadius,Dictionary<Vector2,bool> existingMap)
+    {
+
+        int x = (int)CurrentCameraCoords.x;
+        int y = (int)CurrentCameraCoords.y;
+        Dictionary<Vector2, bool> foundChunks = new Dictionary<Vector2, bool>();
+        for (int sX = x + radius; sX > x - radius; sX--)
+        {
+            for (int sY = y + radius; sY > y - radius; sY--)
+            {
+                Vector2 vector = new Vector2(sX, sY);
+                if ((sX < x + ignoreRadius && sX > x - ignoreRadius) && (sY < y + ignoreRadius && sY > y - ignoreRadius) || existingMap.ContainsKey(vector))
+                {
+                    continue;
+                }
+                if (chunkId == GetSeededChunkId(vector))
+                {
+                    existingMap.Add(vector, false);
+                    foundChunks.Add(vector,false);
+                }
+            }
+        }
+        return foundChunks;
+    }
+
+    public Dictionary<Vector2, bool> GetAllChunksOfType(List<int> chunkIds, int radius, int ignoreRadius, Dictionary<Vector2, bool> existingMap)
+    {
+
+        int x = (int)CurrentCameraCoords.x;
+        int y = (int)CurrentCameraCoords.y;
+        Dictionary<Vector2, bool> foundChunks = new Dictionary<Vector2, bool>();
+        for (int sX = x + radius; sX > x - radius; sX--)
+        {
+            for (int sY = y + radius; sY > y - radius; sY--)
+            {
+                Vector2 vector = new Vector2(sX, sY);
+                if ((sX < x + ignoreRadius && sX > x - ignoreRadius) && (sY < y + ignoreRadius && sY > y - ignoreRadius) || existingMap.ContainsKey(vector) 
+                    || (chunkMap.ContainsKey(vector) && chunkMap[vector].GetComponent<ChunkSettings>() != null && chunkMap[vector].GetComponent<ChunkSettings>().concluded == true))
+                {
+                    continue;
+                }
+                foreach(int chunkId in chunkIds)
+                { 
+                    if (chunkId == GetSeededChunkId(vector))
+                    {
+                        existingMap.Add(vector, false);
+                        foundChunks.Add(vector, false);
+                    }
+                }
+            }
+        }
+        return foundChunks;
+    }
+    private Vector2 GetClosestChunk(int chunkId, int radius, int ignoreRadius)
+    {
+        int x = (int)CurrentCameraCoords.x;
+        int y = (int)CurrentCameraCoords.y;
+        Vector2 foundChunk = Vector2.zero;
+        float distanceToClosestChunk = 10000;
+        for (int sX = x + radius; sX > x - radius; sX--)
+        {
+            for (int sY = y + radius; sY > y - radius; sY--)
+            {
+                Vector2 vector = new Vector2(sX, sY);
+                if ((sX < x + ignoreRadius && sX > x - ignoreRadius) && (sY < y + ignoreRadius && sY > y - ignoreRadius))
+                {
+                    continue;
+                }
+                if (chunkId == GetSeededChunkId(vector))
+                {
+                    float distanceToFoundChunk = Vector2.Distance(currentCameraCoords, vector);
+                    if (distanceToFoundChunk < distanceToClosestChunk)
+                    {
+                        distanceToClosestChunk = distanceToFoundChunk;
+                        foundChunk = vector;
+                    }
+                }
+            }
+        }
+        return foundChunk;
     }
 
     private void CheckSeedMap(Vector2 coords)
