@@ -76,19 +76,25 @@ public class Item
         }
     }
 
+
+    public void DestroyItem()
+    {
+        DisposeContextMenu();
+        GameObject.Find("Player").GetComponent<Inventory>().RemoveItem(this);
+    }
+
     public static void CreateContextMenuItem(String itemText, UnityAction onClick)
     {
         GameObject contextMenu = GameObject.Find("ItemContextMenu");
         GameObject firstItem = GameObject.Instantiate(PublicGameResources.GetResource().itemContextMenuItem, Vector3.zero, Quaternion.identity, contextMenu.transform);
-        firstItem.GetComponent<RectTransform>().localPosition = new Vector3(0, 0- 40 * contextMenu.transform.childCount, 0);
+        firstItem.GetComponent<RectTransform>().localPosition = new Vector3(0, 0 - 40 * contextMenu.transform.childCount, 0);
         firstItem.GetComponent<Button>().onClick.AddListener(onClick);
         firstItem.transform.GetChild(0).GetComponent<Text>().text = itemText;
     }
 
-    public void DestroyItem()
+    public static void DisposeContextMenu()
     {
         GameObject.Find("ItemContextMenu").transform.position = new Vector3(100000, 10000, 100000);
-        Debug.Log("Heck idk");
     }
 
     public static Item GenerateItem(int id)

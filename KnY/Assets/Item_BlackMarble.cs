@@ -10,9 +10,6 @@ public class Item_BlackMarble : Item {
     private bool isVisible = true;
     private bool searchForCommon = true;
     private bool searchForUncommon = false;
-
-    public Color32 commonGlow;
-    public Color32 unCommonGlow;
     public Item_BlackMarble()
     {
         this.artifactItem = false;
@@ -63,12 +60,26 @@ public class Item_BlackMarble : Item {
 
     private void SetVisibleMode()
     {
+        DisposeContextMenu();
         isVisible = !isVisible;
-        myGameObject.GetComponent<SpriteRenderer>().enabled = isVisible;
+        int fadeStart = 0;
+        int fadeEnd = 0;
+        if(isVisible)
+        {
+            fadeStart = 0;
+            fadeEnd = 1;
+        }
+        else
+        {
+            fadeStart = 1;
+            fadeEnd = 0;
+        }
+        Director.GetInstance().SetFadeMaterial(fadeStart, fadeEnd, myGameObject.GetComponent<BlackMarble>().interfaceMaterial);
     }
 
     private void SearchForCommontreasureRoom()
     {
+        DisposeContextMenu();
         BlackMarble bm = myGameObject.GetComponent<BlackMarble>();
         searchForCommon = !searchForCommon;
         if (searchForCommon)
@@ -88,6 +99,7 @@ public class Item_BlackMarble : Item {
 
     private void SearchForUncommontreasureRoom()
     {
+        DisposeContextMenu();
         BlackMarble bm = myGameObject.GetComponent<BlackMarble>();
         searchForUncommon = !searchForUncommon;
         if (searchForUncommon)

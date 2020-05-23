@@ -8,7 +8,6 @@ public class BlackMarble : MonoBehaviour
     private MapGenerator mapGenerator;
     private Vector2 lastSearchPos = Vector2.zero;
     public Dictionary<Vector2,bool> searchObjectList = new Dictionary<Vector2, bool>();
-    public Animator blackMarbleInterfaceAnimator;
     public Vector2 direction;
 
     public List<Material> myMaterial = new List<Material>();
@@ -28,6 +27,7 @@ public class BlackMarble : MonoBehaviour
         {
             mapGenerator = FindObjectOfType<MapGenerator>();
         }
+        interfaceMaterial.SetFloat("_fade", 1);
         SearchAllCommonTreasureChunks();
     }
 
@@ -40,7 +40,7 @@ public class BlackMarble : MonoBehaviour
     public Vector2 GetClosestTarget()
     {
         float distance = 100000;
-        Vector2 target = Vector2.zero;
+        Vector2 target = mapGenerator.CurrentCameraCoords;
         int foundChunkId = 0;
         int vFoundChunkId = 0;
         foreach (Vector2 v in searchObjectList.Keys)

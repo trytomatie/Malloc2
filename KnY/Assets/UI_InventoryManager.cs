@@ -9,18 +9,19 @@ using UnityEngine.UI;
 public class UI_InventoryManager : MonoBehaviour
 {
     public List<GameObject> inventoryDisplays;
-    public Inventory playerInventory;
+    private Inventory playerInventory;
     public GameObject inventoryDisplayInstantiationTarget;
     public List<GameObject> inventorySlots;
 
     private static List<UI_InventoryManager> instances = new List<UI_InventoryManager>();
-    
+
+
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         instances.RemoveAll(item => item == null);
         instances.Add(this);
-        playerInventory = FindObjectOfType<PlayerController>().GetComponent<Inventory>();
     }
 
     void OnEnable()
@@ -30,7 +31,7 @@ public class UI_InventoryManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Clears Artifact-Displays
+    /// Clears Inventory-Displays
     /// </summary>
     public static void ClearInventoryDisplays()
     {
@@ -51,13 +52,13 @@ public class UI_InventoryManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Fills Arifact-Displays
+    /// Fills Inventory-Displays
     /// </summary>
     public static void FillInventoryDisplays()
     {
         foreach (UI_InventoryManager instance in instances)
         {
-            foreach (Item item in instance.playerInventory.items)
+            foreach (Item item in instance.PlayerInventory.items)
             {
                 if(!item.artifactItem)
                 {
@@ -77,6 +78,22 @@ public class UI_InventoryManager : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+    public Inventory PlayerInventory
+    {
+        get
+        {
+            if(playerInventory == null)
+            {
+                playerInventory = GameObject.Find("Player").GetComponent<Inventory>();
+            }
+            return playerInventory;
+        }
+
+        set
+        {
+            playerInventory = value;
         }
     }
 }

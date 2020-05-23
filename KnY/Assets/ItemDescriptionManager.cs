@@ -46,7 +46,6 @@ public class ItemDescriptionManager : MonoBehaviour
         }
         if(timer < 0)
         {
-            print("aksdk");
             Hide();
             timer = 0;
         }

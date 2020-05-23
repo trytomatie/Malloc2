@@ -17,6 +17,8 @@ public class Director : MonoBehaviour {
     public int globalRandomSeed = 1337;
 
     private IEnumerator darkenLevel_coroutine;
+    private Material currentFadeMaterial;
+    private bool endFadeInstantly = false;
 	// Use this for initialization
 	void Awake () {
 		if(instance == null)
@@ -112,12 +114,13 @@ public class Director : MonoBehaviour {
 
     }
 
-    public void SpawnMiniHpBar(Statusmanager statusmanager, float time, float heightOffset)
+    public GameObject SpawnMiniHpBar(Statusmanager statusmanager, float time, float heightOffset)
     {
         GameObject hpBar = Instantiate(miniHpBar, canvas.transform);
         hpBar.GetComponent<UI_MiniHpBarManager>().heigthOffset = heightOffset;
         hpBar.GetComponent<UI_MiniHpBarManager>().timer = time;
         hpBar.GetComponent<UI_MiniHpBarManager>().statusmanager = statusmanager;
+        return hpBar;
 
     }
     public void DarkenLevel(float time)
@@ -149,6 +152,45 @@ public class Director : MonoBehaviour {
             time -= Time.deltaTime;
             yield return new WaitForFixedUpdate();
         }
+    }
+
+    public void SetFadeMaterial(float fadeStart, float fadeEnd, Material material)
+    {
+        if(currentFadeMaterial == material)
+        {
+            endFadeInstantly = true;
+        }
+        StartCoroutine(SetFadeMaterialCoroutine(fadeStart, fadeEnd, material));
+    }
+    IEnumerator SetFadeMaterialCoroutine(float fadeStart, float fadeEnd, Material material)
+    {
+        while(endFadeInstantly)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+        endFadeInstantly = false;
+        currentFadeMaterial = material;
+        material.SetFloat("_fade",fadeStart);
+        int mod = 1;
+        float value = fadeStart;
+        int timeout = 0;
+        if (fadeStart > fadeEnd)
+        {
+            mod = -1;
+        }
+        while(material.GetFloat("_fade") != fadeEnd && timeout < 1000)
+        {
+            yield return new WaitForFixedUpdate();
+            value += Time.fixedDeltaTime * mod;
+            if((value < fadeEnd && mod == -1 )||(value > fadeEnd && mod == 1) || endFadeInstantly)
+            {
+                value = fadeEnd;
+            }
+            material.SetFloat("_fade", value);
+            timeout++;
+        }
+        endFadeInstantly = false;
+        currentFadeMaterial = null;
     }
     public void BrightenLevel()
     {

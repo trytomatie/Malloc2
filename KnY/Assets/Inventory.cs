@@ -30,6 +30,26 @@ public class Inventory : MonoBehaviour {
         }
     }
 
+    public void RemoveItem(Item pItem)
+    {
+        Item itemToBeRemoved = null;
+        foreach(Item item in items)
+        {
+            if(item.itemId == pItem.itemId)
+            {
+                itemToBeRemoved = item;
+            }
+        }
+        if(itemToBeRemoved != null)
+        {
+            items.Remove(itemToBeRemoved);
+        }
+        if (isPlayerInventory)
+        {
+            UpdateInventoryUI();
+        }
+    }
+
     public void UpdateInventoryUI()
     {
         if(isPlayerInventory)

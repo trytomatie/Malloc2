@@ -386,7 +386,7 @@ public class Statusmanager : MonoBehaviour {
             {
                 if (myHpBar == null)
                 {
-                    Director.GetInstance().SpawnMiniHpBar(this, 3, uiHeigthOffset);
+                    myHpBar = Director.GetInstance().SpawnMiniHpBar(this, 3, uiHeigthOffset).GetComponent<UI_MiniHpBarManager>();
                 }
                 else
                 {

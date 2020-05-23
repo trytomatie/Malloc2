@@ -51,7 +51,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: e7418821710c3eb4e9b6beec9b5843ac, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -368,7 +368,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efaee938cbf60bd40a7b8969fb9532b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blackMarbleInterfaceAnimator: {fileID: 0}
   direction: {x: 0, y: 0}
   myMaterial: []
   interfaceMaterial: {fileID: 2100000, guid: e7418821710c3eb4e9b6beec9b5843ac, type: 2}
