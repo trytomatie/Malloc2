@@ -29,6 +29,7 @@ public class MapGenerator : MonoBehaviour
 
     public Dictionary<Vector2, GameObject> chunkMap = new Dictionary<Vector2, GameObject>(); // Chunks that are generated
     public Dictionary<Vector2, GameObject> exploredChunks = new Dictionary<Vector2, GameObject>(); // The Chunks the player Has visited physicaly
+    public Dictionary<Vector2, bool> tunnelMap = new Dictionary<Vector2, bool>(); // Map of the tunnels where chunks are supposed to be able to spawn
     public Vector2 currentCameraCoords = new Vector2();
     private float CHUNKSIZE = 4.8f;
 
@@ -91,7 +92,11 @@ public class MapGenerator : MonoBehaviour
                 {
                     continue;
                 }
-                LoadChunk(toLoad + new Vector2(x, y), GetSeededChunkId(toLoad + new Vector2(x, y)) );
+                if(tunnelMap.ContainsKey(toLoad+new Vector2(x,y)))
+                {
+                    print("Chunk loaded");
+                    LoadChunk(toLoad + new Vector2(x, y), GetSeededChunkId(toLoad + new Vector2(x, y)) );
+                }
             }
         }
         AstarPath.active.data.gridGraph.center = currentCameraCoords * CHUNKSIZE;
@@ -109,6 +114,7 @@ public class MapGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        tunnelMap = CreateCollisonMap(25, 25,3);
         SetSeeds();
         foreach(int l in likelyhoodTable)
         {
@@ -164,7 +170,7 @@ public class MapGenerator : MonoBehaviour
         }
         else
         {
-            x = negativeXSeedMap[(int)Mathf.Abs(coords.x)-1];
+            x = negativeXSeedMap[(int)Mathf.Abs(coords.x) - 1];
         }
         if (coords.y >= 0)
         {
@@ -174,22 +180,75 @@ public class MapGenerator : MonoBehaviour
         {
             y = negativeYSeedMap[(int)Mathf.Abs(coords.y) - 1];
         }
-        // print(x + " | " + y);
-        int chunkId = 0; // new System.Random(x + y).Next(0, chunkTiles.Count);
-        int likelyHood = new System.Random(x - y).Next(0, combinedLikelyhood+1);
+        bool roomIsUp = false;
+        bool roomIsDown = false;
+        bool roomIsRight = false;
+        bool roomIsLeft = false;
+        GetRoomOpeningsNeeded(coords, ref roomIsUp, ref roomIsDown, ref roomIsRight, ref roomIsLeft);
+
+        int chunkId = -1; // new System.Random(x + y).Next(0, chunkTiles.Count);
+        int likelyHood = new System.Random(x - y).Next(0, combinedLikelyhood + 1);
         int i = 0;
         int likelyhoodMemory = 0;
-        // print(likelyHood);
-        foreach(int l in likelyhoodTable)
+        float combinedChanceOfAllCompatibleChunks = 0; 
+        List<int> compatibleChunks = new List<int>();
+        for (int o = 0; o < chunkTiles.Count; o++)
         {
-            if(likelyHood + likelyhoodMemory <= l + likelyhoodMemory)
+            if (chunkTiles[o].GetComponent<ChunkSettings>().CheckOpeningsAvaiable(roomIsUp, roomIsDown, roomIsRight, roomIsLeft))
             {
-                chunkId = i;
+                compatibleChunks.Add(o);
+                combinedChanceOfAllCompatibleChunks += likelyhoodTable[o];
             }
-            likelyhoodMemory += l;
+        }
+        foreach (int l in likelyhoodTable)
+        {
+            if (chunkTiles[i].GetComponent<ChunkSettings>().CheckOpeningsAvaiable(roomIsUp, roomIsDown, roomIsRight, roomIsLeft))
+            {
+                if (likelyHood + likelyhoodMemory <= l + likelyhoodMemory)
+                {
+                    chunkId = i;
+                    break;
+                }
+                likelyhoodMemory += l;
+            }
             i++;
         }
+        if (chunkId == -1)
+        {
+            chunkId = compatibleChunks[new System.Random(x - y).Next(0, compatibleChunks.Count)];
+        }
         return chunkId;
+    }
+
+    /// <summary>
+    /// Checks all Room cardinals for entries needed
+    /// </summary>
+    /// <param name="coords"></param>
+    /// <param name="roomIsUp"></param>
+    /// <param name="roomIsDown"></param>
+    /// <param name="roomIsRight"></param>
+    /// <param name="roomIsLeft"></param>
+    private void GetRoomOpeningsNeeded(Vector2 coords, ref bool roomIsUp, ref bool roomIsDown, ref bool roomIsRight, ref bool roomIsLeft)
+    {
+        if (tunnelMap.ContainsKey(new Vector2(coords.x + 1, coords.y)))
+        {
+            roomIsRight = true;
+        }
+
+        if (tunnelMap.ContainsKey(new Vector2(coords.x - 1, coords.y)))
+        {
+            roomIsLeft = true;
+        }
+
+        if (tunnelMap.ContainsKey(new Vector2(coords.x, coords.y + 1)))
+        {
+            roomIsUp = true;
+        }
+
+        if (tunnelMap.ContainsKey(new Vector2(coords.x, coords.y - 1)))
+        {
+            roomIsDown = true;
+        }
     }
 
     public Vector2 GetClosestChunk(int chunkId, int radius,int ignoreRadius,List<Vector2>ignoreList)
@@ -304,6 +363,102 @@ public class MapGenerator : MonoBehaviour
         return foundChunk;
     }
 
+
+    private Dictionary<Vector2,bool> CreateCollisonMap(int x, int y, int repeats)
+    {
+        Dictionary<Vector2, bool> chunksEligableForSpawn = new Dictionary<Vector2, bool>();
+        do
+        {
+            //placeLocations(map.locations, map);
+
+
+            int maxTunnels = 8; // max number of tunnels possible
+            int maxLength = 4; // max length each tunnel can have
+
+            int currentRow = 0;//(int)Mathf.Floor(Random.Range(15,x-15)); // our current row - start at a random spot
+            int currentColumn = 0; //(int)Mathf.Floor(Random.Range(15, y-15)); // our current column - start at a random spot
+            Vector2 lastDirection = Vector2.zero; // save the last direction we went
+            Vector2 randomDirection; // next turn/direction - holds a value from directions
+
+            // lets create some tunnels - while maxTunnels, dimentions, and maxLength  is greater than 0.
+
+            while (maxTunnels > 0 && x > 0 && y > 0 && maxLength > 0 /*checkLocationConnection(map) < map.locations.Count-1*/)
+            {
+
+                // lets get a random direction - until it is a perpendicular to our lastDirection
+                // if the last direction = left or right,
+                // then our new direction has to be up or down,
+                // and vice versa
+                do
+                {
+                    int rnd = (int)Mathf.Round(seed.Next(-1,2));
+                    int apply = (int)Mathf.Ceil(seed.Next(-1, 2));
+                    if (apply == 0)
+                    {
+                        randomDirection = new Vector2(0, rnd);
+                    }
+                    else
+                    {
+                        randomDirection = new Vector2(rnd, 0);
+                    }
+                } while ((randomDirection.x == -lastDirection.x && randomDirection.y == -lastDirection.y) || (randomDirection.x == lastDirection.x && randomDirection.y == lastDirection.y));
+
+                int randomLength = (int)Mathf.Ceil(seed.Next(1,maxLength)); //length the next tunnel will be (max of maxLength)
+                int tunnelLength = 0; //current length of tunnel being created
+
+                // lets loop until our tunnel is long enough or until we hit an edge
+                while (tunnelLength < randomLength)
+                {
+
+
+                    //break the loop if it is going out of the mapCoords
+                    if (((currentRow == 30) && (randomDirection.x == -1)) ||
+                        ((currentColumn == 30) && (randomDirection.y == -1)) ||
+                        ((currentRow == x - 31) && (randomDirection.x == 1)) ||
+                        ((currentColumn == y - 31) && (randomDirection.y == 1)))
+                    {
+
+                        break;
+                    }
+                    else
+                    {
+                        if (!chunksEligableForSpawn.ContainsKey(new Vector2(currentRow, currentColumn)))
+                        {
+                            print(new Vector2(currentRow, currentColumn));
+                            chunksEligableForSpawn.Add(new Vector2(currentRow, currentColumn), true);
+                            Instantiate(PublicGameResources.GetResource().bloodFx, new Vector3(currentRow * CHUNKSIZE, currentColumn * CHUNKSIZE, 0), Quaternion.identity); // TEMP FOR DEBUGING
+                        }
+                        currentRow += (int)randomDirection.x; //add the value from randomDirection to row and col (-1, 0, or 1) to update our location
+                        currentColumn += (int)randomDirection.y;
+                        tunnelLength++; //the tunnel is now one longer, so lets increment that variable
+
+                    }
+                }
+
+                if (tunnelLength > 0)
+                { // update our variables unless our last loop broke before we made any part of a tunnel
+                    lastDirection = randomDirection; //set lastDirection, so we can remember what way we went
+                    maxTunnels--; // we created a whole tunnel so lets decrement how many we have left to create
+                }
+            }
+            repeats--;
+        }
+        while (repeats > 0);
+        return chunksEligableForSpawn; 
+    }
+
+    private int[,] CreateArray(int num, int x, int y)
+    {
+        int[,] array = new int[x, y];
+        for (int xZ = 0; xZ < x; xZ++)
+            for (int yZ = 0; yZ < y; yZ++)
+            {
+                array[xZ, yZ] = 1;
+
+            }
+        return array;
+    }
+
     private void CheckSeedMap(Vector2 coords)
     {
         if (coords.x >= 0)
@@ -342,3 +497,17 @@ public class MapGenerator : MonoBehaviour
         return 0;
     }
 }
+
+
+public class Map
+{
+
+    public int[,] coords;
+    public int xDim;
+    public int yDim;
+    public int[] entryPoint = { 0, 0 };
+    public int[] exitPoint = { 50, 50 };
+
+
+}
+

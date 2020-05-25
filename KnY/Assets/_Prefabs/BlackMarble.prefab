@@ -303,7 +303,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!114 &985589450209495166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,6 +373,6 @@ MonoBehaviour:
   interfaceMaterial: {fileID: 2100000, guid: e7418821710c3eb4e9b6beec9b5843ac, type: 2}
   commonGlow: {r: 0, g: 1.5058824, b: 3.9686275, a: 0}
   unCommonGlow: {r: 0.26684493, g: 6.2856836, b: 0.56537, a: 0}
-  commontreasureChunkIds: 02000000
-  uncommontreasureChunkIds: 04000000
+  commontreasureChunkIds: 0200000005000000
+  uncommontreasureChunkIds: 0400000005000000
   chunkIdsThatAreSearched: 

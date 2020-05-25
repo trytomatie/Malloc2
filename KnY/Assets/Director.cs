@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 public class Director : MonoBehaviour {
@@ -142,11 +143,21 @@ public class Director : MonoBehaviour {
             foreach(GameObject go in toDarkenObjects)
             {
                 if(go != null)
-                { 
+                {
+                    if (go.GetComponent<SpriteRenderer>() == null && go.GetComponent<TilemapRenderer>() != null)
+                    {
+                        TilemapRenderer tmr = go.GetComponent<TilemapRenderer>();
+                        float mTime = (time) / (baseTime + destinationColor) + destinationColor;
+                        Color c = tmr.material.color;
+                        tmr.material.color = new Color(mTime, mTime, mTime, 1);
+                    }
+                    else
+                    { 
                     SpriteRenderer m = go.GetComponent<SpriteRenderer>();
                     float mTime = (time) / (baseTime +destinationColor) + destinationColor;
                     Color c = m.color;
                     m.color = new Color(mTime, mTime, mTime, 1);
+                    }
                 }
             }
             time -= Time.deltaTime;
@@ -204,8 +215,16 @@ public class Director : MonoBehaviour {
         {
             if (go != null)
             {
-                SpriteRenderer m = go.GetComponent<SpriteRenderer>();
+                if (go.GetComponent<SpriteRenderer>() == null && go.GetComponent<TilemapRenderer>() != null)
+                {
+                    TilemapRenderer tmr = go.GetComponent<TilemapRenderer>();
+                    tmr.material.color = Color.white;
+                }
+                else
+                { 
+                    SpriteRenderer m = go.GetComponent<SpriteRenderer>();
                 m.color = Color.white;
+                }
             }
         }
     }

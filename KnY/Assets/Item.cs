@@ -68,9 +68,11 @@ public class Item
     public static void ClearContextMenuItems()
     {
         Transform contextMenu = GameObject.Find("ItemContextMenu").transform;
-        for (int i = 0; i < contextMenu.childCount; i++)
+        int offensichlicherChildcount = contextMenu.childCount;
+        Debug.Log(offensichlicherChildcount);
+        for (int i = 0; i < offensichlicherChildcount; i++)
         {
-            GameObject gj = contextMenu.GetChild(i).gameObject;
+            GameObject gj = contextMenu.GetChild(0).gameObject;
             gj.transform.SetParent(null,false);
             GameObject.Destroy(gj);
         }

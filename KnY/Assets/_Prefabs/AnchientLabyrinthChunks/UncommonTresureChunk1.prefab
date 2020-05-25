@@ -15893,7 +15893,7 @@ GameObject:
   - component: {fileID: 199592794}
   m_Layer: 0
   m_Name: UncommonTresureChunk1
-  m_TagString: Untagged
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21191,6 +21191,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   concluded: 0
+  upIsOpen: 0
+  downIsOpen: 1
+  rightIsOpen: 0
+  leftIsOpen: 0
+  forceOpenings: 0
 --- !u!114 &199592794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21840,7 +21845,7 @@ GameObject:
   - component: {fileID: 2947002052747910222}
   m_Layer: 0
   m_Name: TopLayer
-  m_TagString: Untagged
+  m_TagString: Foreground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

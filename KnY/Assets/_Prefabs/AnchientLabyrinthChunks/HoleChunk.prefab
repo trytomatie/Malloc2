@@ -16264,7 +16264,7 @@ GameObject:
   - component: {fileID: 1712252395813497599}
   m_Layer: 0
   m_Name: HoleChunk
-  m_TagString: Untagged
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21180,6 +21180,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   concluded: 0
+  upIsOpen: 0
+  downIsOpen: 0
+  rightIsOpen: 0
+  leftIsOpen: 1
+  forceOpenings: 0
 --- !u!1 &8827135817113959724
 GameObject:
   m_ObjectHideFlags: 0

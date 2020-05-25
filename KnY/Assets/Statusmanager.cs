@@ -380,7 +380,7 @@ public class Statusmanager : MonoBehaviour {
             }
             if (gameObject.name == "Player")
             {
-                UI_ResourceManager.UpdateUI(); // fix that sometime???
+                UI_ResourceManager.UpdateUI(); // fix that sometime??? // Later Note: What's the problem
             }
             else
             {

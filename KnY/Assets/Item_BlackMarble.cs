@@ -37,6 +37,7 @@ public class Item_BlackMarble : Item {
 
     public override void InstanciateContextMenu()
     {
+        Debug.Log("Create Menu!");
         ClearContextMenuItems();
         string text1 = "Actiate Visible Mode";
         if(isVisible)

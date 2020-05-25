@@ -45,7 +45,8 @@ public class BlackMarble : MonoBehaviour
         int vFoundChunkId = 0;
         foreach (Vector2 v in searchObjectList.Keys)
         {
-            if (searchObjectList[v] == true || chunkIdsThatAreSearched.Count < 1)
+            
+            if (searchObjectList[v] == true || chunkIdsThatAreSearched.Count < 1 || !mapGenerator.tunnelMap.Keys.Contains(v))
             {
                 continue;
             }

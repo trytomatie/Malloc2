@@ -35,7 +35,7 @@ public class CameraFollow : MonoBehaviour {
         Vector2 desiredPosition = target.position + offset;
         if (conditionalTarget.gameObject.activeSelf)
         {
-            desiredPosition = target.position + offset + conditionalTarget.position / 16;
+            //desiredPosition = target.position + offset + conditionalTarget.position / 16;
         }
         float halfHeight = Camera.main.orthographicSize;
         float halfWidth = Camera.main.aspect * halfHeight;
