@@ -22,6 +22,10 @@ public class MapGenerator : MonoBehaviour
     private System.Random negativeXSeed;
     private System.Random negativeYSeed;
 
+    public bool debug_GenerateWholeMap = false;
+    private string debugMessage = "";
+
+
     private List<int> xSeedMap = new List<int>();
     private List<int> ySeedMap = new List<int>();
     private List<int> negativeXSeedMap = new List<int>();
@@ -32,6 +36,8 @@ public class MapGenerator : MonoBehaviour
     public Dictionary<Vector2, bool> tunnelMap = new Dictionary<Vector2, bool>(); // Map of the tunnels where chunks are supposed to be able to spawn
     public Vector2 currentCameraCoords = new Vector2();
     private float CHUNKSIZE = 4.8f;
+
+
 
     public Vector2 CurrentCameraCoords
     {
@@ -44,8 +50,16 @@ public class MapGenerator : MonoBehaviour
         {
             if(value != currentCameraCoords)
             {
-                StartCoroutine(LoadingAndUnloading(currentCameraCoords, value));
                 currentCameraCoords = value;
+                if (!debug_GenerateWholeMap)
+                { 
+                    StartCoroutine(LoadingAndUnloading(currentCameraCoords, value));
+                }
+                else // To assure that The Pathfinding stll works
+                {
+                    AstarPath.active.data.gridGraph.center = currentCameraCoords * CHUNKSIZE;
+                    AstarPath.active.Scan();
+                }
             }
         }
     }
@@ -124,6 +138,13 @@ public class MapGenerator : MonoBehaviour
         int y = (int)Mathf.Round((Camera.main.transform.position.y / CHUNKSIZE));
         CurrentCameraCoords = new Vector2(x, y);
         GetClosestChunk(4, 2,0);
+        if(debug_GenerateWholeMap)
+        {
+            foreach(Vector2 v in tunnelMap.Keys)
+            {
+                GenerateNewChunk(v, GetSeededChunkId(v));
+            }
+        }
     }
 
     void SetSeeds()
@@ -164,11 +185,14 @@ public class MapGenerator : MonoBehaviour
 
         GameObject chunk = Instantiate(chunkTiles[id], coords * CHUNKSIZE, Quaternion.identity, mapParent);
         chunk.GetComponent<ChunkSettings>().AdjustExits(roomIsUp,roomIsDown,roomIsRight,roomIsLeft);
+        chunk.GetComponent<ChunkSettings>().mapDebugInfo += debugMessage;
         chunkMap.Add(coords, chunk);
+        debugMessage = "";
     }
 
     public int GetSeededChunkId(Vector2 coords)
     {
+        debugMessage += "Likleyhood = ";
         CheckSeedMap(coords);
         int x = 0;
         int y = 0;
@@ -194,12 +218,8 @@ public class MapGenerator : MonoBehaviour
         bool roomIsLeft = false;
         GetRoomOpeningsNeeded(coords, ref roomIsUp, ref roomIsDown, ref roomIsRight, ref roomIsLeft);
 
-        int chunkId = -1; // new System.Random(x + y).Next(0, chunkTiles.Count);
-        int likelyHood = new System.Random(x - y).Next(0, combinedLikelyhood + 1);
-        int i = 0;
-        int likelyhoodMemory = 0;
-        float combinedChanceOfAllCompatibleChunks = 0; 
         List<int> compatibleChunks = new List<int>();
+        float combinedChanceOfAllCompatibleChunks = 0;
         for (int o = 0; o < chunkTiles.Count; o++)
         {
             if (chunkTiles[o].GetComponent<ChunkSettings>().CheckOpeningsAvaiable(roomIsUp, roomIsDown, roomIsRight, roomIsLeft))
@@ -208,19 +228,26 @@ public class MapGenerator : MonoBehaviour
                 combinedChanceOfAllCompatibleChunks += likelyhoodTable[o];
             }
         }
+
+
+        int chunkId = -1; // new System.Random(x + y).Next(0, chunkTiles.Count);
+        float likelyHood = new System.Random((x/100) + (y/100)).Next(0, (int)combinedChanceOfAllCompatibleChunks + 1);
+        debugMessage += "Seed:" + x * y + " Chance: " +  likelyHood;
+        int i = 0;
         foreach (int l in likelyhoodTable)
         {
             if (chunkTiles[i].GetComponent<ChunkSettings>().CheckOpeningsAvaiable(roomIsUp, roomIsDown, roomIsRight, roomIsLeft))
             {
-                if (likelyHood + likelyhoodMemory <= l + likelyhoodMemory)
+                if (likelyHood <= l)
                 {
                     chunkId = i;
                     break;
                 }
-                likelyhoodMemory += l;
+                likelyHood -= l;
             }
             i++;
         }
+        debugMessage += "/"+ likelyHood;
         if (chunkId == -1)
         {
             chunkId = compatibleChunks[new System.Random(x - y).Next(0, compatibleChunks.Count)];
@@ -432,9 +459,7 @@ public class MapGenerator : MonoBehaviour
                     {
                         if (!chunksEligableForSpawn.ContainsKey(new Vector2(currentRow, currentColumn)))
                         {
-                            print(new Vector2(currentRow, currentColumn));
                             chunksEligableForSpawn.Add(new Vector2(currentRow, currentColumn), true);
-                            Instantiate(PublicGameResources.GetResource().bloodFx, new Vector3(currentRow * CHUNKSIZE, currentColumn * CHUNKSIZE, 0), Quaternion.identity); // TEMP FOR DEBUGING
                         }
                         currentRow += (int)randomDirection.x; //add the value from randomDirection to row and col (-1, 0, or 1) to update our location
                         currentColumn += (int)randomDirection.y;

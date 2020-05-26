@@ -17,7 +17,12 @@ public class Statusmanager : MonoBehaviour {
     public int defence = 0;
     public float healthRegeneration = 0;
     public float healthRegenerationPercentage = 1;
+
     public float movementSpeed = 1;
+    public float movementSpeedFlatAdjustments = 0;
+    public float movementSpeedMultiplier = 1;
+
+    private float toatlMovementSpeed = 1;
     private float hpRegenDecimals = 0;
     public bool isDead = false;
     [SerializeField]
@@ -56,6 +61,7 @@ public class Statusmanager : MonoBehaviour {
 
     public float uiHeigthOffset = 0.16f;
     private UI_MiniHpBarManager myHpBar;
+
     // Use this for initialization
     void Start () {
         
@@ -74,7 +80,7 @@ public class Statusmanager : MonoBehaviour {
         }
         StartCoroutine(StatusEffectTimers());
         BaseAttackDamage = baseAttackDamage;
-        MovementSpeed = movementSpeed;
+        TotalMovementSpeed = toatlMovementSpeed;
         for (int i = 1; i < level;i++)
         {
             LevelUp();
@@ -139,14 +145,14 @@ public class Statusmanager : MonoBehaviour {
 
     IEnumerator StatusEffectTimers()
     {
-        float tickRate = 0.2f;
+        //float tickRate = 0.2f;
         List<StatusEffect> removalList = new List<StatusEffect>();
         while(true)
         {
             removalList = new List<StatusEffect>();
             foreach (StatusEffect s in statusEffects)
             {
-                s.duration-= tickRate;
+                s.duration-= Time.deltaTime;
                 if(s.duration > 0)
                 { 
                     s.ApplyEffect(gameObject);
@@ -162,7 +168,7 @@ public class Statusmanager : MonoBehaviour {
             {
                 statusEffects.Remove(s);
             }
-            yield return new WaitForSeconds(tickRate);
+            yield return new WaitForSeconds(Time.deltaTime);
         }
     }
 
@@ -176,6 +182,7 @@ public class Statusmanager : MonoBehaviour {
                 return;
             }
         }
+        statusEffect.ApplyEffect(gameObject);
         statusEffects.Add(statusEffect);
     }
 
@@ -278,7 +285,7 @@ public class Statusmanager : MonoBehaviour {
         maxSp += spGrowth;
         Mana += manaGrowth;
         defence += defenceGrwoth;
-        MovementSpeed += movementSpeedGrowth;
+        TotalMovementSpeed += movementSpeedGrowth;
         healthRegeneration += healthRegenerationGrowth;
         BaseAttackDamage += baseAttackDamageGrowth;
         CallculateAttackDamage();
@@ -428,21 +435,22 @@ public class Statusmanager : MonoBehaviour {
         }
     }
 
-    public float MovementSpeed
+    public float TotalMovementSpeed
     {
         get
         {
-            return movementSpeed;
+            toatlMovementSpeed = (movementSpeed - movementSpeedFlatAdjustments) * Mathf.Clamp(movementSpeedMultiplier,0.01f,10f);
+            return toatlMovementSpeed;
         }
 
         set
         {
             if (GetComponent<AIPath>() != null)
             {
-                GetComponent<AIPath>().maxSpeed = movementSpeed;
-                GetComponent<AIPath>().maxAcceleration = movementSpeed * 10;
+                GetComponent<AIPath>().maxSpeed = toatlMovementSpeed;
+                GetComponent<AIPath>().maxAcceleration = toatlMovementSpeed * 10;
             }
-            movementSpeed = value;
+            toatlMovementSpeed = value;
         }
     }
 

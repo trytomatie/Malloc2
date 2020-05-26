@@ -16,11 +16,11 @@ public class Item_BootsOfFlight : Item {
 
     public override void ApplyEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().MovementSpeed += movementSpeedBonus * stacks;
+        g.GetComponent<Statusmanager>().TotalMovementSpeed += movementSpeedBonus * stacks;
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().MovementSpeed -= movementSpeedBonus * stacks;
+        g.GetComponent<Statusmanager>().TotalMovementSpeed -= movementSpeedBonus * stacks;
     }
 }

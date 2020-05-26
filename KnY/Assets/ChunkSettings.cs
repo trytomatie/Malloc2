@@ -11,6 +11,7 @@ public class ChunkSettings : MonoBehaviour
     public bool rightIsOpen = true;
     public bool leftIsOpen = true;
     public bool forceOpenings = false;
+    public string mapDebugInfo = "";
 
     public GameObject[] exits;
     // Start is called before the first frame update

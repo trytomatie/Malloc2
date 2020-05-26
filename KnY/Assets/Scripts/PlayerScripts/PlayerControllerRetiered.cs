@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerControllerRetiered : MonoBehaviour
 {
 
 
@@ -113,12 +113,12 @@ public class PlayerController : MonoBehaviour
 
         if (x == 0 || y == 0) // Checks if the player is moving diagonaly, Reduces Movement speed acordingly
         {
-            movementSpeedMod = GetComponent<Statusmanager>().MovementSpeed;
+            movementSpeedMod = GetComponent<Statusmanager>().TotalMovementSpeed;
         }
         else
         {
 
-            movementSpeedMod = GetComponent<Statusmanager>().MovementSpeed * DIAGONAL_SPEED;
+            movementSpeedMod = GetComponent<Statusmanager>().TotalMovementSpeed * DIAGONAL_SPEED;
         }
         movementDirection = new Vector2(x, y);
         rb.velocity = movementDirection * movementSpeedMod * moveModifier;

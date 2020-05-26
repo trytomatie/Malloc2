@@ -8,6 +8,8 @@ public class StatusEffect : Behaviour {
     public string description;
     public Sprite image;
     public float duration;
+    public bool effectApplied = false;
+    public bool urgentEffect = false;
 
 
 

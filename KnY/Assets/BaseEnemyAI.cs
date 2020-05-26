@@ -97,7 +97,7 @@ public class BaseEnemyAI : MonoBehaviour
     public void MoveToPlayer()
     {
         if (direction != null)
-            rb.velocity = direction * GetComponent<Statusmanager>().MovementSpeed;
+            rb.velocity = direction * GetComponent<Statusmanager>().TotalMovementSpeed;
     }
 
     public IEnumerator hop(Vector2 dir, float time, float strenght)
@@ -136,7 +136,7 @@ public class BaseEnemyAI : MonoBehaviour
         if (wanderDistance > 0.05f)
         {
             Vector2 wanderDirection = CalculateNormalizedDirection(transform.position, wanderPosition);
-            rb.velocity = wanderDirection * GetComponent<Statusmanager>().MovementSpeed;
+            rb.velocity = wanderDirection * GetComponent<Statusmanager>().TotalMovementSpeed;
 
         }
 
@@ -186,7 +186,7 @@ public class BaseEnemyAI : MonoBehaviour
         {
             attackSpeedTimer -= Time.deltaTime;
         } 
-        rb.velocity = attackDirection * GetComponent<Statusmanager>().MovementSpeed * speed;
+        rb.velocity = attackDirection * GetComponent<Statusmanager>().TotalMovementSpeed * speed;
         if (attackSpeedTimer < 0)
         {
             attackSpeedTimer = 0;

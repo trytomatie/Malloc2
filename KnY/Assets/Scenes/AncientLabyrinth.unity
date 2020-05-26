@@ -2132,7 +2132,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -167.30002, y: -89.89995}
+  m_AnchoredPosition: {x: -167.30002, y: -89.89996}
   m_SizeDelta: {x: 58, y: 58}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &752171583
@@ -3566,7 +3566,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1090, y: 89.99992}
+  m_AnchoredPosition: {x: 1090, y: 89.99994}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &1115404559
@@ -4541,9 +4541,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapParent: {fileID: 1520492995}
   chunkTiles:
+  - {fileID: 4901484312855246618, guid: e85ea7ae02a0587429ff7692ea8b3d03, type: 3}
   - {fileID: 4901484312855246618, guid: 2195b437239475f4f9a2a12a34137ae4, type: 3}
+  - {fileID: 4901484312855246618, guid: 8c22b58510e758d4a8739b5401fea88f, type: 3}
   likelyhoodTable:
-  - 90
+  - 100
+  - 50
+  - 100
+  debug_GenerateWholeMap: 1
   currentCameraCoords: {x: -1, y: -1}
 --- !u!4 &1503752214
 Transform:
@@ -5521,6 +5526,8 @@ MonoBehaviour:
   healthRegeneration: 0
   healthRegenerationPercentage: 100
   movementSpeed: 100
+  movementSpeedFlatAdjustments: 0
+  movementSpeedMultiplier: 1
   isDead: 0
   mana: 0
   maxExperience: 100
@@ -6977,7 +6984,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2021715882}
   - component: {fileID: 2021715881}
-  - component: {fileID: 2021715880}
   - component: {fileID: 2021715884}
   - component: {fileID: 2021715879}
   - component: {fileID: 2021715883}
@@ -6985,6 +6991,7 @@ GameObject:
   - component: {fileID: 2021715886}
   - component: {fileID: 2021715887}
   - component: {fileID: 2021715888}
+  - component: {fileID: 2021715889}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -7013,22 +7020,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2021715880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2021715878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ef412f04f485544fad6c08803075c42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementDirection: {x: 0, y: 0}
-  aimDirection: {x: 0, y: 0}
-  castTime: 0
-  style1Cd: 0
 --- !u!212 &2021715881
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7135,6 +7126,8 @@ MonoBehaviour:
   healthRegeneration: 5
   healthRegenerationPercentage: 1
   movementSpeed: 0.8
+  movementSpeedFlatAdjustments: 0
+  movementSpeedMultiplier: 1
   isDead: 0
   mana: 0
   maxExperience: 100
@@ -7220,6 +7213,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0110b0aa907d622489be76af7f462f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2021715889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021715878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7a837519abfc3a4cacb7074dcbf000e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementDirection: {x: 0, y: 0}
+  aimDirection: {x: 0, y: 0}
 --- !u!1 &2065325882
 GameObject:
   m_ObjectHideFlags: 0

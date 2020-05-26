@@ -5,8 +5,8 @@ using UnityEngine;
 public class StatusEffect_Blighted : StatusEffect {
 
 
-    private int tickRate = 5;
-    private int tickRateCounter = 0;
+    private float tickRate = 1;
+    private float tickRateTimer = 0;
     public int damage = 5;
     public StatusEffect_Blighted(float durration,int damage)
     {
@@ -19,13 +19,13 @@ public class StatusEffect_Blighted : StatusEffect {
 
     public override void ApplyEffect(GameObject g)
     {
-        tickRateCounter++;
-        if(tickRateCounter>=5)
+        tickRateTimer+= Time.deltaTime;
+        if(tickRateTimer >= tickRate)
         {
             int damageDealt = DamageObject.CalculateDamageDealt(g.GetComponent<Statusmanager>(), damage, false);
             g.GetComponent<Statusmanager>().Hp -= damageDealt;
             Director.GetInstance().SpawnDamageText(damageDealt.ToString(), g.transform, PublicGameResources.GetResource().BlightDamageColor, false);
-            tickRateCounter = 0;
+            tickRateTimer = 0;
         }
     }
 
