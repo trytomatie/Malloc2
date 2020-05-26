@@ -4541,19 +4541,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapParent: {fileID: 1520492995}
   chunkTiles:
-  - {fileID: 4901484312855246618, guid: 8c936b257ef1020448bd3c514dd2e366, type: 3}
-  - {fileID: 8827135817033626983, guid: e16f550857836ec4fb35668471d03482, type: 3}
-  - {fileID: 7810660347499884661, guid: 0bb930cdb8d178d4988822600b274438, type: 3}
-  - {fileID: 6817775570078278026, guid: a0fdc84f00bf34e4692297576cc6e394, type: 3}
-  - {fileID: 2381424171755937471, guid: f66a009d60ac86841a6e269c470f66a5, type: 3}
-  - {fileID: 4901484312855246618, guid: 2588e0fee03339c42ba139eba4ff357b, type: 3}
+  - {fileID: 4901484312855246618, guid: 2195b437239475f4f9a2a12a34137ae4, type: 3}
   likelyhoodTable:
-  - 900
   - 90
-  - 40
-  - 20
-  - 15
-  - 5
   currentCameraCoords: {x: -1, y: -1}
 --- !u!4 &1503752214
 Transform:

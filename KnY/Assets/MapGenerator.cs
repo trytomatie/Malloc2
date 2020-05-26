@@ -156,7 +156,15 @@ public class MapGenerator : MonoBehaviour
 
     private void GenerateNewChunk(Vector2 coords, int id)
     {
-        chunkMap.Add(coords, Instantiate(chunkTiles[id], coords * CHUNKSIZE, Quaternion.identity, mapParent));
+        bool roomIsUp = false;
+        bool roomIsDown = false;
+        bool roomIsRight = false;
+        bool roomIsLeft = false;
+        GetRoomOpeningsNeeded(coords, ref roomIsUp, ref roomIsDown, ref roomIsRight, ref roomIsLeft);
+
+        GameObject chunk = Instantiate(chunkTiles[id], coords * CHUNKSIZE, Quaternion.identity, mapParent);
+        chunk.GetComponent<ChunkSettings>().AdjustExits(roomIsUp,roomIsDown,roomIsRight,roomIsLeft);
+        chunkMap.Add(coords, chunk);
     }
 
     public int GetSeededChunkId(Vector2 coords)
