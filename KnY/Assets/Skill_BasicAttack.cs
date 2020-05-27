@@ -32,7 +32,6 @@ class Skill_BasicAttack : Skill
         source.GetComponent<Animator>().SetFloat("SpeedIncrease",(float)((1 * factor) - 1) * 0.4f);
         Casttime = (float)(BaseCasttime / factor);
         Cooldown = (float)(BaseCooldown / factor);
-        Debug.Log(Casttime + " / " + Cooldown);
         base.ActivateSkill(source,direction,target);
     }
 

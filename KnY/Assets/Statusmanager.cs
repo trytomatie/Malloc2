@@ -41,7 +41,7 @@ public class Statusmanager : MonoBehaviour {
     public int totalAttackDamage = 0;
 
     public int criticalStrikeChance = 1;
-    public List<StatusEffect> statusEffects = new List<StatusEffect>();
+    public List<StatusEffect> statusEffects = new List<StatusEffect>(); 
     public List<OnDamageEffect> onDamageEffects = new List<OnDamageEffect>();
     public List<OnDeathEffect> onDeathEffects = new List<OnDeathEffect>();
     public List<Animator> anims = new List<Animator>();
@@ -152,6 +152,7 @@ public class Statusmanager : MonoBehaviour {
             removalList = new List<StatusEffect>();
             foreach (StatusEffect s in statusEffects)
             {
+                Debug.Log("StatusEffects: " + s.statusName);
                 s.duration-= Time.deltaTime;
                 if(s.duration > 0)
                 { 
@@ -159,14 +160,26 @@ public class Statusmanager : MonoBehaviour {
                 }
                 else
                 {
-                    s.RemoveEffect(gameObject);
                     removalList.Add(s);
                 }
             }
             // Remove statuseffects from StatusEffects list
+            if(GetComponent<PlayerController>() != null && removalList.Count > 0)
+            { 
+            Debug.Log(removalList.Count);
+            }
             foreach (StatusEffect s in removalList)
             {
-                statusEffects.Remove(s);
+                Debug.Log("RemovalList: " + s.statusName);
+                s.RemoveEffect(gameObject);
+                for(int i = 0; i < statusEffects.Count;i++)
+                {
+                    if(s.statusName == statusEffects[i].statusName)
+                    {
+                        statusEffects.RemoveAt(i);
+                    }
+                }
+
             }
             yield return new WaitForSeconds(Time.deltaTime);
         }

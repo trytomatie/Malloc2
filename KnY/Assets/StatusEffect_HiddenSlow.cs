@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Slow that is not threated as a debuff by other sources
+/// Slow that is not treated as a debuff/buff by other sources
 /// </summary>
 public class StatusEffect_HiddenSlow : StatusEffect {
 
@@ -21,7 +21,8 @@ public class StatusEffect_HiddenSlow : StatusEffect {
     public override void ApplyEffect(GameObject g)
     {
         if(!effectApplied)
-        { 
+        {
+            Debug.Log("Apply me");
             g.GetComponent<Statusmanager>().movementSpeedMultiplier -= strength;
             effectApplied = true;
         }
@@ -29,15 +30,20 @@ public class StatusEffect_HiddenSlow : StatusEffect {
 
     public override void RemoveEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().movementSpeedMultiplier += strength;
+        Debug.Log("Remove me");
+        if (effectApplied)
+        {
+            effectApplied = false;
+            g.GetComponent<Statusmanager>().movementSpeedMultiplier += strength;
+        }
     }
 
     public override void OnAdditionalApplication(GameObject g, StatusEffect s)
     {
-        StatusEffect_HiddenSlow newEffect = (StatusEffect_HiddenSlow)s;
-        if(newEffect.duration > duration)
-        {
-            duration = newEffect.duration;
-        }
+        //StatusEffect_HiddenSlow newEffect = (StatusEffect_HiddenSlow)s;
+        //if(newEffect.duration > duration)
+        //{
+        //    duration = newEffect.duration;
+        //}
     }
 }

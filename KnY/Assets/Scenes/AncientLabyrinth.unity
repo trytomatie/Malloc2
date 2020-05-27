@@ -6988,10 +6988,10 @@ GameObject:
   - component: {fileID: 2021715879}
   - component: {fileID: 2021715883}
   - component: {fileID: 2021715885}
-  - component: {fileID: 2021715886}
   - component: {fileID: 2021715887}
   - component: {fileID: 2021715888}
   - component: {fileID: 2021715889}
+  - component: {fileID: 2021715880}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -7020,6 +7020,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!58 &2021715880
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021715878}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.1}
+  serializedVersion: 2
+  m_Radius: 0.05
 --- !u!212 &2021715881
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7162,32 +7178,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: 0
---- !u!61 &2021715886
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2021715878}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.0067256987, y: -0.069499075}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
-    newSize: {x: 0.32, y: 0.32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.1002931, y: 0.073390186}
-  m_EdgeRadius: 0
 --- !u!114 &2021715887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7738,6 +7728,12 @@ PrefabInstance:
       propertyPath: itemContextMenuItem
       value: 
       objectReference: {fileID: 6238068152260117359, guid: a04de02e6919e6b4c964f8509da35b56,
+        type: 3}
+    - target: {fileID: 1381486699969876407, guid: 70b7386732a9c8742b5f9071311b1f1e,
+        type: 3}
+      propertyPath: elusiveDodgeEffect
+      value: 
+      objectReference: {fileID: 373829362649656325, guid: decd2ecc0b59285438cf497bc99947da,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70b7386732a9c8742b5f9071311b1f1e, type: 3}

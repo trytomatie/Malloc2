@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
 
         skills.Add(new Skill_BasicAttack(1, 0.4f, true));
+        skills.Add(new Skill_Dodge(1, 0.4f, false));
     }
 
     // Update is called once per frame
@@ -85,6 +86,14 @@ public class PlayerController : MonoBehaviour
             Vector2 attackDirection = heading / distance;
             skills[0].ActivateSkill(gameObject, attackDirection, null);
         }
+        if (Input.GetAxis("Attack1") == 1 && skills[1].CooldownTimer <= 0) // Dash
+        {
+            //Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            //Vector2 heading = mousePosition - (Vector2)transform.position;
+            //float distance = heading.magnitude;
+            //Vector2 direction = heading / distance;
+            skills[1].ActivateSkill(gameObject, movementDirection, null);
+        }
     }
 
 
@@ -117,7 +126,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void UpdateTimers()
     {
-        foreach(Skill_BasicAttack skill in skills)
+        foreach(Skill skill in skills)
         {
             if(skill.CasttimeTimer > 0)
             {

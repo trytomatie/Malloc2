@@ -15,6 +15,7 @@ public class PublicGameResources : MonoBehaviour {
     public GameObject corruptedAmethystFollower;
     public GameObject blackMarble;
     public GameObject itemContextMenuItem;
+    public GameObject elusiveDodgeEffect;
 	// Use this for initialization
 	void Awake () {
 		if(instance == null)
