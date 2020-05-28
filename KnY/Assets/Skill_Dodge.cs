@@ -29,7 +29,7 @@ class Skill_Dodge : Skill
     public override void ActivateSkill(GameObject source, Vector2 direction, GameObject target)
     {
         float dashDistance = 0.7f;
-        Casttime = dashDistance / (source.GetComponent<Statusmanager>().movementSpeed * 2.5f);
+        Casttime = dashDistance / (source.GetComponent<Statusmanager>().movementSpeed * 4.5f);
         Collider2D c = source.GetComponent<Collider2D>();
         Ray2D ray = new Ray2D((Vector2)source.transform.position + c.offset, direction);
         RaycastHit2D[] hits2 = Physics2D.CircleCastAll(ray.GetPoint(dashDistance + source.GetComponent<CircleCollider2D>().radius), source.GetComponent<CircleCollider2D>().radius, Vector2.zero);
@@ -71,11 +71,13 @@ class Skill_Dodge : Skill
     public override void CastSkill(GameObject source)
     {
         Rigidbody2D rb = source.GetComponent<Rigidbody2D>();
-        rb.velocity = Direction * (source.GetComponent<Statusmanager>().movementSpeed * 2.5f);
+        rb.velocity = Direction * (source.GetComponent<Statusmanager>().movementSpeed * 4.5f);
         GameObject effect = GameObject.Instantiate(PublicGameResources.GetResource().elusiveDodgeEffect, source.transform.position, Quaternion.identity);
         effect.GetComponent<SpriteRenderer>().sprite = source.GetComponent<SpriteRenderer>().sprite;
-        effect.GetComponent<SpriteRenderer>().material = source.GetComponent<SpriteRenderer>().material;
-        GameObject.Destroy(effect, 0.15f);
+        effect.GetComponent<SpriteRenderer>().sharedMaterial = source.GetComponent<SpriteRenderer>().sharedMaterial;
+        effect.GetComponent<SpriteRenderer>().flipX = source.GetComponent<SpriteRenderer>().flipX;
+        effect.GetComponent<SpriteRenderer>().flipY = source.GetComponent<SpriteRenderer>().flipY;
+        GameObject.Destroy(effect, 0.25f);
         if (Vector2.Distance(source.transform.position,targetPosition) <= 0.2f)
         {
             CasttimeTimer = -1;

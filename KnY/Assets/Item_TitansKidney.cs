@@ -9,8 +9,10 @@ public class Item_TitansKidney : Item {
     public Item_TitansKidney()
     {
         this.itemId = 4;
+        this.attribute = "Earth";
         this.itemName = "Titans Kidney";
         this.description = "Increases health regeneration.";
+        this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
     }
 
 

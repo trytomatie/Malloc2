@@ -8,8 +8,10 @@ public class Item_CorruptedAmethyst : Item {
     public Item_CorruptedAmethyst()
     {
         this.itemId = 8;
+        this.attribute = "Dark";
         this.itemName = "Corrupted Amethyst";
         this.description = "Materialize a afflicted scavenger follower.";
+        this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
     }
 
 
@@ -33,8 +35,8 @@ public class Item_CorruptedAmethyst : Item {
         companionList.Clear();
     }
 
-    public override void AddAditionalStack(GameObject g)
+    public override void AddAditionalStack(GameObject g,Item otherItem)
     {
-        base.AddAditionalStack(g);
+        base.AddAditionalStack(g, otherItem);
     }
 }

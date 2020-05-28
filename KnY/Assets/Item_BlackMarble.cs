@@ -14,8 +14,10 @@ public class Item_BlackMarble : Item {
     {
         this.artifactItem = false;
         this.itemId = 10;
+        this.attribute = "Earth";
         this.itemName = "Black Marble";
         this.description = "Mystierious item bestowed upon you by the architect of the labyrinth, it shall light you the way.";
+        this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
     }
 
 
@@ -30,7 +32,7 @@ public class Item_BlackMarble : Item {
         GameObject.Destroy(myGameObject);
     }
 
-    public override void AddAditionalStack(GameObject g)
+    public override void AddAditionalStack(GameObject g,Item otherItem)
     {
 
     }

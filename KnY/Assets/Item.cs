@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+[System.Serializable]
 public class Item
 {
     public int itemId;
@@ -13,14 +14,18 @@ public class Item
     public Sprite image;
     public int stacks = 1;
     public bool artifactItem = true;
+    public string attribute = "None";
     public enum CommonItems
     {
         Item_TotemOfGrief = 1,
-        Item_BandanaOfMight = 2,
         Item_Affectionate_Eminence = 3,
         Item_TitansKidney = 4,
         Item_BootsOfFlight = 7,
-        Item_RedFairy = 9
+        Item_RedFairy = 9,
+        Item_MightCrystal = 11,
+        Item_SpeedCrystal = 12,
+        Item_DexterityCrystal = 13
+            
     }
     public enum UncommonItems
     {
@@ -39,6 +44,19 @@ public class Item
     {
         Item_BlackMarble = 10
     }
+    public enum OtherItems
+    {
+        Item_LightCoin = 14,
+        Item_DarkCoin = 15,
+        Item_FireCoin = 16,
+        Item_EarthCoin = 17,
+        Item_WaterCoin = 18,
+        Item_WindCoin = 19
+    }
+    public enum RemovedItems
+    {
+        Item_BandanaOfMight = 2
+    }
 
 
     public virtual void ApplyEffect(GameObject g)
@@ -51,10 +69,10 @@ public class Item
 
     }
 
-    public virtual void AddAditionalStack(GameObject g)
+    public virtual void AddAditionalStack(GameObject g,Item otherItem)
     {
         RemoveEffect(g);
-        stacks++;
+        stacks+= otherItem.stacks;
         ApplyEffect(g);
     }
 
@@ -69,7 +87,6 @@ public class Item
     {
         Transform contextMenu = GameObject.Find("ItemContextMenu").transform;
         int offensichlicherChildcount = contextMenu.childCount;
-        Debug.Log(offensichlicherChildcount);
         for (int i = 0; i < offensichlicherChildcount; i++)
         {
             GameObject gj = contextMenu.GetChild(0).gameObject;
@@ -82,6 +99,7 @@ public class Item
     public void DestroyItem()
     {
         DisposeContextMenu();
+        GameObject.Find("Player").GetComponent<Inventory>().AddItem(GetCoinValueOfItem(this));
         GameObject.Find("Player").GetComponent<Inventory>().RemoveItem(this);
     }
 
@@ -134,8 +152,87 @@ public class Item
             case 10:
                 item = new Item_BlackMarble();
                 return item;
+            case 11:
+                item = new Item_MightCrystal();
+                return item;
+            case 12:
+                item = new Item_SpeedCrystal();
+                return item;
+            case 13:
+                item = new Item_DexterityCrystal();
+                return item;
+            case 14:
+                item = new Item_LightCoin();
+                return item;
+            case 15:
+                item = new Item_DarkCoin();
+                return item;
+            case 16:
+                item = new Item_FireCoin();
+                return item;
+            case 17:
+                item = new Item_EarthCoin();
+                return item;
+            case 18:
+                item = new Item_WaterCoin();
+                return item;
+            case 19:
+                item = new Item_WindCoin();
+                return item;
             default:
                 return null;
+        }
+    }
+
+    public static Item GetCoinValueOfItem(Item item)
+    {
+        Item coin = null;
+        int stackSize = 0;
+        if (Enum.IsDefined(typeof(CommonItems), item.itemId))
+        {
+            stackSize = 3;
+        }
+        if (Enum.IsDefined(typeof(UncommonItems), item.itemId))
+        {
+            stackSize = 9;
+        }
+        if (Enum.IsDefined(typeof(RareItems), item.itemId))
+        {
+            stackSize = 27;
+        }
+        if (Enum.IsDefined(typeof(EpicItems), item.itemId))
+        {
+            stackSize = 81;
+        }
+        stackSize *= item.stacks;
+        switch(item.attribute)
+        {
+            case "Light":
+                coin = new Item_LightCoin();
+                coin.stacks = stackSize;
+                return coin;
+            case "Dark":
+                coin = new Item_DarkCoin();
+                coin.stacks = stackSize;
+                return coin;
+            case "Fire":
+                coin = new Item_FireCoin();
+                coin.stacks = stackSize;
+                return coin;
+            case "Earth":
+                coin = new Item_EarthCoin();
+                coin.stacks = stackSize;
+                return coin;
+            case "Water":
+                coin = new Item_WaterCoin();
+                coin.stacks = stackSize;
+                return coin;
+            case "Wind":
+                coin = new Item_WindCoin();
+                coin.stacks = stackSize;
+                return coin;
+            default:
+                return coin;
         }
     }
 
@@ -197,7 +294,6 @@ public class Item
 
     public static Material GetItemDescriptionMaterial(int id)
     {
-        Debug.Log(id);
         if (Enum.IsDefined(typeof(CommonItems), id))
         {
             return PublicGameResources.GetResource().itemDescriptionMaterials[0];

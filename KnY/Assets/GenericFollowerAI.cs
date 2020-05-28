@@ -116,7 +116,6 @@ public class GenericFollowerAI : BaseEnemyAI
                         Target = followTarget;
                     }
                 }
-                print(Target);
                 PathFindingActive(true);
                 break;
         }

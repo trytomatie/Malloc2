@@ -9,8 +9,10 @@ public class Item_TotemOfGrief : Item {
     public Item_TotemOfGrief()
     {
         this.itemId = 1;
+        this.attribute = "Water";
         this.itemName = "Totem Of Grief";
         this.description = "Increases Attackspeed!";
+        this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
     }
 
 

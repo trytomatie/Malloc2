@@ -152,7 +152,6 @@ public class Statusmanager : MonoBehaviour {
             removalList = new List<StatusEffect>();
             foreach (StatusEffect s in statusEffects)
             {
-                Debug.Log("StatusEffects: " + s.statusName);
                 s.duration-= Time.deltaTime;
                 if(s.duration > 0)
                 { 
@@ -170,7 +169,6 @@ public class Statusmanager : MonoBehaviour {
             }
             foreach (StatusEffect s in removalList)
             {
-                Debug.Log("RemovalList: " + s.statusName);
                 s.RemoveEffect(gameObject);
                 for(int i = 0; i < statusEffects.Count;i++)
                 {

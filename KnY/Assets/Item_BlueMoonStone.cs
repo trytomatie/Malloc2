@@ -15,7 +15,9 @@ public class Item_BlueMoonStone : Item
     {
         this.itemId = 6;
         this.itemName = "Blue Moon Stone";
+        this.attribute = "Earth";
         this.description = "Regenerate Health when struck.";
+        this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
     }
 
     public override void ApplyEffect(GameObject g)
@@ -29,9 +31,9 @@ public class Item_BlueMoonStone : Item
         myEffectReference.RemoveEffect();
     }
 
-    public override void AddAditionalStack(GameObject g)
+    public override void AddAditionalStack(GameObject g, Item otherItem)
     {
-        base.AddAditionalStack(g);
+        base.AddAditionalStack(g, otherItem);
     }
 
 }

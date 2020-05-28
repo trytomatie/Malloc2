@@ -10,12 +10,15 @@ public class Item_Blight : ProcItem {
     public double damagePerStack = 2.5f;
     public double durrationPerStack = 0.25f;
     public float procChancePerStack = 2.5f;
+    public float baseProcChance = 25f;
     public Item_Blight()
     {
         this.itemId = 5;
         this.itemName = "Blight";
+        this.attribute = "Dark";
         this.description = "Chance to inflict Blight onhit.";
-        this.procChance = 25f;
+        this.procChance = baseProcChance;
+        this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
     }
 
 
@@ -31,9 +34,9 @@ public class Item_Blight : ProcItem {
         g.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_Blighted(durration, flatDamage));
     }
 
-    public override void AddAditionalStack(GameObject g)
+    public override void AddAditionalStack(GameObject g, Item otherItem)
     {
-        stacks++;
-        procChance += procChancePerStack;
+        stacks+= otherItem.stacks;
+        procChance = baseProcChance+(procChancePerStack *stacks);
     }
 }

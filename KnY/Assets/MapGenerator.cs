@@ -316,12 +316,12 @@ public class MapGenerator : MonoBehaviour
         return foundChunk;
     }
 
-    public Dictionary<Vector2,bool> GetAllChunksOfType(int chunkId,int radius,int ignoreRadius,Dictionary<Vector2,bool> existingMap)
+    public Dictionary<Vector2,int> GetAllChunksOfType(int chunkId,int radius,int ignoreRadius,Dictionary<Vector2,int> existingMap)
     {
 
         int x = (int)CurrentCameraCoords.x;
         int y = (int)CurrentCameraCoords.y;
-        Dictionary<Vector2, bool> foundChunks = new Dictionary<Vector2, bool>();
+        Dictionary<Vector2, int> foundChunks = new Dictionary<Vector2, int>();
         for (int sX = x + radius; sX > x - radius; sX--)
         {
             for (int sY = y + radius; sY > y - radius; sY--)
@@ -333,27 +333,27 @@ public class MapGenerator : MonoBehaviour
                 }
                 if (chunkId == GetSeededChunkId(vector))
                 {
-                    existingMap.Add(vector, false);
-                    foundChunks.Add(vector,false);
+                    existingMap.Add(vector, chunkId);
+                    foundChunks.Add(vector, chunkId);
                 }
             }
         }
         return foundChunks;
     }
 
-    public Dictionary<Vector2, bool> GetAllChunksOfType(List<int> chunkIds, int radius, int ignoreRadius, Dictionary<Vector2, bool> existingMap)
+    public Dictionary<Vector2, int> GetAllChunksOfType(List<int> chunkIds, int radius, int ignoreRadius, Dictionary<Vector2, int> existingMap)
     {
 
         int x = (int)CurrentCameraCoords.x;
         int y = (int)CurrentCameraCoords.y;
-        Dictionary<Vector2, bool> foundChunks = new Dictionary<Vector2, bool>();
+        Dictionary<Vector2, int> foundChunks = new Dictionary<Vector2, int>();
         for (int sX = x + radius; sX > x - radius; sX--)
         {
             for (int sY = y + radius; sY > y - radius; sY--)
             {
                 Vector2 vector = new Vector2(sX, sY);
                 if ((sX < x + ignoreRadius && sX > x - ignoreRadius) && (sY < y + ignoreRadius && sY > y - ignoreRadius) || existingMap.ContainsKey(vector) 
-                    || (chunkMap.ContainsKey(vector) && chunkMap[vector].GetComponent<ChunkSettings>() != null && chunkMap[vector].GetComponent<ChunkSettings>().concluded == true))
+                    || (chunkMap.ContainsKey(vector) && chunkMap[vector].GetComponent<ChunkSettings>() != null && chunkMap[vector].GetComponent<ChunkSettings>().concluded == true) || !tunnelMap.ContainsKey(vector))
                 {
                     continue;
                 }
@@ -361,8 +361,8 @@ public class MapGenerator : MonoBehaviour
                 { 
                     if (chunkId == GetSeededChunkId(vector))
                     {
-                        existingMap.Add(vector, false);
-                        foundChunks.Add(vector, false);
+                        existingMap.Add(vector, chunkId);
+                        foundChunks.Add(vector, chunkId);
                     }
                 }
             }

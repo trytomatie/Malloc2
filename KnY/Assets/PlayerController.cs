@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
 
+        GetComponent<Inventory>().AddItem(new Item_BlackMarble());
         skills.Add(new Skill_BasicAttack(1, 0.4f, true));
         skills.Add(new Skill_Dodge(1, 0.4f, false));
     }

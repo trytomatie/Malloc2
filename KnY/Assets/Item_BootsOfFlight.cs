@@ -10,7 +10,9 @@ public class Item_BootsOfFlight : Item {
     {
         this.itemId = 7;
         this.itemName = "Boots Of Flight";
+        this.attribute = "Wind";
         this.description = "Slightly Increases MovementSpeed";
+        this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
     }
 
 

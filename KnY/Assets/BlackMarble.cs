@@ -7,7 +7,7 @@ public class BlackMarble : MonoBehaviour
 {
     private MapGenerator mapGenerator;
     private Vector2 lastSearchPos = Vector2.zero;
-    public Dictionary<Vector2,bool> searchObjectList = new Dictionary<Vector2, bool>();
+    public Dictionary<Vector2,int> searchObjectList = new Dictionary<Vector2, int>();
     public Vector2 direction;
 
     public List<Material> myMaterial = new List<Material>();
@@ -26,6 +26,10 @@ public class BlackMarble : MonoBehaviour
         if(mapGenerator == null)
         {
             mapGenerator = FindObjectOfType<MapGenerator>();
+            if (mapGenerator == null)
+            {
+                Destroy(gameObject);
+            }
         }
         interfaceMaterial.SetFloat("_fade", 1);
         SearchAllCommonTreasureChunks();
@@ -43,20 +47,21 @@ public class BlackMarble : MonoBehaviour
         Vector2 target = mapGenerator.CurrentCameraCoords;
         int foundChunkId = 0;
         int vFoundChunkId = 0;
+        print(searchObjectList.Keys.Count);
         foreach (Vector2 v in searchObjectList.Keys)
         {
             
-            if (searchObjectList[v] == true || chunkIdsThatAreSearched.Count < 1 || !mapGenerator.tunnelMap.Keys.Contains(v))
+            if (searchObjectList[v] == -1 || chunkIdsThatAreSearched.Count < 1 || !mapGenerator.tunnelMap.Keys.Contains(v))
             {
                 continue;
             }
             foundChunkId = -1;
             foreach (int chunkId in chunkIdsThatAreSearched)
             {
-                int id = mapGenerator.GetSeededChunkId(v);
-                if (id == chunkId)
+                
+                if (chunkId == searchObjectList[v])
                 {
-                    foundChunkId = id;
+                    foundChunkId = searchObjectList[v];
                     break;
                 }
             }
@@ -74,7 +79,7 @@ public class BlackMarble : MonoBehaviour
                 {
                     if(mapGenerator.chunkMap[v].GetComponent<ChunkSettings>().concluded)
                     {
-                        searchObjectList[v] = true;
+                        searchObjectList[v] = -1;
                     }
                     return target;
                 }

@@ -40,7 +40,7 @@ public class SpawnDirector : MonoBehaviour
             if (wave == 0)
             {
                 wave = 1;
-                GameObject.Find("WaveText").GetComponent<Text>().text = "Wave " + wave;
+                GameObject.Find("RoomText").GetComponent<Text>().text = "Wave " + wave;
                 spawnCredits = 0;
                 spawnCreditsEarnedThisWave = 0;
                 SpawnInteractables();
@@ -66,7 +66,7 @@ public class SpawnDirector : MonoBehaviour
                 wave++;
                 spawnCreditsEarnedThisWave = 0;
                 SpawnInteractables();
-                GameObject.Find("WaveText").GetComponent<Text>().text = "Wave " + wave;
+                GameObject.Find("RoomText").GetComponent<Text>().text = "Wave " + wave;
             }
             return;
         }

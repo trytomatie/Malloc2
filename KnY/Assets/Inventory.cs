@@ -10,11 +10,15 @@ public class Inventory : MonoBehaviour {
 
     public void AddItem(Item item)
     {
+        if(item == null)
+        {
+            return;
+        }
         foreach(Item inventoryItem in items)
         {
             if(inventoryItem.itemId == item.itemId)
             {
-                inventoryItem.AddAditionalStack(gameObject);
+                inventoryItem.AddAditionalStack(gameObject,item);
                 if (isPlayerInventory)
                 {
                     UpdateInventoryUI();
@@ -42,6 +46,7 @@ public class Inventory : MonoBehaviour {
         }
         if(itemToBeRemoved != null)
         {
+            itemToBeRemoved.RemoveEffect(gameObject);
             items.Remove(itemToBeRemoved);
         }
         if (isPlayerInventory)
@@ -56,6 +61,8 @@ public class Inventory : MonoBehaviour {
         {
             UI_ArtifactManager.ClearInventoryDisplays();
             UI_ArtifactManager.FillInventoryDisplays();
+            UI_InventoryManager.ClearInventoryDisplays();
+            UI_InventoryManager.FillInventoryDisplays();
         }
     }
 }
