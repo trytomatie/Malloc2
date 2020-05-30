@@ -9,10 +9,9 @@ using UnityEngine.UI;
 public class UI_InventoryManager : MonoBehaviour
 {
     public List<GameObject> inventoryDisplays;
-    private Inventory playerInventory;
+    public static Inventory playerInventory;
     public GameObject inventoryDisplayInstantiationTarget;
     public List<GameObject> inventorySlots;
-
     private static List<UI_InventoryManager> instances = new List<UI_InventoryManager>();
 
 
@@ -45,7 +44,7 @@ public class UI_InventoryManager : MonoBehaviour
             foreach(GameObject go in removalList)
             {
                 instance.inventoryDisplays.Remove(go);
-                go.transform.parent = null;
+                go.transform.SetParent(null);
                 Destroy(go);
             }
         }
@@ -58,22 +57,44 @@ public class UI_InventoryManager : MonoBehaviour
     {
         foreach (UI_InventoryManager instance in instances)
         {
+            if(instance == null)
+            {
+                continue;
+            }
             foreach (Item item in instance.PlayerInventory.items)
             {
                 if(!item.artifactItem)
                 {
-                    foreach(GameObject inventorySlot in instance.inventorySlots)
+                    int i = 0;
+                    GameObject firstEmptySlot = null;
+                    foreach (GameObject inventorySlot in instance.inventorySlots)
                     {
-                        if(inventorySlot.transform.childCount == 0)
+                        GameObject target = inventorySlot;
+                        i++;
+                        if (firstEmptySlot == null && target.transform.childCount == 0)
+                        {
+                            firstEmptySlot = target;
+                        }
+                        if (item.position == i || item.position == 0)
                         { 
-                            GameObject instanceDisplay = Instantiate(instance.inventoryDisplayInstantiationTarget, inventorySlot.transform);
-                            instanceDisplay.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, -1);
-                            instanceDisplay.GetComponent<Image>().sprite = FindObjectOfType<ItemIcons>().GetIcon(item.itemId);
-                            instanceDisplay.GetComponent<Image>().material = Item.GetItemMaterial(item.itemId);
-                            instanceDisplay.GetComponent<UI_ArtifactDisplayOnHover>().item = item;
-                            instanceDisplay.transform.GetChild(0).GetComponent<Text>().text = "x" + item.stacks;
-                            instance.inventoryDisplays.Add(instanceDisplay);
-                            break;
+                            if (target.transform.childCount > 0 && item.position == i)
+                            {
+                                target = firstEmptySlot;
+                                item.position = 0;
+                            }
+                            if (target != null)
+                            {
+                                item.position = i;
+                                print(target);
+                                GameObject instanceDisplay = Instantiate(instance.inventoryDisplayInstantiationTarget, target.transform);
+                                instanceDisplay.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, -1);
+                                instanceDisplay.GetComponent<Image>().sprite = FindObjectOfType<ItemIcons>().GetIcon(item.itemId);
+                                instanceDisplay.GetComponent<Image>().material = Item.GetItemMaterial(item.itemId);
+                                instanceDisplay.GetComponent<UI_ArtifactDisplayOnHover>().item = item;
+                                instanceDisplay.transform.GetChild(0).GetComponent<Text>().text = "x" + item.stacks;
+                                instance.inventoryDisplays.Add(instanceDisplay);
+                                break;
+                            }
                         }
                     }
                 }

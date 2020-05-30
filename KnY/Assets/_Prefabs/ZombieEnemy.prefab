@@ -60,7 +60,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 60ff8c7126a4f5a498a7179bd05bf1f2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -143,6 +143,7 @@ MonoBehaviour:
   cancleUpdate: 0
   isHopping: 0
   direction: {x: 0, y: 0}
+  disableMovement: 0
   bodyTransform: {fileID: 4099386691832577085}
   attackingAnimators: []
 --- !u!114 &4099386691832577081
@@ -266,6 +267,8 @@ MonoBehaviour:
   healthRegeneration: 0
   healthRegenerationPercentage: 1
   movementSpeed: 0.5
+  movementSpeedFlatAdjustments: 0
+  movementSpeedMultiplier: 1
   isDead: 0
   mana: 3
   maxExperience: 100
@@ -340,4 +343,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7933edda9507d62439baa1ac360f8942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  items: []
   isPlayerInventory: 0

@@ -19,7 +19,6 @@ public class UI_ArtifactManager : MonoBehaviour
     {
         instances.RemoveAll(item => item == null);
         instances.Add(this);
-        print(gameObject.name);
         playerInventory = FindObjectOfType<PlayerController>().GetComponent<Inventory>();
     }
 

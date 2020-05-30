@@ -51,7 +51,8 @@ public class BaseEnemyAI : MonoBehaviour
     public bool isHopping = false;
     public Vector2 direction;
 
-
+    public List<Skill> skills = new List<Skill>();
+    public bool disableMovement = false;
 
     void Start()
     {
@@ -144,6 +145,10 @@ public class BaseEnemyAI : MonoBehaviour
 
     public bool CheckAttackConditions()
     {
+        if(Target == null)
+        {
+            return false;
+        }
         bool conditionsMet = false;
         if(Vector2.Distance(Target.transform.position,transform.position) <= attackRadius && !isAttacking && attackCooldownTimer == 0)
         {
@@ -266,6 +271,7 @@ public class BaseEnemyAI : MonoBehaviour
         return result;
     }
 
+
     public bool CheckLineOfSight()
     {
         // If target is destroyed it throws an error here! FIX That TODO!
@@ -351,6 +357,31 @@ public class BaseEnemyAI : MonoBehaviour
             return null;
         }
         return targetToSearch;
+    }
+
+    /// <summary>
+    /// Updates the Timers of skills
+    /// </summary>
+    public void UpdateTimers()
+    {
+        int spellsThatDontAllowMovementThatAreCasting = 0;
+        foreach (Skill skill in skills)
+        {
+            if (skill.CasttimeTimer > 0)
+            {
+                skill.SkillCastingPhase(gameObject);
+            }
+            spellsThatDontAllowMovementThatAreCasting += skill.UpdateTimers(gameObject);
+        }
+        if (spellsThatDontAllowMovementThatAreCasting > 0)
+        {
+            disableMovement = true;
+        }
+        else
+        {
+            disableMovement = false;
+        }
+
     }
 
     public bool IsMyTargetDead(GameObject target)

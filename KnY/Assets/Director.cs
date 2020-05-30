@@ -165,15 +165,15 @@ public class Director : MonoBehaviour {
         }
     }
 
-    public void SetFadeMaterial(float fadeStart, float fadeEnd, Material material)
+    public void SetFadeMaterial(float fadeStart, float fadeEnd, Material material, float time)
     {
         if(currentFadeMaterial == material)
         {
             endFadeInstantly = true;
         }
-        StartCoroutine(SetFadeMaterialCoroutine(fadeStart, fadeEnd, material));
+        StartCoroutine(SetFadeMaterialCoroutine(fadeStart, fadeEnd, material,time));
     }
-    IEnumerator SetFadeMaterialCoroutine(float fadeStart, float fadeEnd, Material material)
+    IEnumerator SetFadeMaterialCoroutine(float fadeStart, float fadeEnd, Material material,float time)
     {
         while(endFadeInstantly)
         {
@@ -192,7 +192,7 @@ public class Director : MonoBehaviour {
         while(material.GetFloat("_fade") != fadeEnd && timeout < 1000)
         {
             yield return new WaitForFixedUpdate();
-            value += Time.fixedDeltaTime * mod;
+            value += Time.fixedDeltaTime * mod * time;
             if((value < fadeEnd && mod == -1 )||(value > fadeEnd && mod == 1) || endFadeInstantly)
             {
                 value = fadeEnd;

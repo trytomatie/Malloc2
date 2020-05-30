@@ -13,6 +13,7 @@ public class SpawnDirector : MonoBehaviour
 
     public List<Interactable> interactablePool;
     public List<MobSpawnAtributes_ScriptableObject> mobPool;
+    public GameObject trader;
     public List<int> spawnCredditsPerWave;
     public List<int> interactablesPerWave;
 
@@ -26,6 +27,7 @@ public class SpawnDirector : MonoBehaviour
     private System.Random rnd;
     private float timer = 0;
 
+    bool prepPhase = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,8 +44,20 @@ public class SpawnDirector : MonoBehaviour
                 wave = 1;
                 GameObject.Find("RoomText").GetComponent<Text>().text = "Wave " + wave;
                 spawnCredits = 0;
+                prepPhase = false;
                 spawnCreditsEarnedThisWave = 0;
                 SpawnInteractables();
+            }
+            else
+            {
+                if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0 && prepPhase == true)
+                {
+                    wave++;
+                    spawnCreditsEarnedThisWave = 0;
+                    prepPhase = false;
+                    SpawnInteractables();
+                    GameObject.Find("RoomText").GetComponent<Text>().text = "Wave " + wave;
+                }
             }
         }
     }
@@ -60,13 +74,11 @@ public class SpawnDirector : MonoBehaviour
 
         if(spawnCredditsPerWave[wave] <= spawnCreditsEarnedThisWave)
         {
-            if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0 && prepPhase == false)
             {
-                
-                wave++;
-                spawnCreditsEarnedThisWave = 0;
-                SpawnInteractables();
-                GameObject.Find("RoomText").GetComponent<Text>().text = "Wave " + wave;
+                prepPhase = true;
+                GameObject.Find("RoomText").GetComponent<Text>().text = "Preperation Phase " + wave;
+                Instantiate(trader, new Vector3(0, 1, 0), Quaternion.identity);
             }
             return;
         }
@@ -158,7 +170,6 @@ public class SpawnDirector : MonoBehaviour
             cost = mob.baseCost + mob.costPerLevel * level;
             timeOut++;
         }
-        print(timeOut);
         if(cost <= creditsAvailable)
         {
             Transform location = mobSpawnLocations[rnd.Next(0, mobSpawnLocations.Count)];
@@ -186,7 +197,7 @@ public class SpawnDirector : MonoBehaviour
             Interactable g = Instantiate(interactablePool[rnd.Next(0, interactablePool.Count)], spawnLocation.transform.position, Quaternion.identity);
             if(g.GetComponent<Interactable_Chest>() != null)
             {
-                g.GetComponent<Interactable_Chest>().cost *= wave;
+                g.GetComponent<Interactable_Chest>().cost = 12 +( 30 * (wave-1));
             }
             spawnLocationList.Remove(spawnLocation);
             spawnsLeft--;

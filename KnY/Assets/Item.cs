@@ -15,6 +15,10 @@ public class Item
     public int stacks = 1;
     public bool artifactItem = true;
     public string attribute = "None";
+    public Inventory owner = null;
+    public int position = 0;
+
+    private static System.Random rnd = new System.Random();
     public enum CommonItems
     {
         Item_TotemOfGrief = 1,
@@ -99,7 +103,7 @@ public class Item
     public void DestroyItem()
     {
         DisposeContextMenu();
-        GameObject.Find("Player").GetComponent<Inventory>().AddItem(GetCoinValueOfItem(this));
+        GameObject.Find("Player").GetComponent<Inventory>().AddItem(GenerateTokens(this));
         GameObject.Find("Player").GetComponent<Inventory>().RemoveItem(this);
     }
 
@@ -184,10 +188,10 @@ public class Item
         }
     }
 
-    public static Item GetCoinValueOfItem(Item item)
+    public static Item GenerateTokens(Item item)
     {
         Item coin = null;
-        int stackSize = 0;
+        int stackSize = 1;
         if (Enum.IsDefined(typeof(CommonItems), item.itemId))
         {
             stackSize = 3;
@@ -239,7 +243,6 @@ public class Item
     public static int GenerateRandomCommonItemID()
     {
         CommonItems id = CommonItems.Item_TotemOfGrief;
-        System.Random rnd = new System.Random();
         Array values = Enum.GetValues(typeof(CommonItems));
         id = (CommonItems)values.GetValue(rnd.Next(values.Length));
         return (int)id;
@@ -248,7 +251,6 @@ public class Item
     public static int GenerateRandomUncommonItemID()
     {
         UncommonItems id = UncommonItems.Item_Blight;
-        System.Random rnd = new System.Random();
         Array values = Enum.GetValues(typeof(UncommonItems));
         id = (UncommonItems)values.GetValue(rnd.Next(values.Length));
         return (int)id;
@@ -256,7 +258,6 @@ public class Item
     public static int GenerateRandomRareItemID()
     {
         RareItems id = RareItems.Item_BlueMoonStone;
-        System.Random rnd = new System.Random();
         Array values = Enum.GetValues(typeof(RareItems));
         id = (RareItems)values.GetValue(rnd.Next(values.Length));
         return (int)id;
@@ -264,7 +265,6 @@ public class Item
     public static int GenerateRandomEpicItemID()
     {
         EpicItems id = EpicItems.Item_BlueMoonStone;
-        System.Random rnd = new System.Random();
         Array values = Enum.GetValues(typeof(EpicItems));
         id = (EpicItems)values.GetValue(rnd.Next(values.Length));
         return (int)id;
@@ -311,6 +311,27 @@ public class Item
             return PublicGameResources.GetResource().itemDescriptionMaterials[3];
         }
         return PublicGameResources.GetResource().itemDescriptionMaterials[0];
+    }
+
+    public static int GetItemCost(int id)
+    {
+        if (Enum.IsDefined(typeof(CommonItems), id))
+        {
+            return 4;
+        }
+        if (Enum.IsDefined(typeof(UncommonItems), id))
+        {
+            return 12;
+        }
+        if (Enum.IsDefined(typeof(RareItems), id))
+        {
+            return 100;
+        }
+        if (Enum.IsDefined(typeof(EpicItems), id))
+        {
+            return 200;
+        }
+        return 0;
     }
 
 }

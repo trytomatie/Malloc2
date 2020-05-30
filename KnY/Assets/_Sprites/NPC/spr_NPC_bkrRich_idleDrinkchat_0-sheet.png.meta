@@ -1,0 +1,1124 @@
+fileFormatVersion: 2
+guid: 19c40cdcca444104296d1f3abed2bcb7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4648599678752774786
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_0
+  - first:
+      213: -5356406957223323761
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_1
+  - first:
+      213: -6874482298314607143
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_2
+  - first:
+      213: 5902342858259461589
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_3
+  - first:
+      213: 2707633927008791404
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_4
+  - first:
+      213: -6397987199173849146
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_5
+  - first:
+      213: 172522415262899582
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_6
+  - first:
+      213: 961340238262585848
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_7
+  - first:
+      213: 924094755539539312
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_8
+  - first:
+      213: 1961137398246869409
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_9
+  - first:
+      213: -5593761616252005564
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_10
+  - first:
+      213: -2823948612848258554
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_11
+  - first:
+      213: 7646371728002982783
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_12
+  - first:
+      213: -7996670984330756248
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_13
+  - first:
+      213: 5602702471960420835
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_14
+  - first:
+      213: 4384100166008083421
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_15
+  - first:
+      213: 4575906282343648879
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_16
+  - first:
+      213: -1703101251645201291
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_17
+  - first:
+      213: -3313828567748719146
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_18
+  - first:
+      213: -8672805129366747578
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_19
+  - first:
+      213: -5719659862484806052
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_20
+  - first:
+      213: 5326678027024487383
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_21
+  - first:
+      213: 2970812769878778866
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_22
+  - first:
+      213: 1643724619245356292
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_23
+  - first:
+      213: -4944967033223146461
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_24
+  - first:
+      213: 8359082133074470239
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_25
+  - first:
+      213: 8426656323167224685
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_26
+  - first:
+      213: 608842702528800274
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_27
+  - first:
+      213: -1294673885400133443
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_28
+  - first:
+      213: -6409679687569663573
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_29
+  - first:
+      213: 2378924341331779223
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_30
+  - first:
+      213: -9137462076296156822
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_31
+  - first:
+      213: -8765489887849011716
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_32
+  - first:
+      213: 4566146865551910897
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_33
+  - first:
+      213: -822134913288964367
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_34
+  - first:
+      213: -43634104104643614
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_35
+  - first:
+      213: -909045236594329922
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_36
+  - first:
+      213: -8795189203803477174
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_37
+  - first:
+      213: -205477687794793426
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_38
+  - first:
+      213: -6322301649291629567
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_39
+  - first:
+      213: 7501961708940764043
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_40
+  - first:
+      213: 8141709454959162181
+    second: spr_NPC_bkrRich_idleDrinkchat_0-sheet_41
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7522f4b83bdc7fb0800000000000000
+      internalID: -4648599678752774786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_1
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f87d54a70483aa5b0800000000000000
+      internalID: -5356406957223323761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d53f32b5cee890a0800000000000000
+      internalID: -6874482298314607143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d57e11ce8559e150800000000000000
+      internalID: 5902342858259461589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_4
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6ba72106b2739520800000000000000
+      internalID: 2707633927008791404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_5
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cf0fb35a88c537a0800000000000000
+      internalID: -6397987199173849146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_6
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7d998df83ce46200800000000000000
+      internalID: 172522415262899582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_7
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f94ee17add575d00800000000000000
+      internalID: 961340238262585848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_8
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0755cbab84b03dc00800000000000000
+      internalID: 924094755539539312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_9
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a90d3ab21c573b10800000000000000
+      internalID: 1961137398246869409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_10
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44395117277fe52b0800000000000000
+      internalID: -5593761616252005564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_11
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 602f833d2b15fc8d0800000000000000
+      internalID: -2823948612848258554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_12
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f73253c039e5d1a60800000000000000
+      internalID: 7646371728002982783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_13
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86fba41ab1e160190800000000000000
+      internalID: -7996670984330756248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_14
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e1676fb63cc0cd40800000000000000
+      internalID: 5602702471960420835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_15
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd394ae7fd377dc30800000000000000
+      internalID: 4384100166008083421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_16
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6e42940582e08f30800000000000000
+      internalID: 4575906282343648879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_17
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5742a2f5f6e5d58e0800000000000000
+      internalID: -1703101251645201291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_18
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ddcbcc997ae202d0800000000000000
+      internalID: -3313828567748719146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_19
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 646c8e17fa104a780800000000000000
+      internalID: -8672805129366747578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_20
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c56988cb8afaf90b0800000000000000
+      internalID: -5719659862484806052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_21
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d35ca191792ce940800000000000000
+      internalID: 5326678027024487383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_22
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f3a1d269727a3920800000000000000
+      internalID: 2970812769878778866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_23
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4050fa615deafc610800000000000000
+      internalID: 1643724619245356292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_24
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32497becea2ff5bb0800000000000000
+      internalID: -4944967033223146461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_25
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f55e73669ec610470800000000000000
+      internalID: 8359082133074470239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_26
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d638ea2974f71f470800000000000000
+      internalID: 8426656323167224685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_27
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2166150563b037800800000000000000
+      internalID: 608842702528800274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_28
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db010c0f5f4680ee0800000000000000
+      internalID: -1294673885400133443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_29
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba99f5ab84e3c07a0800000000000000
+      internalID: -6409679687569663573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_30
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79e5c989513a30120800000000000000
+      internalID: 2378924341331779223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_31
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a69a3c967a6313180800000000000000
+      internalID: -9137462076296156822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_32
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf52b787369ba5680800000000000000
+      internalID: -8765489887849011716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_33
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f72c79b1663e5f30800000000000000
+      internalID: 4566146865551910897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_34
+      rect:
+        serializedVersion: 2
+        x: 884
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f6f6f7f6a03794f0800000000000000
+      internalID: -822134913288964367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_35
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e310c4730bf46ff0800000000000000
+      internalID: -43634104104643614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_36
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb6b8047c2c6263f0800000000000000
+      internalID: -909045236594329922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_37
+      rect:
+        serializedVersion: 2
+        x: 962
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4b61fe940631f580800000000000000
+      internalID: -8795189203803477174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_38
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2409b1b12ff52df0800000000000000
+      internalID: -205477687794793426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_39
+      rect:
+        serializedVersion: 2
+        x: 1014
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10c2b1f952ca248a0800000000000000
+      internalID: -6322301649291629567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_40
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b832ffb5d625c1860800000000000000
+      internalID: 7501961708940764043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_NPC_bkrRich_idleDrinkchat_0-sheet_41
+      rect:
+        serializedVersion: 2
+        x: 1066
+        y: 0
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 543b747dc992df070800000000000000
+      internalID: 8141709454959162181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

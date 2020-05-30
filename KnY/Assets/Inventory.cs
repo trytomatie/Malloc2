@@ -26,6 +26,7 @@ public class Inventory : MonoBehaviour {
                 return;
             }
         }
+        item.owner = this;
         item.ApplyEffect(gameObject);
         items.Add(item);
         if(isPlayerInventory)

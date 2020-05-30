@@ -38,7 +38,7 @@ class Skill_BasicAttack : Skill
     /// <summary>
     /// Casts the skill
     /// </summary>
-    public override void CastSkill(GameObject source)
+    public override void SkillCastingPhase(GameObject source)
     {
         if (!InitialApplication)
         {

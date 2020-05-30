@@ -24,6 +24,7 @@ public class Item_BlackMarble : Item {
     public override void ApplyEffect(GameObject g)
     {
         myGameObject = GameObject.Instantiate(PublicGameResources.GetResource().blackMarble, g.transform.position,Quaternion.identity);
+        myGameObject.GetComponent<BlackMarble>().itemRef = this;
         myGameObject.GetComponent<Pathfinding.AIDestinationSetter>().target = g.transform;
     }
 
@@ -77,7 +78,7 @@ public class Item_BlackMarble : Item {
             fadeStart = 1;
             fadeEnd = 0;
         }
-        Director.GetInstance().SetFadeMaterial(fadeStart, fadeEnd, myGameObject.GetComponent<BlackMarble>().interfaceMaterial);
+        Director.GetInstance().SetFadeMaterial(fadeStart, fadeEnd, myGameObject.GetComponent<BlackMarble>().interfaceMaterial,1);
     }
 
     private void SearchForCommontreasureRoom()

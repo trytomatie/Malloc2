@@ -31,26 +31,42 @@ public class Skill
         }
     }
 
-    public virtual void CastSkill(GameObject source)
+    public virtual void SkillCastingPhase(GameObject source)
     {
 
     }
 
-    public void UpdateTimers()
+    public virtual void OnCastEnd(GameObject soruce)
     {
+
+    }
+
+    public int UpdateTimers(GameObject source)
+    {
+        int canMove = 0;
         if(CooldownTimer > 0)
-        { 
+        {
             CooldownTimer -= Time.deltaTime;
         }
-        if(CooldownTimer <= 0)
+        if(CooldownTimer < 0)
         {
-            initialApplication = false;
             CooldownTimer = 0;
         }
         if(CasttimeTimer > 0)
-        { 
+        {
+            if (!AllowsMovement)
+            {
+                canMove = 1;
+            }
             CasttimeTimer -= Time.deltaTime;
         }
+        if(CasttimeTimer < 0)
+        {
+            initialApplication = false;
+            OnCastEnd(source);
+            CasttimeTimer = 0;
+        }
+        return canMove;
     }
 
     public void SetAttackParameters(Animator anim, float x, float y, int type)

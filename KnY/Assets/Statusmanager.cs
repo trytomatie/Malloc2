@@ -126,6 +126,9 @@ public class Statusmanager : MonoBehaviour {
                 GetComponent<AIPath>().enabled = false;
                 ProcOnDeathEffects();
                 Camera.main.transform.parent.GetComponent<CameraFollow>().ActivateScreenShake(0.25f);
+                Material mat = GetComponent<SpriteRenderer>().material;
+                Director.GetInstance().SetFadeMaterial(1, 0, mat, 0.5f);
+                Destroy(gameObject, 40);
             }
         }
     }
@@ -163,10 +166,6 @@ public class Statusmanager : MonoBehaviour {
                 }
             }
             // Remove statuseffects from StatusEffects list
-            if(GetComponent<PlayerController>() != null && removalList.Count > 0)
-            { 
-            Debug.Log(removalList.Count);
-            }
             foreach (StatusEffect s in removalList)
             {
                 s.RemoveEffect(gameObject);

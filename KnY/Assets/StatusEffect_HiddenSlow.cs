@@ -22,7 +22,6 @@ public class StatusEffect_HiddenSlow : StatusEffect {
     {
         if(!effectApplied)
         {
-            Debug.Log("Apply me");
             g.GetComponent<Statusmanager>().movementSpeedMultiplier -= strength;
             effectApplied = true;
         }
@@ -30,7 +29,6 @@ public class StatusEffect_HiddenSlow : StatusEffect {
 
     public override void RemoveEffect(GameObject g)
     {
-        Debug.Log("Remove me");
         if (effectApplied)
         {
             effectApplied = false;

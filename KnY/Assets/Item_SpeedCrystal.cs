@@ -18,11 +18,11 @@ public class Item_SpeedCrystal : Item {
 
     public override void ApplyEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().TotalMovementSpeed += movementSpeedBonus * stacks;
+        g.GetComponent<Statusmanager>().movementSpeed += movementSpeedBonus * stacks;
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().TotalMovementSpeed -= movementSpeedBonus * stacks;
+        g.GetComponent<Statusmanager>().movementSpeed -= movementSpeedBonus * stacks;
     }
 }

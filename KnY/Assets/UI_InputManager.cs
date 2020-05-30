@@ -9,6 +9,7 @@ public class UI_InputManager : MonoBehaviour
 {
     private static UI_InputManager instance;
     public GameObject inventory;
+    public GameObject traderInventory;
     public static UI_InputManager Instance
     {
         get
@@ -40,18 +41,34 @@ public class UI_InputManager : MonoBehaviour
     {
         if(Input.GetButtonDown("OpenInventory"))
         {
-            if (!inventory.activeSelf)
+            if(!traderInventory.activeSelf)
             { 
-                OpenInventory();
+                if (!inventory.activeSelf)
+                { 
+                    OpenInventory();
+                }
+                else
+                {
+                    CloseInventory();
+                }
+                UI_ArtifactDisplayDescriptionPopup.DespawnAllInstances();
+                GameObject.Find("ItemContextMenu").transform.position = new Vector3(10000,10000,10000);
             }
-            else
-            {
-                CloseInventory();
-            }
-            UI_ArtifactDisplayDescriptionPopup.DespawnAllInstances();
-            GameObject.Find("ItemContextMenu").transform.position = new Vector3(10000,10000,10000);
         }
-        
+        if (Input.GetButtonDown("Escape"))
+        {
+                if (!traderInventory.activeSelf)
+                {
+                    //
+                }
+                else
+                {
+                    CloseTraderInventory();
+                }
+                UI_ArtifactDisplayDescriptionPopup.DespawnAllInstances();
+                GameObject.Find("ItemContextMenu").transform.position = new Vector3(10000, 10000, 10000);
+        }
+
     }
 
     private void OpenInventory()
@@ -60,9 +77,21 @@ public class UI_InputManager : MonoBehaviour
         inventory.SetActive(true);
     }
 
+    private void OpenTraderInventory()
+    {
+        Time.timeScale = 0;
+        traderInventory.SetActive(true);
+    }
+
     private void CloseInventory()
     {
         Time.timeScale = 1;
         inventory.SetActive(false);
+    }
+
+    private void CloseTraderInventory()
+    {
+        Time.timeScale = 1;
+        traderInventory.SetActive(false);
     }
 }

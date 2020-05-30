@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private GameObject interactionRadius;
     public List<Skill> skills = new List<Skill>();
+    private bool disableMovement = false;
 
 
     // Start is called before the first frame update
@@ -21,10 +22,10 @@ public class PlayerController : MonoBehaviour
         interactionRadius = GameObject.Find("InteractionRadius");
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-
-        GetComponent<Inventory>().AddItem(new Item_BlackMarble());
         skills.Add(new Skill_BasicAttack(1, 0.4f, true));
-        skills.Add(new Skill_Dodge(1, 0.4f, false));
+        skills.Add(new Skill_Dodge(0.7f, 0.4f, false));
+        skills.Add(new Skill_Projectile(2f, 0.4f,3, false));
+        GetComponent<Inventory>().AddItem(new Item_BlackMarble());
     }
 
     // Update is called once per frame
@@ -42,9 +43,14 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void MovementInput()
     {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
+        float x = 0;
+        float y = 0;
+        if (!disableMovement)
+        {
+            x = Input.GetAxis("Horizontal");
+            y = Input.GetAxis("Vertical");
 
+        }
         if (x == 0 || y == 0) // Checks if the player is moving diagonaly, Reduces Movement speed acordingly
         {
             movementSpeedMod = GetComponent<Statusmanager>().TotalMovementSpeed;
@@ -89,11 +95,15 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetAxis("Attack1") == 1 && skills[1].CooldownTimer <= 0) // Dash
         {
-            //Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            //Vector2 heading = mousePosition - (Vector2)transform.position;
-            //float distance = heading.magnitude;
-            //Vector2 direction = heading / distance;
             skills[1].ActivateSkill(gameObject, movementDirection, null);
+        }
+        if (Input.GetAxis("Attack3") == 1 && skills[2].CooldownTimer <= 0) // Projectile
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 heading = mousePosition - (Vector2)transform.position;
+            float distance = heading.magnitude;
+            Vector2 attackDirection = heading / distance;
+            skills[2].ActivateSkill(gameObject, attackDirection, null);
         }
     }
 
@@ -127,13 +137,22 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void UpdateTimers()
     {
+        int spellsThatDontAllowMovementThatAreCasting = 0;
         foreach(Skill skill in skills)
         {
             if(skill.CasttimeTimer > 0)
             {
-                skill.CastSkill(gameObject);
+                skill.SkillCastingPhase(gameObject);
             }
-            skill.UpdateTimers();
+            spellsThatDontAllowMovementThatAreCasting += skill.UpdateTimers(gameObject);
+        }
+        if(spellsThatDontAllowMovementThatAreCasting > 0)
+        {
+            disableMovement = true;
+        }
+        else
+        {
+            disableMovement = false;
         }
         
     }

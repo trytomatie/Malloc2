@@ -13,7 +13,8 @@ public class Interactable : MonoBehaviour
     public string _interactablePopupMessage = "Pickup";
     public string _alternateInteractablePopupMessage = "Inspect";
     public Vector3 _popupMessageOffset = new Vector3(0, 0.07f, 0);
-
+    private float delay = 0.5f;
+    private float delayTimer = 0;
     private static GameObject popUp;
 
     public bool successfullInteraction = false;
@@ -56,6 +57,10 @@ public class Interactable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(delayTimer > 0)
+        {
+            delayTimer -= Time.deltaTime;
+        }
     }
 
     /// <summary>
@@ -89,6 +94,10 @@ public class Interactable : MonoBehaviour
     /// </summary>
     public void Interact(GameObject g)
     {
+        if(delayTimer > 0)
+        {
+            return;
+        }
         if (_numberOfUses <= 0 || Disabled)
         {
             return;
@@ -99,6 +108,7 @@ public class Interactable : MonoBehaviour
         }
         else
         {
+            delayTimer = delay;
             _customInteractableMethod.Invoke(g);
             successfullInteraction = true;
         }

@@ -68,7 +68,7 @@ class Skill_Dodge : Skill
     /// <summary>
     /// Casts the skill
     /// </summary>
-    public override void CastSkill(GameObject source)
+    public override void SkillCastingPhase(GameObject source)
     {
         Rigidbody2D rb = source.GetComponent<Rigidbody2D>();
         rb.velocity = Direction * (source.GetComponent<Statusmanager>().movementSpeed * 4.5f);

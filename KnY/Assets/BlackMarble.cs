@@ -20,6 +20,8 @@ public class BlackMarble : MonoBehaviour
     public List<int> commontreasureChunkIds;
     public List<int> uncommontreasureChunkIds;
     public List<int> chunkIdsThatAreSearched = new List<int>();
+
+    public Item_BlackMarble itemRef;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +30,9 @@ public class BlackMarble : MonoBehaviour
             mapGenerator = FindObjectOfType<MapGenerator>();
             if (mapGenerator == null)
             {
+                itemRef.owner.RemoveItem(itemRef);
                 Destroy(gameObject);
+                return;
             }
         }
         interfaceMaterial.SetFloat("_fade", 1);
