@@ -7,10 +7,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OutlineGlowItemGreenItemDescription
-  m_Shader: {fileID: -6465566751694194690, guid: dd6e0dd78d4b10149a4161ac531abc5c,
+  m_Name: UI-DescriptionInfoText
+  m_Shader: {fileID: -6465566751694194690, guid: 44abbe29ce736764ea8d41f74afa8a7e,
     type: 3}
-  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -20,19 +20,18 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Effect:
+        m_Texture: {fileID: 2800000, guid: c5d8218e884a0fc43b9f751e5dda514f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: f9c70527c7a5aad44a8ff93617a22ee3, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Alpha: 0.035
-    - _Fade: -0.030955361
-    - _OutlineThickness: 1
-    - _ShowOutline: 1
+    - Vector1_2CACB9D7: 0.09
+    - _Fade: -0.024454411
     m_Colors:
-    - _OutlineColour: {r: 0, g: 2.1102915, b: 0.11518267, a: 1}
-    - _Sensitivity: {r: 5.74, g: 4.36, b: 3.09, a: 17.19}
+    - Color_BAD9FAC4: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
+    - Color_DD1A44DE: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 0}
+    - Vector3_469242BA: {r: 0, g: 0, b: 0, a: 0}

@@ -8,7 +8,7 @@ public class Inventory : MonoBehaviour {
     public List<Item> items = new List<Item>();
     public Dictionary<ItemSeries.Series, ItemSeries> itemSeries = new Dictionary<ItemSeries.Series, ItemSeries>();
     public bool isPlayerInventory = false;
-
+    public int artifactItemsCount = 0;
     /// <summary>
     /// Adds an Item to the inventory and checks the ItemSeries
     /// </summary>
@@ -36,11 +36,23 @@ public class Inventory : MonoBehaviour {
         items.Add(item);
 
         CheckItemSeries();
-
+        CountArtifactItems();
         if (isPlayerInventory)
         {
             UpdateInventoryUI();
         }
+    }
+
+    public bool ContainsItem(int id)
+    {
+        foreach(Item item in items)
+        {
+            if(item.itemId == id)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void CheckItemSeries()
@@ -49,10 +61,22 @@ public class Inventory : MonoBehaviour {
         {
             series.RemoveEffect(gameObject);
         }
-        itemSeries = ItemSeries.CheckSeries(items);
+        itemSeries = ItemSeries.CheckSeries(items, itemSeries);
         foreach (ItemSeries series in itemSeries.Values)
         {
             series.ApplyEffect(gameObject);
+        }
+    }
+
+    public void CountArtifactItems()
+    {
+        artifactItemsCount = 0;
+        foreach(Item item in items)
+        {
+            if(item.artifactItem)
+            {
+                artifactItemsCount++;
+            }
         }
     }
 
@@ -72,6 +96,7 @@ public class Inventory : MonoBehaviour {
             items.Remove(itemToBeRemoved);
         }
         CheckItemSeries();
+        CountArtifactItems();
         if (isPlayerInventory)
         {
             UpdateInventoryUI();

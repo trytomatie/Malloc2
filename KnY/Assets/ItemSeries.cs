@@ -14,7 +14,8 @@ public class ItemSeries
     public enum Series
     {
         None = 0,
-        ItemSeries_Curse = 1
+        Curse = 1,
+        Inheritance = 2
     }
 
     public virtual void ApplyEffect(GameObject g)
@@ -27,24 +28,27 @@ public class ItemSeries
 
     }
 
-    public static Dictionary<Series,ItemSeries> CheckSeries(List<Item> items)
+    public static Dictionary<Series,ItemSeries> CheckSeries(List<Item> items,Dictionary<ItemSeries.Series, ItemSeries> mySeries)
     {
-        Dictionary<Series, ItemSeries> mySeries = new Dictionary<Series, ItemSeries>();
-        foreach(Item item in items)
+        foreach(ItemSeries series in mySeries.Values)
+        {
+            series.totalConditionsMet = 0;
+        }
+        foreach (Item item in items)
         {
             foreach(Series s in item.series)
             {
                 switch(s)
                 {
-                    case Series.ItemSeries_Curse:
-                        if(mySeries.ContainsKey(Series.ItemSeries_Curse))
+                    case Series.Curse:
+                        if(mySeries.ContainsKey(Series.Curse))
                         {
-                            mySeries[Series.ItemSeries_Curse].totalConditionsMet++;
+                            mySeries[Series.Curse].totalConditionsMet++;
                         }
                         else
                         {
-                            mySeries.Add(Series.ItemSeries_Curse, new ItemSeries_Curse());
-                            mySeries[Series.ItemSeries_Curse].totalConditionsMet++;
+                            mySeries.Add(Series.Curse, new ItemSeries_Curse());
+                            mySeries[Series.Curse].totalConditionsMet++;
                         }
                         break;
                 }

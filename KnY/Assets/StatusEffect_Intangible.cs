@@ -9,6 +9,7 @@ public class StatusEffect_Intangible : StatusEffect {
         this.description = "Can neither be targeted nor be damaged by normal means.";
         this.image = null;
         this.duration = duration;
+        this.type = Type.Buff;
     }
 
     public override void ApplyEffect(GameObject g)

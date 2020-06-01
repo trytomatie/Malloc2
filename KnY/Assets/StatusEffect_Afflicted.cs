@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StatusEffect_Blighted : StatusEffect {
+public class StatusEffect_Afflicted : StatusEffect {
 
 
-    private float tickRate = 1;
+    private float tickRate = 0.5f;
     private float tickRateTimer = 0;
     public int damage = 5;
-    public StatusEffect_Blighted(float durration,int damage)
+    public StatusEffect_Afflicted(float durration,int damage)
     {
-        this.statusName = "Blight";
+        this.statusName = "Afflicted";
         this.description = "Periodically sustains damage";
-        this.image = new Item_Blight().image;
+        this.image = null;
         this.duration = durration;
         this.damage = damage;
         this.type = Type.Debuff;
@@ -25,7 +25,7 @@ public class StatusEffect_Blighted : StatusEffect {
         {
             int damageDealt = DamageObject.CalculateDamageDealt(g.GetComponent<Statusmanager>(), damage, false);
             g.GetComponent<Statusmanager>().Hp -= damageDealt;
-            Director.GetInstance().SpawnDamageText(damageDealt.ToString(), g.transform, PublicGameResources.GetResource().blightDamageColor, false);
+            Director.GetInstance().SpawnDamageText(damageDealt.ToString(), g.transform, PublicGameResources.GetResource().afflictionDamageColor, false);
             tickRateTimer = 0;
         }
     }
@@ -37,7 +37,7 @@ public class StatusEffect_Blighted : StatusEffect {
 
     public override void OnAdditionalApplication(GameObject g, StatusEffect s)
     {
-        StatusEffect_Blighted newEffect = (StatusEffect_Blighted)s;
+        StatusEffect_Afflicted newEffect = (StatusEffect_Afflicted)s;
         if(newEffect.duration > duration)
         {
             duration = newEffect.duration;

@@ -8,12 +8,12 @@ using UnityEngine.UI;
 /// <summary>
 /// Handles Artifact Descriptions
 /// </summary>
-public class UI_ArtifactDisplayOnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class UI_StatusEffectDisplayOnHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     private GameObject descriptionDisplay;
     private GameObject contextMenu;
     private bool mouseEntered = false;
-    public Item item;
+    public StatusEffect statusEffect;
 
     public GameObject DescriptionDisplay
     {
@@ -51,17 +51,11 @@ public class UI_ArtifactDisplayOnHover : MonoBehaviour, IPointerEnterHandler, IP
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        string series = "";
-        foreach(ItemSeries.Series s in item.series)
-        {
-            series += s.ToString();
-        }
         mouseEntered = true;
         DescriptionDisplay.GetComponent<RectTransform>().localScale = transform.parent.GetComponent<RectTransform>().localScale;
-        DescriptionDisplay.GetComponent<UI_ArtifactDisplayDescriptionPopup>().text.text = item.itemName + "\n"+ 
-            "Atribute: " +item.attribute + "\n" +
-            "Series: " + series + "\n\n"+ 
-            item.description;
+        DescriptionDisplay.GetComponent<UI_ArtifactDisplayDescriptionPopup>().text.text = statusEffect.statusName + "\n"+ 
+            "Durration: " +statusEffect.duration + "\n\n"+ 
+            statusEffect.description;
     }
 
     public void Update()
@@ -80,10 +74,10 @@ public class UI_ArtifactDisplayOnHover : MonoBehaviour, IPointerEnterHandler, IP
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(eventData.button == PointerEventData.InputButton.Right)
-        {
-            ContextMenu.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            item.InstanciateContextMenu();
-        }
+        //if(eventData.button == PointerEventData.InputButton.Right)
+        //{
+        //    ContextMenu.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //    statusEffect.InstanciateContextMenu();
+        //}
     }
 }

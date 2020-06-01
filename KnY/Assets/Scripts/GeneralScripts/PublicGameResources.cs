@@ -8,9 +8,13 @@ public class PublicGameResources : MonoBehaviour {
     public GameObject[] player;
     public Texture2D cursor;
     private static PublicGameResources instance;
-    public Color32 BlightDamageColor;
+    [ColorUsage(true,true)]
+    public Color32 blightDamageColor;
+    [ColorUsage(true, true)]
+    public Color32 afflictionDamageColor;
     public Material[] itemMaterials;
     public Material[] itemDescriptionMaterials;
+    public Material[] statusEffectMaterials;
     public static int FLOOR_LAYER = -9999;
     public GameObject corruptedAmethystFollower;
     public GameObject blackMarble;

@@ -7,8 +7,9 @@ public class StatusEffect_ItemSeriesCurse : StatusEffect {
     {
         this.statusName = new ItemSeries_Curse().seriesName;
         this.description = new ItemSeries_Curse().description;
-        this.image = null;
-        this.duration = 111;
+        this.image = new Item_Affliction().image;
+        this.type = Type.Series;
+        this.duration = 36000;
     }
 
     public override void ApplyEffect(GameObject g)

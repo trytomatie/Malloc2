@@ -15,6 +15,8 @@ public class StatusEffect_Regen : StatusEffect {
         this.image = null;
         this.duration = durration;
         this.healAmount = healAmount;
+        this.image = new Item_RedFairy().image;
+        this.type = Type.Buff;
     }
 
     public override void ApplyEffect(GameObject g)

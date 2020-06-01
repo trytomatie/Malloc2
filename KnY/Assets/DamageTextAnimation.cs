@@ -11,7 +11,7 @@ public class DamageTextAnimation : MonoBehaviour {
     private Rigidbody2D rb;
 
     // 100 and 150 on "Not screen space"
-    private float range = 0f;
+    private float range = 0.05f;
     private float bounceValue = 1f;
 
 

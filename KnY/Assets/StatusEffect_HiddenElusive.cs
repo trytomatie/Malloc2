@@ -13,7 +13,8 @@ public class StatusEffect_HiddenElusive : StatusEffect {
         this.description = "Can move Through Colliders.";
         this.image = null;
         this.duration = duration;
-        this.urgentEffect = true;
+        this.hidden = true;
+        this.type = Type.Debuff;
     }
 
     public override void ApplyEffect(GameObject g)

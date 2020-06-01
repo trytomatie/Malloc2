@@ -10,8 +10,9 @@ public class StatusEffect_Stunned : StatusEffect {
     {
         this.statusName = "Stunned";
         this.description = "This unit is unable to perform actions";
-        this.image = null;
+        this.image = ItemIcons.GetIconFromInstance(0);
         this.duration = durration;
+        this.type = Type.Debuff;
     }
 
     public override void ApplyEffect(GameObject g)

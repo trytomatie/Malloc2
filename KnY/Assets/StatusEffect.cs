@@ -10,8 +10,14 @@ public class StatusEffect {
     public Sprite image;
     public float duration;
     public bool effectApplied = false;
-    public bool urgentEffect = false;
-
+    public bool hidden = false;
+    public Type type;
+    public enum Type
+    {
+        Buff,
+        Debuff,
+        Series
+    }
 
 
     public virtual void ApplyEffect(GameObject g)

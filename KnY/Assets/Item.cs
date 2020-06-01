@@ -28,13 +28,16 @@ public class Item
         Item_SpeedCrystal = 12,
         Item_DexterityCrystal = 13,
         Item_Blight = 5,
-        Item_CorruptedAmethyst = 8
+        Item_CorruptedAmethyst = 8,
+        Item_WitchsHeart = 21
     }
     public enum UncommonItems
     {
         Item_Affectionate_Eminence = 3,
         Item_TotemOfGrief = 1,
         Item_MightCrystal = 11,
+        Item_Affliction = 20,
+        Item_InheritedArmor = 22
     }
     public enum RareItems
     {
@@ -182,6 +185,15 @@ public class Item
                 return item;
             case 19:
                 item = new Item_WindCoin();
+                return item;
+            case 20:
+                item = new Item_Affliction();
+                return item;
+            case 21:
+                item = new Item_WitchsHeart();
+                return item;
+            case 22:
+                item = new Item_InheritedArmor();
                 return item;
             default:
                 return null;

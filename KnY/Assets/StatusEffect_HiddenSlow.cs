@@ -15,7 +15,8 @@ public class StatusEffect_HiddenSlow : StatusEffect {
         this.image = null;
         this.duration = duration;
         this.strength = strength;
-        this.urgentEffect = true;
+        this.hidden = true;
+        this.type = Type.Debuff;
     }
 
     public override void ApplyEffect(GameObject g)
