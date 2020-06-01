@@ -13,7 +13,7 @@ public class UI_TraderInventory : MonoBehaviour
     public List<GameObject> sellSlots;
     private Dictionary<Item,UI_ArtifactDisplayOnHover> itemsToBuy = new Dictionary<Item, UI_ArtifactDisplayOnHover>();
     private Dictionary<Item, UI_ArtifactDisplayOnHover> itemsToSell = new Dictionary<Item, UI_ArtifactDisplayOnHover>();
-    private List<Item> coins = new List<Item>();
+    public List<Item> coins = new List<Item>();
     public List<Text> coinText = new List<Text>();
     public static UI_TraderInventory instance;
     // Start is called before the first frame update
@@ -115,7 +115,8 @@ public class UI_TraderInventory : MonoBehaviour
         coins.Add(new Item_EarthCoin());
         coins.Add(new Item_WaterCoin());
         coins.Add(new Item_WindCoin());
-        foreach(Item coin in coins)
+        int totalCoins = 0;
+        foreach (Item coin in coins)
         {
             coin.stacks = 0;
         }
@@ -123,11 +124,12 @@ public class UI_TraderInventory : MonoBehaviour
         { 
             int cost = 0;
             Item c = Item.GenerateTokens(item);
-            cost = Mathf.RoundToInt(c.stacks * 1.3f);
+            cost = Mathf.RoundToInt(c.stacks * 1f);
             foreach(Item coin in coins)
             {
                 if(c.itemName == coin.itemName)
                 {
+                    totalCoins += cost;
                     coin.stacks += cost;
                 }
             }
@@ -136,62 +138,99 @@ public class UI_TraderInventory : MonoBehaviour
         {
             int cost = 0;
             Item c = Item.GenerateTokens(item);
-            cost = Mathf.RoundToInt(c.stacks * 1.3f);
+            cost = Mathf.RoundToInt(c.stacks *1f);
             foreach (Item coin in coins)
             {
                 if (c.itemName == coin.itemName)
                 {
+                    totalCoins -= cost;
                     coin.stacks -= cost;
+
                 }
             }
         }
-        for(int i = 0; i < coinText.Count;i++)
+
+        if (totalCoins > 0)
         {
-            if(coins[i].stacks > 0)
-            { 
-                coinText[i].text = "<Color=red>" + -coins[i].stacks + "</color>"; 
-            }
-            else if(coins[i].stacks < 0)
-            {
-                coinText[i].text = "<Color=green>" + -coins[i].stacks + "</color>";
-            }
-            else
-            {
-                coinText[i].text = ""+coins[i].stacks;
-            }
+            coinText[0].text = "<Color=red>" + -totalCoins + "</color>";
+        }
+        else if (totalCoins < 0)
+        {
+            coinText[0].text = "<Color=green>" + -totalCoins + "</color>";
+        }
+        else
+        {
+            coinText[0].text = "" + totalCoins;
         }
     }
 
     public void TradeItems()
     {
         UpdateTraderLists();
-        foreach(Item coin in coins)
-        {
-            if(coin.stacks > 0)
-            {
-                return;
-            }
-        }
+        int totalCoins = 0;
         foreach (Item coin in coins)
         {
-            if (coin.stacks < 0)
-            {
-                coin.stacks *= -1;
-                UI_InventoryManager.playerInventory.AddItem(coin);
-            }
+            totalCoins += coin.stacks;
         }
-        foreach (Item item in itemsToSell.Keys)
+        if (totalCoins > 0)
+        {
+            return;
+        }
+        foreach (Item item in itemsToSell.Keys) // Sell items
         {
             UI_InventoryManager.playerInventory.RemoveItem(item);
             inventoryDisplays.Remove(itemsToSell[item].gameObject);
             Destroy(itemsToSell[item].gameObject);
         }
-        foreach (Item item in itemsToBuy.Keys)
+        foreach (Item item in itemsToBuy.Keys) // Buy Items
         {
             UI_InventoryManager.playerInventory.AddItem(item);
             traderInventory.items.Remove(item);
             inventoryDisplays.Remove(itemsToBuy[item].gameObject);
             Destroy(itemsToBuy[item].gameObject);
+        }
+        List<Item> coinsThatNeedToBeBalanced = new List<Item>();
+        foreach (Item coin in coins) // Payback
+        {
+            if (coin.stacks > 0)
+            {
+                coinsThatNeedToBeBalanced.Add(coin);
+            }
+        }
+        foreach (Item coin in coins)
+        {
+            int counter = 0;
+            int timeout = 0;
+            while (coin.stacks < 0 && coinsThatNeedToBeBalanced.Count > counter && timeout < 100)
+            {
+                counter = 0;
+                foreach (Item bCoin in coinsThatNeedToBeBalanced)
+                {
+                    if (bCoin.stacks > 0)
+                    {
+                        if (Mathf.Abs(coin.stacks) >= bCoin.stacks)
+                        {
+                            coin.stacks += bCoin.stacks;
+                            bCoin.stacks -= bCoin.stacks;
+                        }
+                        else
+                        {
+                            bCoin.stacks += coin.stacks;
+                            coin.stacks = 0;
+                        }
+                    }
+                    if (bCoin.stacks <= 0)
+                    {
+                        counter++;
+                    }
+                }
+                timeout++;
+            }
+            if (coin.stacks < 0)
+            {
+                coin.stacks *= -1;
+                UI_InventoryManager.playerInventory.AddItem(coin);
+            }
         }
         itemsToBuy = new Dictionary<Item, UI_ArtifactDisplayOnHover>();
         itemsToSell = new Dictionary<Item, UI_ArtifactDisplayOnHover>();

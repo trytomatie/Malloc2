@@ -17,24 +17,24 @@ public class Item
     public string attribute = "None";
     public Inventory owner = null;
     public int position = 0;
+    public List<ItemSeries.Series> series = new List<ItemSeries.Series>();
 
     private static System.Random rnd = new System.Random();
     public enum CommonItems
     {
-        Item_TotemOfGrief = 1,
-        Item_Affectionate_Eminence = 3,
         Item_TitansKidney = 4,
         Item_BootsOfFlight = 7,
         Item_RedFairy = 9,
-        Item_MightCrystal = 11,
         Item_SpeedCrystal = 12,
-        Item_DexterityCrystal = 13
-            
+        Item_DexterityCrystal = 13,
+        Item_Blight = 5,
+        Item_CorruptedAmethyst = 8
     }
     public enum UncommonItems
     {
-        Item_Blight = 5,
-        Item_CorruptedAmethyst = 8
+        Item_Affectionate_Eminence = 3,
+        Item_TotemOfGrief = 1,
+        Item_MightCrystal = 11,
     }
     public enum RareItems
     {
@@ -242,7 +242,7 @@ public class Item
 
     public static int GenerateRandomCommonItemID()
     {
-        CommonItems id = CommonItems.Item_TotemOfGrief;
+        CommonItems id = CommonItems.Item_Blight;
         Array values = Enum.GetValues(typeof(CommonItems));
         id = (CommonItems)values.GetValue(rnd.Next(values.Length));
         return (int)id;
@@ -250,7 +250,7 @@ public class Item
 
     public static int GenerateRandomUncommonItemID()
     {
-        UncommonItems id = UncommonItems.Item_Blight;
+        UncommonItems id = UncommonItems.Item_MightCrystal;
         Array values = Enum.GetValues(typeof(UncommonItems));
         id = (UncommonItems)values.GetValue(rnd.Next(values.Length));
         return (int)id;

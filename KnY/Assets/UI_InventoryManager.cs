@@ -85,7 +85,6 @@ public class UI_InventoryManager : MonoBehaviour
                             if (target != null)
                             {
                                 item.position = i;
-                                print(target);
                                 GameObject instanceDisplay = Instantiate(instance.inventoryDisplayInstantiationTarget, target.transform);
                                 instanceDisplay.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, -1);
                                 instanceDisplay.GetComponent<Image>().sprite = FindObjectOfType<ItemIcons>().GetIcon(item.itemId);

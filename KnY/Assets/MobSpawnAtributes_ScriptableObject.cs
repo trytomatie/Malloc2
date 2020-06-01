@@ -9,4 +9,5 @@ public class MobSpawnAtributes_ScriptableObject : ScriptableObject
     public GameObject instance;
     public double baseCost;
     public double costPerLevel;
+    public int chanceToSpawn;
 }

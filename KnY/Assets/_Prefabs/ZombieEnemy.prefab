@@ -281,7 +281,7 @@ MonoBehaviour:
   criticalStrikeChance: 1
   statusEffects: []
   anims: []
-  hpGrowth: 150
+  hpGrowth: 340
   spGrowth: 0
   manaGrowth: 3
   healthRegenerationGrowth: 0

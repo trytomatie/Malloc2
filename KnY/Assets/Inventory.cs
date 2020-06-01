@@ -6,19 +6,24 @@ using UnityEngine;
 public class Inventory : MonoBehaviour {
 
     public List<Item> items = new List<Item>();
+    public Dictionary<ItemSeries.Series, ItemSeries> itemSeries = new Dictionary<ItemSeries.Series, ItemSeries>();
     public bool isPlayerInventory = false;
 
+    /// <summary>
+    /// Adds an Item to the inventory and checks the ItemSeries
+    /// </summary>
+    /// <param name="item"></param>
     public void AddItem(Item item)
     {
-        if(item == null)
+        if (item == null)
         {
             return;
         }
-        foreach(Item inventoryItem in items)
+        foreach (Item inventoryItem in items)
         {
-            if(inventoryItem.itemId == item.itemId)
+            if (inventoryItem.itemId == item.itemId)
             {
-                inventoryItem.AddAditionalStack(gameObject,item);
+                inventoryItem.AddAditionalStack(gameObject, item);
                 if (isPlayerInventory)
                 {
                     UpdateInventoryUI();
@@ -29,9 +34,25 @@ public class Inventory : MonoBehaviour {
         item.owner = this;
         item.ApplyEffect(gameObject);
         items.Add(item);
-        if(isPlayerInventory)
-        { 
+
+        CheckItemSeries();
+
+        if (isPlayerInventory)
+        {
             UpdateInventoryUI();
+        }
+    }
+
+    private void CheckItemSeries()
+    {
+        foreach (ItemSeries series in itemSeries.Values)
+        {
+            series.RemoveEffect(gameObject);
+        }
+        itemSeries = ItemSeries.CheckSeries(items);
+        foreach (ItemSeries series in itemSeries.Values)
+        {
+            series.ApplyEffect(gameObject);
         }
     }
 
@@ -50,6 +71,7 @@ public class Inventory : MonoBehaviour {
             itemToBeRemoved.RemoveEffect(gameObject);
             items.Remove(itemToBeRemoved);
         }
+        CheckItemSeries();
         if (isPlayerInventory)
         {
             UpdateInventoryUI();

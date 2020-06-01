@@ -26,7 +26,7 @@ public class Director : MonoBehaviour {
         {
             instance = this;
         }
-        globalRandom = new System.Random(globalRandomSeed);
+        globalRandom = new System.Random();
         Statusmanager.enemyFactionEntities = new List<GameObject>();
         Statusmanager.playerFactionEntities = new List<GameObject>();
         if(canvas == null)

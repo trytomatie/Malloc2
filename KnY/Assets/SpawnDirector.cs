@@ -28,6 +28,7 @@ public class SpawnDirector : MonoBehaviour
     private float timer = 0;
 
     bool prepPhase = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -148,7 +149,8 @@ public class SpawnDirector : MonoBehaviour
         while(mob == null && timeOut < 100)
         {
             int i = rnd.Next(0,mobPool.Count);
-            if (mobPool[i].baseCost <= creditsAvailable)
+            int rndChance = rnd.Next(0, 100);
+            if (mobPool[i].baseCost <= creditsAvailable && mobPool[i].chanceToSpawn >= rndChance)
             {
                 mob = mobPool[i];
                 break;
@@ -166,15 +168,15 @@ public class SpawnDirector : MonoBehaviour
         int level = 1;
         while (cost > creditsAvailable && timeOut < 100 )
         { 
-            level = rnd.Next(Mathf.Clamp(waveCount-4,0,waveCount), waveCount+1);
+            level = rnd.Next(Mathf.Clamp(waveCount-2,0,waveCount), waveCount+1);
             cost = mob.baseCost + mob.costPerLevel * level;
             timeOut++;
         }
         if(cost <= creditsAvailable)
         {
             Transform location = mobSpawnLocations[rnd.Next(0, mobSpawnLocations.Count)];
-            GameObject monster = Instantiate(mob.instance, location.transform.position, Quaternion.identity);
-            monster.GetComponent<Statusmanager>().level = level * 3;
+            GameObject monster = Instantiate(mob.instance, location.transform.position + new Vector3(UnityEngine.Random.Range(-0.1f,0.1f), UnityEngine.Random.Range(-0.1f, 0.1f),0), Quaternion.identity);
+            monster.GetComponent<Statusmanager>().level = level;
             return cost;
         }
         return creditsAvailable;

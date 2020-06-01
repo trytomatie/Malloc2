@@ -41,6 +41,9 @@ public class Statusmanager : MonoBehaviour {
     public int totalAttackDamage = 0;
 
     public int criticalStrikeChance = 1;
+    public float damageOverTimeDamageMultiplier = 1;
+
+
     public List<StatusEffect> statusEffects = new List<StatusEffect>(); 
     public List<OnDamageEffect> onDamageEffects = new List<OnDamageEffect>();
     public List<OnDeathEffect> onDeathEffects = new List<OnDeathEffect>();
@@ -105,8 +108,16 @@ public class Statusmanager : MonoBehaviour {
                 GetComponent<Collider2D>().enabled = false;
                 if (gameObjectThatDamagedMeLast != null)
                 {
-                    gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().Mana += Mana;
-                    gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().Experinece += Mana;
+                    if(gameObjectThatDamagedMeLast.GetComponent<GenericFollowerAI>() != null)
+                    {
+                        gameObjectThatDamagedMeLast.GetComponent<GenericFollowerAI>().followTarget.GetComponent<Statusmanager>().Mana += Mana;
+                        gameObjectThatDamagedMeLast.GetComponent<GenericFollowerAI>().followTarget.GetComponent<Statusmanager>().Experinece += Experinece;
+                    }
+                    else
+                    { 
+                        gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().Mana += Mana;
+                        gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().Experinece += Mana;
+                    }
                 }
                 if (GetComponent<PlayerController>() != null)
                 {
@@ -174,6 +185,7 @@ public class Statusmanager : MonoBehaviour {
                     if(s.statusName == statusEffects[i].statusName)
                     {
                         statusEffects.RemoveAt(i);
+                        break;
                     }
                 }
 
@@ -188,8 +200,11 @@ public class Statusmanager : MonoBehaviour {
         {
             if(s.statusName == statusEffect.statusName)
             {
-                s.OnAdditionalApplication(gameObject,statusEffect);
-                return;
+                if(s.duration > 0)
+                { 
+                    s.OnAdditionalApplication(gameObject,statusEffect);
+                    return;
+                }
             }
         }
         statusEffect.ApplyEffect(gameObject);
@@ -258,32 +273,6 @@ public class Statusmanager : MonoBehaviour {
         }
     }
 
-    // TEMP
-    private void TriggerCorpseExplosition()
-    {
-        foreach(Animator a in anims)
-        {
-            if(a.GetComponent<CorpseExplosionAnimation>() != null)
-            {
-                a.GetComponent<CorpseExplosionAnimation>().enabled = true;
-                a.SetBool("Dead", true);
-                a.GetComponent<DepthSorter>().enabled = false;
-                a.GetComponent<SpriteRenderer>().sortingOrder = PublicGameResources.FLOOR_LAYER+1;
-            }
-            else
-            {
-                a.enabled = false;
-            }
-
-
-        }
-        int i = UnityEngine.Random.Range(1, 3);
-        while (i > 0)
-        {
-            Instantiate(PublicGameResources.GetResource().bloodFx, new Vector2(Director.RoundToGrid(transform.position.x + UnityEngine.Random.Range(-0.04f, 0.04f)), Director.RoundToGrid(transform.position.y + UnityEngine.Random.Range(-0.04f, 0.04f))), Quaternion.identity);
-            i--;
-        }
-    }
 
     /// <summary>
     /// Method for increasing stats on levelup

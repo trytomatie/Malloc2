@@ -19,6 +19,7 @@ public class Item_Blight : ProcItem {
         this.description = "Chance to inflict Blight onhit.";
         this.procChance = baseProcChance;
         this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
+        this.series.Add(ItemSeries.Series.ItemSeries_Curse);
     }
 
 
@@ -30,7 +31,7 @@ public class Item_Blight : ProcItem {
     public override void ProcEffect(GameObject g)
     {
         int durration = this.durration + (int)(durrationPerStack * stacks);
-        int flatDamage = damage + (int)(damagePerStack * stacks);
+        int flatDamage =(int)((damage + (damagePerStack * stacks)) * owner.GetComponent<Statusmanager>().damageOverTimeDamageMultiplier);
         g.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_Blighted(durration, flatDamage));
     }
 
