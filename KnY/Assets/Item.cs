@@ -11,6 +11,7 @@ public class Item
     public int itemId;
     public string itemName;
     public string description;
+    public string detailedDescription;
     public Sprite image;
     public int stacks = 1;
     public bool artifactItem = true;
@@ -29,7 +30,10 @@ public class Item
         Item_DexterityCrystal = 13,
         Item_Blight = 5,
         Item_CorruptedAmethyst = 8,
-        Item_WitchsHeart = 21
+        Item_WitchsHeart = 21,
+        Item_DivineDaggers = 23,
+        Item_DarkFairy = 26,
+        Item_CompassionateProminence = 28
     }
     public enum UncommonItems
     {
@@ -37,11 +41,14 @@ public class Item
         Item_TotemOfGrief = 1,
         Item_MightCrystal = 11,
         Item_Affliction = 20,
-        Item_InheritedArmor = 22
+        Item_InheritedArmor = 22,
+        Item_DivineClockwork = 24
     }
     public enum RareItems
     {
-        Item_BlueMoonStone = 6
+        Item_DivineWaters = 25,
+        Item_BlueMoonStone = 6,
+        Item_DesireableGreatness = 27
     }
     public enum EpicItems
     {
@@ -195,6 +202,24 @@ public class Item
             case 22:
                 item = new Item_InheritedArmor();
                 return item;
+            case 23:
+                item = new Item_DivineDaggers();
+                return item;
+            case 24:
+                item = new Item_DivineClockwork();
+                return item;
+            case 25:
+                item = new Item_DivineWaters();
+                return item;
+            case 26:
+                item = new Item_DarkFairy();
+                return item;
+            case 27:
+                item = new Item_DesireableGreatness();
+                return item;
+            case 28:
+                item = new Item_CompassionateProminence();
+                return item;
             default:
                 return null;
         }
@@ -271,7 +296,8 @@ public class Item
     {
         RareItems id = RareItems.Item_BlueMoonStone;
         Array values = Enum.GetValues(typeof(RareItems));
-        id = (RareItems)values.GetValue(rnd.Next(values.Length));
+        int rndVal = rnd.Next(values.Length);
+        id = (RareItems)values.GetValue(rndVal);
         return (int)id;
     }
     public static int GenerateRandomEpicItemID()

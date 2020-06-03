@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item_MightCrystal : Item {
 
-    public int attackDamageBonus = 20;
+    public int attackDamageBonus = 35;
 
     public Item_MightCrystal()
     {

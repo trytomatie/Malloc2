@@ -13,10 +13,13 @@ public class Statusmanager : MonoBehaviour {
     [SerializeField]
     private int hp = 100;
     public int maxSp = 100;
-    public int Sp = 100;
+    public int sp = 100;
+    public float spRegeneration = 0;
     public int defence = 0;
+    public int flatDamageReduction = 0;
     public float healthRegeneration = 0;
     public float healthRegenerationPercentage = 1;
+    public int barrier = 0;
 
     public float movementSpeed = 1;
     public float movementSpeedFlatAdjustments = 0;
@@ -24,6 +27,7 @@ public class Statusmanager : MonoBehaviour {
 
     private float toatlMovementSpeed = 1;
     private float hpRegenDecimals = 0;
+    private float spRegenDecimals = 0;
     public bool isDead = false;
     [SerializeField]
     private int mana = 0;
@@ -135,7 +139,6 @@ public class Statusmanager : MonoBehaviour {
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 tag = "Untagged";
                 GetComponent<AIPath>().enabled = false;
-                ProcOnDeathEffects();
                 Camera.main.transform.parent.GetComponent<CameraFollow>().ActivateScreenShake(0.25f);
                 Material mat = GetComponent<SpriteRenderer>().material;
                 Director.GetInstance().SetFadeMaterial(1, 0, mat, 0.5f);
@@ -153,6 +156,15 @@ public class Statusmanager : MonoBehaviour {
             {
                 Hp += (int)hpRegenDecimals;
                 hpRegenDecimals = 0;
+            }
+        }
+        if (Sp < maxSp)
+        {
+            spRegenDecimals += ((spRegeneration * Time.fixedDeltaTime) / 5);
+            if (spRegenDecimals >= 1)
+            {
+                Sp += (int)spRegenDecimals;
+                spRegenDecimals = 0;
             }
         }
     }
@@ -188,9 +200,8 @@ public class Statusmanager : MonoBehaviour {
                         break;
                     }
                 }
-
             }
-            yield return new WaitForSeconds(Time.deltaTime);
+            yield return new WaitForEndOfFrame();
         }
     }
 
@@ -224,12 +235,25 @@ public class Statusmanager : MonoBehaviour {
         onDeathEffects.Add(onDeathEffect);
     }
 
+    public void RemoveOnDeathEffect(OnDeathEffect onDeathEffect)
+    {
+        foreach (OnDeathEffect s in onDeathEffects)
+        {
+            if (s.effectName == onDeathEffect.effectName)
+            {
+                onDeathEffects.Remove(s);
+                return;
+            }
+        }
+    }
+
     private void ProcOnDeathEffects()
     {
         foreach(OnDeathEffect s in onDeathEffects)
         {
             s.ApplyEffect(gameObject);
         }
+        onDeathEffects.Clear();
     }
 
     public void ApplyDamage(int damage,GameObject origin,bool crit)
@@ -240,7 +264,28 @@ public class Statusmanager : MonoBehaviour {
         }
         gameObjectThatDamagedMeLast = origin;
         ApplyOnDamageEffects();
-        Hp -= damage;
+        if (damage > hp + Barrier)
+        {
+            ProcOnDeathEffects();
+        }
+        if (Barrier > 0)
+        {
+            int value = Barrier;
+            value -= damage;
+            if(value <0)
+            {
+                Hp += value;
+                Barrier = 0;
+            }
+            else
+            {
+                Barrier -= damage;
+            }
+        }
+        else
+        { 
+            Hp -= damage;
+        }
         foreach (Animator anim in anims)
         {
             anim.SetBool("Hurt", true);
@@ -386,7 +431,7 @@ public class Statusmanager : MonoBehaviour {
             }
             if (gameObject.name == "Player")
             {
-                UI_ResourceManager.UpdateUI(); // fix that sometime??? // Later Note: What's the problem
+                UI_ResourceManager.UpdateUI(); // fix that sometime??? // Later Note: What's the problem // Even Later Note: Maybe check for PlayerController you dumbass? // Even Laterer Note: checking name is faster?
             }
             else
             {
@@ -463,6 +508,44 @@ public class Statusmanager : MonoBehaviour {
         set
         {
             intangible = value;
+        }
+    }
+
+    public int Barrier
+    {
+        get
+        {
+            return barrier;
+        }
+
+        set
+        {
+            if(value < 0)
+            {
+                value = 0;
+            }
+            if (gameObject.name == "Player")
+            {
+                UI_ResourceManager.UpdateUI(); // fix that sometime??? // Later Note: What's the problem // Even Later Note: Maybe check for PlayerController you dumbass? // Even Laterer Note: checking name is faster?
+            }
+            barrier = value;
+        }
+    }
+
+    public int Sp
+    {
+        get
+        {
+            return sp;
+        }
+
+        set
+        {
+            sp = value;
+            if (gameObject.name == "Player")
+            {
+                UI_ResourceManager.UpdateSpBar();
+            }
         }
     }
 

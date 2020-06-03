@@ -20,6 +20,7 @@ class Skill_Dodge : Skill
         this.BaseCooldown = cooldown;
         this.BaseCasttime = casttime;
         this.AllowsMovement = allowsMovement;
+        this.SpCost = 25;
     }
 
 

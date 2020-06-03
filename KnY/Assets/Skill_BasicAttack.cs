@@ -19,6 +19,7 @@ class Skill_BasicAttack : Skill
         this.BaseCooldown = cooldown;
         this.BaseCasttime = casttime;
         this.AllowsMovement = allowsMovement;
+        this.SpCost = 5;
     }
 
 

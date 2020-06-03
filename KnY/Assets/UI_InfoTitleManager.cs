@@ -39,7 +39,6 @@ public class UI_InfoTitleManager : MonoBehaviour
     {
         if (animate)
         {
-            print(fade);
             fade += mod * Time.deltaTime * 1.2f;
             if (fade >= 1 || fade <= 0)
             {

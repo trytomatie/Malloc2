@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item_TitansKidney : Item {
 
-    public float healthRegenerationBonus = 5f;
+    public float healthRegenerationBonus = 7f;
 
     public Item_TitansKidney()
     {

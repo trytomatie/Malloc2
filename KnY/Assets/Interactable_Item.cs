@@ -9,6 +9,7 @@ public class Interactable_Item : MonoBehaviour
     void Start()
     {
         GetComponent<Interactable>()._customInteractableMethod = Interact;
+        GetComponent<Interactable>()._customAlternateInteractableMethod = AlternateInteract;
         GetComponent<SpriteRenderer>().sprite = GameObject.FindObjectOfType<ItemIcons>().GetIcon(_itemId);
     }
 
@@ -23,8 +24,7 @@ public class Interactable_Item : MonoBehaviour
         if(g.GetComponent<Inventory>().artifactItemsCount <= 6 || g.GetComponent<Inventory>().ContainsItem(_itemId))
         { 
             Item item = Item.GenerateItem(_itemId);
-            // TODO: make it dynamic for other GameObject interactors
-            GameObject.Find("Player").GetComponent<Inventory>().AddItem(item);
+            g.GetComponent<Inventory>().AddItem(item);
             GameObject.FindObjectOfType<ItemDescriptionManager>().SetDescriptionProperties(item.itemName, item.description, GameObject.FindObjectOfType<ItemIcons>().GetIcon(_itemId),Item.GetItemDescriptionMaterial(_itemId));
             GameObject.FindObjectOfType<ItemDescriptionManager>().Show(5f);
             Destroy(gameObject);
@@ -33,5 +33,15 @@ public class Interactable_Item : MonoBehaviour
         {
             UI_InfoTitleManager.Show("Can't pick up any more Artifacts", "Disenchant for more space", 3);
         }
+    }
+
+    private void AlternateInteract(GameObject g)
+    {
+        Item item = Item.GenerateItem(_itemId);
+        Item tokens = Item.GenerateTokens(item);
+        g.GetComponent<Inventory>().AddItem(tokens);
+        GameObject.FindObjectOfType<ItemDescriptionManager>().SetDescriptionProperties(tokens.itemName, tokens.description, tokens.image, Item.GetItemDescriptionMaterial(tokens.itemId));
+        GameObject.FindObjectOfType<ItemDescriptionManager>().Show(5f);
+        Destroy(gameObject);
     }
 }

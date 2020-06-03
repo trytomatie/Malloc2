@@ -10,7 +10,7 @@ public class Item_CorruptedAmethyst : Item {
         this.itemId = 8;
         this.attribute = "Dark";
         this.itemName = "Corrupted Amethyst";
-        this.description = "Materialize a afflicted scavenger follower.";
+        this.description = "Materialize an afflicted scavenger follower.";
         this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
     }
 

@@ -9,6 +9,8 @@ public class Interactable : MonoBehaviour
     private bool disabled;
     public delegate void CustomInteractable(GameObject o);
     public CustomInteractable _customInteractableMethod;
+    public delegate void CustomAlternateInteractable(GameObject o);
+    public CustomAlternateInteractable _customAlternateInteractableMethod;
     public int _numberOfUses = 2;
     public string _interactablePopupMessage = "Pickup";
     public string _alternateInteractablePopupMessage = "Inspect";
@@ -73,6 +75,15 @@ public class Interactable : MonoBehaviour
         if (_numberOfUses > 0)
         {
             PopUp.transform.Find("Text").GetComponent<Text>().text = _interactablePopupMessage;
+            if(_customAlternateInteractableMethod != null)
+            {
+                PopUp.transform.Find("AlternatePopupText").gameObject.SetActive(true);
+                PopUp.transform.Find("AlternatePopupText").Find("Text").GetComponent<Text>().text = _alternateInteractablePopupMessage;
+            }
+            else
+            {
+                PopUp.transform.Find("AlternatePopupText").gameObject.SetActive(false);
+            }
         }
         else
         {
@@ -110,6 +121,31 @@ public class Interactable : MonoBehaviour
         {
             delayTimer = delay;
             _customInteractableMethod.Invoke(g);
+            successfullInteraction = true;
+        }
+    }
+
+    /// <summary>
+    /// Call Alternate Interaction with Object
+    /// </summary>
+    public void AlternateInteract(GameObject g)
+    {
+        if (delayTimer > 0)
+        {
+            return;
+        }
+        if (_numberOfUses <= 0 || Disabled)
+        {
+            return;
+        }
+        if (_customAlternateInteractableMethod == null)
+        {
+            print("No Alternate Interaction Set!");
+        }
+        else
+        {
+            delayTimer = delay;
+            _customAlternateInteractableMethod.Invoke(g);
             successfullInteraction = true;
         }
     }

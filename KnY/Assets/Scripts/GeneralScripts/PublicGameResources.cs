@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PublicGameResources : MonoBehaviour {
     public GameObject damageObject;
-    public GameObject bloodFx;
+    public GameObject damageFx;
     public GameObject[] player;
     public Texture2D cursor;
     private static PublicGameResources instance;

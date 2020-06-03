@@ -102,8 +102,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _numberOfUses: 1
   _interactablePopupMessage: Pickup
-  _alternateInteractablePopupMessage: 
-  _popupMessageOffset: {x: 0, y: 0.07, z: 0}
+  _alternateInteractablePopupMessage: Disenchant
+  _popupMessageOffset: {x: 0, y: 0.25, z: 0}
+  successfullInteraction: 0
 --- !u!114 &6402902365246408415
 MonoBehaviour:
   m_ObjectHideFlags: 0

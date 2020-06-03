@@ -11,6 +11,7 @@ public class Item_WitchsHeart : Item {
         this.attribute = "Dark";
         this.itemName = "Witch's heartt";
         this.description = "Increases Max Hp";
+        this.detailedDescription = "Increases Max Hp by " + hpGain + " per stack";
         this.series.Add(ItemSeries.Series.Curse);
         this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
     }
@@ -18,7 +19,7 @@ public class Item_WitchsHeart : Item {
     public override void ApplyEffect(GameObject g)
     {
         g.GetComponent<Statusmanager>().maxHp += hpGain * stacks;
-        g.GetComponent<Statusmanager>().Hp += hpGain;
+        g.GetComponent<Statusmanager>().Hp += hpGain * stacks;
     }
 
     public override void RemoveEffect(GameObject g)

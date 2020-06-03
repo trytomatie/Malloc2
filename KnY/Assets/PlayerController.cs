@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
     private GameObject interactionRadius;
+    private Statusmanager myStatus;
     public List<Skill> skills = new List<Skill>();
     private bool disableMovement = false;
 
@@ -22,9 +23,10 @@ public class PlayerController : MonoBehaviour
         interactionRadius = GameObject.Find("InteractionRadius");
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        myStatus = GetComponent<Statusmanager>();
         skills.Add(new Skill_BasicAttack(1, 0.4f, true));
         skills.Add(new Skill_Dodge(0.7f, 0.4f, false));
-        skills.Add(new Skill_Projectile(2f, 0.4f,3, false));
+        skills.Add(new Skill_AoeDash(1f, 0.4f, false));
         GetComponent<Inventory>().AddItem(new Item_BlackMarble());
     }
 
@@ -85,7 +87,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void BattleInput()
     {
-        if (Input.GetAxis("Attack2") == 1 && skills[0].CooldownTimer <= 0) // Style 1 (BASICATTACK)
+        if (Input.GetAxis("Attack2") == 1 && skills[0].CooldownTimer <= 0 && skills[0].SpCost <= myStatus.Sp) // Style 1 (BASICATTACK)
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 heading = mousePosition - (Vector2)transform.position;
@@ -93,11 +95,11 @@ public class PlayerController : MonoBehaviour
             Vector2 attackDirection = heading / distance;
             skills[0].ActivateSkill(gameObject, attackDirection, null);
         }
-        if (Input.GetAxis("Attack1") == 1 && skills[1].CooldownTimer <= 0) // Dash
+        if (Input.GetAxis("Attack1") == 1 && skills[1].CooldownTimer <= 0 && skills[1].SpCost <= myStatus.Sp) // Dash
         {
             skills[1].ActivateSkill(gameObject, movementDirection, null);
         }
-        if (Input.GetAxis("Attack3") == 1 && skills[2].CooldownTimer <= 0) // Projectile
+        if (Input.GetAxis("Attack3") == 1 && skills[2].CooldownTimer <= 0 && skills[2].SpCost <= myStatus.Sp) // Projectile
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 heading = mousePosition - (Vector2)transform.position;
@@ -117,6 +119,10 @@ public class PlayerController : MonoBehaviour
         {
             Interact();
         }
+        if (Input.GetAxis("Interact2") == 1)
+        {
+            AlternateInteract();
+        }
     }
 
 
@@ -128,6 +134,17 @@ public class PlayerController : MonoBehaviour
         if (interactionRadius.GetComponent<InteractionRadius>()._target != null)
         {
             interactionRadius.GetComponent<InteractionRadius>()._target.Interact(gameObject);
+        }
+    }
+
+    /// <summary>
+    /// Interacts with interactabale and calls the AlternateInteraction
+    /// </summary>
+    private void AlternateInteract()
+    {
+        if (interactionRadius.GetComponent<InteractionRadius>()._target != null)
+        {
+            interactionRadius.GetComponent<InteractionRadius>()._target.AlternateInteract(gameObject);
         }
     }
 

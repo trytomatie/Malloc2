@@ -13,6 +13,7 @@ public class Skill
     private float baseCasttime = 0;
     private float cooldownTimer = 0;
     private float casttimeTimer = 0;
+    private int spCost = 25;
     private bool initialApplication = false;
     private bool allowsMovement = false;
     private Vector2 direction;
@@ -24,6 +25,7 @@ public class Skill
     {
         if(CooldownTimer <= 0 && CasttimeTimer <= 0)
         {
+            source.GetComponent<Statusmanager>().Sp -= spCost;
             this.Direction = direction;
             this.Target = target;
             CooldownTimer = Cooldown;
@@ -36,7 +38,7 @@ public class Skill
 
     }
 
-    public virtual void OnCastEnd(GameObject soruce)
+    public virtual void OnCastEnd(GameObject source)
     {
 
     }
@@ -218,6 +220,19 @@ public class Skill
         set
         {
             speedIncrease = value;
+        }
+    }
+
+    public int SpCost
+    {
+        get
+        {
+            return spCost;
+        }
+
+        set
+        {
+            spCost = value;
         }
     }
     #endregion

@@ -7,10 +7,12 @@ using UnityEngine.UI;
 public class UI_ResourceManager : MonoBehaviour
 {
     public Text hpText;
+    public Text spText;
     public Text manaText;
     public Text levelText;
     private Statusmanager statusmanager;
     public Image hpBar;
+    public Image spBar;
     private static UI_ResourceManager instance;
 
     public static UI_ResourceManager Instance
@@ -55,6 +57,7 @@ public class UI_ResourceManager : MonoBehaviour
             Instance = this;
         }
         UpdateUI();
+        UpdateSpBar();
     }
 
     // Update is called once per frame
@@ -65,16 +68,29 @@ public class UI_ResourceManager : MonoBehaviour
 
     public static void UpdateUI()
     {
-        UpdateUpBar();
-        Instance.hpText.text = "" + Instance.Statusmanager.Hp;
+        UpdateHpBar();
         Instance.manaText.text = "" + Instance.Statusmanager.Mana;
         Instance.levelText.text = "Level: " + Instance.Statusmanager.level;
     }
 
-    private static void UpdateUpBar()
+    public static void UpdateHpBar()
     {
+        string barrier = "";
+        if (Instance.Statusmanager.Barrier > 0)
+        {
+            barrier = "+(" + Instance.statusmanager.Barrier + ")";
+        }
+        Instance.hpText.text = "" + Instance.Statusmanager.Hp + barrier;
+
         float hpPercent = (float)Instance.Statusmanager.Hp / (float)Instance.Statusmanager.maxHp;
         Instance.hpBar.GetComponent<Image>().fillAmount = hpPercent;
+    }
+    public static void UpdateSpBar()
+    {
+        Instance.spText.text = "" + Instance.Statusmanager.Sp;
+
+        float spPercent = (float)Instance.Statusmanager.Sp / (float)Instance.Statusmanager.maxSp;
+        Instance.spBar.GetComponent<Image>().fillAmount = spPercent;
     }
 
 }

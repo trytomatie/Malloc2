@@ -75,6 +75,7 @@ public class DamageObject : MonoBehaviour {
         {
             return;
         }
+        // Damage Calculation
         int damageDealt = CalculateDamageDealt(otherStatus, damage);
         // Apply crit
         int critChance = UnityEngine.Random.Range(1, 101);
@@ -121,7 +122,7 @@ public class DamageObject : MonoBehaviour {
         // Get Armor damage Reduction
         float damageMultiplier = 100f / (100f + otherStatus.defence);
         // Calculat damage
-        int damageDealt = Mathf.RoundToInt((damage * damageMultiplier) + UnityEngine.Random.Range(0, 10));
+        int damageDealt = Mathf.RoundToInt((damage * damageMultiplier) + UnityEngine.Random.Range(0, 10) - otherStatus.flatDamageReduction);
         return damageDealt;
     }
 

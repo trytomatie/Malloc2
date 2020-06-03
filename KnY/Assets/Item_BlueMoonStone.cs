@@ -5,7 +5,7 @@ using UnityEngine;
 public class Item_BlueMoonStone : Item
 {
 
-    private int healthRegen = 15;
+    private int healthRegen = 10;
     private float durration = 3;
     private int healthRegenPerStack = 5;
     private float durrationPerStack = 2;
@@ -17,6 +17,7 @@ public class Item_BlueMoonStone : Item
         this.itemName = "Blue Moon Stone";
         this.attribute = "Earth";
         this.description = "Regenerate Health when struck.";
+        this.detailedDescription = "Regenerate " + healthRegen + "+" + healthRegenPerStack + " per stack Hp when struck";
         this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
     }
 

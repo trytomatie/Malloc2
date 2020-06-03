@@ -14,6 +14,7 @@ public class Item_Affectionate_Eminence : Item
         this.itemName = "Affectionate Eminence";
         this.description = "Raises Critical Hit chance by 8%";
         this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
+        this.series.Add(ItemSeries.Series.Royal);
     }
 
     public override void ApplyEffect(GameObject g)

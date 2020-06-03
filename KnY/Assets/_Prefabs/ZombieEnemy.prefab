@@ -262,10 +262,13 @@ MonoBehaviour:
   maxHp: 159
   hp: 159
   maxSp: 100
-  Sp: 100
+  sp: 100
+  spRegeneration: 0
   defence: 0
+  flatDamageReduction: 0
   healthRegeneration: 0
   healthRegenerationPercentage: 1
+  barrier: 0
   movementSpeed: 0.5
   movementSpeedFlatAdjustments: 0
   movementSpeedMultiplier: 1
@@ -279,13 +282,14 @@ MonoBehaviour:
   baseAttackDamageMultiplyier: 1
   totalAttackDamage: 0
   criticalStrikeChance: 1
+  damageOverTimeDamageMultiplier: 1
   statusEffects: []
   anims: []
   hpGrowth: 340
   spGrowth: 0
   manaGrowth: 3
   healthRegenerationGrowth: 0
-  baseAttackDamageGrowth: 8
+  baseAttackDamageGrowth: 16
   defenceGrwoth: 1
   movementSpeedGrowth: 0.02
   gameObjectThatDamagedMeLast: {fileID: 0}
@@ -345,3 +349,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items: []
   isPlayerInventory: 0
+  artifactItemsCount: 0

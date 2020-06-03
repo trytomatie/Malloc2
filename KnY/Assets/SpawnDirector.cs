@@ -73,15 +73,16 @@ public class SpawnDirector : MonoBehaviour
             return;
         }
 
-        if(spawnCredditsPerWave[wave] <= spawnCreditsEarnedThisWave)
+        if(spawnCredits <= 0 && spawnCredditsPerWave[wave] <= spawnCreditsEarnedThisWave)
         {
             if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0 && prepPhase == false)
             {
                 prepPhase = true;
                 GameObject.Find("RoomText").GetComponent<Text>().text = "Preperation Phase " + wave;
                 Instantiate(trader, new Vector3(0, 1, 0), Quaternion.identity);
+                Instantiate(trader, new Vector3(0.5f, 1, 0), Quaternion.identity);
+                Instantiate(trader, new Vector3(-0.5f, 1, 0), Quaternion.identity);
             }
-            return;
         }
 
         if(timer < 1)
@@ -91,12 +92,15 @@ public class SpawnDirector : MonoBehaviour
 
         if(timer >= 1)
         {
-            double creditsToEarn = baseCreditsPerTick + creditsPerTick * wave;
-            spawnCredits += creditsToEarn;
-            spawnCreditsEarnedThisWave += creditsToEarn;
+            if (spawnCredditsPerWave[wave] > spawnCreditsEarnedThisWave)
+            {
+                double creditsToEarn = baseCreditsPerTick + creditsPerTick * wave;
+                spawnCredits += creditsToEarn;
+                spawnCreditsEarnedThisWave += creditsToEarn;
+            }
             TimeSpan timeSinceLastSpawn = DateTime.Now - lastSpawnTime;
-            int rndVal = rnd.Next(0, 36);
-            if(rndVal < timeSinceLastSpawn.TotalSeconds)
+            int rndVal = rnd.Next(0, 32);
+            if(rndVal < timeSinceLastSpawn.TotalSeconds || GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
             {
                 SpendCredits();
                 lastSpawnTime = DateTime.Now;
@@ -108,8 +112,16 @@ public class SpawnDirector : MonoBehaviour
 
     private void SpendCredits()
     {
+        if(spawnCredits < 0)
+        {
+            return;
+        }
         int timeOut = 0;
         double creditsToSpend = rnd.Next((int)(spawnCredits * 0.6f), (int)spawnCredits);
+        if(((float)spawnCredits / (float)spawnCreditsEarnedThisWave) < 0.2f)
+        {
+            creditsToSpend = spawnCredits;
+        }
         int numberOfBatches = rnd.Next(1, (int)Mathf.Clamp((float)creditsToSpend, 1, 4));
         double halfBatchValues = (double)creditsToSpend / (double)(numberOfBatches * 2);
         int numberOfHalfBatchValuesLeft = numberOfBatches * 2;

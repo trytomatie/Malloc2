@@ -232,7 +232,8 @@ MonoBehaviour:
   _numberOfUses: 1
   _interactablePopupMessage: Open
   _alternateInteractablePopupMessage: ???
-  _popupMessageOffset: {x: 0, y: 0.07, z: 0}
+  _popupMessageOffset: {x: 0, y: 0.25, z: 0}
+  successfullInteraction: 0
 --- !u!114 &3875135025429602749
 MonoBehaviour:
   m_ObjectHideFlags: 0

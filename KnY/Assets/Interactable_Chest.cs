@@ -57,22 +57,22 @@ public class Interactable_Chest : MonoBehaviour {
         else
         {
             max -= chanceForCommonItem;
-            chance = UnityEngine.Random.Range(0, max);
+            chance -= chanceForCommonItem;
             if (chance < chanceForUncommonItem)
             { 
                 id = Item.GenerateRandomUncommonItemID();
             }
             else
             {
-                max -= chanceForRareItem;
-                chance = UnityEngine.Random.Range(0, max);
+                max -= chanceForUncommonItem;
+                chance -= chanceForUncommonItem;
                 if (chance < chanceForRareItem)
                 {
                     id = Item.GenerateRandomRareItemID();
                 }
                 else
                 {
-                    id = Item.GenerateRandomEpicItemID();
+                    id = Item.GenerateRandomRareItemID();
                 }
             }
         }
