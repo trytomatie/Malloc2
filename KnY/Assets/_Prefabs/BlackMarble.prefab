@@ -373,6 +373,8 @@ MonoBehaviour:
   interfaceMaterial: {fileID: 2100000, guid: e7418821710c3eb4e9b6beec9b5843ac, type: 2}
   commonGlow: {r: 0, g: 1.5058824, b: 3.9686275, a: 0}
   unCommonGlow: {r: 0.26684493, g: 6.2856836, b: 0.56537, a: 0}
+  bossGlow: {r: 8, g: 0, b: 0.07680893, a: 0}
   commontreasureChunkIds: 02000000
   uncommontreasureChunkIds: 03000000
   chunkIdsThatAreSearched: 
+  canLocateBosses: 1

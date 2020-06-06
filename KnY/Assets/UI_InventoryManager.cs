@@ -88,7 +88,7 @@ public class UI_InventoryManager : MonoBehaviour
                                 GameObject instanceDisplay = Instantiate(instance.inventoryDisplayInstantiationTarget, target.transform);
                                 instanceDisplay.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, -1);
                                 instanceDisplay.GetComponent<Image>().sprite = FindObjectOfType<ItemIcons>().GetIcon(item.itemId);
-                                instanceDisplay.GetComponent<Image>().material = Item.GetItemMaterial(item.itemId);
+                                instanceDisplay.GetComponent<Image>().material = Item.GetItemDescriptionMaterial(item.itemId);
                                 instanceDisplay.GetComponent<UI_ArtifactDisplayOnHover>().item = item;
                                 instanceDisplay.transform.GetChild(0).GetComponent<Text>().text = "x" + item.stacks;
                                 instance.inventoryDisplays.Add(instanceDisplay);

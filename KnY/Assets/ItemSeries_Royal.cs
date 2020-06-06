@@ -11,6 +11,7 @@ public class ItemSeries_Royal : ItemSeries
         this.seriesName = "Royal";
         this.description = "Increase total attackaamage by 20% and gain 30 defence";
         this.conditionsNeeded = 3;
+        this.image = ItemIcons.GetSeriesIcon(id);
     }
     public override void ApplyEffect(GameObject g)
     {

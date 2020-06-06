@@ -8,7 +8,6 @@ public class GenericRangedEnemyAI : BaseEnemyAI
 {
 
     public Transform bodyTransform;
-    public Animator[] attackingAnimators;
     
 
     void Start()

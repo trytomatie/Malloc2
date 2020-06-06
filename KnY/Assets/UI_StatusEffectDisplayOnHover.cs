@@ -15,39 +15,6 @@ public class UI_StatusEffectDisplayOnHover : MonoBehaviour, IPointerEnterHandler
     private bool mouseEntered = false;
     public StatusEffect statusEffect;
 
-    public GameObject DescriptionDisplay
-    {
-        get
-        {
-            if(descriptionDisplay == null)
-            {
-                descriptionDisplay = GameObject.Find("ItemDescriptionPopupWindow");
-            }
-            return descriptionDisplay;
-        }
-
-        set
-        {
-            descriptionDisplay = value;
-        }
-    }
-
-    public GameObject ContextMenu
-    {
-        get
-        {
-            if (contextMenu == null)
-            {
-                contextMenu = GameObject.Find("ItemContextMenu");
-            }
-            return contextMenu;
-        }
-
-        set
-        {
-            contextMenu = value;
-        }
-    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -79,5 +46,39 @@ public class UI_StatusEffectDisplayOnHover : MonoBehaviour, IPointerEnterHandler
         //    ContextMenu.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
         //    statusEffect.InstanciateContextMenu();
         //}
+    }
+
+    public GameObject DescriptionDisplay
+    {
+        get
+        {
+            if (descriptionDisplay == null)
+            {
+                descriptionDisplay = GameObject.Find("ItemDescriptionPopupWindow");
+            }
+            return descriptionDisplay;
+        }
+
+        set
+        {
+            descriptionDisplay = value;
+        }
+    }
+
+    public GameObject ContextMenu
+    {
+        get
+        {
+            if (contextMenu == null)
+            {
+                contextMenu = GameObject.Find("ItemContextMenu");
+            }
+            return contextMenu;
+        }
+
+        set
+        {
+            contextMenu = value;
+        }
     }
 }

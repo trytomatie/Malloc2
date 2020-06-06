@@ -7,7 +7,7 @@ public class StatusEffect_DivineProtection : StatusEffect {
     public StatusEffect_DivineProtection(float durration)
     {
         this.statusName = "Divine Protection";
-        this.description = "Absorbs damage to a certain amount.";
+        this.description = "Absorbs damage up to a certain amount.";
         this.image = null;
         this.duration = durration;
         this.type = Type.Buff;

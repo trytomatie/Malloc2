@@ -27,12 +27,9 @@ public class AnimatorToggleEnemyBehaivour : StateMachineBehaviour
                 animator.SetInteger("AnimationState", 1);
                 break;
             case BaseEnemyAI.Mode.Attack:
-                animator.speed = Mathf.Abs( 1f / b.attackDelayTimer);
-                animator.SetInteger("AnimationState", 3);
                 break;
             case BaseEnemyAI.Mode.AttackPrep:
-                animator.speed = Mathf.Abs(1f / b.attackSpeedTimer);
-                animator.SetInteger("AnimationState", 2);
+
                 break;
             case BaseEnemyAI.Mode.Ftarget_PathfinderFollow:
                 animator.SetInteger("AnimationState", 1);

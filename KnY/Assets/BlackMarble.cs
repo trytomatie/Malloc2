@@ -16,11 +16,13 @@ public class BlackMarble : MonoBehaviour
     public Color commonGlow;
     [ColorUsage(true, true)]
     public Color unCommonGlow;
+    [ColorUsage(true, true)]
+    public Color bossGlow;
 
     public List<int> commontreasureChunkIds;
     public List<int> uncommontreasureChunkIds;
     public List<int> chunkIdsThatAreSearched = new List<int>();
-
+    public bool canLocateBosses = true;
     public Item_BlackMarble itemRef;
     // Start is called before the first frame update
     void Start()
@@ -30,8 +32,6 @@ public class BlackMarble : MonoBehaviour
             mapGenerator = FindObjectOfType<MapGenerator>();
             if (mapGenerator == null)
             {
-                itemRef.owner.RemoveItem(itemRef);
-                Destroy(gameObject);
                 return;
             }
         }
@@ -42,61 +42,69 @@ public class BlackMarble : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        direction = PublicGameResources.CalculateNormalizedDirection(mapGenerator.CurrentCameraCoords, GetClosestTarget());
+        Vector2 myPos = transform.position;
+        if (mapGenerator != null)
+        {
+            myPos = mapGenerator.CurrentCameraCoords;
+        }
+        direction = PublicGameResources.CalculateNormalizedDirection(myPos, GetClosestTarget());
     }
 
     public Vector2 GetClosestTarget()
     {
         float distance = 100000;
-        Vector2 target = mapGenerator.CurrentCameraCoords;
-        int foundChunkId = 0;
-        int vFoundChunkId = 0;
-        print(searchObjectList.Keys.Count);
-        foreach (Vector2 v in searchObjectList.Keys)
+        Vector2 target = transform.position;
+        if (mapGenerator != null)
         {
-            
-            if (searchObjectList[v] == -1 || chunkIdsThatAreSearched.Count < 1 || !mapGenerator.tunnelMap.Keys.Contains(v))
+            target = mapGenerator.CurrentCameraCoords;
+            int foundChunkId = 0;
+            int vFoundChunkId = 0;
+            foreach (Vector2 v in searchObjectList.Keys)
             {
-                continue;
-            }
-            foundChunkId = -1;
-            foreach (int chunkId in chunkIdsThatAreSearched)
-            {
-                
-                if (chunkId == searchObjectList[v])
+
+                if (searchObjectList[v] == -1 || chunkIdsThatAreSearched.Count < 1 || !mapGenerator.tunnelMap.Keys.Contains(v))
                 {
-                    foundChunkId = searchObjectList[v];
-                    break;
+                    continue;
                 }
-            }
-            if(foundChunkId == -1)
-            {
-                continue;
-            }
-            float vDistance = Vector2.Distance(v, mapGenerator.CurrentCameraCoords);
-            if (distance > vDistance)
-            {
-                distance = vDistance;
-                target = v;
-                vFoundChunkId = foundChunkId;
-                if (distance == 0)
+                foundChunkId = -1;
+                foreach (int chunkId in chunkIdsThatAreSearched)
                 {
-                    if(mapGenerator.chunkMap[v].GetComponent<ChunkSettings>().concluded)
+
+                    if (chunkId == searchObjectList[v])
                     {
-                        searchObjectList[v] = -1;
+                        foundChunkId = searchObjectList[v];
+                        break;
                     }
-                    return target;
+                }
+                if (foundChunkId == -1)
+                {
+                    continue;
+                }
+                float vDistance = Vector2.Distance(v, mapGenerator.CurrentCameraCoords);
+                if (distance > vDistance)
+                {
+                    distance = vDistance;
+                    target = v;
+                    vFoundChunkId = foundChunkId;
+                    if (distance == 0)
+                    {
+                        if (mapGenerator.chunkMap[v].GetComponent<ChunkSettings>().concluded)
+                        {
+                            searchObjectList[v] = -1;
+                        }
+                    }
                 }
             }
+            if (commontreasureChunkIds.Contains(vFoundChunkId))
+            {
+                interfaceMaterial.SetColor("_color", commonGlow);
+            }
+            if (uncommontreasureChunkIds.Contains(vFoundChunkId))
+            {
+                interfaceMaterial.SetColor("_color", unCommonGlow);
+            }
         }
-        if (commontreasureChunkIds.Contains(vFoundChunkId))
-        {
-            interfaceMaterial.SetColor("_color", commonGlow);
-        }
-        if (uncommontreasureChunkIds.Contains(vFoundChunkId))
-        {
-            interfaceMaterial.SetColor("_color", unCommonGlow);
-        }
+        target = LocateBoss(distance,target);
         return target;
     }
 
@@ -132,5 +140,34 @@ public class BlackMarble : MonoBehaviour
                 }
             }
         }
+    }
+
+    public Vector2 LocateBoss(float distance,Vector2 pDirection)
+    {
+        if(!canLocateBosses)
+        {
+            return pDirection;
+        }
+        GameObject searchTarget = null;
+        foreach(ThunderBirdBossEnemyAI g in GameObject.FindObjectsOfType<ThunderBirdBossEnemyAI>())
+        {
+            if(g.GetComponent<Statusmanager>().Hp > 0)
+            { 
+                float newDistance = Vector2.Distance(transform.position, g.transform.position);
+                if (newDistance < distance)
+                {
+                    distance = newDistance;
+                    searchTarget = g.gameObject;
+                }
+            }
+        }
+        if (searchTarget != null)
+        {
+            interfaceMaterial.SetColor("_color", bossGlow);
+            pDirection = searchTarget.transform.position;
+
+        }
+        return pDirection;
+
     }
 }

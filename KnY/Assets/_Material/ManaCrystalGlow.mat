@@ -36,5 +36,8 @@ Material:
     - Vector1_A269E10C: 5
     - Vector1_D89DD995: 0
     - _fade: 1
+    - _isVisible: 1
     m_Colors:
     - _color: {r: 0.2028302, g: 0.41511992, b: 1, a: 0}
+    - _hurtColo: {r: 0, g: 0, b: 0, a: 0}
+    - _hurtColor: {r: 0, g: 0, b: 0, a: 1}

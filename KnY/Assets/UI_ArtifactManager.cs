@@ -65,7 +65,7 @@ public class UI_ArtifactManager : MonoBehaviour
                     instanceDisplay.GetComponent<RectTransform>().anchoredPosition = new Vector3(xPos, yPos);
                     instanceDisplay.GetComponent<RectTransform>().localPosition = new Vector3(instanceDisplay.GetComponent<RectTransform>().localPosition.x, instanceDisplay.GetComponent<RectTransform>().localPosition.y, -1);
                     instanceDisplay.GetComponent<Image>().sprite = FindObjectOfType<ItemIcons>().GetIcon(item.itemId);
-                    instanceDisplay.GetComponent<Image>().material = Item.GetItemMaterial(item.itemId);
+                    instanceDisplay.GetComponent<Image>().material = Item.GetItemDescriptionMaterial(item.itemId);
                     instanceDisplay.GetComponent<UI_ArtifactDisplayOnHover>().item = item;
                     instanceDisplay.transform.GetChild(0).GetComponent<Text>().text = "x" + item.stacks;
                     instance.artifactDisplays.Add(instanceDisplay);

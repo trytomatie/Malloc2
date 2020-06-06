@@ -29,8 +29,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Alpha: 0.035
-    - _Fade: -0.0038067254
+    - _Alpha: 0.082
+    - _Fade: 1
     - _OutlineThickness: 1
     - _ShowOutline: 1
     m_Colors:

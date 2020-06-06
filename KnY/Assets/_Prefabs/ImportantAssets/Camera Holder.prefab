@@ -50,9 +50,9 @@ MonoBehaviour:
   conditionalTarget: {fileID: 0}
   smoothSpeed: 0.125
   offset: {x: 0, y: 0, z: 0}
-  bordersEnabled: 0
-  point1: {x: -2.73, y: 2.06}
-  point2: {x: 2.67, y: -1.11}
+  bordersEnabled: 1
+  point1: {x: -4.32, y: 3.4}
+  point2: {x: 2.31, y: -1.96}
 --- !u!1 &8003006590927770077
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,6 +509,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8276288782881259578, guid: 161ec7aac6b27944fad94b1372f61a77,
         type: 3}
+    - target: {fileID: 1381486699969876402, guid: 70b7386732a9c8742b5f9071311b1f1e,
+        type: 3}
+      propertyPath: enemy2
+      value: 
+      objectReference: {fileID: 4809413625106968412, guid: 532aa601b5c402142b6df2b801a327d2,
+        type: 3}
     - target: {fileID: 1381486699969876403, guid: 70b7386732a9c8742b5f9071311b1f1e,
         type: 3}
       propertyPath: icons.Array.size
@@ -620,6 +626,12 @@ PrefabInstance:
       propertyPath: statusEffectMaterials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: 70b3a1c3eae2fa742a9e3608a4afbb1b, type: 2}
+    - target: {fileID: 1381486699969876407, guid: 70b7386732a9c8742b5f9071311b1f1e,
+        type: 3}
+      propertyPath: bloodFx
+      value: 
+      objectReference: {fileID: 4809413625106968412, guid: 532aa601b5c402142b6df2b801a327d2,
+        type: 3}
     - target: {fileID: 1381486699969876412, guid: 70b7386732a9c8742b5f9071311b1f1e,
         type: 3}
       propertyPath: mobPool.Array.size
@@ -710,12 +722,12 @@ PrefabInstance:
     - target: {fileID: 1381486699969876412, guid: 70b7386732a9c8742b5f9071311b1f1e,
         type: 3}
       propertyPath: spawnCredditsPerWave.Array.data[15]
-      value: 55000
+      value: 50000
       objectReference: {fileID: 0}
     - target: {fileID: 1381486699969876412, guid: 70b7386732a9c8742b5f9071311b1f1e,
         type: 3}
       propertyPath: spawnCredditsPerWave.Array.data[16]
-      value: 78000
+      value: 55000
       objectReference: {fileID: 0}
     - target: {fileID: 1381486699969876412, guid: 70b7386732a9c8742b5f9071311b1f1e,
         type: 3}

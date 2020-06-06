@@ -26,6 +26,7 @@ public class BaseEnemyAI : MonoBehaviour
     public Mode mode = Mode.Idle;
     public GameObject target;
     public Rigidbody2D rb;
+    public List<Animator> attackingAnimators = new List<Animator>();
     public bool isAttacking;
     public float aggroRadius = 1;
     public float attackRadius = 0.5f;
@@ -62,6 +63,7 @@ public class BaseEnemyAI : MonoBehaviour
     public void Initialize()
     {
         rb = GetComponent<Rigidbody2D>();
+        attackingAnimators.Add(GetComponent<Animator>());
         StartCoroutine(TimerThread());
     }
     IEnumerator TimerThread()
@@ -143,7 +145,7 @@ public class BaseEnemyAI : MonoBehaviour
 
     }
 
-    public bool CheckAttackConditions()
+    public virtual bool CheckAttackConditions()
     {
         if(Target == null)
         {
@@ -301,6 +303,18 @@ public class BaseEnemyAI : MonoBehaviour
                 return false;
             }
             else if(hit.collider.gameObject == customTarget)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool CheckIfSkillsAreCasting()
+    {
+        foreach(Skill s in skills)
+        {
+            if(s.CasttimeTimer > 0)
             {
                 return true;
             }

@@ -14,7 +14,7 @@ public class Item_RedFairy : ProcItem {
         this.description = "Heal on kill.";
         this.procChance = 100f;
         this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
-        this.series.Add(ItemSeries.Series.Fairie);
+        this.series.Add(ItemSeries.Series.Faerie);
     }
 
 
@@ -25,7 +25,7 @@ public class Item_RedFairy : ProcItem {
 
     public override void ProcEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().ApplyOnDeathEffect(new OnDeathEffect_HealKiller(healAmount * stacks));
+        g.GetComponent<Statusmanager>().ApplyOnDeathEffect(new OnDeathEffect_HealKiller((int)(healAmount * stacks * effectMutliplier)));
     }
 
     public override void AddAditionalStack(GameObject g,Item otherItem)

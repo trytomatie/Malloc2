@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ItemDescriptionManager : MonoBehaviour
 {
-    public List<Material> materials = new List<Material>();
+    public Material[] materials = new Material[3];
     private bool animate = false;
     private float fade = 1;
     private int mod = 1;
@@ -78,7 +78,9 @@ public class ItemDescriptionManager : MonoBehaviour
         itemName.text = name;
         itemDescription.text = description;
         itemSprite.sprite = icon;
-        itemSprite.material = spriteMaterial;
+        itemSprite.material = Instantiate<Material>(spriteMaterial);
+        Material m = itemSprite.material;
+        materials[2] = m;
     }
 
 }

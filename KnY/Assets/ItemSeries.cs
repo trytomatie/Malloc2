@@ -11,13 +11,14 @@ public class ItemSeries
     public int totalConditionsMet = 0;
     public int conditionsNeeded = 1;
     public bool isActive = false;
+    public Sprite image;
     public enum Series
     {
         None = 0,
         Curse = 1,
         Divine = 2,
         Inheritance = 3,
-        Fairie = 4,
+        Faerie = 4,
         Royal = 5
     }
 
@@ -51,6 +52,9 @@ public class ItemSeries
                         break;
                     case Series.Royal:
                         UpdateSeries(mySeries, Series.Royal, new ItemSeries_Royal());
+                        break;
+                    case Series.Faerie:
+                        UpdateSeries(mySeries, Series.Faerie, new ItemSeries_Faerie());
                         break;
                 }
             }

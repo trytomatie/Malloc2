@@ -8,7 +8,6 @@ public class GenericEnemyAI : BaseEnemyAI
 {
 
     public Transform bodyTransform;
-    public Animator[] attackingAnimators;
 
 
     void Start()
@@ -87,6 +86,10 @@ public class GenericEnemyAI : BaseEnemyAI
                 MoveToPlayer(); // Good old stalker movement
                 break;
             case Mode.AttackPrep:
+                foreach(Animator a in attackingAnimators)
+                { 
+                    a.SetInteger("AnimationState", 2);
+                }
                 PathFindingActive(false);  // not gonna move
                 PrepareForAttack(0.5f); // preparing my attack
                 break;
@@ -103,6 +106,11 @@ public class GenericEnemyAI : BaseEnemyAI
                 }
                 break;
             case Mode.Attack:
+                foreach (Animator a in attackingAnimators)
+                {
+                    a.SetInteger("AnimationState", 3);
+                }
+
                 JumpAttack(1.2f); // CHAAAAARGE!
                 break;
         }

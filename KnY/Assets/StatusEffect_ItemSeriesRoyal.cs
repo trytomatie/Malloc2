@@ -7,9 +7,9 @@ public class StatusEffect_ItemSeriesRoyal : StatusEffect {
     public int defence = 30;
     public StatusEffect_ItemSeriesRoyal()
     {
-        this.statusName = new ItemSeries_Divine().seriesName;
-        this.description = new ItemSeries_Divine().description;
-        this.image = new Item_DivineClockwork().image;
+        this.statusName = new ItemSeries_Royal().seriesName;
+        this.description = new ItemSeries_Royal().description;
+        this.image = new Item_DesireableGreatness().image;
         this.type = Type.Series;
         this.duration = 36000;
     }

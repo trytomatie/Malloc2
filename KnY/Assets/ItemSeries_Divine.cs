@@ -12,6 +12,7 @@ public class ItemSeries_Divine : ItemSeries
         this.seriesName = "Divine";
         this.description = "Protects you from a leathal blow ONCE and grants you a barrier for 200% of your health for 50 seconds";
         this.conditionsNeeded = 2;
+        this.image = ItemIcons.GetSeriesIcon(id);
     }
     public override void ApplyEffect(GameObject g)
     {

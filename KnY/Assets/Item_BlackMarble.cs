@@ -10,6 +10,7 @@ public class Item_BlackMarble : Item {
     private bool isVisible = true;
     private bool searchForCommon = true;
     private bool searchForUncommon = false;
+    private bool searchForBoss = true;
     public Item_BlackMarble()
     {
         this.artifactItem = false;
@@ -48,18 +49,28 @@ public class Item_BlackMarble : Item {
             text1 = "Activate Invisible Mode";
         }
         CreateContextMenuItem(text1, new UnityAction(SetVisibleMode));
-        string text2 = "Search for common treasureroom ";
-        if (searchForCommon)
-        {
-            text2 = "Search for common treasureroom (Active)";
+        if(GameObject.FindObjectOfType<MapGenerator>())
+        { 
+            string text2 = "Search for common treasureroom ";
+            if (searchForCommon)
+            {
+                text2 = "Search for common treasureroom (Active)";
+            }
+            CreateContextMenuItem(text2, new UnityAction(SearchForCommontreasureRoom));
+            string text3 = "Search for uncommon treasureroom ";
+            if (searchForUncommon)
+            {
+                text3 = "Search for uncommon treasureroom(Active)";
+            }
+            CreateContextMenuItem(text3, new UnityAction(SearchForUncommontreasureRoom));
         }
-        CreateContextMenuItem(text2, new UnityAction(SearchForCommontreasureRoom));
-        string text3 = "Search for uncommon treasureroom ";
-        if (searchForUncommon)
+        string text4 = "Locate Boss";
+        if (searchForBoss)
         {
-            text3 = "Search for uncommon treasureroom(Active)";
+            text4 = "Locate Boss (Active)";
         }
-        CreateContextMenuItem(text3, new UnityAction(SearchForUncommontreasureRoom));
+        CreateContextMenuItem(text4, new UnityAction(LocateBoss));
+
     }
 
     private void SetVisibleMode()
@@ -118,5 +129,13 @@ public class Item_BlackMarble : Item {
         {
             bm.SearchAllCommonAndUncommonTreasureChunks();
         }
+    }
+
+    private void LocateBoss()
+    {
+        searchForBoss = !searchForBoss;
+        DisposeContextMenu();
+        BlackMarble bm = myGameObject.GetComponent<BlackMarble>();
+        bm.canLocateBosses = searchForBoss;
     }
 }

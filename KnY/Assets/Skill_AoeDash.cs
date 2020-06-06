@@ -73,6 +73,7 @@ class Skill_AoeDash : Skill
     /// </summary>
     public override void SkillCastingPhase(GameObject source)
     {
+        SetAttackParameters(source.GetComponent<Animator>(), Direction.x, Direction.y, 2);
         Rigidbody2D rb = source.GetComponent<Rigidbody2D>();
         rb.velocity = Direction * (source.GetComponent<Statusmanager>().movementSpeed * 4.5f);
         GameObject effect = GameObject.Instantiate(PublicGameResources.GetResource().elusiveDodgeEffect, source.transform.position, Quaternion.identity);
@@ -107,5 +108,6 @@ class Skill_AoeDash : Skill
         damageObject.GetComponent<DamageObject>().SetKnockbackParameters(0.6f, 0.35f);
         sourceStatus.ApplyStatusEffect(new StatusEffect_HiddenSlow(Casttime, 0.65f));
     }
+
 
 }

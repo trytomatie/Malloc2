@@ -11,6 +11,7 @@ public class ItemSeries_Curse : ItemSeries
         this.seriesName = "Curse";
         this.description = "Increases all DoT damage by 50%";
         this.conditionsNeeded = 3;
+        this.image = ItemIcons.GetSeriesIcon(id);
     }
     public override void ApplyEffect(GameObject g)
     {

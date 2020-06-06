@@ -18,6 +18,7 @@ public class Item
     public string attribute = "None";
     public Inventory owner = null;
     public int position = 0;
+    public float effectMutliplier = 1;
     public List<ItemSeries.Series> series = new List<ItemSeries.Series>();
 
     private static System.Random rnd = new System.Random();
@@ -42,7 +43,8 @@ public class Item
         Item_MightCrystal = 11,
         Item_Affliction = 20,
         Item_InheritedArmor = 22,
-        Item_DivineClockwork = 24
+        Item_DivineClockwork = 24,
+        Item_RejuvinationFairy = 29
     }
     public enum RareItems
     {
@@ -87,6 +89,12 @@ public class Item
     {
         RemoveEffect(g);
         stacks+= otherItem.stacks;
+        ApplyEffect(g);
+    }
+
+    public virtual void RefreshEffect(GameObject g)
+    {
+        RemoveEffect(g);
         ApplyEffect(g);
     }
 
@@ -219,6 +227,9 @@ public class Item
                 return item;
             case 28:
                 item = new Item_CompassionateProminence();
+                return item;
+            case 29:
+                item = new Item_RejuvinationFairy();
                 return item;
             default:
                 return null;

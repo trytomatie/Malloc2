@@ -8,7 +8,6 @@ public class GenericFollowerAI : BaseEnemyAI
 {
 
     public Transform bodyTransform;
-    public Animator[] attackingAnimators;
     public GameObject followTarget;
     public float leachRange;
 	
@@ -92,6 +91,10 @@ public class GenericFollowerAI : BaseEnemyAI
                 MoveToPlayer(); // Good old stalker movement
                 break;
             case Mode.AttackPrep:
+                foreach (Animator a in attackingAnimators)
+                {
+                    a.SetInteger("AnimationState", 2);
+                }
                 PathFindingActive(false);  // not gonna move
                 PrepareForAttack(0.5f); // preparing my attack
                 break;
@@ -100,6 +103,10 @@ public class GenericFollowerAI : BaseEnemyAI
                 hop(direction, 0.5f, 0.6f); // I'm just gonna... do some hops if you don't mind
                 break;
             case Mode.Attack:
+                foreach (Animator a in attackingAnimators)
+                {
+                    a.SetInteger("AnimationState", 3);
+                }
                 JumpAttack(1.2f); // CHAAAAARGE!
                 break;
             case Mode.Ftarget_PathfinderFollow:

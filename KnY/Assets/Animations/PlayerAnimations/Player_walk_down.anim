@@ -4,7 +4,8 @@
 AnimationClip:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Player_walk_down
   serializedVersion: 6
   m_Legacy: 0
@@ -20,25 +21,25 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: 3ad7adff0ab692f498b012ece6fab069, type: 3}
-    - time: 0.083333336
+    - time: 0.1
       value: {fileID: 21300000, guid: 5a941cfbc70f6a14bb4104c3cd51057b, type: 3}
-    - time: 0.16666667
+    - time: 0.2
       value: {fileID: 21300000, guid: 353909675fc8e2b4ea0b6be279acf8e5, type: 3}
-    - time: 0.25
+    - time: 0.3
       value: {fileID: 21300000, guid: 1554eb6938db74643b6ed23cda43df0c, type: 3}
-    - time: 0.33333334
+    - time: 0.4
       value: {fileID: 21300000, guid: fa9c4236ade62d141af92578a7673a5f, type: 3}
-    - time: 0.41666666
-      value: {fileID: 21300000, guid: 183f30bad59906c4ebf0e1373dd923e2, type: 3}
     - time: 0.5
+      value: {fileID: 21300000, guid: 183f30bad59906c4ebf0e1373dd923e2, type: 3}
+    - time: 0.6
       value: {fileID: 21300000, guid: 4f0f0d43518d4604197d64449d1f6754, type: 3}
-    - time: 0.5833333
+    - time: 0.7
       value: {fileID: 21300000, guid: 959b24f355951504d884e633cbdd6f76, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 12
+  m_SampleRate: 10
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -66,7 +67,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.6666666
+    m_StopTime: 0.8
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -85,5 +86,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_GenerateMotionCurves: 0
   m_Events: []

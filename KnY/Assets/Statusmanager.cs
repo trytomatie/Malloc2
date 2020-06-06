@@ -69,10 +69,18 @@ public class Statusmanager : MonoBehaviour {
     public float uiHeigthOffset = 0.16f;
     private UI_MiniHpBarManager myHpBar;
 
+    private Color normalColor = new Color(0, 0, 0, 0);
+    [ColorUsage(true,true)]
+    private Color hurtColor1 = new Color(0.6f,0,0,1);
+    [ColorUsage(true, true)]
+    private Color hurtColor2 = new Color(0,0,0,1);
+    [ColorUsage(true, true)]
+    private Color hurtColor3 = new Color(1.15f, 1.15f, 1.15f, 1);
+
     // Use this for initialization
     void Start () {
-        
-        switch(faction)
+
+        switch (faction)
         {
             case Faction.PlayerFaction:
                 playerFactionEntities.Add(gameObject);
@@ -286,6 +294,7 @@ public class Statusmanager : MonoBehaviour {
         { 
             Hp -= damage;
         }
+        StartCoroutine(damageTakenAnimation());
         foreach (Animator anim in anims)
         {
             anim.SetBool("Hurt", true);
@@ -296,6 +305,22 @@ public class Statusmanager : MonoBehaviour {
             color = Color.red;
         }
         Director.GetInstance().SpawnDamageText(damage.ToString(), transform, color, crit);
+    }
+
+    IEnumerator damageTakenAnimation()
+    {
+        float delay = 0.04f;
+
+        Material myMaterial = GetComponent<SpriteRenderer>().material;
+        myMaterial.SetFloat("_isVisible", 0);
+        myMaterial.SetColor("_hurtColor", hurtColor1);
+        yield return new WaitForSeconds(delay);
+        myMaterial.SetColor("_hurtColor", hurtColor3);
+        yield return new WaitForSeconds(delay);
+        myMaterial.SetColor("_hurtColor", hurtColor1);
+        yield return new WaitForSeconds(delay);
+        myMaterial.SetColor("_hurtColor", normalColor);
+        myMaterial.SetFloat("_isVisible", 1);
     }
 
     public void ApplyOnDamageEffects()
@@ -334,7 +359,7 @@ public class Statusmanager : MonoBehaviour {
         BaseAttackDamage += baseAttackDamageGrowth;
         CallculateAttackDamage();
         long prevMaxExperinece = maxExperience;
-        maxExperience = (int)(maxExperience * 1.05f);
+        maxExperience = (int)(50 * Mathf.Pow((1.55f), (level-1)));
         Experinece -= maxExperience;
 
     }
@@ -520,7 +545,8 @@ public class Statusmanager : MonoBehaviour {
 
         set
         {
-            if(value < 0)
+            barrier = value;
+            if (value < 0)
             {
                 value = 0;
             }
@@ -528,7 +554,6 @@ public class Statusmanager : MonoBehaviour {
             {
                 UI_ResourceManager.UpdateUI(); // fix that sometime??? // Later Note: What's the problem // Even Later Note: Maybe check for PlayerController you dumbass? // Even Laterer Note: checking name is faster?
             }
-            barrier = value;
         }
     }
 

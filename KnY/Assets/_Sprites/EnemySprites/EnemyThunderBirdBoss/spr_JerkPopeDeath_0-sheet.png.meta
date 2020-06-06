@@ -1,0 +1,1508 @@
+fileFormatVersion: 2
+guid: 13cc4a878235d6944af37cb76106d8c9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3234288784071851281
+    second: spr_JerkPopeDeath_0-sheet_0
+  - first:
+      213: -6931193285274654852
+    second: spr_JerkPopeDeath_0-sheet_1
+  - first:
+      213: -2763103300843488411
+    second: spr_JerkPopeDeath_0-sheet_2
+  - first:
+      213: -3064339516551204139
+    second: spr_JerkPopeDeath_0-sheet_3
+  - first:
+      213: 3692697995433158887
+    second: spr_JerkPopeDeath_0-sheet_4
+  - first:
+      213: -3079602053641084183
+    second: spr_JerkPopeDeath_0-sheet_5
+  - first:
+      213: 2572609560430651495
+    second: spr_JerkPopeDeath_0-sheet_6
+  - first:
+      213: -8263633669305554147
+    second: spr_JerkPopeDeath_0-sheet_7
+  - first:
+      213: -2197668351433824798
+    second: spr_JerkPopeDeath_0-sheet_8
+  - first:
+      213: 2346290793820549656
+    second: spr_JerkPopeDeath_0-sheet_9
+  - first:
+      213: 9217664754563560759
+    second: spr_JerkPopeDeath_0-sheet_10
+  - first:
+      213: 6021096502805432903
+    second: spr_JerkPopeDeath_0-sheet_11
+  - first:
+      213: -6612962834825610653
+    second: spr_JerkPopeDeath_0-sheet_12
+  - first:
+      213: 5176068208064396042
+    second: spr_JerkPopeDeath_0-sheet_13
+  - first:
+      213: 1279631062122551794
+    second: spr_JerkPopeDeath_0-sheet_14
+  - first:
+      213: -7277144764861570135
+    second: spr_JerkPopeDeath_0-sheet_15
+  - first:
+      213: 8924059570470727522
+    second: spr_JerkPopeDeath_0-sheet_16
+  - first:
+      213: 4459078599535243280
+    second: spr_JerkPopeDeath_0-sheet_17
+  - first:
+      213: -3224858385954112034
+    second: spr_JerkPopeDeath_0-sheet_18
+  - first:
+      213: 3964543144325273414
+    second: spr_JerkPopeDeath_0-sheet_19
+  - first:
+      213: -1646870060589245301
+    second: spr_JerkPopeDeath_0-sheet_20
+  - first:
+      213: -5932255334497427772
+    second: spr_JerkPopeDeath_0-sheet_21
+  - first:
+      213: 8382608831449517359
+    second: spr_JerkPopeDeath_0-sheet_22
+  - first:
+      213: 710048148291393504
+    second: spr_JerkPopeDeath_0-sheet_23
+  - first:
+      213: -8875623837933126346
+    second: spr_JerkPopeDeath_0-sheet_24
+  - first:
+      213: 1270236811920011432
+    second: spr_JerkPopeDeath_0-sheet_25
+  - first:
+      213: -3176412963855854945
+    second: spr_JerkPopeDeath_0-sheet_26
+  - first:
+      213: -2822998281899438389
+    second: spr_JerkPopeDeath_0-sheet_27
+  - first:
+      213: -8588933328440486460
+    second: spr_JerkPopeDeath_0-sheet_28
+  - first:
+      213: 6420674965778539423
+    second: spr_JerkPopeDeath_0-sheet_29
+  - first:
+      213: 2561158286442731310
+    second: spr_JerkPopeDeath_0-sheet_30
+  - first:
+      213: -5845528344937852226
+    second: spr_JerkPopeDeath_0-sheet_31
+  - first:
+      213: -8529099380502924433
+    second: spr_JerkPopeDeath_0-sheet_32
+  - first:
+      213: -641661973860065567
+    second: spr_JerkPopeDeath_0-sheet_33
+  - first:
+      213: 1034154612329266715
+    second: spr_JerkPopeDeath_0-sheet_34
+  - first:
+      213: -4620877927067023036
+    second: spr_JerkPopeDeath_0-sheet_35
+  - first:
+      213: -8844264927151639597
+    second: spr_JerkPopeDeath_0-sheet_36
+  - first:
+      213: 3994178176366294273
+    second: spr_JerkPopeDeath_0-sheet_37
+  - first:
+      213: 4142915762871832885
+    second: spr_JerkPopeDeath_0-sheet_38
+  - first:
+      213: -8205235819364555742
+    second: spr_JerkPopeDeath_0-sheet_39
+  - first:
+      213: 6841933249065845946
+    second: spr_JerkPopeDeath_0-sheet_40
+  - first:
+      213: -2965937329254976317
+    second: spr_JerkPopeDeath_0-sheet_41
+  - first:
+      213: -2618070342707985681
+    second: spr_JerkPopeDeath_0-sheet_42
+  - first:
+      213: 6651409916264105946
+    second: spr_JerkPopeDeath_0-sheet_43
+  - first:
+      213: 5695880986025485228
+    second: spr_JerkPopeDeath_0-sheet_44
+  - first:
+      213: 6055796056998234348
+    second: spr_JerkPopeDeath_0-sheet_45
+  - first:
+      213: 5227296179629760722
+    second: spr_JerkPopeDeath_0-sheet_46
+  - first:
+      213: 1420417908534628569
+    second: spr_JerkPopeDeath_0-sheet_47
+  - first:
+      213: 6270705346543739574
+    second: spr_JerkPopeDeath_0-sheet_48
+  - first:
+      213: -4136457001217377831
+    second: spr_JerkPopeDeath_0-sheet_49
+  - first:
+      213: 7266756769061213150
+    second: spr_JerkPopeDeath_0-sheet_50
+  - first:
+      213: -7064256275627256273
+    second: spr_JerkPopeDeath_0-sheet_51
+  - first:
+      213: -8834765857262003941
+    second: spr_JerkPopeDeath_0-sheet_52
+  - first:
+      213: -6803267472321327234
+    second: spr_JerkPopeDeath_0-sheet_53
+  - first:
+      213: 3096577028154371821
+    second: spr_JerkPopeDeath_0-sheet_54
+  - first:
+      213: -2589556625072472860
+    second: spr_JerkPopeDeath_0-sheet_55
+  - first:
+      213: -2686653067074390992
+    second: spr_JerkPopeDeath_0-sheet_56
+  - first:
+      213: -1322595100906118252
+    second: spr_JerkPopeDeath_0-sheet_57
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11df1ab538082ec20800000000000000
+      internalID: 3234288784071851281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_1
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c77a1a91e647fcf90800000000000000
+      internalID: -6931193285274654852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56bb38bff2c77a9d0800000000000000
+      internalID: -2763103300843488411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d2f5ccf1774975d0800000000000000
+      internalID: -3064339516551204139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_4
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e8279813491f3330800000000000000
+      internalID: 3692697995433158887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_5
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e2e827af3e0345d0800000000000000
+      internalID: -3079602053641084183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_6
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7682e33d3ceb3b320800000000000000
+      internalID: 2572609560430651495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_7
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1ba51bd5fca15d80800000000000000
+      internalID: -8263633669305554147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_8
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e52ba237405081e0800000000000000
+      internalID: -2197668351433824798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_9
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8127179bb03bf8020800000000000000
+      internalID: 2346290793820549656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_10
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 735366ac149bbef70800000000000000
+      internalID: 9217664754563560759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_11
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74a80104e5b3f8350800000000000000
+      internalID: 6021096502805432903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_12
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36afb55b6590a34a0800000000000000
+      internalID: -6612962834825610653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_13
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0bfeda7c9615d740800000000000000
+      internalID: 5176068208064396042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_14
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f9de55dba922c110800000000000000
+      internalID: 1279631062122551794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_15
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a3255f6463620b90800000000000000
+      internalID: -7277144764861570135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_16
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26f255cc5e0a8db70800000000000000
+      internalID: 8924059570470727522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_17
+      rect:
+        serializedVersion: 2
+        x: 1530
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01038de6c54d1ed30800000000000000
+      internalID: 4459078599535243280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_18
+      rect:
+        serializedVersion: 2
+        x: 1620
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eddf34e42600f33d0800000000000000
+      internalID: -3224858385954112034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_19
+      rect:
+        serializedVersion: 2
+        x: 1710
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 647d7361cf2e40730800000000000000
+      internalID: 3964543144325273414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_20
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8c1a57c7642529e0800000000000000
+      internalID: -1646870060589245301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_21
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ce5d5624356cada0800000000000000
+      internalID: -5932255334497427772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_22
+      rect:
+        serializedVersion: 2
+        x: 1980
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2dc999b152055470800000000000000
+      internalID: 8382608831449517359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_23
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e7155467099ad900800000000000000
+      internalID: 710048148291393504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_24
+      rect:
+        serializedVersion: 2
+        x: 2160
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63db10cf42373d480800000000000000
+      internalID: -8875623837933126346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_25
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a0fd1386a9c0a110800000000000000
+      internalID: 1270236811920011432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_26
+      rect:
+        serializedVersion: 2
+        x: 2340
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f921d6d1d3d1be3d0800000000000000
+      internalID: -3176412963855854945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_27
+      rect:
+        serializedVersion: 2
+        x: 2430
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bce88ddf402b2d8d0800000000000000
+      internalID: -2822998281899438389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_28
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c59ac6d4aafdc880800000000000000
+      internalID: -8588933328440486460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_29
+      rect:
+        serializedVersion: 2
+        x: 2610
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f932979fcd1da1950800000000000000
+      internalID: 6420674965778539423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_30
+      rect:
+        serializedVersion: 2
+        x: 2700
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2797f454ef0b8320800000000000000
+      internalID: 2561158286442731310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_31
+      rect:
+        serializedVersion: 2
+        x: 2790
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb29083f0f280eea0800000000000000
+      internalID: -5845528344937852226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_32
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f637e137d4d82a980800000000000000
+      internalID: -8529099380502924433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_33
+      rect:
+        serializedVersion: 2
+        x: 2970
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eed13e95db5817f0800000000000000
+      internalID: -641661973860065567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_34
+      rect:
+        serializedVersion: 2
+        x: 3060
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1eb7b6042e0a5e00800000000000000
+      internalID: 1034154612329266715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_35
+      rect:
+        serializedVersion: 2
+        x: 3150
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4490abef1085fdfb0800000000000000
+      internalID: -4620877927067023036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_36
+      rect:
+        serializedVersion: 2
+        x: 3240
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d33ead58ebd24580800000000000000
+      internalID: -8844264927151639597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_37
+      rect:
+        serializedVersion: 2
+        x: 3330
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1053eeba3eb2e6730800000000000000
+      internalID: 3994178176366294273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_38
+      rect:
+        serializedVersion: 2
+        x: 3420
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 531975cafe79e7930800000000000000
+      internalID: 4142915762871832885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_39
+      rect:
+        serializedVersion: 2
+        x: 3510
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 224e678de75212e80800000000000000
+      internalID: -8205235819364555742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_40
+      rect:
+        serializedVersion: 2
+        x: 3600
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab401873a0e63fe50800000000000000
+      internalID: 6841933249065845946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_41
+      rect:
+        serializedVersion: 2
+        x: 3690
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c4bfa796bfd6d6d0800000000000000
+      internalID: -2965937329254976317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_42
+      rect:
+        serializedVersion: 2
+        x: 3780
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe2c7e9f4eebaabd0800000000000000
+      internalID: -2618070342707985681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_43
+      rect:
+        serializedVersion: 2
+        x: 3870
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad7ce62041e8e4c50800000000000000
+      internalID: 6651409916264105946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_44
+      rect:
+        serializedVersion: 2
+        x: 3960
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca363f62495db0f40800000000000000
+      internalID: 5695880986025485228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_45
+      rect:
+        serializedVersion: 2
+        x: 4050
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce84799cd628a0450800000000000000
+      internalID: 6055796056998234348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_46
+      rect:
+        serializedVersion: 2
+        x: 4140
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d0a6921e261b8840800000000000000
+      internalID: 5227296179629760722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_47
+      rect:
+        serializedVersion: 2
+        x: 4230
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d05fc6ef8656b310800000000000000
+      internalID: 1420417908534628569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_48
+      rect:
+        serializedVersion: 2
+        x: 4320
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b2e1eff945060750800000000000000
+      internalID: 6270705346543739574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_49
+      rect:
+        serializedVersion: 2
+        x: 4410
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d9b2c5f54a5896c0800000000000000
+      internalID: -4136457001217377831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_50
+      rect:
+        serializedVersion: 2
+        x: 4500
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed31f01d7c4b8d460800000000000000
+      internalID: 7266756769061213150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_51
+      rect:
+        serializedVersion: 2
+        x: 4590
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f26d9e86858b6fd90800000000000000
+      internalID: -7064256275627256273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_52
+      rect:
+        serializedVersion: 2
+        x: 4680
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b19162ce24b946580800000000000000
+      internalID: -8834765857262003941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_53
+      rect:
+        serializedVersion: 2
+        x: 4770
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7f41587740f591a0800000000000000
+      internalID: -6803267472321327234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_54
+      rect:
+        serializedVersion: 2
+        x: 4860
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: deea6c6966049fa20800000000000000
+      internalID: 3096577028154371821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_55
+      rect:
+        serializedVersion: 2
+        x: 4950
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ecbbc438fb001cd0800000000000000
+      internalID: -2589556625072472860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_56
+      rect:
+        serializedVersion: 2
+        x: 5040
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 034315e154717bad0800000000000000
+      internalID: -2686653067074390992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_JerkPopeDeath_0-sheet_57
+      rect:
+        serializedVersion: 2
+        x: 5130
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 493a1dc53c235ade0800000000000000
+      internalID: -1322595100906118252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -66,6 +66,7 @@ public class Inventory : MonoBehaviour {
         {
             series.ApplyEffect(gameObject);
         }
+        
     }
 
     public void CountArtifactItems()
@@ -111,6 +112,8 @@ public class Inventory : MonoBehaviour {
             UI_ArtifactManager.FillInventoryDisplays();
             UI_InventoryManager.ClearInventoryDisplays();
             UI_InventoryManager.FillInventoryDisplays();
+            UI_ItemSeriesManager.ClearItemSeriesDisplays();
+            UI_ItemSeriesManager.FillItemSeriesDisplays();
         }
     }
 }

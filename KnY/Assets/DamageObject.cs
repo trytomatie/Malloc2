@@ -57,6 +57,10 @@ public class DamageObject : MonoBehaviour {
         {
             if(otherStatus.faction != originStatus.faction && !damagedObjects.ContainsKey(otherStatus.gameObject) && !otherStatus.isDead)
             {
+                if(other.gameObject.GetComponent<PlayerController>() == null)
+                {
+                    Camera.main.transform.parent.GetComponent<CameraFollow>().ActivateScreenShake(0.02f,0.03f);
+                }
                 ApplyDamage(other, otherStatus);
             }
         }
@@ -108,8 +112,16 @@ public class DamageObject : MonoBehaviour {
         // Apply Knockback
         if (_applyKnockback)
         {
+
             ApplyKnockbackOnTarget(other);
         }
+        // Apply Bleed Effect
+        float distance = Vector2.Distance(other.transform.position, origin.transform.position);
+
+        Vector2 heading = other.transform.position - origin.transform.position;
+        Vector2 direction = heading / distance;
+        GameObject g = Instantiate(PublicGameResources.GetResource().bloodFx, other.transform.position, Quaternion.identity);
+        g.GetComponent<BloodSplaterEffectMain>().velocity = direction * 5;
         damagedObjects.Add(otherStatus.gameObject, true);
     }
 

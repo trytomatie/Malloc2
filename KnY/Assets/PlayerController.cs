@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
         skills.Add(new Skill_BasicAttack(1, 0.4f, true));
         skills.Add(new Skill_Dodge(0.7f, 0.4f, false));
         skills.Add(new Skill_AoeDash(1f, 0.4f, false));
+        skills.Add(new Skill_ThunderWall(3f, 0.4f,0.25f,20,20, false));
         GetComponent<Inventory>().AddItem(new Item_BlackMarble());
     }
 
@@ -99,13 +100,21 @@ public class PlayerController : MonoBehaviour
         {
             skills[1].ActivateSkill(gameObject, movementDirection, null);
         }
-        if (Input.GetAxis("Attack3") == 1 && skills[2].CooldownTimer <= 0 && skills[2].SpCost <= myStatus.Sp) // Projectile
+        if (Input.GetAxis("Attack3") == 1 && skills[2].CooldownTimer <= 0 && skills[2].SpCost <= myStatus.Sp) // Dash and Sping
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 heading = mousePosition - (Vector2)transform.position;
             float distance = heading.magnitude;
             Vector2 attackDirection = heading / distance;
             skills[2].ActivateSkill(gameObject, attackDirection, null);
+        }
+        if (Input.GetAxis("Attack4") == 1 && skills[3].CooldownTimer <= 0 && skills[3].SpCost <= myStatus.Sp) // Test
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 heading = mousePosition - (Vector2)transform.position;
+            float distance = heading.magnitude;
+            Vector2 attackDirection = heading / distance;
+            skills[3].ActivateSkill(gameObject, attackDirection, null);
         }
     }
 
