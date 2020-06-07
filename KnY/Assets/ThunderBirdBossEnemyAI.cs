@@ -116,7 +116,7 @@ public class ThunderBirdBossEnemyAI : BaseEnemyAI
                     {
                         foreach (RaycastHit2D hit in raycasthits)
                         {
-                            if (hit.collider.gameObject.layer == 8) // Note: 8 == "MapCollision"
+                            if (hit.collider.gameObject.layer == 8 || hit.collider.gameObject.layer == 11) // Note: 8 == "MapCollision"
                             {
                                 pos = ray.GetPoint(hit.distance - GetComponent<CircleCollider2D>().radius);
                                 break;

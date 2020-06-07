@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Unity.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,9 +12,7 @@ public class MapGenerator : MonoBehaviour
 {
     public Transform mapParent;
     public List<GameObject> chunkTiles = new List<GameObject>();
-    public List<float> likelyhoodTable = new List<float>();
-    [ReadOnly]
-    private int combinedLikelyhood;
+    public ScriptableObject_MapSpawnCard mapSpawnCard;
 
 
     public System.Random seed = new System.Random(1337);
@@ -33,7 +32,7 @@ public class MapGenerator : MonoBehaviour
 
     public Dictionary<Vector2, GameObject> chunkMap = new Dictionary<Vector2, GameObject>(); // Chunks that are generated
     public Dictionary<Vector2, GameObject> exploredChunks = new Dictionary<Vector2, GameObject>(); // The Chunks the player Has visited physicaly
-    public Dictionary<Vector2, bool> tunnelMap = new Dictionary<Vector2, bool>(); // Map of the tunnels where chunks are supposed to be able to spawn
+    public Dictionary<Vector2, int> tunnelMap = new Dictionary<Vector2, int>(); // Map of the tunnels where chunks are supposed to be able to spawn
     public Vector2 currentCameraCoords = new Vector2();
     private float CHUNKSIZE = 4.8f;
 
@@ -81,14 +80,16 @@ public class MapGenerator : MonoBehaviour
     {
         if(!ExploredChunks.ContainsKey(toUnload))
         {
-            ExploredChunks.Add(toUnload,null);
+            if(chunkMap.ContainsKey(toUnload))
+            { 
+                ExploredChunks.Add(toUnload, chunkMap[toUnload]);
+            }
             GameObject.Find("RoomText").GetComponent<Text>().text = "Rooms Explored: " + ExploredChunks.Count;
         }
         for (int x = -2; x <= 2; x++)
         {
             for (int y = -2; y <= 2; y++)
             {
-                yield return new WaitForFixedUpdate();
                 yield return new WaitForFixedUpdate();
                 if (Vector2.Distance(toLoad,toUnload + new Vector2(x,y)) > 1.25f)
                 {
@@ -101,7 +102,6 @@ public class MapGenerator : MonoBehaviour
             for (int y = -1; y <= 1; y++)
             {
                 yield return new WaitForFixedUpdate();
-                yield return new WaitForFixedUpdate();
                 if (Mathf.Abs(x) == Mathf.Abs(y) && x != 0)
                 {
                     continue;
@@ -113,6 +113,7 @@ public class MapGenerator : MonoBehaviour
                 }
             }
         }
+        UI_AncientLabyrnith_Minimap.UpdateMinimap(chunkMap, CurrentCameraCoords);
         AstarPath.active.data.gridGraph.center = currentCameraCoords * CHUNKSIZE;
         AstarPath.active.Scan();
     }
@@ -130,10 +131,6 @@ public class MapGenerator : MonoBehaviour
     {
         tunnelMap = CreateCollisonMap(25, 25,3);
         SetSeeds();
-        foreach(int l in likelyhoodTable)
-        {
-            combinedLikelyhood += l;
-        }
         int x = (int)Mathf.Round((Camera.main.transform.position.x / CHUNKSIZE));
         int y = (int)Mathf.Round((Camera.main.transform.position.y / CHUNKSIZE));
         CurrentCameraCoords = new Vector2(x, y);
@@ -192,6 +189,10 @@ public class MapGenerator : MonoBehaviour
 
     public int GetSeededChunkId(Vector2 coords)
     {
+        if(!tunnelMap.ContainsKey(coords))
+        {
+            return 0;
+        }
         debugMessage += "Likleyhood = ";
         CheckSeedMap(coords);
         int x = 0;
@@ -220,30 +221,53 @@ public class MapGenerator : MonoBehaviour
 
         List<int> compatibleChunks = new List<int>();
         float combinedChanceOfAllCompatibleChunks = 0;
+        ChunkSettings.ChunkType searchedType = ChunkSettings.ChunkType.Standard;
+        switch (tunnelMap[coords])
+        {
+            case 0:
+                searchedType = ChunkSettings.ChunkType.Standard;
+                break;
+            case 1:
+                searchedType = ChunkSettings.ChunkType.Standard;
+                break;
+            case 2:
+                searchedType = ChunkSettings.ChunkType.Treasure;
+                break;
+            case 3:
+                searchedType = ChunkSettings.ChunkType.Boss;
+                break;
+            case 4:
+                searchedType = ChunkSettings.ChunkType.Special;
+                break;
+            case 5:
+                searchedType = ChunkSettings.ChunkType.Spawn;
+                break;
+        }
         for (int o = 0; o < chunkTiles.Count; o++)
         {
             if (chunkTiles[o].GetComponent<ChunkSettings>().CheckOpeningsAvaiable(roomIsUp, roomIsDown, roomIsRight, roomIsLeft))
             {
-                compatibleChunks.Add(o);
-                combinedChanceOfAllCompatibleChunks += likelyhoodTable[o];
+                if (chunkTiles[o].GetComponent<ChunkSettings>().chunkType == searchedType) 
+                {
+                    compatibleChunks.Add(o);
+                    combinedChanceOfAllCompatibleChunks += chunkTiles[o].GetComponent<ChunkSettings>().weight;
+                }
             }
         }
-
-
-        int chunkId = -1; // new System.Random(x + y).Next(0, chunkTiles.Count);
+        int chunkId = -1;
         float likelyHood = new System.Random((x/100) + (y/100)).Next(0, (int)combinedChanceOfAllCompatibleChunks + 1);
-        debugMessage += "Seed:" + x * y + " Chance: " +  likelyHood;
+        debugMessage += "Seed:" + x * y + " Chance: " +  likelyHood  ;
         int i = 0;
-        foreach (int l in likelyhoodTable)
+        foreach(int id in compatibleChunks)
         {
             if (chunkTiles[i].GetComponent<ChunkSettings>().CheckOpeningsAvaiable(roomIsUp, roomIsDown, roomIsRight, roomIsLeft))
             {
-                if (likelyHood <= l)
+                if (likelyHood <= chunkTiles[id].GetComponent<ChunkSettings>().weight)
                 {
-                    chunkId = i;
+                    chunkId = compatibleChunks[i];
                     break;
                 }
-                likelyHood -= l;
+                likelyHood -= chunkTiles[id].GetComponent<ChunkSettings>().weight;
             }
             i++;
         }
@@ -253,6 +277,19 @@ public class MapGenerator : MonoBehaviour
             chunkId = compatibleChunks[new System.Random(x - y).Next(0, compatibleChunks.Count)];
         }
         return chunkId;
+    }
+
+
+    private bool CheckIfListContainsChunk(List<GameObject> chunkList,GameObject chunk)
+    {
+        foreach(GameObject g in chunkList)
+        {
+            if(g.name == chunk.name)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     /// <summary>
@@ -281,6 +318,29 @@ public class MapGenerator : MonoBehaviour
         }
 
         if (tunnelMap.ContainsKey(new Vector2(coords.x, coords.y - 1)))
+        {
+            roomIsDown = true;
+        }
+    }
+
+    private void GetRoomOpeningsNeeded(Vector2 coords, ref bool roomIsUp, ref bool roomIsDown, ref bool roomIsRight, ref bool roomIsLeft,Dictionary<Vector2,int> map)
+    {
+        if (map.ContainsKey(new Vector2(coords.x + 1, coords.y)))
+        {
+            roomIsRight = true;
+        }
+
+        if (map.ContainsKey(new Vector2(coords.x - 1, coords.y)))
+        {
+            roomIsLeft = true;
+        }
+
+        if (map.ContainsKey(new Vector2(coords.x, coords.y + 1)))
+        {
+            roomIsUp = true;
+        }
+
+        if (map.ContainsKey(new Vector2(coords.x, coords.y - 1)))
         {
             roomIsDown = true;
         }
@@ -353,7 +413,7 @@ public class MapGenerator : MonoBehaviour
             {
                 Vector2 vector = new Vector2(sX, sY);
                 if ((sX < x + ignoreRadius && sX > x - ignoreRadius) && (sY < y + ignoreRadius && sY > y - ignoreRadius) || existingMap.ContainsKey(vector) 
-                    || (chunkMap.ContainsKey(vector) && chunkMap[vector].GetComponent<ChunkSettings>() != null && chunkMap[vector].GetComponent<ChunkSettings>().concluded == true) || !tunnelMap.ContainsKey(vector))
+                    || (chunkMap.ContainsKey(vector) && chunkMap[vector].GetComponent<ChunkSettings>() != null && chunkMap[vector].GetComponent<ChunkSettings>().Concluded == true) || !tunnelMap.ContainsKey(vector))
                 {
                     continue;
                 }
@@ -399,9 +459,9 @@ public class MapGenerator : MonoBehaviour
     }
 
 
-    private Dictionary<Vector2,bool> CreateCollisonMap(int x, int y, int repeats)
+    private Dictionary<Vector2,int> CreateCollisonMap(int x, int y, int repeats)
     {
-        Dictionary<Vector2, bool> chunksEligableForSpawn = new Dictionary<Vector2, bool>();
+        Dictionary<Vector2, int> chunksEligableForSpawn = new Dictionary<Vector2, int>();
         do
         {
             //placeLocations(map.locations, map);
@@ -459,7 +519,7 @@ public class MapGenerator : MonoBehaviour
                     {
                         if (!chunksEligableForSpawn.ContainsKey(new Vector2(currentRow, currentColumn)))
                         {
-                            chunksEligableForSpawn.Add(new Vector2(currentRow, currentColumn), true);
+                            chunksEligableForSpawn.Add(new Vector2(currentRow, currentColumn), 0);
                         }
                         currentRow += (int)randomDirection.x; //add the value from randomDirection to row and col (-1, 0, or 1) to update our location
                         currentColumn += (int)randomDirection.y;
@@ -477,7 +537,76 @@ public class MapGenerator : MonoBehaviour
             repeats--;
         }
         while (repeats > 0);
+        SetUpTunnelMapChunkSpawns(chunksEligableForSpawn, mapSpawnCard);
+
         return chunksEligableForSpawn; 
+    }
+
+    private void SetUpTunnelMapChunkSpawns(Dictionary<Vector2, int> myMap, ScriptableObject_MapSpawnCard map)
+    {
+        int numberOfBossChunks = map.numberOfBossChunks;
+        int numberOfTreasureChunks = map.numberOfTreasureChunks;
+        int numberOfStandardChunks = map.numberOfStandardChunks;
+        int numberOfSpecialChunks = map.numberOfSpecialChunks;
+        bool spawnChunkSet = false;
+        int timeout = 0;
+        while (numberOfBossChunks > 0 && timeout < 1000)
+        {
+            Vector2 v = myMap.ElementAt(seed.Next(0, myMap.Count)).Key;
+            if(myMap[v] == 0)
+            { 
+                bool roomIsUp = false;
+                bool roomIsDown = false;
+                bool roomIsRight = false;
+                bool roomIsLeft = false;
+                GetRoomOpeningsNeeded(v, ref roomIsUp, ref roomIsDown, ref roomIsRight, ref roomIsLeft,myMap);
+                int openings = 0;
+                if (roomIsUp) openings++;
+                if (roomIsDown) openings++;
+                if (roomIsRight) openings++;
+                if (roomIsLeft) openings++;
+                if (openings == 1)
+                {
+                    numberOfBossChunks--;
+                    myMap[v] = 3;
+                    print(v);
+                }
+            }
+            timeout++;
+        }
+        while (spawnChunkSet== false && timeout < 1000)
+        {
+            Vector2 v = myMap.ElementAt(seed.Next(0, myMap.Count)).Key;
+            if (myMap[v] == 0)
+            {
+                myMap[v] = 5;
+                spawnChunkSet = true;
+                GameObject.Find("Player").transform.position = v * CHUNKSIZE;
+                GameObject.Find("Camera Holder").transform.position = v * CHUNKSIZE;
+            }
+        }
+        timeout = 0;
+        while (numberOfTreasureChunks > 0 && timeout < 1000)
+        {
+            Vector2 v = myMap.ElementAt(seed.Next(0, myMap.Count)).Key;
+            if (myMap[v] == 0)
+            {
+                numberOfTreasureChunks--;
+                myMap[v] = 2;
+            }
+            timeout++;
+        }
+        timeout = 0;
+        while (numberOfSpecialChunks > 0 && timeout < 1000)
+        {
+            Vector2 v = myMap.ElementAt(seed.Next(0, myMap.Count)).Key;
+            if (myMap[v] == 0)
+            {
+                numberOfSpecialChunks--;
+                myMap[v] = 4;
+            }
+            timeout++;
+        }
     }
 
     private int[,] CreateArray(int num, int x, int y)
@@ -529,18 +658,5 @@ public class MapGenerator : MonoBehaviour
         seedMap.Add(seed.Next());
         return 0;
     }
-}
-
-
-public class Map
-{
-
-    public int[,] coords;
-    public int xDim;
-    public int yDim;
-    public int[] entryPoint = { 0, 0 };
-    public int[] exitPoint = { 50, 50 };
-
-
 }
 

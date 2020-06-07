@@ -54,7 +54,7 @@ public class Item
     }
     public enum EpicItems
     {
-        Item_BlueMoonStone = 6
+        None = 0
     }
     public enum UniqueItems
     {
@@ -313,7 +313,7 @@ public class Item
     }
     public static int GenerateRandomEpicItemID()
     {
-        EpicItems id = EpicItems.Item_BlueMoonStone;
+        EpicItems id = EpicItems.None;
         Array values = Enum.GetValues(typeof(EpicItems));
         id = (EpicItems)values.GetValue(rnd.Next(values.Length));
         return (int)id;

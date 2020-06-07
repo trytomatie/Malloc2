@@ -21,7 +21,7 @@ TagManager:
   - MapCollision
   - MapObject
   - Player
-  - 
+  - UnpasableMapCollision
   - 
   - 
   - 

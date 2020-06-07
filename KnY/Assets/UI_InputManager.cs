@@ -10,6 +10,7 @@ public class UI_InputManager : MonoBehaviour
     private static UI_InputManager instance;
     public GameObject inventory;
     public GameObject traderInventory;
+    public GameObject infoPopup;
     public static UI_InputManager Instance
     {
         get
@@ -24,7 +25,7 @@ public class UI_InputManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if(Instance == null)
         {
@@ -57,16 +58,21 @@ public class UI_InputManager : MonoBehaviour
         }
         if (Input.GetButtonDown("Escape"))
         {
-                if (!traderInventory.activeSelf)
-                {
-                    //
-                }
-                else
-                {
-                    CloseTraderInventory();
-                }
-                UI_ArtifactDisplayDescriptionPopup.DespawnAllInstances();
-                GameObject.Find("ItemContextMenu").transform.position = new Vector3(10000, 10000, 10000);
+            if (traderInventory.activeSelf)
+            {
+                CloseTraderInventory();
+            }
+            else if(infoPopup.activeSelf)
+            {
+                CloseInfoPopup();
+            }
+            else if(inventory.activeSelf)
+            {
+                CloseInventory();
+            }
+
+            UI_ArtifactDisplayDescriptionPopup.DespawnAllInstances();
+            GameObject.Find("ItemContextMenu").transform.position = new Vector3(10000, 10000, 10000);
         }
 
     }
@@ -77,21 +83,36 @@ public class UI_InputManager : MonoBehaviour
         inventory.SetActive(true);
     }
 
-    private void OpenTraderInventory()
-    {
-        Time.timeScale = 0;
-        traderInventory.SetActive(true);
-    }
-
     private void CloseInventory()
     {
         Time.timeScale = 1;
         inventory.SetActive(false);
     }
 
+
+    private void OpenTraderInventory()
+    {
+        Time.timeScale = 0;
+        traderInventory.SetActive(true);
+    }
+
+
     private void CloseTraderInventory()
     {
         Time.timeScale = 1;
         traderInventory.SetActive(false);
     }
+
+    public void OpenInfoPopup()
+    {
+        Time.timeScale = 0;
+        infoPopup.SetActive(true);
+    }
+
+    private void CloseInfoPopup()
+    {
+        Time.timeScale = 1;
+        infoPopup.SetActive(false);
+    }
+
 }

@@ -88,7 +88,7 @@ public class BlackMarble : MonoBehaviour
                     vFoundChunkId = foundChunkId;
                     if (distance == 0)
                     {
-                        if (mapGenerator.chunkMap[v].GetComponent<ChunkSettings>().concluded)
+                        if (mapGenerator.chunkMap[v].GetComponent<ChunkSettings>().Concluded)
                         {
                             searchObjectList[v] = -1;
                         }

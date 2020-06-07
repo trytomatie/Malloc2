@@ -16,9 +16,8 @@ public class SpawnDirector_Room : MonoBehaviour
     private float timer = 0;
     public MapGenerator mapGenerator;
 
-    private List<GameObject> enemyList = new List<GameObject>();
-    private bool roomCleared = false;
-    private bool firstInstantiation = true;
+    public List<GameObject> enemyList = new List<GameObject>();
+    public bool hasBeenTriggerd = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,32 +31,6 @@ public class SpawnDirector_Room : MonoBehaviour
             Debug.LogWarning("No MobSpawnLocations Defined!");
         }
     }
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        if (timer < 1)
-        {
-            timer += Time.fixedDeltaTime;
-        }
-
-        if (timer >= 1)
-        {
-            TimeSpan timeSinceLastSpawn = DateTime.Now - lastSpawnTime;
-            if (firstInstantiation)
-            {
-                SpawnInteractables();
-                SpawnEnemys();
-                firstInstantiation = false;
-            }
-            if(roomCleared == true && timeSinceLastSpawn.TotalSeconds > 120) 
-            {
-                lastSpawnTime = DateTime.Now;
-                SpawnEnemys();
-                roomCleared = false;
-            }
-            timer = 0;
-        }
-    }
 
     public void SpawnInteractables()
     {
@@ -66,9 +39,19 @@ public class SpawnDirector_Room : MonoBehaviour
 
     public void SpawnEnemys()
     {
-        foreach(Transform spawnLocation in spawnLocations)
+        hasBeenTriggerd = true;
+        foreach (Transform spawnLocation in spawnLocations)
         {
             SpawnRandomMob(spawnLocation);
+        }
+    }
+
+    public void SpawnEnemys(GameObject target)
+    {
+        hasBeenTriggerd = true;
+        foreach (Transform spawnLocation in spawnLocations)
+        {
+            SpawnRandomMob(spawnLocation,target);
         }
     }
 
@@ -83,6 +66,21 @@ public class SpawnDirector_Room : MonoBehaviour
         Transform location = spawnLocation;
         GameObject monster = Instantiate(mob.instance, location.transform.position, Quaternion.identity);
         monster.GetComponent<Statusmanager>().level = level;
-
+        enemyList.Add(monster);
+    }
+    public void SpawnRandomMob(Transform spawnLocation,GameObject target)
+    {
+        MobSpawnAtributes_ScriptableObject mob = null;
+        int i = rnd.Next(0, mobPool.Count);
+        mob = mobPool[i];
+        int level = 1;
+        int exploredChunks = mapGenerator.ExploredChunks.Count;
+        level = Mathf.CeilToInt(exploredChunks / 3);
+        Transform location = spawnLocation;
+        GameObject monster = Instantiate(mob.instance, location.transform.position, Quaternion.identity);
+        monster.GetComponent<Statusmanager>().level = level;
+        monster.GetComponent<BaseEnemyAI>().Target = target;
+        monster.GetComponent<BaseEnemyAI>().mode = BaseEnemyAI.Mode.Ftarget_RegularFollow;
+        enemyList.Add(monster);
     }
 }
