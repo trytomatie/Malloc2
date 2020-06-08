@@ -461,8 +461,9 @@ MonoBehaviour:
   - {fileID: 4901484312855246618, guid: b11ea0fb9eb70724c919384e00cfd489, type: 3}
   - {fileID: 4901484312855246618, guid: cd36fdc708739a94c84a8781c16647cf, type: 3}
   mapSpawnCard: {fileID: 11400000, guid: 29176116c4ba8e44daa439428e981fda, type: 2}
-  debug_GenerateWholeMap: 0
+  debug_GenerateWholeMap: 1
   currentCameraCoords: {x: -1, y: -1}
+  currentFloor: 0
 --- !u!4 &1503752214
 Transform:
   m_ObjectHideFlags: 0
@@ -987,6 +988,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 69185951, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 2021715887}
+    - target: {fileID: 348312883, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 2021715887}
+    - target: {fileID: 942874887, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 2021715887}
+    - target: {fileID: 1051045521, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 2021715887}
+    - target: {fileID: 1670161526, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 2021715887}
+    - target: {fileID: 1915930076, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 2021715887}
     - target: {fileID: 7694051091794994748, guid: 8e7ed1752d676c04abdb20f6920127cb,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1010,7 +1035,7 @@ PrefabInstance:
     - target: {fileID: 7694051092523364345, guid: 8e7ed1752d676c04abdb20f6920127cb,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 90
+      value: 89.99997
       objectReference: {fileID: 0}
     - target: {fileID: 7694051092641456674, guid: 8e7ed1752d676c04abdb20f6920127cb,
         type: 3}
@@ -1135,7 +1160,7 @@ PrefabInstance:
     - target: {fileID: 7694051092885220554, guid: 8e7ed1752d676c04abdb20f6920127cb,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -89.900024
+      value: -89.899994
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}

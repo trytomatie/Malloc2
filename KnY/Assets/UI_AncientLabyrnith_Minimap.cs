@@ -15,8 +15,12 @@ public class UI_AncientLabyrnith_Minimap : MonoBehaviour
     {
         instances.Add(this);
     }
-
-    public static void UpdateMinimap(Dictionary<Vector2, GameObject> chunks,Vector2 playerPos)
+    /// <summary>
+    /// Updates the minimap
+    /// </summary>
+    /// <param name="chunks">chunks that the minimap pulls of</param>
+    /// <param name="playerPos">player position</param>
+    public static void UpdateMinimap(Dictionary<Vector2, GameObject> chunks,Vector2 playerPos, Dictionary<Vector2, GameObject> exploredChunks)
     {
         foreach (UI_AncientLabyrnith_Minimap instance in instances)
         {
@@ -27,8 +31,14 @@ public class UI_AncientLabyrnith_Minimap : MonoBehaviour
             instance.minimap.Clear();
             foreach (Vector2 v in chunks.Keys)
             {
+                Color mapColor = new Color32(171, 171, 171, 255);
+                if (exploredChunks.ContainsKey(v))
+                {
+                    mapColor = new Color32(211, 211, 211, 255);
+                }
                 GameObject g = Instantiate(instance.minimapDisplayInstantiationTarget, instance.minmapParent);
                 g.GetComponent<RectTransform>().anchoredPosition = v *32f - playerPos *32f;
+                g.GetComponent<Image>().color = mapColor;
                 ChunkSettings chunksSettings = chunks[v].GetComponent<ChunkSettings>();
                 if (chunksSettings.adjustedExits[0])
                 {
@@ -69,6 +79,10 @@ public class UI_AncientLabyrnith_Minimap : MonoBehaviour
                             break;
 
                     }
+                }
+                for(int i = 0; i < g.transform.childCount;i++) // Color all childen
+                {
+                    g.transform.GetChild(i).GetComponent<Image>().color = mapColor;
                 }
                 instance.minimap.Add(g);
             }

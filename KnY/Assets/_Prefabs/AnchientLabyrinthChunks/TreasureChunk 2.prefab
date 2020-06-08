@@ -401,7 +401,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -4735,7 +4735,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths: []
@@ -5148,7 +5148,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:
@@ -31963,6 +31963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chunkType: 2
+  concluded: 0
   upIsOpen: 0
   downIsOpen: 1
   rightIsOpen: 1
@@ -31975,7 +31976,7 @@ MonoBehaviour:
   - {fileID: 5298061341106560167}
   - {fileID: 482920208870070347}
   - {fileID: 4021375932860474376}
-  weight: 100
+  weight: 300
 --- !u!156049354 &180826991303212133
 Grid:
   m_ObjectHideFlags: 0
@@ -32003,7 +32004,6 @@ MonoBehaviour:
   onTriggerAction:
     m_PersistentCalls:
       m_Calls: []
-  mySpawnDirector: {fileID: 0}
   barrier: {fileID: 1532040108387287648}
   isTriggerd: 0
   goThatTriggeredMe: {fileID: 0}
@@ -33098,7 +33098,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_GeometryType: 0
+  m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
   m_ColliderPaths:

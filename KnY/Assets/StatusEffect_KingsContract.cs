@@ -14,7 +14,6 @@ public class StatusEffect_KingsContract : StatusEffect {
         this.type = Type.Buff;
         this.duration = 36000;
         this.stackSize += (int)(seconds / 60);
-        Debug.Log(stackSize);
     }
 
     public override void ApplyEffect(GameObject g)

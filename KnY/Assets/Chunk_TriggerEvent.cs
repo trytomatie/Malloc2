@@ -7,13 +7,30 @@ using UnityEngine.Tilemaps;
 public class Chunk_TriggerEvent : MonoBehaviour
 {
     public UnityEvent onTriggerAction;
-    public SpawnDirector_Room mySpawnDirector;
+    private SpawnDirector_Room mySpawnDirector;
     public GameObject barrier;
     public bool isTriggerd = false;
     public GameObject goThatTriggeredMe;
+
+    public SpawnDirector_Room MySpawnDirector
+    {
+        get
+        {
+            if(mySpawnDirector == null)
+            {
+                mySpawnDirector = GetComponent<SpawnDirector_Room>();
+            }
+            return mySpawnDirector;
+        }
+
+        set
+        {
+            mySpawnDirector = value;
+        }
+    }
+
     private void Start()
     {
-        mySpawnDirector = GetComponent<SpawnDirector_Room>();
         DisableBarrier();
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -29,7 +46,7 @@ public class Chunk_TriggerEvent : MonoBehaviour
 
     public void SpawnMobs()
     {
-        mySpawnDirector.SpawnEnemys(goThatTriggeredMe);
+        MySpawnDirector.SpawnEnemys(goThatTriggeredMe);
     }
 
     public void EnableBarrier()

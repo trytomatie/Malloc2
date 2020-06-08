@@ -35,7 +35,7 @@ public class MapGenerator : MonoBehaviour
     public Dictionary<Vector2, int> tunnelMap = new Dictionary<Vector2, int>(); // Map of the tunnels where chunks are supposed to be able to spawn
     public Vector2 currentCameraCoords = new Vector2();
     private float CHUNKSIZE = 4.8f;
-
+    public int currentFloor = 0;
 
 
     public Vector2 CurrentCameraCoords
@@ -113,7 +113,7 @@ public class MapGenerator : MonoBehaviour
                 }
             }
         }
-        UI_AncientLabyrnith_Minimap.UpdateMinimap(chunkMap, CurrentCameraCoords);
+        UI_AncientLabyrnith_Minimap.UpdateMinimap(chunkMap, CurrentCameraCoords,exploredChunks);
         AstarPath.active.data.gridGraph.center = currentCameraCoords * CHUNKSIZE;
         AstarPath.active.Scan();
     }
@@ -129,18 +129,32 @@ public class MapGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        tunnelMap = CreateCollisonMap(25, 25,3);
         SetSeeds();
         int x = (int)Mathf.Round((Camera.main.transform.position.x / CHUNKSIZE));
         int y = (int)Mathf.Round((Camera.main.transform.position.y / CHUNKSIZE));
         CurrentCameraCoords = new Vector2(x, y);
-        GetClosestChunk(4, 2,0);
-        if(debug_GenerateWholeMap)
+        GenerateNewMap();
+    }
+
+    public void GenerateNewMap()
+    {
+        foreach(GameObject chunk in chunkMap.Values)
         {
-            foreach(Vector2 v in tunnelMap.Keys)
+            Destroy(chunk);
+        }
+        chunkMap = new Dictionary<Vector2, GameObject>();
+        exploredChunks = new Dictionary<Vector2, GameObject>();
+        tunnelMap = new Dictionary<Vector2, int>();
+        tunnelMap = CreateCollisonMap(25, 25, 3);
+        currentFloor++;
+        UI_TitleManager.Show("Ancient Labyrinth", "Floor " + currentFloor, 4f);
+        if (debug_GenerateWholeMap)
+        {
+            foreach (Vector2 v in tunnelMap.Keys)
             {
                 GenerateNewChunk(v, GetSeededChunkId(v));
             }
+            UI_AncientLabyrnith_Minimap.UpdateMinimap(chunkMap, CurrentCameraCoords, exploredChunks);
         }
     }
 
@@ -155,6 +169,10 @@ public class MapGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.N))
+        {
+            GenerateNewMap();
+        }
         int x = (int) Mathf.Round((Camera.main.transform.position.x / CHUNKSIZE));
         int y = (int)Mathf.Round((Camera.main.transform.position.y / CHUNKSIZE));
         CurrentCameraCoords = new Vector2(x, y);

@@ -12,6 +12,7 @@ public class UI_InventoryDropHandler : MonoBehaviour, IDropHandler
     public bool allowsNonArtifactItems = false;
     public void OnDrop(PointerEventData eventData)
     {
+        print("test");
         if(UI_InventoryDragHandler.currentlyDragging != null)
         {
             if(gameObject.transform.childCount > 0)

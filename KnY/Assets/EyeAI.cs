@@ -8,7 +8,6 @@ public class EyeAI : BaseEnemyAI
 {
 
     public Transform bodyTransform;
-    public Animator[] attackingAnimators;
 
     public Transform attackTarget;
 

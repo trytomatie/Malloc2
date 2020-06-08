@@ -28147,6 +28147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chunkType: 2
+  concluded: 0
   upIsOpen: 1
   downIsOpen: 1
   rightIsOpen: 1
@@ -28159,7 +28160,7 @@ MonoBehaviour:
   - {fileID: 5298061341106560167}
   - {fileID: 482920208870070347}
   - {fileID: 4021375932860474376}
-  weight: 100
+  weight: 300
 --- !u!156049354 &180826991303212133
 Grid:
   m_ObjectHideFlags: 0
@@ -28205,7 +28206,6 @@ MonoBehaviour:
   onTriggerAction:
     m_PersistentCalls:
       m_Calls: []
-  mySpawnDirector: {fileID: 0}
   barrier: {fileID: 5383470164105045439}
   isTriggerd: 0
   goThatTriggeredMe: {fileID: 0}

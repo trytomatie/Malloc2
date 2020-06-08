@@ -107,28 +107,32 @@ public class ThunderBirdBossEnemyAI : BaseEnemyAI
             case Mode.Attack:
                 if (skills[2].CooldownTimer <= 0)
                 {
+                    Vector2 offset = GetComponent<CircleCollider2D>().offset;
                     Vector2 pos = Vector2.zero;
-                    Vector2 rndDir = new Vector2(UnityEngine.Random.Range(-1, 1), UnityEngine.Random.Range(-1, 1));
+                    Vector2 rndDir = new Vector2(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
+                    float maxDistance = UnityEngine.Random.Range(0f, 3f);
                     Ray2D ray = new Ray2D(target.transform.position, rndDir);
-                    RaycastHit2D[] raycasthits = Physics2D.RaycastAll(target.transform.position, (Vector2)target.transform.position + rndDir,2f);
-                    pos = ray.GetPoint(2f - GetComponent<CircleCollider2D>().radius);
+                    RaycastHit2D[] raycasthits = Physics2D.RaycastAll(target.transform.position, rndDir, maxDistance);
+                    Debug.DrawLine(target.transform.position, ray.GetPoint(maxDistance), Color.red,2f);
+                    pos = ray.GetPoint(maxDistance - GetComponent<CircleCollider2D>().radius * 2);
                     if (raycasthits.Length > 0)
                     {
                         foreach (RaycastHit2D hit in raycasthits)
                         {
+                            print(hit.collider.gameObject);
                             if (hit.collider.gameObject.layer == 8 || hit.collider.gameObject.layer == 11) // Note: 8 == "MapCollision"
                             {
-                                pos = ray.GetPoint(hit.distance - GetComponent<CircleCollider2D>().radius);
+                                print(hit.distance);
+                                pos = ray.GetPoint(hit.distance - GetComponent<CircleCollider2D>().radius * 2);
                                 break;
                             }
                         }
                     }
-                    print(pos);
                     foreach (Animator a in attackingAnimators)
                     {
                         a.SetInteger("AnimationState", 2);
                     }
-                    skills[2].ActivateSkill(gameObject, pos, null);
+                    skills[2].ActivateSkill(gameObject, pos - offset, null);
                     internalAttackCooldownTimer = internalAttackCooldown-1;
                     mode = Mode.IdleAfterAttack;
                     break;

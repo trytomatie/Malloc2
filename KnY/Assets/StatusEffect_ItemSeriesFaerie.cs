@@ -42,7 +42,7 @@ public class StatusEffect_ItemSeriesFaerie : StatusEffect {
             {
                 if (item.series.Contains(ItemSeries.Series.Faerie))
                 {
-                    item.effectMutliplier = faerieArtifactMultiplier;
+                    item.effectMutliplier = 1;
                     item.RefreshEffect(g);
                 }
             }

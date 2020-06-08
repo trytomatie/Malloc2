@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Animator Class that Destroys the gameobject if it enters the state it is attached to
+/// </summary>
 public class Animator_DestroyOnStateEnter : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state

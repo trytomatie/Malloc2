@@ -13,14 +13,17 @@ public class UI_TitleManager : MonoBehaviour
 
     public Text levelName;
     public Text levelDescription;
+
+    private static List<UI_TitleManager> instances = new List<UI_TitleManager>();
     // Start is called before the first frame update
     void Start()
     {
+        instances.RemoveAll(item => item == null);
+        instances.Add(this);
         foreach (Material material in materials)
         {
             material.SetFloat("_Fade", 0);
         }
-        print("Showing Level Title");
         Show(3);
     }
     
@@ -60,11 +63,11 @@ public class UI_TitleManager : MonoBehaviour
         mod = 1;
     }
 
-    public void Show(float durration)
+    public void Show(float duration)
     {
         animate = true;
         fade = 0;
-        timer = durration;
+        timer = duration;
         mod = 1;
     }
 
@@ -79,5 +82,18 @@ public class UI_TitleManager : MonoBehaviour
     {
         levelName.text = name;
         levelDescription.text = description;
+    }
+
+    public static void Show(string title, string desc, float duration)
+    {
+        foreach(UI_TitleManager instance in instances)
+        {
+            instance.levelName.text = title;
+            instance.levelDescription.text = desc;
+            instance.animate = true;
+            instance.fade = 0;
+            instance.timer = duration;
+            instance.mod = 1;
+        }
     }
 }
