@@ -50,7 +50,7 @@ public class BlackMarble : MonoBehaviour
         direction = PublicGameResources.CalculateNormalizedDirection(myPos, GetClosestTarget());
     }
 
-    public Vector2 GetClosestTarget()
+    public Vector2 GetClosestTarget() // Depricated, skip that shit
     {
         float distance = 100000;
         Vector2 target = transform.position;
@@ -149,7 +149,7 @@ public class BlackMarble : MonoBehaviour
             return pDirection;
         }
         GameObject searchTarget = null;
-        foreach(ThunderBirdBossEnemyAI g in GameObject.FindObjectsOfType<ThunderBirdBossEnemyAI>())
+        foreach(AI_ThunderBirdBossEnemy g in GameObject.FindObjectsOfType<AI_ThunderBirdBossEnemy>())
         {
             if(g.GetComponent<Statusmanager>().Hp > 0)
             { 

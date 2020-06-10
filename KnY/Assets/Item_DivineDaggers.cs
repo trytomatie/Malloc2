@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item_DivineDaggers : Item {
 
-    public float attackSpeed = 8f;
+    public float attackSpeed = 12f;
     public Item_DivineDaggers()
     {
         this.itemId = 23;

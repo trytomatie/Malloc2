@@ -7,9 +7,9 @@ public class ItemSeries
 {
     public int id;
     public string seriesName;
-    public string description;
+    public List<string> description = new List<string>();
     public int totalConditionsMet = 0;
-    public int conditionsNeeded = 1;
+    public int[] conditionsNeeded = new int[1];
     public bool isActive = false;
     public Sprite image;
     public enum Series
@@ -19,7 +19,8 @@ public class ItemSeries
         Divine = 2,
         Inheritance = 3,
         Faerie = 4,
-        Royal = 5
+        Royal = 5,
+        Scout = 6
     }
 
     public virtual void ApplyEffect(GameObject g)

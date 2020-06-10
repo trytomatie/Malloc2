@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item_TotemOfGrief : Item {
 
-    public float attackSpeedBonus = 20f;
+    public float attackSpeedBonus = 30f;
 
     public Item_TotemOfGrief()
     {

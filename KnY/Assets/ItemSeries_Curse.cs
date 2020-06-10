@@ -9,27 +9,28 @@ public class ItemSeries_Curse : ItemSeries
     {
         this.id = 1;
         this.seriesName = "Curse";
-        this.description = "Increases all DoT damage by 50%";
-        this.conditionsNeeded = 3;
+        this.description.Add("Increases all DoT damage by 50%");
+        this.conditionsNeeded = new int[description.Count];
+        this.conditionsNeeded[0] = 3;
         this.image = ItemIcons.GetSeriesIcon(id);
     }
     public override void ApplyEffect(GameObject g)
     {
-        if(conditionsNeeded <= totalConditionsMet && myEffectRefference == null)
+        if(conditionsNeeded[0] <= totalConditionsMet && myEffectRefference == null)
         {
             myEffectRefference = new StatusEffect_ItemSeriesCurse();
             g.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectRefference);
-            UI_InfoTitleManager.Show("Series Aquired: " + seriesName, description, 3);
+            UI_InfoTitleManager.Show("Series Aquired: " + seriesName, description[0], 3);
         }
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        if (conditionsNeeded > totalConditionsMet)
+        if (conditionsNeeded[0] > totalConditionsMet)
         {
             if (myEffectRefference != null)
             {
-                UI_InfoTitleManager.Show("<Color=red>Series Lost:</color> " + seriesName, description, 3);
+                UI_InfoTitleManager.Show("<Color=red>Series Lost:</color> " + seriesName, description[0], 3);
                 myEffectRefference.duration = 0;
                 myEffectRefference = null;
             }

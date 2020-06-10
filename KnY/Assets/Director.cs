@@ -12,6 +12,7 @@ public class Director : MonoBehaviour {
     public GameObject canvas;
     public GameObject cursor;
     public GameObject miniHpBar;
+    public GameObject groundAoeIndicator;
 
     public float timeScale = 1;
     public System.Random globalRandom;

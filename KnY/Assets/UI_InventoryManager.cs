@@ -12,6 +12,8 @@ public class UI_InventoryManager : MonoBehaviour
     public static Inventory playerInventory;
     public GameObject inventoryDisplayInstantiationTarget;
     public List<GameObject> inventorySlots;
+    public List<GameObject> activeArtifactSlots;
+    public List<GameObject> inactiveArtifactSlots;
     private static List<UI_InventoryManager> instances = new List<UI_InventoryManager>();
 
 
@@ -66,40 +68,70 @@ public class UI_InventoryManager : MonoBehaviour
                 if(!item.artifactItem)
                 {
                     int i = 0;
-                    GameObject firstEmptySlot = null;
                     foreach (GameObject inventorySlot in instance.inventorySlots)
                     {
                         GameObject target = inventorySlot;
                         i++;
-                        if (firstEmptySlot == null && target.transform.childCount == 0)
-                        {
-                            firstEmptySlot = target;
-                        }
-                        if (item.position == i || item.position == 0)
+                        if (item.position == i)
                         { 
-                            if (target.transform.childCount > 0 && item.position == i)
-                            {
-                                target = firstEmptySlot;
-                                item.position = 0;
-                            }
                             if (target != null)
                             {
-                                item.position = i;
-                                GameObject instanceDisplay = Instantiate(instance.inventoryDisplayInstantiationTarget, target.transform);
-                                instanceDisplay.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, -1);
-                                instanceDisplay.GetComponent<Image>().sprite = FindObjectOfType<ItemIcons>().GetIcon(item.itemId);
-                                instanceDisplay.GetComponent<Image>().material = Item.GetItemDescriptionMaterial(item.itemId);
-                                instanceDisplay.GetComponent<UI_ArtifactDisplayOnHover>().item = item;
-                                instanceDisplay.transform.GetChild(0).GetComponent<Text>().text = "x" + item.stacks;
-                                instance.inventoryDisplays.Add(instanceDisplay);
+                                CreateInventoryDisplay(instance, item, i, target);
+                                break;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    int i = 0;
+                    foreach (GameObject inventorySlot in instance.activeArtifactSlots)
+                    {
+                        GameObject target = inventorySlot;
+                        i++;
+                        if (item.position == i)
+                        {
+                            if (target != null)
+                            {
+                                CreateInventoryDisplay(instance, item, i, target);
                                 break;
                             }
                         }
                     }
                 }
             }
+            foreach(Item item in instance.PlayerInventory.inactiveArtifacts)
+            {
+                int i = 0;
+                foreach (GameObject inventorySlot in instance.inactiveArtifactSlots)
+                {
+                    GameObject target = inventorySlot;
+                    i++;
+                    if (item.position == i )
+                    {
+                        if (target != null)
+                        {
+                            CreateInventoryDisplay(instance, item, i, target);
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
+
+    private static void CreateInventoryDisplay(UI_InventoryManager instance, Item item, int i, GameObject target)
+    {
+        item.position = i;
+        GameObject instanceDisplay = Instantiate(instance.inventoryDisplayInstantiationTarget, target.transform);
+        instanceDisplay.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, -1);
+        instanceDisplay.GetComponent<Image>().sprite = FindObjectOfType<ItemIcons>().GetIcon(item.itemId);
+        instanceDisplay.GetComponent<Image>().material = Item.GetItemDescriptionMaterial(item.itemId);
+        instanceDisplay.GetComponent<UI_ArtifactDisplayOnHover>().item = item;
+        instanceDisplay.transform.GetChild(0).GetComponent<Text>().text = "x" + item.stacks;
+        instance.inventoryDisplays.Add(instanceDisplay);
+    }
+
     public Inventory PlayerInventory
     {
         get

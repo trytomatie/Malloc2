@@ -120,10 +120,10 @@ public class Statusmanager : MonoBehaviour {
                 GetComponent<Collider2D>().enabled = false;
                 if (gameObjectThatDamagedMeLast != null)
                 {
-                    if(gameObjectThatDamagedMeLast.GetComponent<GenericFollowerAI>() != null)
+                    if(gameObjectThatDamagedMeLast.GetComponent<AI_GenericFollower>() != null)
                     {
-                        gameObjectThatDamagedMeLast.GetComponent<GenericFollowerAI>().followTarget.GetComponent<Statusmanager>().Mana += Mana;
-                        gameObjectThatDamagedMeLast.GetComponent<GenericFollowerAI>().followTarget.GetComponent<Statusmanager>().Experinece += Experinece;
+                        gameObjectThatDamagedMeLast.GetComponent<AI_GenericFollower>().followTarget.GetComponent<Statusmanager>().Mana += Mana;
+                        gameObjectThatDamagedMeLast.GetComponent<AI_GenericFollower>().followTarget.GetComponent<Statusmanager>().Experinece += Experinece;
                     }
                     else
                     { 
@@ -157,7 +157,7 @@ public class Statusmanager : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if (Hp < maxHp)
+        if (Hp < maxHp && hp > 0)
         {
             hpRegenDecimals += ((healthRegeneration * healthRegenerationPercentage * Time.fixedDeltaTime) / 5);
             if(hpRegenDecimals >= 1)
@@ -508,18 +508,18 @@ public class Statusmanager : MonoBehaviour {
     {
         get
         {
-            toatlMovementSpeed = (movementSpeed - movementSpeedFlatAdjustments) * Mathf.Clamp(movementSpeedMultiplier,0.01f,10f);
+            toatlMovementSpeed = Mathf.Clamp((movementSpeed - movementSpeedFlatAdjustments) * movementSpeedMultiplier,0.01f,10f);
             return toatlMovementSpeed;
         }
 
         set
         {
+            toatlMovementSpeed = value;
             if (GetComponent<AIPath>() != null)
             {
-                GetComponent<AIPath>().maxSpeed = toatlMovementSpeed;
+                GetComponent<AIPath>().maxSpeed = TotalMovementSpeed;
                 GetComponent<AIPath>().maxAcceleration = toatlMovementSpeed * 10;
             }
-            toatlMovementSpeed = value;
         }
     }
 

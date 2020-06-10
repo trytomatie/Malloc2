@@ -21229,7 +21229,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  mySpawnDirector: {fileID: 6828562046308281121}
   barrier: {fileID: 6154274799283360047}
   isTriggerd: 0
   goThatTriggeredMe: {fileID: 0}
@@ -24832,7 +24831,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1187327835
   m_SortingLayer: 1
-  m_SortingOrder: 2727
+  m_SortingOrder: 101
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16

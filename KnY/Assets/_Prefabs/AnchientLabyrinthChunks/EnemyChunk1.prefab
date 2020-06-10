@@ -22989,6 +22989,9 @@ MonoBehaviour:
   mobPool:
   - {fileID: 11400000, guid: a6df44ecb5855d04894d4ce20abe22ec, type: 2}
   - {fileID: 11400000, guid: 7e1569bd09cf1a344810e0fe5a138782, type: 2}
+  - {fileID: 11400000, guid: 36db696b43efa9c44a1c0a1849911416, type: 2}
+  - {fileID: 11400000, guid: 2bd356185308c1a408db4668c0e2a758, type: 2}
+  - {fileID: 11400000, guid: af75f18baed5d7c4aa5f34aae87ee924, type: 2}
   spawnLocations:
   - {fileID: 1594470807478439885}
   - {fileID: 9061418103910106791}
@@ -23013,6 +23016,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d039369cf7f07f43aafb2bdcf25816f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chunkType: 0
+  concluded: 0
   upIsOpen: 1
   downIsOpen: 1
   rightIsOpen: 1
@@ -23064,9 +23069,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  mySpawnDirector: {fileID: 6828562046308281121}
   barrier: {fileID: 6311073465828048194}
   isTriggerd: 0
+  goThatTriggeredMe: {fileID: 0}
 --- !u!61 &-7223312176177378057
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26722,7 +26727,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1187327835
   m_SortingLayer: 1
-  m_SortingOrder: 2727
+  m_SortingOrder: 101
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16

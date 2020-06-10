@@ -3,41 +3,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class UI_InventoryDropHandler : MonoBehaviour, IDropHandler
+public class UI_InventoryDropHandler : MonoBehaviour, IDropHandler, IPointerEnterHandler,IPointerExitHandler
 {
     public bool isPersistent = true;
     public List<Inventory> inventorysThatHavePermission;
     public bool allowsArtifactItems = false;
     public bool allowsNonArtifactItems = false;
+    public bool isInactiveArtifactInventorySlot = false;
     public void OnDrop(PointerEventData eventData)
     {
-        print("test");
         if(UI_InventoryDragHandler.currentlyDragging != null)
         {
-            if(gameObject.transform.childCount > 0)
-            {
-                return;
+            bool permission = false;
+            Item dragItem = UI_InventoryDragHandler.currentlyDragging.GetComponent<UI_ArtifactDisplayOnHover>().item;
+            Item myItem = null;
+            if (gameObject.transform.childCount > 0)
+            { 
+                myItem = gameObject.transform.GetChild(0).gameObject.GetComponent<UI_ArtifactDisplayOnHover>().item;
             }
 
 
-            bool permission = false;
-            GameObject g = UI_InventoryDragHandler.currentlyDragging;
             foreach (Inventory inv in inventorysThatHavePermission)
             {
-                if(g.GetComponent<UI_ArtifactDisplayOnHover>().item.owner == inv)
+                if(dragItem.owner == inv)
                 {
                     permission = true;
                 }
             }
 
+
             if(permission)
             { 
-                if(g.GetComponent<UI_ArtifactDisplayOnHover>().item.artifactItem == true)
+                if(dragItem.artifactItem == true)
                 {
                     permission = allowsArtifactItems;
                 }
-                if (g.GetComponent<UI_ArtifactDisplayOnHover>().item.artifactItem == false)
+                if (dragItem.artifactItem == false)
                 {
                     permission = allowsNonArtifactItems;
                 }
@@ -49,39 +52,83 @@ public class UI_InventoryDropHandler : MonoBehaviour, IDropHandler
                 return;
             }
 
+            if (gameObject.transform.childCount > 0) // do I have an Item attached to me?
+            {
+                if(dragItem.artifactItem == myItem.artifactItem && dragItem.owner == myItem.owner)
+                {
+                    if(((isInactiveArtifactInventorySlot && !UI_InventoryDragHandler.currentlyDragging.transform.parent.GetComponent<UI_InventoryDropHandler>().isInactiveArtifactInventorySlot) 
+                        || (!isInactiveArtifactInventorySlot && UI_InventoryDragHandler.currentlyDragging.transform.parent.GetComponent<UI_InventoryDropHandler>().isInactiveArtifactInventorySlot)) && isPersistent)
+                    { 
+                        if(isInactiveArtifactInventorySlot)
+                        { 
+                            dragItem.owner.GetComponent<Inventory>().SwitchArtifactInInventorys(dragItem, myItem);
+                        }
+                        else
+                        {
+                            dragItem.owner.GetComponent<Inventory>().SwitchArtifactInInventorys(myItem, dragItem);
+                        }
+                    }
+                    else
+                    {
+                        int pos1 = dragItem.position;
+                        dragItem.position = myItem.position;
+                        myItem.position = pos1;
+                    }
+                    UI_InventoryManager.ClearInventoryDisplays();
+                    UI_InventoryManager.FillInventoryDisplays();
+                }
+                return;
+            }
 
-            g.transform.SetParent(gameObject.transform);
+
+
+
+            if (((isInactiveArtifactInventorySlot && !UI_InventoryDragHandler.currentlyDragging.transform.parent.GetComponent<UI_InventoryDropHandler>().isInactiveArtifactInventorySlot)
+                       || (!isInactiveArtifactInventorySlot && UI_InventoryDragHandler.currentlyDragging.transform.parent.GetComponent<UI_InventoryDropHandler>().isInactiveArtifactInventorySlot)) && isPersistent)
+                       // Check if i Transfer an Item from an Inactive Artifact slot, to an Active one / Vice versa
+            {
+                if (isInactiveArtifactInventorySlot)
+                {
+                    dragItem.owner.GetComponent<Inventory>().SwitchArtifactInInventorys(dragItem, true);
+                }
+                else
+                {
+                    dragItem.owner.GetComponent<Inventory>().SwitchArtifactInInventorys(dragItem, false);
+                }
+                UI_InventoryManager.ClearInventoryDisplays();
+                UI_InventoryManager.FillInventoryDisplays();
+            }
+
+
+            UI_InventoryDragHandler.currentlyDragging.transform.SetParent(gameObject.transform);
             gameObject.transform.GetChild(0).transform.localPosition = Vector2.zero;
             if (isPersistent)
             {
                 int i = 0;
-                for (i = 0; i < gameObject.transform.parent.childCount;i++)
+                for (i = 0; i < gameObject.transform.parent.childCount; i++)
                 {
-                    if(gameObject.transform.parent.GetChild(i) == gameObject.transform)
+                    if (gameObject.transform.parent.GetChild(i) == gameObject.transform)
                     {
                         break;
                     }
                 }
-                g.GetComponent<UI_ArtifactDisplayOnHover>().item.position = i+1;
+                dragItem.position = i + 1;
             }
         }
-        if(UI_TraderInventory.instance.gameObject.activeSelf)
+
+        if(UI_TraderInventory.instance != null && UI_TraderInventory.instance.gameObject.activeSelf)
         {
             UI_TraderInventory.instance.UpdateTraderLists();
         }
     }
 
-
-
-    // Start is called before the first frame update
-    void Start()
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        
+        GetComponent<Image>().color = new Color32(255, 255, 255, 255);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPointerExit(PointerEventData eventData)
     {
-        
+        GetComponent<Image>().color = new Color32(255, 255, 255, 110);
     }
 }

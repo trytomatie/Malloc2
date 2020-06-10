@@ -10,9 +10,12 @@ using UnityEngine.UI;
 
 public class MapGenerator : MonoBehaviour
 {
+    private const int BASE_CHESTCOST = 12;
     public Transform mapParent;
     public List<GameObject> chunkTiles = new List<GameObject>();
     public ScriptableObject_MapSpawnCard mapSpawnCard;
+    public List<ScriptableObject_ChestSpawnTable> spawnTable;
+    public List<ScriptableObject_InteractableSpawnCard> manaCrystals;
 
 
     public System.Random seed = new System.Random(1337);
@@ -108,7 +111,7 @@ public class MapGenerator : MonoBehaviour
                 }
                 if(tunnelMap.ContainsKey(toLoad+new Vector2(x,y)))
                 {
-                    print("Chunk loaded");
+                    //print("Chunk loaded");
                     LoadChunk(toLoad + new Vector2(x, y), GetSeededChunkId(toLoad + new Vector2(x, y)) );
                 }
             }
@@ -138,15 +141,20 @@ public class MapGenerator : MonoBehaviour
 
     public void GenerateNewMap()
     {
-        foreach(GameObject chunk in chunkMap.Values)
+        DespawnIteractables();
+
+        foreach (GameObject chunk in chunkMap.Values)
         {
             Destroy(chunk);
         }
         chunkMap = new Dictionary<Vector2, GameObject>();
         exploredChunks = new Dictionary<Vector2, GameObject>();
         tunnelMap = new Dictionary<Vector2, int>();
-        tunnelMap = CreateCollisonMap(25, 25, 3);
+        tunnelMap = CreateCollisonMap(25, 25, mapSpawnCard.numberOfBossChunks + mapSpawnCard.numberOfSpecialChunks + mapSpawnCard.numberOfStandardChunks + mapSpawnCard.numberOfTreasureChunks);
         currentFloor++;
+
+        SetManaCrystalChance();
+
         UI_TitleManager.Show("Ancient Labyrinth", "Floor " + currentFloor, 4f);
         if (debug_GenerateWholeMap)
         {
@@ -155,6 +163,32 @@ public class MapGenerator : MonoBehaviour
                 GenerateNewChunk(v, GetSeededChunkId(v));
             }
             UI_AncientLabyrnith_Minimap.UpdateMinimap(chunkMap, CurrentCameraCoords, exploredChunks);
+        }
+    }
+
+    private static void DespawnIteractables()
+    {
+        foreach (Interactable go in FindObjectsOfType<Interactable>())
+        {
+            Destroy(go.gameObject);
+        }
+    }
+
+    private void SetManaCrystalChance()
+    {
+        if(currentFloor <= spawnTable.Count)
+        { 
+            manaCrystals[0].chanceToSpawn = spawnTable[currentFloor].common;
+            manaCrystals[1].chanceToSpawn = spawnTable[currentFloor].uncommon;
+            manaCrystals[2].chanceToSpawn = spawnTable[currentFloor].rare;
+            manaCrystals[3].chanceToSpawn = spawnTable[currentFloor].epic;
+            manaCrystals[4].chanceToSpawn = spawnTable[currentFloor].legendary;
+
+            manaCrystals[0].cost =  (BASE_CHESTCOST) * currentFloor;
+            manaCrystals[1].cost = (BASE_CHESTCOST * 2) * currentFloor;
+            manaCrystals[2].cost = (int)(BASE_CHESTCOST * 3.5f) * currentFloor;
+            manaCrystals[3].cost = (BASE_CHESTCOST * 5) * currentFloor;
+            manaCrystals[4].cost = (BASE_CHESTCOST * 8) * currentFloor;
         }
     }
 
@@ -477,16 +511,18 @@ public class MapGenerator : MonoBehaviour
     }
 
 
-    private Dictionary<Vector2,int> CreateCollisonMap(int x, int y, int repeats)
+    private Dictionary<Vector2,int> CreateCollisonMap(int x, int y, int minNumberOfRooms)
     {
+        int numberOfRooms = 0;
+        int repeats = 40;
         Dictionary<Vector2, int> chunksEligableForSpawn = new Dictionary<Vector2, int>();
         do
         {
             //placeLocations(map.locations, map);
 
 
-            int maxTunnels = 8; // max number of tunnels possible
-            int maxLength = 4; // max length each tunnel can have
+            int maxTunnels = 2; // max number of tunnels possible
+            int maxLength = 3; // max length each tunnel can have
 
             int currentRow = 0;//(int)Mathf.Floor(Random.Range(15,x-15)); // our current row - start at a random spot
             int currentColumn = 0; //(int)Mathf.Floor(Random.Range(15, y-15)); // our current column - start at a random spot
@@ -504,7 +540,7 @@ public class MapGenerator : MonoBehaviour
                 // and vice versa
                 do
                 {
-                    int rnd = (int)Mathf.Round(seed.Next(-1,2));
+                    int rnd = (int)Mathf.Round(seed.Next(-1, 2));
                     int apply = (int)Mathf.Ceil(seed.Next(-1, 2));
                     if (apply == 0)
                     {
@@ -516,7 +552,7 @@ public class MapGenerator : MonoBehaviour
                     }
                 } while ((randomDirection.x == -lastDirection.x && randomDirection.y == -lastDirection.y) || (randomDirection.x == lastDirection.x && randomDirection.y == lastDirection.y));
 
-                int randomLength = (int)Mathf.Ceil(seed.Next(1,maxLength)); //length the next tunnel will be (max of maxLength)
+                int randomLength = (int)Mathf.Ceil(seed.Next(1, maxLength)); //length the next tunnel will be (max of maxLength)
                 int tunnelLength = 0; //current length of tunnel being created
 
                 // lets loop until our tunnel is long enough or until we hit an edge
@@ -538,6 +574,7 @@ public class MapGenerator : MonoBehaviour
                         if (!chunksEligableForSpawn.ContainsKey(new Vector2(currentRow, currentColumn)))
                         {
                             chunksEligableForSpawn.Add(new Vector2(currentRow, currentColumn), 0);
+                            numberOfRooms++;
                         }
                         currentRow += (int)randomDirection.x; //add the value from randomDirection to row and col (-1, 0, or 1) to update our location
                         currentColumn += (int)randomDirection.y;
@@ -554,7 +591,8 @@ public class MapGenerator : MonoBehaviour
             }
             repeats--;
         }
-        while (repeats > 0);
+        while (repeats > 0 && numberOfRooms < minNumberOfRooms);
+        print(numberOfRooms);
         SetUpTunnelMapChunkSpawns(chunksEligableForSpawn, mapSpawnCard);
 
         return chunksEligableForSpawn; 

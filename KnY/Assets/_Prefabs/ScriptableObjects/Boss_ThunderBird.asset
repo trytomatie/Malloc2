@@ -17,4 +17,4 @@ MonoBehaviour:
     type: 3}
   baseCost: 100
   costPerLevel: 300
-  chanceToSpawn: 100
+  chanceToSpawn: 0

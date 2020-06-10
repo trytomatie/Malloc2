@@ -27,7 +27,11 @@ public class PlayerController : MonoBehaviour
         skills.Add(new Skill_BasicAttack(1, 0.4f, true));
         skills.Add(new Skill_Dodge(0.7f, 0.4f, false));
         skills.Add(new Skill_AoeDash(1f, 0.4f, false));
-        skills.Add(new Skill_ThunderWall(3f, 0.4f,0.25f,20,20, false));
+        skills.Add(new Skill_ThunderStrike(1f, 1.8f,0.25f,3, false));
+        foreach(Skill skill in skills)
+        {
+            skill.Anim = anim;
+        }
         GetComponent<Inventory>().AddItem(new Item_BlackMarble());
     }
 
@@ -114,7 +118,7 @@ public class PlayerController : MonoBehaviour
             Vector2 heading = mousePosition - (Vector2)transform.position;
             float distance = heading.magnitude;
             Vector2 attackDirection = heading / distance;
-            skills[3].ActivateSkill(gameObject, attackDirection, null);
+            skills[3].ActivateSkill(gameObject, mousePosition, null);
         }
     }
 

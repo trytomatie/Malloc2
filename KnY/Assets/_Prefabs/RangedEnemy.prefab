@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3027982253892342044, guid: d7c32b6124bf22a4e99c897a3b3f2632,
+  m_Sprite: {fileID: -7485339953407939490, guid: dae6a6c132a26124f9dc7f47b3f2b554,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -102,7 +102,7 @@ Animator:
   m_GameObject: {fileID: 8276288782881259578}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8a14d33e17f10524999babffaeccde6d, type: 2}
+  m_Controller: {fileID: 9100000, guid: c322d6fd305405f45a26cf9fe6a92a4a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -255,7 +255,7 @@ MonoBehaviour:
   manaGrowth: 4
   healthRegenerationGrowth: 0
   baseAttackDamageGrowth: 20
-  defenceGrwoth: 2
+  defenceGrwoth: 0
   movementSpeedGrowth: 0
   gameObjectThatDamagedMeLast: {fileID: 0}
   uiHeigthOffset: 0.16
@@ -315,9 +315,10 @@ MonoBehaviour:
   mode: 5
   target: {fileID: 0}
   rb: {fileID: 0}
+  attackingAnimators: []
   isAttacking: 0
   aggroRadius: 1.51
-  attackRadius: 2.36
+  attackRadius: 1.79
   attackDelay: 0.65
   attackDelayTimer: 0
   attackCooldown: 1
@@ -333,4 +334,3 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   disableMovement: 0
   bodyTransform: {fileID: 0}
-  attackingAnimators: []

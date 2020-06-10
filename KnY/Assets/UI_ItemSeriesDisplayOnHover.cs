@@ -19,10 +19,28 @@ public class UI_ItemSeriesDisplayOnHover : MonoBehaviour, IPointerEnterHandler, 
     public void OnPointerEnter(PointerEventData eventData)
     {
         mouseEntered = true;
+        string description = "";
+        string color = "<color=white>";
+        string colorEnd = "</color>";
+        int i = 0;
+        foreach(String desc in itemSeries.description)
+        {
+            if(itemSeries.conditionsNeeded[i] <= itemSeries.totalConditionsMet)
+            {
+                color = "<color=white>";
+            }
+            else
+            {
+                color = "<color=grey>";
+            }
+            description += "\n" + color + "(" + itemSeries.conditionsNeeded[i] +") "+ desc + colorEnd;
+            i++;
+        }
         DescriptionDisplay.GetComponent<RectTransform>().localScale = transform.parent.GetComponent<RectTransform>().localScale;
-        DescriptionDisplay.GetComponent<UI_ArtifactDisplayDescriptionPopup>().text.text = itemSeries.seriesName + "\n\n"+ 
-            itemSeries.description;
-        
+        DescriptionDisplay.GetComponent<UI_ArtifactDisplayDescriptionPopup>().text.text = itemSeries.seriesName + "\n" +
+            description;
+
+
     }
 
     public void Update()

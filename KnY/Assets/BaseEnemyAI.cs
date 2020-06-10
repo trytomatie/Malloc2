@@ -294,8 +294,9 @@ public class BaseEnemyAI : MonoBehaviour
     }
     public bool CheckLineOfSight(GameObject customTarget)
     {
-        Vector2 targetDirection = CalculateNormalizedDirection(transform.position, (Vector2)customTarget.transform.position + customTarget.GetComponent<Collider2D>().offset);
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, targetDirection);
+        Vector3 offset = GetComponent<CircleCollider2D>().offset;
+        Vector2 targetDirection = CalculateNormalizedDirection(transform.position + offset, (Vector2)customTarget.transform.position + customTarget.GetComponent<Collider2D>().offset);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position + offset, targetDirection);
         foreach(RaycastHit2D hit in hits)
         {
             if (hit.collider.gameObject.layer == 8) // Note: 8 == "MapCollision"

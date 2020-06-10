@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item_SpeedCrystal : Item {
 
-    public float movementSpeedBonus = 0.05f;
+    public float movementSpeedBonus = 0.08f;
 
     public Item_SpeedCrystal()
     {

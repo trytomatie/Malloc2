@@ -10,34 +10,35 @@ public class ItemSeries_Divine : ItemSeries
     {
         this.id = 2;
         this.seriesName = "Divine";
-        this.description = "Protects you from a leathal blow ONCE and grants you a barrier for 200% of your health for 50 seconds";
-        this.conditionsNeeded = 2;
+        this.description.Add("Protects you from a leathal blow ONCE and grants you a barrier for 200% of your health for 50 seconds");
+        this.conditionsNeeded = new int[description.Count];
+        this.conditionsNeeded[0] = 2;
         this.image = ItemIcons.GetSeriesIcon(id);
     }
     public override void ApplyEffect(GameObject g)
     {
-        if(conditionsNeeded <= totalConditionsMet && myEffectRefference == null)
+        if(conditionsNeeded[0] <= totalConditionsMet && myEffectRefference == null)
         {
             if(extraCondtionMet)
             { 
                 myEffectRefference = new StatusEffect_ItemSeriesDivine();
                 g.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectRefference);
-                UI_InfoTitleManager.Show("Series Aquired: " + seriesName, description, 3);
+                UI_InfoTitleManager.Show("Series Aquired: " + seriesName, description[0], 3);
             }
             else
             {
-                UI_InfoTitleManager.Show("<Color=red>Conditions Lost:</color> " + seriesName, description, 3);
+                UI_InfoTitleManager.Show("<Color=red>Conditions Lost:</color> " + seriesName, description[0], 3);
             }
         }
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        if (conditionsNeeded > totalConditionsMet)
+        if (conditionsNeeded[0] > totalConditionsMet)
         {
             if (myEffectRefference != null)
             {
-                UI_InfoTitleManager.Show("<Color=red>Series Lost:</color> " + seriesName, description, 3);
+                UI_InfoTitleManager.Show("<Color=red>Series Lost:</color> " + seriesName, description[0], 3);
                 myEffectRefference.duration = 0;
                 myEffectRefference = null;
             }

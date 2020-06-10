@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e72e3e5d9363b704dacaa02b66d94522, type: 3}
   m_Name: Map1
   m_EditorClassIdentifier: 
-  numberOfTreasureChunks: 9
-  numberOfStandardChunks: 0
+  numberOfTreasureChunks: 6
+  numberOfStandardChunks: 3
   numberOfBossChunks: 1
   numberOfSpecialChunks: 2

@@ -26,8 +26,8 @@ class Skill_ThunderWall : Skill
         this.delayBetweenStrikes = delayBetweenStrikes;
         this.numberOfStrikes = numberOfStrikes;
         this.halfNumberOfLines = numberOfLines;
-        
     }
+
 
 
     /// <summary>
@@ -44,6 +44,10 @@ class Skill_ThunderWall : Skill
     /// </summary>
     public override void SkillCastingPhase(GameObject source)
     {
+        if(Anim != null)
+        { 
+            Anim.SetInteger("AnimationState", 1);
+        }
         if (!InitialApplication)
         {
 
@@ -52,6 +56,10 @@ class Skill_ThunderWall : Skill
 
     public override void OnCastEnd(GameObject source)
     {
+        if (Anim != null)
+        {
+            Anim.SetInteger("AnimationState", 2);
+        }
         source.GetComponent<Statusmanager>().StartCoroutine(ThunderStrike(source));
     }
 

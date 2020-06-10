@@ -24,7 +24,7 @@ public class AnimatorToggleEnemyBehaivour : StateMachineBehaviour
                 animator.SetInteger("AnimationState", 1);
                 break;
             case BaseEnemyAI.Mode.RegularFollow:
-                animator.SetInteger("AnimationState", 1);
+                animator.SetInteger("AnimationState", 1); 
                 break;
             case BaseEnemyAI.Mode.Attack:
                 break;

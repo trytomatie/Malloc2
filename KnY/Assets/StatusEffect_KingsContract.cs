@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StatusEffect_KingsContract : StatusEffect {
     public float attackDamageMultiplier = 0.05f;
-    public int hpGain = 75;
+    public int hpGain = 45;
     public int stackSize = 1;
     public StatusEffect_KingsContract(int seconds)
     {

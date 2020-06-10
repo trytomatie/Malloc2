@@ -60,7 +60,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 60ff8c7126a4f5a498a7179bd05bf1f2, type: 2}
+  - {fileID: 2100000, guid: 287c586fb372b614992c612c3fe7d106, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -127,6 +127,7 @@ MonoBehaviour:
   mode: 4
   target: {fileID: 0}
   rb: {fileID: 0}
+  attackingAnimators: []
   isAttacking: 0
   aggroRadius: 0.79
   attackRadius: 0.43
@@ -145,7 +146,6 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   disableMovement: 0
   bodyTransform: {fileID: 4099386691832577085}
-  attackingAnimators: []
 --- !u!114 &4099386691832577081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,7 +290,7 @@ MonoBehaviour:
   manaGrowth: 3
   healthRegenerationGrowth: 0
   baseAttackDamageGrowth: 16
-  defenceGrwoth: 1
+  defenceGrwoth: 0
   movementSpeedGrowth: 0.02
   gameObjectThatDamagedMeLast: {fileID: 0}
   uiHeigthOffset: 0.16
@@ -348,5 +348,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items: []
+  inactiveArtifacts: []
   isPlayerInventory: 0
   artifactItemsCount: 0

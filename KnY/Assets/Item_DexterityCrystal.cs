@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item_DexterityCrystal : Item {
 
-    public int bonusSp = 10;
+    public int bonusSp = 20;
 
     public Item_DexterityCrystal()
     {

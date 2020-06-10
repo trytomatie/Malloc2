@@ -335,7 +335,7 @@ MonoBehaviour:
   rotationSpeed: 32400
   slowdownDistance: 0.26
   pickNextWaypointDist: 0.11
-  endReachedDistance: 0.26
+  endReachedDistance: 0.38
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -374,7 +374,7 @@ MonoBehaviour:
   commonGlow: {r: 0, g: 1.5058824, b: 3.9686275, a: 0}
   unCommonGlow: {r: 0.26684493, g: 6.2856836, b: 0.56537, a: 0}
   bossGlow: {r: 8, g: 0, b: 0.07680893, a: 0}
-  commontreasureChunkIds: 02000000
-  uncommontreasureChunkIds: 03000000
+  commontreasureChunkIds: 04000000
+  uncommontreasureChunkIds: 04000000
   chunkIdsThatAreSearched: 
   canLocateBosses: 1

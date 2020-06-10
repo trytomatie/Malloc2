@@ -252,4 +252,5 @@ MonoBehaviour:
   chanceForCommonItem: 0
   chanceForUncommonItem: 90
   chanceForRareItem: 15
-  chanceForEpicItem: 5
+  chanceForEpicItem: 4
+  chanceForLegendaryItem: 0

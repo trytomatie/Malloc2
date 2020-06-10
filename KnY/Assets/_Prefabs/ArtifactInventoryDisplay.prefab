@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4777194516239103189}
   - component: {fileID: 1213060190306112837}
   - component: {fileID: -5457278033372691971}
-  - component: {fileID: 9219568923540126329}
   m_Layer: 5
   m_Name: ArtifactInventoryDisplay
   m_TagString: Untagged
@@ -93,24 +92,15 @@ MonoBehaviour:
     itemId: 0
     itemName: 
     description: 
+    detailedDescription: 
     image: {fileID: 0}
     stacks: 1
     artifactItem: 1
     attribute: None
     owner: {fileID: 0}
     position: 0
---- !u!114 &9219568923540126329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4217920002952486998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 749b56e90a96c0f4c8f3d86cd25c008a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+    effectMutliplier: 1
+    series: 
 --- !u!1 &4952724036840836763
 GameObject:
   m_ObjectHideFlags: 0

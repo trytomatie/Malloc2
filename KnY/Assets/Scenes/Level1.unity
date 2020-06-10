@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -51178,6 +51178,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8003006590031189213, guid: c0401e36f1566484e831d9f83a21a16b,
         type: 3}
+      propertyPath: mobPool.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003006590031189213, guid: c0401e36f1566484e831d9f83a21a16b,
+        type: 3}
       propertyPath: mobSpawnLocations.Array.data[0]
       value: 
       objectReference: {fileID: 482615993}
@@ -51346,6 +51351,29 @@ PrefabInstance:
       propertyPath: interactableSpawnLocations.Array.data[27]
       value: 
       objectReference: {fileID: 1472292979}
+    - target: {fileID: 8003006590031189213, guid: c0401e36f1566484e831d9f83a21a16b,
+        type: 3}
+      propertyPath: mobPool.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2bd356185308c1a408db4668c0e2a758,
+        type: 2}
+    - target: {fileID: 8003006590031189213, guid: c0401e36f1566484e831d9f83a21a16b,
+        type: 3}
+      propertyPath: mobPool.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: af75f18baed5d7c4aa5f34aae87ee924,
+        type: 2}
+    - target: {fileID: 8003006590031189213, guid: c0401e36f1566484e831d9f83a21a16b,
+        type: 3}
+      propertyPath: mobPool.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 36db696b43efa9c44a1c0a1849911416,
+        type: 2}
+    - target: {fileID: 8003006590031189213, guid: c0401e36f1566484e831d9f83a21a16b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8003006590185901124, guid: c0401e36f1566484e831d9f83a21a16b,
         type: 3}
       propertyPath: target
@@ -51394,7 +51422,7 @@ PrefabInstance:
     - target: {fileID: 8003006590185901125, guid: c0401e36f1566484e831d9f83a21a16b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8003006590185901125, guid: c0401e36f1566484e831d9f83a21a16b,
         type: 3}
@@ -52247,6 +52275,10 @@ PrefabInstance:
       propertyPath: inventorysThatHavePermission.Array.data[0]
       value: 
       objectReference: {fileID: 1764811835}
+    - target: {fileID: 970092925, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 983383376, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
       propertyPath: inventorysThatHavePermission.Array.data[0]
       value: 
@@ -52339,6 +52371,216 @@ PrefabInstance:
       propertyPath: inventorysThatHavePermission.Array.data[0]
       value: 
       objectReference: {fileID: 1764811835}
+    - target: {fileID: 53445898797583939, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 67824077644773829, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 104149820136554304, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 231057928673385860, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 382208174241371739, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 867717723389153384, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 1283638191180668436, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 1613583310108161934, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 1830010693017699147, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 1830010693017699147, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: isInactiveArtifactInventorySlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2139006613398906138, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 2139006613398906138, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: isInactiveArtifactInventorySlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2375039846678374700, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 2457415448464257201, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 2746402701893950457, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 2746402701893950457, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: isInactiveArtifactInventorySlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013839700380094633, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 3055719680178604234, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 3055719680178604234, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: isInactiveArtifactInventorySlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3250058776158661099, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 3255578431143294312, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 3427701081295068859, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 3427701081295068859, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: isInactiveArtifactInventorySlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3460984414058051589, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 3460984414058051589, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: isInactiveArtifactInventorySlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3925940295442714415, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 3925940295442714415, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: isInactiveArtifactInventorySlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5395124171705908455, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 5410203757306941466, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 5578118086433603452, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 5630679543174344993, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 5725207948608653570, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 5982741139986092451, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 5982741139986092451, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: isInactiveArtifactInventorySlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6352042198631443379, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 6352042198631443379, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: isInactiveArtifactInventorySlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6400502739231254209, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 6400502739231254209, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: isInactiveArtifactInventorySlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466175838229391768, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 6615351869692773368, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 6616551935750063832, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 7161594860919197818, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
     - target: {fileID: 7694051091794994748, guid: 8e7ed1752d676c04abdb20f6920127cb,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -52348,6 +52590,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694051092523364345, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 89.999985
       objectReference: {fileID: 0}
     - target: {fileID: 7694051092641456674, guid: 8e7ed1752d676c04abdb20f6920127cb,
         type: 3}
@@ -52392,7 +52639,7 @@ PrefabInstance:
     - target: {fileID: 7694051092641456675, guid: 8e7ed1752d676c04abdb20f6920127cb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7694051092641456675, guid: 8e7ed1752d676c04abdb20f6920127cb,
         type: 3}
@@ -52464,6 +52711,86 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7694051092641456679, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694051092885220554, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -89.90001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808060791010863914, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 7828159143826816680, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 7828159143826816680, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: isInactiveArtifactInventorySlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8272738722770429336, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 8382346833907956100, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 8417666150624192010, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 8503820990311828883, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 8503820990311828883, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: isInactiveArtifactInventorySlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8604334608403853444, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 8724119985086824388, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 8724119985086824388, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: isInactiveArtifactInventorySlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8791313710842664072, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
+    - target: {fileID: 8791313710842664072, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: isInactiveArtifactInventorySlot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9080036676295430074, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 1764811835}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
 --- !u!1 &482463000
@@ -54068,7 +54395,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1342573646
 GameObject:
@@ -54412,7 +54739,7 @@ Transform:
   - {fileID: 2101550035}
   - {fileID: 537387993}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1525652460
 GameObject:
@@ -54723,7 +55050,7 @@ PrefabInstance:
     - target: {fileID: 3875135025429602747, guid: a96f9d7d7da4fb642a6c3d9ef641a86f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3875135025429602747, guid: a96f9d7d7da4fb642a6c3d9ef641a86f,
         type: 3}
@@ -54865,7 +55192,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1913728619
 PrefabInstance:

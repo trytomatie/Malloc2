@@ -34,7 +34,8 @@ public class Item
         Item_WitchsHeart = 21,
         Item_DivineDaggers = 23,
         Item_DarkFairy = 26,
-        Item_CompassionateProminence = 28
+        Item_CompassionateProminence = 28,
+        Item_VaingloriousAuthority = 34,
     }
     public enum UncommonItems
     {
@@ -50,15 +51,24 @@ public class Item
     {
         Item_DivineWaters = 25,
         Item_BlueMoonStone = 6,
-        Item_DesireableGreatness = 27
+        Item_DesireableGreatness = 27,
+        Item_ManaSprite = 31,
+
+            
     }
     public enum EpicItems
     {
-        None = 0
+        Item_BigChonkerFairy = 32
+    }
+
+    public enum LegendaryItems
+    {
+        Item_OhLawdHeComin = 33
     }
     public enum UniqueItems
     {
-        Item_BlackMarble = 10
+        Item_BlackMarble = 10,
+        Item_TheProcer = 30
     }
     public enum OtherItems
     {
@@ -101,8 +111,11 @@ public class Item
     public virtual void InstanciateContextMenu()
     {
         ClearContextMenuItems();
-        UnityAction action = new UnityAction(DestroyItem);
-        CreateContextMenuItem("Disenchant Artifact", action);
+        if(owner.GetComponent<PlayerController>() != null)
+        { 
+            UnityAction action = new UnityAction(DestroyItem);
+            CreateContextMenuItem("Disenchant Artifact", action);
+        }
     }
 
     public static void ClearContextMenuItems()
@@ -121,8 +134,8 @@ public class Item
     public void DestroyItem()
     {
         DisposeContextMenu();
-        GameObject.Find("Player").GetComponent<Inventory>().AddItem(GenerateTokens(this));
-        GameObject.Find("Player").GetComponent<Inventory>().RemoveItem(this);
+        owner.GetComponent<Inventory>().AddItem(GenerateTokens(this));
+        owner.GetComponent<Inventory>().RemoveItem(this);
     }
 
     public static void CreateContextMenuItem(String itemText, UnityAction onClick)
@@ -231,6 +244,21 @@ public class Item
             case 29:
                 item = new Item_RejuvinationFairy();
                 return item;
+            case 30:
+                item = new Item_TheProcer();
+                return item;
+            case 31:
+                item = new Item_ManaSprite();
+                return item;
+            case 32:
+                item = new Item_BigChonkerFairy();
+                return item;
+            case 33:
+                item = new Item_OhLawdHeComin();
+                return item;
+            case 34:
+                item = new Item_VaingloriousAuthority();
+                return item;
             default:
                 return null;
         }
@@ -253,6 +281,10 @@ public class Item
             stackSize = 27;
         }
         if (Enum.IsDefined(typeof(EpicItems), item.itemId))
+        {
+            stackSize = 42;
+        }
+        if (Enum.IsDefined(typeof(LegendaryItems), item.itemId))
         {
             stackSize = 81;
         }
@@ -313,11 +345,20 @@ public class Item
     }
     public static int GenerateRandomEpicItemID()
     {
-        EpicItems id = EpicItems.None;
+        EpicItems id = EpicItems.Item_BigChonkerFairy;
         Array values = Enum.GetValues(typeof(EpicItems));
         id = (EpicItems)values.GetValue(rnd.Next(values.Length));
         return (int)id;
     }
+
+    public static int GenerateRandomLegendaryItemID()
+    {
+        LegendaryItems id = LegendaryItems.Item_OhLawdHeComin;
+        Array values = Enum.GetValues(typeof(LegendaryItems));
+        id = (LegendaryItems)values.GetValue(rnd.Next(values.Length));
+        return (int)id;
+    }
+
 
 
     public static Material GetItemMaterial(int id)
@@ -337,6 +378,10 @@ public class Item
         if (Enum.IsDefined(typeof(EpicItems), id))
         {
             return PublicGameResources.GetResource().itemMaterials[3];
+        }
+        if (Enum.IsDefined(typeof(LegendaryItems), id))
+        {
+            return PublicGameResources.GetResource().itemMaterials[4];
         }
         return PublicGameResources.GetResource().itemMaterials[0];
     }
@@ -359,6 +404,10 @@ public class Item
         {
             return PublicGameResources.GetResource().itemDescriptionMaterials[3];
         }
+        if (Enum.IsDefined(typeof(LegendaryItems), id))
+        {
+            return PublicGameResources.GetResource().itemDescriptionMaterials[4];
+        }
         return PublicGameResources.GetResource().itemDescriptionMaterials[0];
     }
 
@@ -377,6 +426,10 @@ public class Item
             return 100;
         }
         if (Enum.IsDefined(typeof(EpicItems), id))
+        {
+            return 200;
+        }
+        if (Enum.IsDefined(typeof(LegendaryItems), id))
         {
             return 200;
         }

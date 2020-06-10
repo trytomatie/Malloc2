@@ -166,6 +166,12 @@ public class UI_TraderInventory : MonoBehaviour
 
     public void TradeItems()
     {
+        int itemAmountDifference = itemsToBuy.Count - itemsToSell.Count;
+        if (UI_InventoryManager.playerInventory.artifactItemsCount + UI_InventoryManager.playerInventory.inactiveArtifacts.Count + itemAmountDifference > 14)
+        {
+            return;
+        }
+
         UpdateTraderLists();
         int totalCoins = 0;
         foreach (Item coin in coins)
@@ -184,10 +190,21 @@ public class UI_TraderInventory : MonoBehaviour
         }
         foreach (Item item in itemsToBuy.Keys) // Buy Items
         {
-            UI_InventoryManager.playerInventory.AddItem(item);
-            traderInventory.items.Remove(item);
-            inventoryDisplays.Remove(itemsToBuy[item].gameObject);
-            Destroy(itemsToBuy[item].gameObject);
+
+            if (UI_InventoryManager.playerInventory.artifactItemsCount <= 6 || UI_InventoryManager.playerInventory.ContainsItem(item.itemId))
+            {
+                UI_InventoryManager.playerInventory.AddItem(item);
+                traderInventory.items.Remove(item);
+                inventoryDisplays.Remove(itemsToBuy[item].gameObject);
+                Destroy(itemsToBuy[item].gameObject);
+            }
+            else if (UI_InventoryManager.playerInventory.inactiveArtifacts.Count <= 6 || UI_InventoryManager.playerInventory.ContainsItem(item.itemId))
+            {
+                UI_InventoryManager.playerInventory.AddInactiveArtifact(item);
+                traderInventory.items.Remove(item);
+                inventoryDisplays.Remove(itemsToBuy[item].gameObject);
+                Destroy(itemsToBuy[item].gameObject);
+            }
         }
         List<Item> coinsThatNeedToBeBalanced = new List<Item>();
         foreach (Item coin in coins) // Payback

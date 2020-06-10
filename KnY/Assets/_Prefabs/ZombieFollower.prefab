@@ -69,7 +69,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1187327835
   m_SortingLayer: 1
-  m_SortingOrder: 1000
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 6f1e04aa9e26eed4e8fa20cb0982c022, type: 3}
   m_Color: {r: 0.083421394, g: 0.6698113, b: 0, a: 1}
   m_FlipX: 0
@@ -252,11 +252,16 @@ MonoBehaviour:
   maxHp: 2500
   hp: 2500
   maxSp: 100
-  Sp: 100
+  sp: 100
+  spRegeneration: 0
   defence: 0
+  flatDamageReduction: 0
   healthRegeneration: 0
   healthRegenerationPercentage: 1
+  barrier: 0
   movementSpeed: 0.7
+  movementSpeedFlatAdjustments: 0
+  movementSpeedMultiplier: 1
   isDead: 0
   mana: 0
   maxExperience: 100
@@ -267,6 +272,7 @@ MonoBehaviour:
   baseAttackDamageMultiplyier: 1
   totalAttackDamage: 0
   criticalStrikeChance: 1
+  damageOverTimeDamageMultiplier: 1
   statusEffects: []
   anims: []
   hpGrowth: 150
@@ -391,6 +397,7 @@ MonoBehaviour:
   mode: 5
   target: {fileID: 0}
   rb: {fileID: 0}
+  attackingAnimators: []
   isAttacking: 0
   aggroRadius: 1
   attackRadius: 0.5
@@ -407,7 +414,7 @@ MonoBehaviour:
   cancleUpdate: 0
   isHopping: 0
   direction: {x: 0, y: 0}
+  disableMovement: 0
   bodyTransform: {fileID: 0}
-  attackingAnimators: []
   followTarget: {fileID: 0}
   leachRange: 0.29

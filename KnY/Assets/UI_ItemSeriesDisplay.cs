@@ -16,7 +16,7 @@ public class UI_ItemSeriesDisplay : MonoBehaviour
     {
         image.sprite = series.image;
         title.text = series.seriesName;
-        int maxCount = series.conditionsNeeded;
+        int maxCount = series.conditionsNeeded[0];
         int currentCount = series.totalConditionsMet;
         if(maxCount > currentCount)
         {

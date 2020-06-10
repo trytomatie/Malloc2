@@ -17,20 +17,20 @@ public class StatusEffect_Stunned : StatusEffect {
 
     public override void ApplyEffect(GameObject g)
     {
-        GenericEnemyAI ai = g.GetComponent<GenericEnemyAI>();
-        if (ai != null)
-        {
-            ai.statusEffect_Stunned = true;
-        }
+        //GenericEnemyAI ai = g.GetComponent<GenericEnemyAI>();
+        //if (ai != null)
+        //{
+        //    ai.statusEffect_Stunned = true;
+        //}
 
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        GenericEnemyAI ai = g.GetComponent<GenericEnemyAI>();
-        if (ai != null)
-        {
-            ai.statusEffect_Stunned = false;
-        }
+        //GenericEnemyAI ai = g.GetComponent<GenericEnemyAI>();
+        //if (ai != null)
+        //{
+        //    ai.statusEffect_Stunned = false;
+        //}
     }
 }

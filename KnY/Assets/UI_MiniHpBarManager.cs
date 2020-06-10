@@ -21,6 +21,7 @@ public class UI_MiniHpBarManager : MonoBehaviour
         if (timer < 0 || statusmanager == null)
         {
             Destroy(gameObject);
+            return;
         }
         transform.position = new Vector3(statusmanager.transform.position.x, statusmanager.transform.position.y + heigthOffset, 0);
         timer -= Time.deltaTime;

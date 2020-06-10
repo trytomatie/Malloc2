@@ -21118,6 +21118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d039369cf7f07f43aafb2bdcf25816f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chunkType: 0
+  concluded: 0
   upIsOpen: 1
   downIsOpen: 1
   rightIsOpen: 1
@@ -21184,9 +21186,9 @@ MonoBehaviour:
   onTriggerAction:
     m_PersistentCalls:
       m_Calls: []
-  mySpawnDirector: {fileID: 6828562046308281121}
   barrier: {fileID: 6154274799283360047}
   isTriggerd: 0
+  goThatTriggeredMe: {fileID: 0}
 --- !u!1 &5298061341106560167
 GameObject:
   m_ObjectHideFlags: 0
@@ -24771,7 +24773,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1187327835
   m_SortingLayer: 1
-  m_SortingOrder: 2727
+  m_SortingOrder: 100
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16

@@ -9,20 +9,21 @@ public class Item_BootsOfFlight : Item {
     public Item_BootsOfFlight()
     {
         this.itemId = 7;
-        this.itemName = "Boots Of Flight";
+        this.itemName = "Scout boots";
         this.attribute = "Wind";
         this.description = "Slightly Increases MovementSpeed";
         this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
+        this.series.Add(ItemSeries.Series.Scout);
     }
 
 
     public override void ApplyEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().TotalMovementSpeed += movementSpeedBonus * stacks;
+        g.GetComponent<Statusmanager>().movementSpeed += movementSpeedBonus * stacks;
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().TotalMovementSpeed -= movementSpeedBonus * stacks;
+        g.GetComponent<Statusmanager>().movementSpeed -= movementSpeedBonus * stacks;
     }
 }

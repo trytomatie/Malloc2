@@ -20,7 +20,7 @@ public class Item_CorruptedAmethyst : Item {
         for(int i = 0; i < stacks;i++)
         {
             GameObject follower = GameObject.Instantiate(PublicGameResources.GetResource().corruptedAmethystFollower, g.transform.position, Quaternion.identity);
-            follower.GetComponent<GenericFollowerAI>().followTarget = g;
+            follower.GetComponent<AI_GenericFollower>().followTarget = g;
             follower.GetComponent<Statusmanager>().faction = g.GetComponent<Statusmanager>().faction;
             companionList.Add(follower);
         }

@@ -18,7 +18,7 @@ public class Skill
     private bool allowsMovement = false;
     private Vector2 direction;
     private GameObject target;
-
+    private Animator anim;
     private float speedIncrease = 0;
 
     public virtual void ActivateSkill(GameObject source, Vector2 direction, GameObject target)
@@ -233,6 +233,19 @@ public class Skill
         set
         {
             spCost = value;
+        }
+    }
+
+    public Animator Anim
+    {
+        get
+        {
+            return anim;
+        }
+
+        set
+        {
+            anim = value;
         }
     }
     #endregion

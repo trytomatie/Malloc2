@@ -29,6 +29,14 @@ public class Interactable_Item : MonoBehaviour
             GameObject.FindObjectOfType<ItemDescriptionManager>().Show(5f);
             Destroy(gameObject);
         }
+        else if(g.GetComponent<Inventory>().inactiveArtifacts.Count <= 6 || g.GetComponent<Inventory>().ContainsInactiveArtifact(_itemId))
+        {
+            Item item = Item.GenerateItem(_itemId);
+            g.GetComponent<Inventory>().AddInactiveArtifact(item);
+            GameObject.FindObjectOfType<ItemDescriptionManager>().SetDescriptionProperties(item.itemName + " (inactive) ", item.description, GameObject.FindObjectOfType<ItemIcons>().GetIcon(_itemId), Item.GetItemDescriptionMaterial(_itemId));
+            GameObject.FindObjectOfType<ItemDescriptionManager>().Show(5f);
+            Destroy(gameObject);
+        }
         else
         {
             UI_InfoTitleManager.Show("Can't pick up any more Artifacts", "Disenchant for more space", 3);

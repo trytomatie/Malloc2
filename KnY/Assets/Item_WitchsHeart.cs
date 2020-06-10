@@ -9,7 +9,7 @@ public class Item_WitchsHeart : Item {
     {
         this.itemId = 21;
         this.attribute = "Dark";
-        this.itemName = "Witch's heartt";
+        this.itemName = "Witch's heart";
         this.description = "Increases Max Hp";
         this.detailedDescription = "Increases Max Hp by " + hpGain + " per stack";
         this.series.Add(ItemSeries.Series.Curse);

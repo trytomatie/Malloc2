@@ -10,11 +10,12 @@ public class Interactable_Chest : MonoBehaviour {
     public int chanceForUncommonItem = 10;
     public int chanceForRareItem = 0;
     public int chanceForEpicItem = 0;
+    public int chanceForLegendaryItem = 0;
 	// Use this for initialization
 	void Start () {
         GetComponent<Interactable>()._customInteractableMethod = Interact;
         GetComponent<Interactable>()._interactablePopupMessage += " (" + cost + " mana)";
-
+        GetComponent<Animator>().keepAnimatorControllerStateOnDisable = true;
     }
 	
 	// Update is called once per frame
@@ -47,8 +48,8 @@ public class Interactable_Chest : MonoBehaviour {
     {
         yield return new WaitForSecondsRealtime(0.6f);
         GameObject item = Instantiate(spawnItem,transform.position,Quaternion.identity);
-        int max = chanceForCommonItem + chanceForUncommonItem + chanceForRareItem + chanceForEpicItem + 1;
-        int chance = UnityEngine.Random.Range(0, max);
+        int max = chanceForCommonItem + chanceForUncommonItem + chanceForRareItem + chanceForEpicItem + chanceForLegendaryItem;
+        float chance = UnityEngine.Random.Range(0.0f, max);
         int id = 0;
         if (chance < chanceForCommonItem)
         { 
@@ -56,7 +57,6 @@ public class Interactable_Chest : MonoBehaviour {
         }
         else
         {
-            max -= chanceForCommonItem;
             chance -= chanceForCommonItem;
             if (chance < chanceForUncommonItem)
             { 
@@ -64,7 +64,6 @@ public class Interactable_Chest : MonoBehaviour {
             }
             else
             {
-                max -= chanceForUncommonItem;
                 chance -= chanceForUncommonItem;
                 if (chance < chanceForRareItem)
                 {
@@ -72,7 +71,16 @@ public class Interactable_Chest : MonoBehaviour {
                 }
                 else
                 {
-                    id = Item.GenerateRandomRareItemID();
+                    chance -= chanceForRareItem;
+                    if (chance < chanceForEpicItem)
+                    {
+                        id = Item.GenerateRandomEpicItemID();
+                    }
+                    else
+                    {
+                        id = Item.GenerateRandomLegendaryItemID();
+                    }
+
                 }
             }
         }

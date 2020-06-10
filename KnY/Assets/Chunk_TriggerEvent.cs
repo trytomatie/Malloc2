@@ -49,6 +49,11 @@ public class Chunk_TriggerEvent : MonoBehaviour
         MySpawnDirector.SpawnEnemys(goThatTriggeredMe);
     }
 
+    public void SpawnInteractables()
+    {
+        MySpawnDirector.SpawnInteractables();
+    }
+
     public void EnableBarrier()
     {
         Material m = barrier.GetComponent<TilemapRenderer>().material;
@@ -67,5 +72,7 @@ public class Chunk_TriggerEvent : MonoBehaviour
     {
         EnableBarrier();
         SpawnMobs();
+
+
     }
 }

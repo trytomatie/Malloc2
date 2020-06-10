@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class UI_ArtifactManager : MonoBehaviour
 {
     public List<GameObject> artifactDisplays;
+    public List<Transform> artifactPanels;
     public Inventory playerInventory;
     public GameObject artifactDisplayInstantiationTarget;
 
@@ -63,7 +64,7 @@ public class UI_ArtifactManager : MonoBehaviour
                 { 
                     GameObject instanceDisplay = Instantiate(instance.artifactDisplayInstantiationTarget, instance.transform);
                     instanceDisplay.GetComponent<RectTransform>().anchoredPosition = new Vector3(xPos, yPos);
-                    instanceDisplay.GetComponent<RectTransform>().localPosition = new Vector3(instanceDisplay.GetComponent<RectTransform>().localPosition.x, instanceDisplay.GetComponent<RectTransform>().localPosition.y, -1);
+                    instanceDisplay.GetComponent<RectTransform>().localPosition = new Vector3(instanceDisplay.GetComponent<RectTransform>().localPosition.x, instanceDisplay.GetComponent<RectTransform>().localPosition.y, 1);
                     instanceDisplay.GetComponent<Image>().sprite = FindObjectOfType<ItemIcons>().GetIcon(item.itemId);
                     instanceDisplay.GetComponent<Image>().material = Item.GetItemDescriptionMaterial(item.itemId);
                     instanceDisplay.GetComponent<UI_ArtifactDisplayOnHover>().item = item;

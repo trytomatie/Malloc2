@@ -6,7 +6,7 @@ public class StatusEffect_ItemSeriesCurse : StatusEffect {
     public StatusEffect_ItemSeriesCurse()
     {
         this.statusName = new ItemSeries_Curse().seriesName;
-        this.description = new ItemSeries_Curse().description;
+        this.description = new ItemSeries_Curse().description[0];
         this.image = new Item_Affliction().image;
         this.type = Type.Series;
         this.duration = 36000;

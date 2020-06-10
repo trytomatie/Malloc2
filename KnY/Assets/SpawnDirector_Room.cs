@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class SpawnDirector_Room : MonoBehaviour
 {
-    public List<Interactable> interactablePool;
+    public List<ScriptableObject_InteractableSpawnCard> interactablePool;
     public List<MobSpawnAtributes_ScriptableObject> mobPool;
     public List<Transform> spawnLocations;
     public List<Transform> interactableSpawnLocations;
@@ -17,6 +17,7 @@ public class SpawnDirector_Room : MonoBehaviour
     public static DateTime startTime = DateTime.Now;
 
     private int combinedWeight = 0;
+    private float combinedInteractableWeight = 0;
 
     public List<GameObject> enemyList = new List<GameObject>();
     public bool hasBeenTriggerd = false;
@@ -41,6 +42,26 @@ public class SpawnDirector_Room : MonoBehaviour
         }
     }
 
+    public float CombinedInteractableWeight
+    {
+        get
+        {
+            if (combinedInteractableWeight == 0)
+            {
+                foreach (ScriptableObject_InteractableSpawnCard interactable in interactablePool)
+                {
+                    combinedInteractableWeight += interactable.chanceToSpawn;
+                }
+            }
+            return combinedInteractableWeight;
+        }
+
+        set
+        {
+            combinedInteractableWeight = value;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,12 +74,29 @@ public class SpawnDirector_Room : MonoBehaviour
         {
             Debug.LogWarning("No MobSpawnLocations Defined!");
         }
+        SpawnInteractables();
         
     }
 
-    public void SpawnInteractables()
+    public void SpawnRandomInteractable(Transform spawnLocation)
     {
-     
+        ScriptableObject_InteractableSpawnCard interactable = null;
+        float rndChance = (float)rnd.NextDouble() * (CombinedInteractableWeight - 0)+0;
+        foreach (ScriptableObject_InteractableSpawnCard m in interactablePool)
+        {
+            if (m.chanceToSpawn >= rndChance)
+            {
+                interactable = m;
+                break;
+            }
+            rndChance -= m.chanceToSpawn;
+        }
+        if(interactable == null)
+        {
+            return;
+        }
+        GameObject interactableSpawned = Instantiate(interactable.instance, spawnLocation.transform.position, Quaternion.identity);
+        interactableSpawned.GetComponent<Interactable_Chest>().cost = interactable.cost;
     }
 
     public void SpawnEnemys()
@@ -67,6 +105,14 @@ public class SpawnDirector_Room : MonoBehaviour
         foreach (Transform spawnLocation in spawnLocations)
         {
             SpawnRandomMob(spawnLocation);
+        }
+    }
+
+    public void SpawnInteractables()
+    {
+        foreach (Transform spawnLocation in interactableSpawnLocations)
+        {
+            SpawnRandomInteractable(spawnLocation);
         }
     }
 
@@ -82,14 +128,23 @@ public class SpawnDirector_Room : MonoBehaviour
     public void SpawnRandomMob(Transform spawnLocation)
     {
         MobSpawnAtributes_ScriptableObject mob = null;
-        int i = rnd.Next(0, mobPool.Count);
-        mob = mobPool[i];
+        int rndChance = rnd.Next(0, CombinedWeight);
+        foreach (MobSpawnAtributes_ScriptableObject m in mobPool)
+        {
+            if (m.chanceToSpawn >= rndChance)
+            {
+                mob = m;
+                break;
+            }
+            rndChance -= m.chanceToSpawn;
+        }
         int level = 1;
-        int exploredChunks = mapGenerator.ExploredChunks.Count;
-        level = Mathf.CeilToInt(exploredChunks/3);
+        level = mapGenerator.currentFloor;
         Transform location = spawnLocation;
         GameObject monster = Instantiate(mob.instance, location.transform.position, Quaternion.identity);
         monster.GetComponent<Statusmanager>().level = level;
+        TimeSpan timeSpan = DateTime.Now - startTime;
+        monster.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_KingsContract((int)timeSpan.TotalSeconds));
         enemyList.Add(monster);
     }
     public void SpawnRandomMob(Transform spawnLocation,GameObject target)

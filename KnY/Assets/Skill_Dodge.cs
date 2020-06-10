@@ -55,28 +55,43 @@ class Skill_Dodge : Skill
                 targetPosition = (Vector2)ray.GetPoint(dashDistance + source.GetComponent<CircleCollider2D>().radius) - c.offset;
                 source.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_HiddenElusive(Casttime));
             }
-            else
+            else 
             {
-                Ray2D invertedRay = new Ray2D(ray.GetPoint(dashDistance + source.GetComponent<CircleCollider2D>().radius), -direction);
-                float invertedDistance = 0;
-                RaycastHit2D[] backTrackHits = new RaycastHit2D[0];
-                do
+                bool isTerainOnEndPos = false;
+                foreach(RaycastHit2D hit in hits2)
                 {
-                    invertedDistance += 0.02f;
-                    int layerMask = 1 << LayerMask.NameToLayer("MapCollision");
-                    layerMask = layerMask << LayerMask.NameToLayer("UnpasableMapCollision");
-                    backTrackHits = Physics2D.CircleCastAll(invertedRay.GetPoint(invertedDistance), source.GetComponent<CircleCollider2D>().radius, Vector2.zero,0, layerMask);
+                    if(hit.collider.gameObject.layer == 8 || hit.collider.gameObject.layer == 11)
+                    {
+                        isTerainOnEndPos = true;
+                    }
                 }
-                while (backTrackHits.Length != 0 && invertedDistance <= dashDistance);
-                if (invertedDistance > dashDistance)
+                if(!isTerainOnEndPos)
                 {
-                    Debug.Log("hey");
-                    source.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_Intangible(Casttime));
+                    targetPosition = (Vector2)ray.GetPoint(dashDistance + source.GetComponent<CircleCollider2D>().radius) - c.offset;
+                    source.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_HiddenElusive(Casttime));
                 }
-                else 
+                else
                 {
-                    source.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_Intangible(Casttime));
-                    targetPosition = invertedRay.GetPoint(invertedDistance);
+                    Ray2D invertedRay = new Ray2D(ray.GetPoint(dashDistance + source.GetComponent<CircleCollider2D>().radius), -direction);
+                    float invertedDistance = 0;
+                    RaycastHit2D[] backTrackHits = new RaycastHit2D[0];
+                    do
+                    {
+                        invertedDistance += 0.02f;
+                        int layerMask = 1 << LayerMask.NameToLayer("MapCollision");
+                        layerMask = layerMask << LayerMask.NameToLayer("UnpasableMapCollision");
+                        backTrackHits = Physics2D.CircleCastAll(invertedRay.GetPoint(invertedDistance), source.GetComponent<CircleCollider2D>().radius, Vector2.zero, 0, layerMask);
+                    }
+                    while (backTrackHits.Length != 0 && invertedDistance <= dashDistance);
+                    if (invertedDistance > dashDistance)
+                    {
+                        source.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_Intangible(Casttime));
+                    }
+                    else
+                    {
+                        source.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_Intangible(Casttime));
+                        targetPosition = invertedRay.GetPoint(invertedDistance);
+                    }
                 }
 
 

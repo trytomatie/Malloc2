@@ -193,7 +193,8 @@ public class SpawnDirector : MonoBehaviour
             Transform location = mobSpawnLocations[rnd.Next(0, mobSpawnLocations.Count)];
             GameObject monster = Instantiate(mob.instance, location.transform.position + new Vector3(UnityEngine.Random.Range(-0.1f,0.1f), UnityEngine.Random.Range(-0.1f, 0.1f),0), Quaternion.identity);
             monster.GetComponent<Statusmanager>().level = level;
-            if(wave > 4)
+            monster.GetComponent<BaseEnemyAI>().aggroRadius = 10.52f;
+            if (wave > 4)
             {
                 TimeSpan timeSpan = DateTime.Now- startTime;
                 monster.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_KingsContract((int)timeSpan.TotalSeconds));

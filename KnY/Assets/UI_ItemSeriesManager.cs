@@ -62,10 +62,13 @@ public class UI_ItemSeriesManager : MonoBehaviour
         {
             foreach (ItemSeries series in instance.PlayerInventory.itemSeries.Values)
             {
-                GameObject g = Instantiate(instance.itemSeriesDisplayInstantiationTarget, instance.transform);
+                if(series.totalConditionsMet >0)
+                { 
+                    GameObject g = Instantiate(instance.itemSeriesDisplayInstantiationTarget, instance.transform);
 
-                g.GetComponent<UI_ItemSeriesDisplay>().series = series;
-                instance.itemSeriesDisplays.Add(g);
+                    g.GetComponent<UI_ItemSeriesDisplay>().series = series;
+                    instance.itemSeriesDisplays.Add(g);
+                }
             }
             instance.itemSeriesDisplays.Sort((a,b) => b.GetComponent<UI_ItemSeriesDisplay>().series.totalConditionsMet.CompareTo(a.GetComponent<UI_ItemSeriesDisplay>().series.totalConditionsMet));
             foreach (GameObject g in instance.itemSeriesDisplays)
