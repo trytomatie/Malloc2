@@ -45,7 +45,8 @@ public class Item
         Item_Affliction = 20,
         Item_InheritedArmor = 22,
         Item_DivineClockwork = 24,
-        Item_RejuvinationFairy = 29
+        Item_RejuvinationFairy = 29,
+        Item_Gaze = 35
     }
     public enum RareItems
     {
@@ -258,6 +259,9 @@ public class Item
                 return item;
             case 34:
                 item = new Item_VaingloriousAuthority();
+                return item;
+            case 35:
+                item = new Item_Gaze();
                 return item;
             default:
                 return null;

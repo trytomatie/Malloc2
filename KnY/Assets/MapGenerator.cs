@@ -18,7 +18,7 @@ public class MapGenerator : MonoBehaviour
     public List<ScriptableObject_InteractableSpawnCard> manaCrystals;
 
 
-    public System.Random seed = new System.Random(1337);
+    public System.Random seed = new System.Random(Director.globalRandomSeed);
     private System.Random xSeed;
     private System.Random ySeed;
     private System.Random negativeXSeed;
@@ -116,7 +116,7 @@ public class MapGenerator : MonoBehaviour
                 }
             }
         }
-        UI_AncientLabyrnith_Minimap.UpdateMinimap(chunkMap, CurrentCameraCoords,exploredChunks);
+        UI_AncientLabyrnith_Minimap.UpdateMinimap(chunkMap, CurrentCameraCoords,exploredChunks,currentFloor);
         AstarPath.active.data.gridGraph.center = currentCameraCoords * CHUNKSIZE;
         AstarPath.active.Scan();
     }
@@ -154,7 +154,7 @@ public class MapGenerator : MonoBehaviour
         currentFloor++;
 
         SetManaCrystalChance();
-
+        StartCoroutine(LoadingAndUnloading(currentCameraCoords, currentCameraCoords));
         UI_TitleManager.Show("Ancient Labyrinth", "Floor " + currentFloor, 4f);
         if (debug_GenerateWholeMap)
         {
@@ -162,7 +162,7 @@ public class MapGenerator : MonoBehaviour
             {
                 GenerateNewChunk(v, GetSeededChunkId(v));
             }
-            UI_AncientLabyrnith_Minimap.UpdateMinimap(chunkMap, CurrentCameraCoords, exploredChunks);
+            UI_AncientLabyrnith_Minimap.UpdateMinimap(chunkMap, CurrentCameraCoords, exploredChunks,currentFloor);
         }
     }
 
@@ -176,7 +176,7 @@ public class MapGenerator : MonoBehaviour
 
     private void SetManaCrystalChance()
     {
-        if(currentFloor <= spawnTable.Count)
+        if(currentFloor <= spawnTable.Count-1)
         { 
             manaCrystals[0].chanceToSpawn = spawnTable[currentFloor].common;
             manaCrystals[1].chanceToSpawn = spawnTable[currentFloor].uncommon;
@@ -185,10 +185,10 @@ public class MapGenerator : MonoBehaviour
             manaCrystals[4].chanceToSpawn = spawnTable[currentFloor].legendary;
 
             manaCrystals[0].cost =  (BASE_CHESTCOST) * currentFloor;
-            manaCrystals[1].cost = (BASE_CHESTCOST * 2) * currentFloor;
-            manaCrystals[2].cost = (int)(BASE_CHESTCOST * 3.5f) * currentFloor;
-            manaCrystals[3].cost = (BASE_CHESTCOST * 5) * currentFloor;
-            manaCrystals[4].cost = (BASE_CHESTCOST * 8) * currentFloor;
+            manaCrystals[1].cost = (int)(BASE_CHESTCOST * 1.5f) * currentFloor;
+            manaCrystals[2].cost = (int)(BASE_CHESTCOST * 2.5f) * currentFloor;
+            manaCrystals[3].cost = (BASE_CHESTCOST * 3) * currentFloor;
+            manaCrystals[4].cost = (BASE_CHESTCOST * 5) * currentFloor;
         }
     }
 
@@ -235,6 +235,7 @@ public class MapGenerator : MonoBehaviour
         GameObject chunk = Instantiate(chunkTiles[id], coords * CHUNKSIZE, Quaternion.identity, mapParent);
         chunk.GetComponent<ChunkSettings>().AdjustExits(roomIsUp,roomIsDown,roomIsRight,roomIsLeft);
         chunk.GetComponent<ChunkSettings>().mapDebugInfo += debugMessage;
+        chunk.GetComponent<ChunkSettings>().myRandom = new System.Random(((int)coords.x / 100) + ((int)coords.y / 100));
         chunkMap.Add(coords, chunk);
         debugMessage = "";
     }

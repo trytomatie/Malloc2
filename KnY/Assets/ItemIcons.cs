@@ -17,6 +17,7 @@ public class ItemIcons : MonoBehaviour
         else
         {
             Destroy(this);
+            return;
         }
     }
 

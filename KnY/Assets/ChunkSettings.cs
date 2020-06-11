@@ -16,6 +16,7 @@ public class ChunkSettings : MonoBehaviour
     public bool[] adjustedExits = new bool[4];
     public GameObject[] exits;
     private Chunk_TriggerEvent cte;
+    public System.Random myRandom;
     public int weight = 100;
 
 

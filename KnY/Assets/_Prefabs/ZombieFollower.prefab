@@ -46,6 +46,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -138,6 +139,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -249,8 +251,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   faction: 1
   level: 1
-  maxHp: 2500
-  hp: 2500
+  maxHp: 1500
+  hp: 1500
   maxSp: 100
   sp: 100
   spRegeneration: 0
@@ -275,15 +277,16 @@ MonoBehaviour:
   damageOverTimeDamageMultiplier: 1
   statusEffects: []
   anims: []
-  hpGrowth: 150
+  hpGrowth: 500
   spGrowth: 0
   manaGrowth: 3
   healthRegenerationGrowth: 0
-  baseAttackDamageGrowth: 8
+  baseAttackDamageGrowth: 25
   defenceGrwoth: 1
   movementSpeedGrowth: 0.02
   gameObjectThatDamagedMeLast: {fileID: 0}
   uiHeigthOffset: 0.16
+  followers: []
 --- !u!50 &4099386691832577031
 Rigidbody2D:
   serializedVersion: 4

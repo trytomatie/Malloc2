@@ -13,6 +13,7 @@ public class Item_BigChonkerFairy : Item {
         this.description = "Just Look at this chonky boi, Increasing your hp by a big chonk";
         this.detailedDescription = "Increases Max Hp by " + hpGain + " per stack";
         this.series.Add(ItemSeries.Series.Faerie);
+        this.series.Add(ItemSeries.Series.Royal);
         this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
     }
 

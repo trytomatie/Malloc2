@@ -22,7 +22,9 @@ public class Item_CorruptedAmethyst : Item {
             GameObject follower = GameObject.Instantiate(PublicGameResources.GetResource().corruptedAmethystFollower, g.transform.position, Quaternion.identity);
             follower.GetComponent<AI_GenericFollower>().followTarget = g;
             follower.GetComponent<Statusmanager>().faction = g.GetComponent<Statusmanager>().faction;
+            follower.GetComponent<Statusmanager>().level = g.GetComponent<Statusmanager>().level;
             companionList.Add(follower);
+            g.GetComponent<Statusmanager>().AddFollower(follower);
         }
     }
 
@@ -30,6 +32,8 @@ public class Item_CorruptedAmethyst : Item {
     {
         foreach(GameObject companion in companionList)
         {
+
+            g.GetComponent<Statusmanager>().RemoveFollwer(g);
             GameObject.Destroy(companion);
         }
         companionList.Clear();

@@ -37,9 +37,9 @@ public class Chunk_TriggerEvent : MonoBehaviour
     {
         if(collision.GetComponent<PlayerController>() != null && isTriggerd == false)
         {
+            isTriggerd = true;
             goThatTriggeredMe = collision.gameObject;
             onTriggerAction.Invoke();
-            isTriggerd = true;
         }
 
     }
@@ -72,7 +72,27 @@ public class Chunk_TriggerEvent : MonoBehaviour
     {
         EnableBarrier();
         SpawnMobs();
+        SummonFollowers();
+    }
 
+    public void SummonFollowers()
+    {
 
+        bool scoutActive = false;
+        if(goThatTriggeredMe.GetComponent<Statusmanager>().ContainsStatusEffect(new StatusEffect_ItemSeriesScout()))
+        {
+            scoutActive = true;
+        }
+        foreach(GameObject follower in goThatTriggeredMe.GetComponent<Statusmanager>().Followers)
+        {
+            if(scoutActive)
+            {
+                follower.transform.position = GetComponent<SpawnDirector_Room>().spawnLocations[UnityEngine.Random.Range(0, GetComponent<SpawnDirector_Room>().spawnLocations.Count)].position;
+            }
+            else
+            { 
+                follower.transform.position = (Vector2)goThatTriggeredMe.transform.position + new Vector2(UnityEngine.Random.Range(0.1f, 0.1f), UnityEngine.Random.Range(0.1f, 0.1f));
+            }
+        }
     }
 }

@@ -46,8 +46,11 @@ public class UI_InventoryManager : MonoBehaviour
             foreach(GameObject go in removalList)
             {
                 instance.inventoryDisplays.Remove(go);
-                go.transform.SetParent(null);
-                Destroy(go);
+                if(go != null)
+                { 
+                    go.transform.SetParent(null);
+                    Destroy(go);
+                }
             }
         }
     }

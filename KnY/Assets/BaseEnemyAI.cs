@@ -39,6 +39,7 @@ public class BaseEnemyAI : MonoBehaviour
 
 
 
+
     public float wanderCooldownTimer = 0;
     private Vector2 wanderPosition;
 
@@ -54,6 +55,8 @@ public class BaseEnemyAI : MonoBehaviour
 
     public List<Skill> skills = new List<Skill>();
     public bool disableMovement = false;
+
+    public bool targetIsFollowTarget = true;
 
     void Start()
     {
@@ -78,6 +81,10 @@ public class BaseEnemyAI : MonoBehaviour
 
     private void CullingOnDistnace()
     {
+        if(GetComponent<SpriteRenderer>() == null)
+        {
+            return;
+        }
         if(Vector2.Distance(Camera.main.transform.position,transform.position) > 2)
         {
             GetComponent<SpriteRenderer>().enabled = false;
@@ -273,6 +280,28 @@ public class BaseEnemyAI : MonoBehaviour
         return result;
     }
 
+    public GameObject GetRandomTargetInRange()
+    {
+        List<GameObject> searchList = Statusmanager.PlayerFactionEntities;
+        if (GetComponent<Statusmanager>().faction == Statusmanager.Faction.PlayerFaction)
+        {
+            searchList = Statusmanager.EnemyFactionEntities;
+        }
+        List<GameObject> eligableTargets = new List<GameObject>();
+        foreach(GameObject s in searchList)
+        {
+            if(Vector2.Distance(s.transform.position, transform.position) < aggroRadius && s.GetComponent<Statusmanager>().Hp > 0)
+            {
+                eligableTargets.Add(s);
+            }
+        }
+        if(eligableTargets.Count > 0)
+        { 
+            return eligableTargets[UnityEngine.Random.Range(0, eligableTargets.Count)];
+        }
+        return null;
+    }
+
 
     public bool CheckLineOfSight()
     {
@@ -342,10 +371,10 @@ public class BaseEnemyAI : MonoBehaviour
     {
         GameObject targetToSearch = null;
         float distance = 100;
-        List<GameObject> searchList = Statusmanager.playerFactionEntities;
+        List<GameObject> searchList = Statusmanager.PlayerFactionEntities;
         if(GetComponent<Statusmanager>().faction == Statusmanager.Faction.PlayerFaction)
         {
-            searchList = Statusmanager.enemyFactionEntities;
+            searchList = Statusmanager.EnemyFactionEntities;
         }
         foreach (GameObject g in searchList)
         {
@@ -428,7 +457,10 @@ public class BaseEnemyAI : MonoBehaviour
             target = value;
             if(value != null)
             { 
-                GetComponent<AIDestinationSetter>().target = target.transform;
+                if(targetIsFollowTarget)
+                { 
+                    GetComponent<AIDestinationSetter>().target = target.transform;
+                }
             }
         }
     }

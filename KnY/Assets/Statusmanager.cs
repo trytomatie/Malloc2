@@ -63,10 +63,12 @@ public class Statusmanager : MonoBehaviour {
 
     public GameObject gameObjectThatDamagedMeLast;
 
-    public static List<GameObject> playerFactionEntities = new List<GameObject>();
-    public static List<GameObject> enemyFactionEntities = new List<GameObject>();
+    private static List<GameObject> playerFactionEntities = new List<GameObject>();
+    private static List<GameObject> enemyFactionEntities = new List<GameObject>();
 
     public float uiHeigthOffset = 0.16f;
+
+    private List<GameObject> followers = new List<GameObject>();
     private UI_MiniHpBarManager myHpBar;
 
     private Color normalColor = new Color(0, 0, 0, 0);
@@ -83,10 +85,10 @@ public class Statusmanager : MonoBehaviour {
         switch (faction)
         {
             case Faction.PlayerFaction:
-                playerFactionEntities.Add(gameObject);
+                PlayerFactionEntities.Add(gameObject);
                 break;
             case Faction.EnemyFaction:
-                enemyFactionEntities.Add(gameObject);
+                EnemyFactionEntities.Add(gameObject);
                 break;
         }
         if (anims.Count == 0)
@@ -124,6 +126,11 @@ public class Statusmanager : MonoBehaviour {
                     {
                         gameObjectThatDamagedMeLast.GetComponent<AI_GenericFollower>().followTarget.GetComponent<Statusmanager>().Mana += Mana;
                         gameObjectThatDamagedMeLast.GetComponent<AI_GenericFollower>().followTarget.GetComponent<Statusmanager>().Experinece += Experinece;
+                    }
+                    else if(gameObjectThatDamagedMeLast.GetComponent<AI_EyeFollower>())
+                    {
+                        gameObjectThatDamagedMeLast.GetComponent<AI_EyeFollower>().followTarget.GetComponent<Statusmanager>().Mana += Mana;
+                        gameObjectThatDamagedMeLast.GetComponent<AI_EyeFollower>().followTarget.GetComponent<Statusmanager>().Experinece += Experinece;
                     }
                     else
                     { 
@@ -230,6 +237,21 @@ public class Statusmanager : MonoBehaviour {
         statusEffects.Add(statusEffect);
     }
 
+    public bool ContainsStatusEffect(StatusEffect statusEffect)
+    {
+        foreach (StatusEffect s in statusEffects)
+        {
+            if (s.statusName == statusEffect.statusName)
+            {
+                if (s.duration > 0)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public void ApplyOnDeathEffect(OnDeathEffect onDeathEffect)
     {
         foreach (OnDeathEffect s in onDeathEffects)
@@ -294,6 +316,14 @@ public class Statusmanager : MonoBehaviour {
         { 
             Hp -= damage;
         }
+        if (GetComponent<BaseEnemyAI>() != null)
+        {
+            int chance = UnityEngine.Random.Range(0, 100);
+            if(chance < 40 && !gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().intangible)
+            {
+                GetComponent<BaseEnemyAI>().target = gameObjectThatDamagedMeLast;
+            }
+        }
         StartCoroutine(damageTakenAnimation());
         foreach (Animator anim in anims)
         {
@@ -304,8 +334,20 @@ public class Statusmanager : MonoBehaviour {
         {
             color = Color.red;
         }
+
         Director.GetInstance().SpawnDamageText(damage.ToString(), transform, color, crit);
     }
+
+    public void AddFollower(GameObject g)
+    {
+        Followers.Add(g);
+    }
+
+    public void RemoveFollwer(GameObject g)
+    {
+        Followers.Remove(g);
+    }
+
 
     IEnumerator damageTakenAnimation()
     {
@@ -359,7 +401,11 @@ public class Statusmanager : MonoBehaviour {
         BaseAttackDamage += baseAttackDamageGrowth;
         CallculateAttackDamage();
         long prevMaxExperinece = maxExperience;
-        maxExperience = (int)(50 * Mathf.Pow((1.55f), (level-1)));
+        if(level < 25)
+        { 
+
+            maxExperience = (int)(50 * Mathf.Pow((1.55f), (level-1)));
+        }
         Experinece -= maxExperience;
 
     }
@@ -571,6 +617,48 @@ public class Statusmanager : MonoBehaviour {
             {
                 UI_ResourceManager.UpdateSpBar();
             }
+        }
+    }
+
+    public static List<GameObject> PlayerFactionEntities
+    {
+        get
+        {
+            playerFactionEntities.RemoveAll(item => item == null);
+            return playerFactionEntities;
+        }
+
+        set
+        {
+            playerFactionEntities = value;
+        }
+    }
+
+    public static List<GameObject> EnemyFactionEntities
+    {
+        get
+        {
+            enemyFactionEntities.RemoveAll(item => item == null);
+            return enemyFactionEntities;
+        }
+
+        set
+        {
+            enemyFactionEntities = value;
+        }
+    }
+
+    public List<GameObject> Followers
+    {
+        get
+        {
+            followers.RemoveAll(item => item == null);
+            return followers;
+        }
+
+        set
+        {
+            followers = value;
         }
     }
 

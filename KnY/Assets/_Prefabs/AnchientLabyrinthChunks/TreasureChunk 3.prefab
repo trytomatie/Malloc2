@@ -26043,6 +26043,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 36db696b43efa9c44a1c0a1849911416, type: 2}
   - {fileID: 11400000, guid: 2bd356185308c1a408db4668c0e2a758, type: 2}
   - {fileID: 11400000, guid: af75f18baed5d7c4aa5f34aae87ee924, type: 2}
+  - {fileID: 11400000, guid: ab49cbb238367184ab91c2e0f3357e5f, type: 2}
   spawnLocations:
   - {fileID: 1809344936803985382}
   - {fileID: 8622896125059168480}

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UI_AncientLabyrnith_Minimap : MonoBehaviour
 {
     public List<GameObject> minimap = new List<GameObject>();
+    public Text floorText;
     public GameObject minimapDisplayInstantiationTarget;
     public Transform minmapParent;
     public List<Sprite> mapIcons = new List<Sprite>();
@@ -13,6 +14,7 @@ public class UI_AncientLabyrnith_Minimap : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        instances.RemoveAll(item => item == null);
         instances.Add(this);
     }
     /// <summary>
@@ -20,11 +22,12 @@ public class UI_AncientLabyrnith_Minimap : MonoBehaviour
     /// </summary>
     /// <param name="chunks">chunks that the minimap pulls of</param>
     /// <param name="playerPos">player position</param>
-    public static void UpdateMinimap(Dictionary<Vector2, GameObject> chunks,Vector2 playerPos, Dictionary<Vector2, GameObject> exploredChunks)
+    public static void UpdateMinimap(Dictionary<Vector2, GameObject> chunks,Vector2 playerPos, Dictionary<Vector2, GameObject> exploredChunks,int floor)
     {
         foreach (UI_AncientLabyrnith_Minimap instance in instances)
         {
-            foreach(GameObject g in instance.minimap)
+            instance.floorText.text = "Floor: " + floor;
+            foreach (GameObject g in instance.minimap)
             {
                 Destroy(g);
             }

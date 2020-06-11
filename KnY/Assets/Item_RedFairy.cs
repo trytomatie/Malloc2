@@ -12,6 +12,7 @@ public class Item_RedFairy : ProcItem {
         this.attribute = "Light";
         this.itemName = "Red Fairy";
         this.description = "Heal on kill.";
+        this.detailedDescription = "Heal for " + healAmount + " per stack on Kill";
         this.procChance = 100f;
         this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
         this.series.Add(ItemSeries.Series.Faerie);

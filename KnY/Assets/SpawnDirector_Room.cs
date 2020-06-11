@@ -65,7 +65,7 @@ public class SpawnDirector_Room : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rnd = Director.GetInstance().globalRandom;
+        rnd = GetComponent<ChunkSettings>().myRandom;
         if(mapGenerator == null)
         {
             mapGenerator = FindObjectOfType<MapGenerator>();

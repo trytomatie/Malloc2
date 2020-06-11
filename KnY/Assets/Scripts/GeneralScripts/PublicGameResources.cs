@@ -18,6 +18,7 @@ public class PublicGameResources : MonoBehaviour {
     public Material[] statusEffectMaterials;
     public static int FLOOR_LAYER = -9999;
     public GameObject corruptedAmethystFollower;
+    public GameObject gazeFollower;
     public GameObject blackMarble;
     public GameObject itemContextMenuItem;
     public GameObject elusiveDodgeEffect;
@@ -26,6 +27,11 @@ public class PublicGameResources : MonoBehaviour {
 		if(instance == null)
         {
             instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
         }
 	}
 

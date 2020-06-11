@@ -9,31 +9,57 @@ public class Director : MonoBehaviour {
 
     private static Director instance;
     public GameObject damageText;
-    public GameObject canvas;
+    private GameObject canvas;
     public GameObject cursor;
     public GameObject miniHpBar;
     public GameObject groundAoeIndicator;
+    public GameObject laserFx;
 
     public float timeScale = 1;
     public System.Random globalRandom;
-    public int globalRandomSeed = 1337;
+    public int difficultyScaling = 2;
+    public static int globalRandomSeed = 1337;
 
     private IEnumerator darkenLevel_coroutine;
     private Material currentFadeMaterial;
     private bool endFadeInstantly = false;
-	// Use this for initialization
-	void Awake () {
+
+    public TimeSpan timePassed = new TimeSpan(0, 0, 0, 0, 0);
+
+    public GameObject Canvas
+    {
+        get
+        {
+            if (canvas == null)
+            {
+
+                Canvas = GameObject.Find("Canvas");
+            }
+            return canvas;
+        }
+
+        set
+        {
+            canvas = value;
+        }
+    }
+
+    // Use this for initialization
+    void Awake () {
 		if(instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
         }
         globalRandom = new System.Random();
-        Statusmanager.enemyFactionEntities = new List<GameObject>();
-        Statusmanager.playerFactionEntities = new List<GameObject>();
-        if(canvas == null)
-        {
-            canvas = GameObject.Find("Canvas");
-        }
+        Statusmanager.EnemyFactionEntities = new List<GameObject>();
+        Statusmanager.PlayerFactionEntities = new List<GameObject>();
+
     }
 	
 	// Update is called once per frame
@@ -52,6 +78,7 @@ public class Director : MonoBehaviour {
             }
             a.speed = timeScale + bonusSpeed;
         }
+        timePassed += new TimeSpan(0, 0, 0, 0, (int)(Time.deltaTime *1000));
 	}
 
     public static Director GetInstance()
@@ -72,7 +99,7 @@ public class Director : MonoBehaviour {
     public void SpawnDamageText(string text,Transform position)
     {
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(position.position);
-        GameObject textObject = Instantiate(damageText, canvas.transform);
+        GameObject textObject = Instantiate(damageText, Canvas.transform);
         textObject.transform.GetChild(0).GetComponent<Text>().text = text;
         textObject.transform.GetChild(0).GetComponent<DamageTextAnimation>().origin = position.position;
 
@@ -81,7 +108,7 @@ public class Director : MonoBehaviour {
     public void SpawnDamageText(string text, Transform position,Color color)
     {
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(position.position);
-        GameObject textObject = Instantiate(damageText, canvas.transform);
+        GameObject textObject = Instantiate(damageText, Canvas.transform);
         textObject.transform.GetChild(0).GetComponent<Text>().text = text;
         textObject.transform.GetChild(0).GetComponent<Text>().color = color;
         textObject.transform.GetChild(0).GetComponent<DamageTextAnimation>().origin = position.position;
@@ -90,7 +117,7 @@ public class Director : MonoBehaviour {
     public void SpawnDamageText(string text, Transform position, Color color,bool crit)
     {
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(position.position);
-        GameObject textObject = Instantiate(damageText, canvas.transform);
+        GameObject textObject = Instantiate(damageText, Canvas.transform);
         textObject.transform.GetChild(0).GetComponent<Text>().text = text;
         textObject.transform.GetChild(0).GetComponent<Text>().color = color;
         textObject.transform.GetChild(0).GetComponent<DamageTextAnimation>().origin = position.position;
@@ -104,7 +131,7 @@ public class Director : MonoBehaviour {
     public void SpawnDamageText(string text, Transform position, Color color, bool crit, Vector2 direction)
     {
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(position.position);
-        GameObject textObject = Instantiate(damageText, canvas.transform);
+        GameObject textObject = Instantiate(damageText, Canvas.transform);
         textObject.transform.GetChild(0).GetComponent<Text>().text = text;
         textObject.transform.GetChild(0).GetComponent<Text>().color = color;
         textObject.transform.GetChild(0).GetComponent<DamageTextAnimation>().origin = position.position;
@@ -118,7 +145,7 @@ public class Director : MonoBehaviour {
 
     public GameObject SpawnMiniHpBar(Statusmanager statusmanager, float time, float heightOffset)
     {
-        GameObject hpBar = Instantiate(miniHpBar, canvas.transform);
+        GameObject hpBar = Instantiate(miniHpBar, Canvas.transform);
         hpBar.GetComponent<UI_MiniHpBarManager>().heigthOffset = heightOffset;
         hpBar.GetComponent<UI_MiniHpBarManager>().timer = time;
         hpBar.GetComponent<UI_MiniHpBarManager>().statusmanager = statusmanager;
@@ -240,5 +267,25 @@ public class Director : MonoBehaviour {
     {
         Time.timeScale = number;
         Time.fixedDeltaTime = number * 0.02f;
+    }
+
+    public static void SetDifficulty()
+    {
+        int i = GameObject.Find("DifficultyDropDown").GetComponent<Dropdown>().value;
+        GetInstance().difficultyScaling = i;
+    }
+
+    public static void SetGlobalSeed()
+    {
+        string seedString = GameObject.Find("SeedInputField").GetComponent<InputField>().text;
+        int seed = 0;
+        if(Int32.TryParse(seedString, out seed))
+        {
+            globalRandomSeed = seed;
+        }
+        else
+        {
+            globalRandomSeed = UnityEngine.Random.Range(0, 10000);
+        }
     }
 }

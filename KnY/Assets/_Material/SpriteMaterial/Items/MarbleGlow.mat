@@ -45,3 +45,4 @@ Material:
     - Color_91C9DB1B: {r: 5.215195, g: 0.2249366, b: 0, a: 0}
     - _color: {r: 0.26684493, g: 6.2856836, b: 0.56537, a: 0}
     - _hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []

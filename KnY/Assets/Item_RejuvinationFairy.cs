@@ -28,6 +28,9 @@ public class Item_RejuvinationFairy : Item {
 
     public override void RemoveEffect(GameObject g)
     {
-        myEffectReference.duration = 0;
+        if(myEffectReference != null)
+        { 
+            myEffectReference.duration = 0;
+        }
     }
 }

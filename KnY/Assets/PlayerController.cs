@@ -28,7 +28,8 @@ public class PlayerController : MonoBehaviour
         skills.Add(new Skill_Dodge(0.7f, 0.4f, false));
         skills.Add(new Skill_AoeDash(1f, 0.4f, false));
         skills.Add(new Skill_ThunderStrike(1f, 1.8f,0.25f,3, false));
-        foreach(Skill skill in skills)
+        skills.Add(new Skill_Laser(1f, 1.8f, 0.25f, 3, false));
+        foreach (Skill skill in skills)
         {
             skill.Anim = anim;
         }
@@ -102,9 +103,13 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetAxis("Attack1") == 1 && skills[1].CooldownTimer <= 0 && skills[1].SpCost <= myStatus.Sp) // Dash
         {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 heading = mousePosition - (Vector2)transform.position;
+            float distance = heading.magnitude;
+            Vector2 attackDirection = heading / distance;
             skills[1].ActivateSkill(gameObject, movementDirection, null);
         }
-        if (Input.GetAxis("Attack3") == 1 && skills[2].CooldownTimer <= 0 && skills[2].SpCost <= myStatus.Sp) // Dash and Sping
+        if (Input.GetAxis("Attack3") == 1 && skills[2].CooldownTimer <= 0 && skills[2].SpCost <= myStatus.Sp) // Dash and Spin
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 heading = mousePosition - (Vector2)transform.position;
@@ -119,6 +124,14 @@ public class PlayerController : MonoBehaviour
             float distance = heading.magnitude;
             Vector2 attackDirection = heading / distance;
             skills[3].ActivateSkill(gameObject, mousePosition, null);
+        }
+        if (Input.GetAxis("Attack5") == 1 && skills[4].CooldownTimer <= 0 && skills[4].SpCost <= myStatus.Sp) // Test 2
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 heading = mousePosition - (Vector2)transform.position;
+            float distance = heading.magnitude;
+            Vector2 attackDirection = heading / distance;
+            skills[4].ActivateSkill(gameObject, mousePosition, GameObject.Find("Target"));
         }
     }
 

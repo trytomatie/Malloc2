@@ -20,7 +20,8 @@ public class ItemSeries
         Inheritance = 3,
         Faerie = 4,
         Royal = 5,
-        Scout = 6
+        Scout = 6,
+        Minionmancer = 7
     }
 
     public virtual void ApplyEffect(GameObject g)
@@ -56,6 +57,9 @@ public class ItemSeries
                         break;
                     case Series.Faerie:
                         UpdateSeries(mySeries, Series.Faerie, new ItemSeries_Faerie());
+                        break;
+                    case Series.Scout:
+                        UpdateSeries(mySeries, Series.Scout, new ItemSeries_Scout());
                         break;
                 }
             }

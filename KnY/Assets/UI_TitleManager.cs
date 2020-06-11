@@ -15,11 +15,26 @@ public class UI_TitleManager : MonoBehaviour
     public Text levelDescription;
 
     private static List<UI_TitleManager> instances = new List<UI_TitleManager>();
+
+    public static List<UI_TitleManager> Instances
+    {
+        get
+        {
+
+            instances.RemoveAll(item => item == null);
+            return instances;
+        }
+
+        set
+        {
+            instances = value;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        instances.RemoveAll(item => item == null);
-        instances.Add(this);
+        Instances.Add(this);
         foreach (Material material in materials)
         {
             material.SetFloat("_Fade", 0);
@@ -86,7 +101,7 @@ public class UI_TitleManager : MonoBehaviour
 
     public static void Show(string title, string desc, float duration)
     {
-        foreach(UI_TitleManager instance in instances)
+        foreach(UI_TitleManager instance in Instances)
         {
             instance.levelName.text = title;
             instance.levelDescription.text = desc;

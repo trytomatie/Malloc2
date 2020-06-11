@@ -35,3 +35,4 @@ Material:
     - Color_BAD9FAC4: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
     - Color_DD1A44DE: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 0}
     - Vector3_469242BA: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
