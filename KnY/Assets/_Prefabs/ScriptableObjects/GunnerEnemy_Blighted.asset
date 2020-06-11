@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GunnerEnemy_Blighted
   m_EditorClassIdentifier: 
   mobName: GenericZombie
-  instance: {fileID: 8276288782881259578, guid: 87719d6cd09db594ea94f2bf2510c98b,
+  instance: {fileID: 1826614149254534611, guid: 92cdef66259edc94f819f7798b2322be,
     type: 3}
   baseCost: 3
   costPerLevel: 5

@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         myStatus = GetComponent<Statusmanager>();
-        skills.Add(new Skill_BasicAttack(1, 0.4f, true));
+        skills.Add(new Skill_BasicAttack(0.4f, 0.4f, true));
         skills.Add(new Skill_Dodge(0.7f, 0.4f, false));
         skills.Add(new Skill_AoeDash(1f, 0.4f, false));
         skills.Add(new Skill_ThunderStrike(1f, 1.8f,0.25f,3, false));
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         {
             skill.Anim = anim;
         }
-        GetComponent<Inventory>().AddItem(new Item_BlackMarble());
+        //GetComponent<Inventory>().AddItem(new Item_BlackMarble());
     }
 
     // Update is called once per frame

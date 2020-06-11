@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,8 @@ using UnityEngine;
 class Skill_BasicAttack : Skill
 {
 
-
+    int attackPhase = 2;
+    private float animationTimer = 0;
     /// <summary>
     /// Initializes base Skill Atributes
     /// </summary>
@@ -33,7 +35,24 @@ class Skill_BasicAttack : Skill
         source.GetComponent<Animator>().SetFloat("SpeedIncrease",(float)((1 * factor) - 1) * 0.4f);
         Casttime = (float)(BaseCasttime / factor);
         Cooldown = (float)(BaseCooldown / factor);
-        base.ActivateSkill(source,direction,target);
+        if (Anim.GetBool("IsAttacking"))
+        {
+            Debug.Log("Suff");
+            Anim.SetBool("NextAttack",true);
+            attackPhase++;
+            SetAttackParameters(source.GetComponent<Animator>(), direction.x, direction.y, attackPhase);
+        }
+        else
+        {
+            attackPhase = 2;
+            SetAttackParameters(source.GetComponent<Animator>(), direction.x, direction.y, attackPhase);
+
+        }
+        if (attackPhase == 4)
+        {
+            Cooldown = BaseCooldown * 2.5f;
+        }
+        base.ActivateSkill(source, direction, target);
     }
 
     /// <summary>
@@ -45,13 +64,23 @@ class Skill_BasicAttack : Skill
         {
             Statusmanager sourceStatus = source.GetComponent<Statusmanager>();
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            SetAttackParameters(source.GetComponent<Animator>(),Direction.x, Direction.y, 2);
             GameObject damageObject = GameObject.Instantiate(PublicGameResources.GetResource().damageObject, (Vector2)source.transform.position + Direction * 0.15f, Quaternion.identity);
             damageObject.GetComponent<Animator>().SetFloat("DamageAnimation", 1);
             damageObject.transform.up = mousePosition - (Vector2)source.transform.position;
-            damageObject.GetComponent<DamageObject>().SetValues(sourceStatus.totalAttackDamage, sourceStatus.CriticalStrikeChance, 0.1f, 0.2f, source, 2);
+            int damage = sourceStatus.totalAttackDamage;
+            if(attackPhase == 4)
+            {
+                damage = sourceStatus.totalAttackDamage * 2;
+                attackPhase = 2;
+            }
+            damageObject.GetComponent<DamageObject>().SetValues(damage, sourceStatus.CriticalStrikeChance, 0.1f, 0.2f, source, 2);
             damageObject.GetComponent<DamageObject>().SetKnockbackParameters(0.4f, 0.25f);
             sourceStatus.ApplyStatusEffect(new StatusEffect_HiddenSlow(Casttime ,0.65f));
+
+            if (attackPhase == 4)
+            {
+                animationTimer = 0;
+            }
             InitialApplication = true;
         }
     }
