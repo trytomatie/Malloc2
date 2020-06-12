@@ -11,6 +11,7 @@ public class ItemSeries
     public int totalConditionsMet = 0;
     public int[] conditionsNeeded = new int[1];
     public bool isActive = false;
+    public Color color;
     public Sprite image;
     public enum Series
     {

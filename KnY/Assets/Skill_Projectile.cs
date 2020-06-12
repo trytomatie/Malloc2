@@ -12,7 +12,7 @@ class Skill_Projectile : Skill
     /// <summary>
     /// Initializes base Skill Atributes
     /// </summary>
-    public Skill_Projectile(float cooldown, float casttime,float projectileSpeed,bool allowsMovement)
+    public Skill_Projectile(float cooldown, float casttime,float projectileSpeed,bool allowsMovement, Material fxMaterial)
     {
         this.Cooldown = cooldown;
         this.Casttime = casttime;
@@ -20,6 +20,7 @@ class Skill_Projectile : Skill
         this.BaseCasttime = casttime;
         this.AllowsMovement = allowsMovement;
         this.projectileSpeed = projectileSpeed;
+        this.FxMaterial = fxMaterial;
     }
 
 
@@ -48,6 +49,7 @@ class Skill_Projectile : Skill
         Statusmanager s = source.GetComponent<Statusmanager>();
         GameObject projectile = GameObject.Instantiate(PublicGameResources.GetResource().damageObject, source.transform.position,Quaternion.identity);
         projectile.GetComponent<DamageObject>().SetValues(s.totalAttackDamage, s.criticalStrikeChance, 0, 10f, source, 6);
+        projectile.GetComponent<SpriteRenderer>().material = FxMaterial;
         projectile.GetComponent<Rigidbody2D>().velocity = Direction * projectileSpeed;
         projectile.transform.GetChild(5).GetComponent<CircleCollider2D>().radius = 0.05f;
         projectile.GetComponent<Animator>().SetFloat("DamageAnimation", 4);

@@ -21,7 +21,9 @@ class Skill_AoeDash : Skill
         this.BaseCooldown = cooldown;
         this.BaseCasttime = casttime;
         this.AllowsMovement = allowsMovement;
-        this.SpCost = 60;
+        this.Name = "Spin Dash";
+        this.Description = "Dashes forward and deals damage in an area for " + Director.damageColorText + damageMutliplicator * 100 + Director.colorEndText + " % Attackdamage";
+        this.SpCost = 40;
     }
 
 
@@ -125,6 +127,9 @@ class Skill_AoeDash : Skill
         damageObject.GetComponent<DamageObject>().SetValues((int)(sourceStatus.totalAttackDamage * damageMutliplicator), sourceStatus.CriticalStrikeChance, 0.1f, 0.2f, source, 3);
         damageObject.GetComponent<DamageObject>().SetKnockbackParameters(0.6f, 0.35f);
         sourceStatus.ApplyStatusEffect(new StatusEffect_HiddenSlow(Casttime, 0.65f));
+
+        Rigidbody2D rb = source.GetComponent<Rigidbody2D>();
+        rb.velocity = Vector2.zero;
     }
 
 

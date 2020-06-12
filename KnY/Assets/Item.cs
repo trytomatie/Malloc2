@@ -69,7 +69,8 @@ public class Item
     public enum UniqueItems
     {
         Item_BlackMarble = 10,
-        Item_TheProcer = 30
+        Item_TheProcer = 30,
+        Item_InstantSeries = 36,
     }
     public enum OtherItems
     {
@@ -101,6 +102,11 @@ public class Item
         RemoveEffect(g);
         stacks+= otherItem.stacks;
         ApplyEffect(g);
+    }
+
+    public virtual void AddAditionalStackWithoutReapplication(GameObject g, Item otherItem)
+    {
+        stacks += otherItem.stacks;
     }
 
     public virtual void RefreshEffect(GameObject g)
@@ -262,6 +268,9 @@ public class Item
                 return item;
             case 35:
                 item = new Item_Gaze();
+                return item;
+            case 36:
+                item = new Item_InstantSeries();
                 return item;
             default:
                 return null;

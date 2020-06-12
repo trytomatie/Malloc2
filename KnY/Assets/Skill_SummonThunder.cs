@@ -15,7 +15,7 @@ class Skill_ThunderStrike : Skill
     /// <summary>
     /// Initializes base Skill Atributes
     /// </summary>
-    public Skill_ThunderStrike(float cooldown, float casttime,float delayBetweenStrikes, int numberOfStrikes,bool allowsMovement)
+    public Skill_ThunderStrike(float cooldown, float casttime,float delayBetweenStrikes, int numberOfStrikes,bool allowsMovement, Material fxMaterial)
     {
         this.Cooldown = cooldown;
         this.Casttime = casttime;
@@ -23,8 +23,13 @@ class Skill_ThunderStrike : Skill
         this.BaseCasttime = casttime;
         this.AllowsMovement = allowsMovement;
         this.delayBetweenStrikes = delayBetweenStrikes;
+        this.Name = "Summon Thunder";
+        this.Description = "Strikes the targeted Area " + Director.variableColorText + numberOfStrikes + Director.colorEndText + " times for <Color=Orange> 100% </Color> Attackdamage each strike.";
+        this.SpCost = 50;
         this.numberOfStrikes = numberOfStrikes;
-        
+        this.FxMaterial = fxMaterial;
+
+
     }
 
 
@@ -42,7 +47,7 @@ class Skill_ThunderStrike : Skill
     /// </summary>
     public override void SkillCastingPhase(GameObject source)
     {
-        if(Anim != null)
+        if (Anim != null)
         {
             Anim.SetInteger("AnimationState", 1);
         }
@@ -69,12 +74,13 @@ class Skill_ThunderStrike : Skill
         int strikesCompleted = 0;
         while (strikesCompleted < numberOfStrikes)
         { 
-                GameObject projectile = GameObject.Instantiate(PublicGameResources.GetResource().damageObject, Direction, Quaternion.identity);
-                projectile.GetComponent<DamageObject>().SetValues(s.totalAttackDamage, s.criticalStrikeChance, 0, 0.5f, source, 6);
-                projectile.transform.GetChild(5).GetComponent<CircleCollider2D>().radius = 0.15f;
-                projectile.GetComponent<Animator>().SetFloat("DamageAnimation", 0);
-                GameObject fx = GameObject.Instantiate(PublicGameResources.GetResource().damageFx, Direction + new Vector2(0, 0.2f), Quaternion.identity);
-                fx.GetComponent<Animator>().SetFloat("DamageAnimation", 6);
+            GameObject projectile = GameObject.Instantiate(PublicGameResources.GetResource().damageObject, Direction, Quaternion.identity);
+            projectile.GetComponent<DamageObject>().SetValues(s.totalAttackDamage, s.criticalStrikeChance, 0, 0.5f, source, 6);
+            projectile.transform.GetChild(5).GetComponent<CircleCollider2D>().radius = 0.15f;
+            projectile.GetComponent<Animator>().SetFloat("DamageAnimation", 0);
+            GameObject fx = GameObject.Instantiate(PublicGameResources.GetResource().damageFx, Direction + new Vector2(0, 0.2f), Quaternion.identity);
+            fx.GetComponent<SpriteRenderer>().material = FxMaterial;
+            fx.GetComponent<Animator>().SetFloat("DamageAnimation", 6);
             strikesCompleted++;
             yield return new WaitForSeconds(delayBetweenStrikes);
         }

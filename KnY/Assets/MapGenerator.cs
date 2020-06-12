@@ -93,7 +93,7 @@ public class MapGenerator : MonoBehaviour
         {
             for (int y = -2; y <= 2; y++)
             {
-                yield return new WaitForFixedUpdate();
+                yield return new WaitForEndOfFrame();
                 if (Vector2.Distance(toLoad,toUnload + new Vector2(x,y)) > 1.25f)
                 {
                     UnloadChunk(toUnload + new Vector2(x, y));
@@ -104,7 +104,7 @@ public class MapGenerator : MonoBehaviour
         {
             for (int y = -1; y <= 1; y++)
             {
-                yield return new WaitForFixedUpdate();
+                yield return new WaitForEndOfFrame();
                 if (Mathf.Abs(x) == Mathf.Abs(y) && x != 0)
                 {
                     continue;
@@ -132,11 +132,11 @@ public class MapGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        GenerateNewMap();
         SetSeeds();
         int x = (int)Mathf.Round((Camera.main.transform.position.x / CHUNKSIZE));
         int y = (int)Mathf.Round((Camera.main.transform.position.y / CHUNKSIZE));
         CurrentCameraCoords = new Vector2(x, y);
-        GenerateNewMap();
     }
 
     public void GenerateNewMap()
@@ -154,7 +154,6 @@ public class MapGenerator : MonoBehaviour
         currentFloor++;
 
         SetManaCrystalChance();
-        StartCoroutine(LoadingAndUnloading(currentCameraCoords, currentCameraCoords));
         UI_TitleManager.Show("Ancient Labyrinth", "Floor " + currentFloor, 4f);
         if (debug_GenerateWholeMap)
         {
@@ -233,11 +232,35 @@ public class MapGenerator : MonoBehaviour
         GetRoomOpeningsNeeded(coords, ref roomIsUp, ref roomIsDown, ref roomIsRight, ref roomIsLeft);
 
         GameObject chunk = Instantiate(chunkTiles[id], coords * CHUNKSIZE, Quaternion.identity, mapParent);
-        chunk.GetComponent<ChunkSettings>().AdjustExits(roomIsUp,roomIsDown,roomIsRight,roomIsLeft);
+        chunk.GetComponent<ChunkSettings>().AdjustExits(roomIsUp, roomIsDown, roomIsRight, roomIsLeft);
         chunk.GetComponent<ChunkSettings>().mapDebugInfo += debugMessage;
-        chunk.GetComponent<ChunkSettings>().myRandom = new System.Random(((int)coords.x / 100) + ((int)coords.y / 100));
+        int x, y;
+        GetSeedsOutOfSeedMap(coords, out x, out y);
+        chunk.GetComponent<ChunkSettings>().myRandom = new System.Random(((int)x / 100) + ((int)y / 100));
         chunkMap.Add(coords, chunk);
         debugMessage = "";
+    }
+
+    private void GetSeedsOutOfSeedMap(Vector2 coords, out int x, out int y)
+    {
+        x = 0;
+        y = 0;
+        if (coords.x >= 0)
+        {
+            x = xSeedMap[(int)coords.x];
+        }
+        else
+        {
+            x = negativeXSeedMap[(int)Mathf.Abs(coords.x) - 1];
+        }
+        if (coords.y >= 0)
+        {
+            y = ySeedMap[(int)coords.y];
+        }
+        else
+        {
+            y = negativeYSeedMap[(int)Mathf.Abs(coords.y) - 1];
+        }
     }
 
     public int GetSeededChunkId(Vector2 coords)
@@ -626,7 +649,6 @@ public class MapGenerator : MonoBehaviour
                 {
                     numberOfBossChunks--;
                     myMap[v] = 3;
-                    print(v);
                 }
             }
             timeout++;
@@ -640,6 +662,7 @@ public class MapGenerator : MonoBehaviour
                 spawnChunkSet = true;
                 GameObject.Find("Player").transform.position = v * CHUNKSIZE;
                 GameObject.Find("Camera Holder").transform.position = v * CHUNKSIZE;
+                CurrentCameraCoords = new Vector2(1000, 1000);
             }
         }
         timeout = 0;

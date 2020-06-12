@@ -50,20 +50,5 @@ public class MyDebug : MonoBehaviour {
         {
             FindObjectOfType<PlayerController>().GetComponent<Statusmanager>().Mana += 10000;
         }
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            if(coloring)
-            {
-                print("yay");
-                playerEffects.SetColor("_color", color1);
-                coloring = !coloring;
-            }
-            else
-            {
-                print("nay");
-                playerEffects.SetColor("_color", color2);
-                coloring = !coloring;
-            }
-        }
     }
 }

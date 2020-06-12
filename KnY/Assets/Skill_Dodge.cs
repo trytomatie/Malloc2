@@ -20,7 +20,7 @@ class Skill_Dodge : Skill
         this.BaseCooldown = cooldown;
         this.BaseCasttime = casttime;
         this.AllowsMovement = allowsMovement;
-        this.SpCost = 25;
+        this.SpCost = 20;
     }
 
 
@@ -118,5 +118,11 @@ class Skill_Dodge : Skill
             CasttimeTimer = -1;
         }
     }
-   
+
+    public override void OnCastEnd(GameObject source)
+    {
+        Rigidbody2D rb = source.GetComponent<Rigidbody2D>();
+        rb.velocity = Vector2.zero;
+    }
+
 }

@@ -13,6 +13,7 @@ public class ItemSeries_Scout : ItemSeries
         this.conditionsNeeded = new int[description.Count];
         this.conditionsNeeded[0] = 2;
         this.image = ItemIcons.GetSeriesIcon(id);
+        this.color = Color.HSVToRGB( 212f / 360f, 1f, 1f);
     }
     public override void ApplyEffect(GameObject g)
     {

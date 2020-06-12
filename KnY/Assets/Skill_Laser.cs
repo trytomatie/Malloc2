@@ -70,11 +70,17 @@ class Skill_Laser : Skill
 
         while (timer > 0)
         {
-
-
+            if(Target == null)
+            {
+                break;
+            }
             laserFx.GetComponent<SpriteRenderer>().size = new Vector2(Vector2.Distance(source.transform.position, Target.transform.position), laserFx.GetComponent<SpriteRenderer>().size.y);
             laserFx.transform.right = Target.transform.position - source.transform.position;
             yield return new WaitForSeconds(Time.deltaTime);
+            if (Target == null)
+            {
+                break;
+            }
             timer -= Time.deltaTime;
             tickRateTimer += Time.deltaTime;
             if(tickRateTimer >= tickRate)

@@ -52071,6 +52071,10 @@ PrefabInstance:
       propertyPath: inventorysThatHavePermission.Array.data[0]
       value: 
       objectReference: {fileID: 1764811835}
+    - target: {fileID: 1761628289, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1871545809, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
       propertyPath: inventorysThatHavePermission.Array.data[0]
       value: 
@@ -52164,6 +52168,11 @@ PrefabInstance:
       propertyPath: inventorysThatHavePermission.Array.data[0]
       value: 
       objectReference: {fileID: 1764811835}
+    - target: {fileID: 2408161628491552956, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 26.350006
+      objectReference: {fileID: 0}
     - target: {fileID: 2457415448464257201, guid: 8e7ed1752d676c04abdb20f6920127cb,
         type: 3}
       propertyPath: inventorysThatHavePermission.Array.data[0]
@@ -52322,7 +52331,7 @@ PrefabInstance:
     - target: {fileID: 7694051092523364345, guid: 8e7ed1752d676c04abdb20f6920127cb,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 90
+      value: 89.99997
       objectReference: {fileID: 0}
     - target: {fileID: 7694051092641456674, guid: 8e7ed1752d676c04abdb20f6920127cb,
         type: 3}
@@ -52447,7 +52456,7 @@ PrefabInstance:
     - target: {fileID: 7694051092885220554, guid: 8e7ed1752d676c04abdb20f6920127cb,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -89.900024
+      value: -89.899994
       objectReference: {fileID: 0}
     - target: {fileID: 7808060791010863914, guid: 8e7ed1752d676c04abdb20f6920127cb,
         type: 3}

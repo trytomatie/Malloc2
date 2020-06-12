@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AI_GenericEnemy : BaseEnemyAI
+public class AI_GenericEnemy : AI_BaseAI
 {
 
     public Transform bodyTransform;

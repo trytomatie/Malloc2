@@ -56,6 +56,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -325,6 +326,7 @@ MonoBehaviour:
   attackCooldownTimer: 0
   attackSpeedTimer: 0
   attackDirection: {x: 0, y: 0}
+  fxMaterial: {fileID: 2100000, guid: 86f7c5495e1cb414289c9ac3e5f7dbcf, type: 2}
   wanderCooldownTimer: 0
   pathfinding: 1
   randomChance: 0
@@ -333,4 +335,5 @@ MonoBehaviour:
   isHopping: 0
   direction: {x: 0, y: 0}
   disableMovement: 0
+  targetIsFollowTarget: 1
   bodyTransform: {fileID: 0}

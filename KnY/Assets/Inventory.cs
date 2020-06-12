@@ -62,7 +62,7 @@ public class Inventory : MonoBehaviour {
         {
             if (inventoryItem.itemId == item.itemId)
             {
-                inventoryItem.AddAditionalStack(gameObject, item);
+                inventoryItem.AddAditionalStackWithoutReapplication(gameObject, item);
                 return;
             }
         }
@@ -175,6 +175,20 @@ public class Inventory : MonoBehaviour {
         foreach (ItemSeries series in itemSeries.Values)
         {
             series.ApplyEffect(gameObject);
+        }
+
+
+        if (GetComponent<PlayerController>() != null) // Change Sword Glowcolor depending on series
+        {
+            GetComponent<PlayerController>().swordGlowColor = new List<Color>();
+            foreach (ItemSeries series in itemSeries.Values)
+            {
+                if (series.conditionsNeeded[0] <= series.totalConditionsMet)
+                {
+                    GetComponent<PlayerController>().swordGlowColor.Add(series.color);
+                }
+            }
+            GetComponent<PlayerController>().ChangeSwordGlow();
         }
         
     }

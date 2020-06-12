@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AI_GenericRangedEnemy : BaseEnemyAI
+public class AI_GenericRangedEnemy : AI_BaseAI
 {
 
     public Transform bodyTransform;
@@ -13,7 +13,7 @@ public class AI_GenericRangedEnemy : BaseEnemyAI
     void Start()
     {
         Initialize();
-        skills.Add(new Skill_Projectile(3, 0.5f, 2f, false));
+        skills.Add(new Skill_Projectile(3, 0.5f, 2f, false, fxMaterial));
     }
 	// Update is called once per frame
 	void Update () {

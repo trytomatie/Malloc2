@@ -18,6 +18,7 @@ public class ItemSeries_Royal : ItemSeries
         this.conditionsNeeded[1] = 6;
         this.conditionsNeeded[2] = 9;
         this.image = ItemIcons.GetSeriesIcon(id);
+        this.color = Color.HSVToRGB( 61f / 360f, 1f, 1f);
     }
     public override void ApplyEffect(GameObject g)
     {

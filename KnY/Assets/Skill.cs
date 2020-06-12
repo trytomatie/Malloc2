@@ -5,12 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
+[Serializable]
 public class Skill
 {
     private float cooldown = 0;
     private float baseCooldown = 0;
     private float casttime = 0;
     private float baseCasttime = 0;
+    [SerializeField]
     private float cooldownTimer = 0;
     private float casttimeTimer = 0;
     private int spCost = 25;
@@ -20,6 +22,9 @@ public class Skill
     private GameObject target;
     private Animator anim;
     private float speedIncrease = 0;
+    private Material fxMaterial;
+    private String name = "NAME PLEASE!";
+    private String description = "PLEASE FOR THE LOVE OF GOD, GIVE ME A DESCRIPTION PLEASE";
 
     public virtual void ActivateSkill(GameObject source, Vector2 direction, GameObject target)
     {
@@ -246,6 +251,45 @@ public class Skill
         set
         {
             anim = value;
+        }
+    }
+
+    public Material FxMaterial
+    {
+        get
+        {
+            return fxMaterial;
+        }
+
+        set
+        {
+            fxMaterial = value;
+        }
+    }
+
+    public string Name
+    {
+        get
+        {
+            return name;
+        }
+
+        set
+        {
+            name = value;
+        }
+    }
+
+    public string Description
+    {
+        get
+        {
+            return description;
+        }
+
+        set
+        {
+            description = value;
         }
     }
     #endregion

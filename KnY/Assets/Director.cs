@@ -24,6 +24,11 @@ public class Director : MonoBehaviour {
     private Material currentFadeMaterial;
     private bool endFadeInstantly = false;
 
+
+    public static string damageColorText = "<Color=orange>";
+    public static string variableColorText = "<Color=blue>";
+    public static string colorEndText = "</Color>";
+
     public TimeSpan timePassed = new TimeSpan(0, 0, 0, 0, 0);
 
     public GameObject Canvas

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 /// </summary>
 public class UI_InventoryManager : MonoBehaviour
 {
-    public List<GameObject> inventoryDisplays;
+    private List<GameObject> inventoryDisplays = new List<GameObject>();
     public static Inventory playerInventory;
     public GameObject inventoryDisplayInstantiationTarget;
     public List<GameObject> inventorySlots;
@@ -21,8 +21,8 @@ public class UI_InventoryManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        instances.RemoveAll(item => item == null);
-        instances.Add(this);
+        Instances.RemoveAll(item => item == null);
+        Instances.Add(this);
     }
 
     void OnEnable()
@@ -36,16 +36,16 @@ public class UI_InventoryManager : MonoBehaviour
     /// </summary>
     public static void ClearInventoryDisplays()
     {
-        foreach(UI_InventoryManager instance in instances)
+        foreach(UI_InventoryManager instance in Instances)
         { 
             List<GameObject> removalList = new List<GameObject>();
-            foreach(GameObject go in instance.inventoryDisplays)
+            foreach(GameObject go in instance.InventoryDisplays)
             {
                 removalList.Add(go);
             }
             foreach(GameObject go in removalList)
             {
-                instance.inventoryDisplays.Remove(go);
+                instance.InventoryDisplays.Remove(go);
                 if(go != null)
                 { 
                     go.transform.SetParent(null);
@@ -60,7 +60,7 @@ public class UI_InventoryManager : MonoBehaviour
     /// </summary>
     public static void FillInventoryDisplays()
     {
-        foreach (UI_InventoryManager instance in instances)
+        foreach (UI_InventoryManager instance in Instances)
         {
             if(instance == null)
             {
@@ -132,7 +132,7 @@ public class UI_InventoryManager : MonoBehaviour
         instanceDisplay.GetComponent<Image>().material = Item.GetItemDescriptionMaterial(item.itemId);
         instanceDisplay.GetComponent<UI_ArtifactDisplayOnHover>().item = item;
         instanceDisplay.transform.GetChild(0).GetComponent<Text>().text = "x" + item.stacks;
-        instance.inventoryDisplays.Add(instanceDisplay);
+        instance.InventoryDisplays.Add(instanceDisplay);
     }
 
     public Inventory PlayerInventory
@@ -149,6 +149,33 @@ public class UI_InventoryManager : MonoBehaviour
         set
         {
             playerInventory = value;
+        }
+    }
+
+    public static List<UI_InventoryManager> Instances
+    {
+        get
+        {
+            return instances;
+        }
+
+        set
+        {
+            instances = value;
+        }
+    }
+
+    public List<GameObject> InventoryDisplays
+    {
+        get
+        {
+            inventoryDisplays.RemoveAll(item => item == null);
+            return inventoryDisplays;
+        }
+
+        set
+        {
+            inventoryDisplays = value;
         }
     }
 }

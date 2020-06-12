@@ -148,8 +148,8 @@ public class Statusmanager : MonoBehaviour {
                 GetComponent<Animator>().SetInteger("AnimationState", -1);
                 GetComponent<DepthSorter>().enabled = false;
                 GetComponent<SpriteRenderer>().sortingOrder = PublicGameResources.FLOOR_LAYER +1;
-                GetComponent<BaseEnemyAI>().mode = BaseEnemyAI.Mode.Dead;
-                GetComponent<BaseEnemyAI>().enabled = false;
+                GetComponent<AI_BaseAI>().mode = AI_BaseAI.Mode.Dead;
+                GetComponent<AI_BaseAI>().enabled = false;
                 GetComponent<KnockbackHandler>().enabled = false;
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 tag = "Untagged";
@@ -316,12 +316,12 @@ public class Statusmanager : MonoBehaviour {
         { 
             Hp -= damage;
         }
-        if (GetComponent<BaseEnemyAI>() != null)
+        if (GetComponent<AI_BaseAI>() != null)
         {
             int chance = UnityEngine.Random.Range(0, 100);
             if(chance < 40 && !gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().intangible)
             {
-                GetComponent<BaseEnemyAI>().target = gameObjectThatDamagedMeLast;
+                GetComponent<AI_BaseAI>().target = gameObjectThatDamagedMeLast;
             }
         }
         StartCoroutine(damageTakenAnimation());

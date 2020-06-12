@@ -144,7 +144,7 @@ public class SpawnDirector_Room : MonoBehaviour
         GameObject monster = Instantiate(mob.instance, location.transform.position, Quaternion.identity);
         monster.GetComponent<Statusmanager>().level = level;
         TimeSpan timeSpan = DateTime.Now - startTime;
-        monster.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_KingsContract((int)timeSpan.TotalSeconds));
+        monster.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_KingsContract((int)Director.GetInstance().timePassed.TotalSeconds));
         enemyList.Add(monster);
     }
     public void SpawnRandomMob(Transform spawnLocation,GameObject target)
@@ -166,9 +166,9 @@ public class SpawnDirector_Room : MonoBehaviour
         GameObject monster = Instantiate(mob.instance, location.transform.position, Quaternion.identity);
         monster.GetComponent<Statusmanager>().level = level;
         TimeSpan timeSpan = DateTime.Now - startTime;
-        monster.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_KingsContract((int)timeSpan.TotalSeconds));
-        monster.GetComponent<BaseEnemyAI>().Target = target;
-        monster.GetComponent<BaseEnemyAI>().mode = BaseEnemyAI.Mode.Ftarget_RegularFollow;
+        monster.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_KingsContract((int)Director.GetInstance().timePassed.TotalSeconds));
+        monster.GetComponent<AI_BaseAI>().Target = target;
+        monster.GetComponent<AI_BaseAI>().mode = AI_BaseAI.Mode.Ftarget_RegularFollow;
         enemyList.Add(monster);
     }
 }

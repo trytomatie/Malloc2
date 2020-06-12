@@ -13,28 +13,28 @@ public class AnimatorToggleEnemyBehaivour : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        BaseEnemyAI b = animator.gameObject.GetComponent<BaseEnemyAI>();
+        AI_BaseAI b = animator.gameObject.GetComponent<AI_BaseAI>();
         animator.speed = 1;
         switch(b.mode)
         {
-            case BaseEnemyAI.Mode.Idle:
+            case AI_BaseAI.Mode.Idle:
                 animator.SetInteger("AnimationState", 0);
                 break;
-            case BaseEnemyAI.Mode.PathfinderFollow:
+            case AI_BaseAI.Mode.PathfinderFollow:
                 animator.SetInteger("AnimationState", 1);
                 break;
-            case BaseEnemyAI.Mode.RegularFollow:
+            case AI_BaseAI.Mode.RegularFollow:
                 animator.SetInteger("AnimationState", 1); 
                 break;
-            case BaseEnemyAI.Mode.Attack:
+            case AI_BaseAI.Mode.Attack:
                 break;
-            case BaseEnemyAI.Mode.AttackPrep:
+            case AI_BaseAI.Mode.AttackPrep:
 
                 break;
-            case BaseEnemyAI.Mode.Ftarget_PathfinderFollow:
+            case AI_BaseAI.Mode.Ftarget_PathfinderFollow:
                 animator.SetInteger("AnimationState", 1);
                 break;
-            case BaseEnemyAI.Mode.Wander:
+            case AI_BaseAI.Mode.Wander:
                 if (animator.gameObject.GetComponent<Rigidbody2D>().velocity != Vector2.zero)
                 {
                     animator.SetInteger("AnimationState", 1);

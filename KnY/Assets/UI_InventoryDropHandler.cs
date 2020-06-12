@@ -95,8 +95,6 @@ public class UI_InventoryDropHandler : MonoBehaviour, IDropHandler, IPointerEnte
                 {
                     dragItem.owner.GetComponent<Inventory>().SwitchArtifactInInventorys(dragItem, false);
                 }
-                UI_InventoryManager.ClearInventoryDisplays();
-                UI_InventoryManager.FillInventoryDisplays();
             }
 
 
@@ -113,10 +111,11 @@ public class UI_InventoryDropHandler : MonoBehaviour, IDropHandler, IPointerEnte
                     }
                 }
                 dragItem.position = i + 1;
+                UI_InventoryManager.ClearInventoryDisplays();
+                UI_InventoryManager.FillInventoryDisplays();
             }
         }
-
-        if(UI_TraderInventory.instance != null && UI_TraderInventory.instance.gameObject.activeSelf)
+        if (UI_TraderInventory.instance != null && UI_TraderInventory.instance.gameObject.activeSelf)
         {
             UI_TraderInventory.instance.UpdateTraderLists();
         }

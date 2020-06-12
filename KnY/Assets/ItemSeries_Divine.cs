@@ -14,6 +14,7 @@ public class ItemSeries_Divine : ItemSeries
         this.conditionsNeeded = new int[description.Count];
         this.conditionsNeeded[0] = 2;
         this.image = ItemIcons.GetSeriesIcon(id);
+        this.color = Color.HSVToRGB(123f / 360f, 0f, 1f);
     }
     public override void ApplyEffect(GameObject g)
     {

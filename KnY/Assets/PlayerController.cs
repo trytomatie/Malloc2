@@ -13,23 +13,26 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private GameObject interactionRadius;
     private Statusmanager myStatus;
-    public List<Skill> skills = new List<Skill>();
-    private bool disableMovement = false;
-
+    private SkillManager skillManager;
+    public List<Color> swordGlowColor = new List<Color>();
+    private Color baseSwordGlowColor;
+    public Color blended;
 
     // Start is called before the first frame update
     void Start()
     {
+        baseSwordGlowColor = GetComponent<SpriteRenderer>().material.GetColor("_color");
         interactionRadius = GameObject.Find("InteractionRadius");
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         myStatus = GetComponent<Statusmanager>();
-        skills.Add(new Skill_BasicAttack(0.4f, 0.4f, true));
-        skills.Add(new Skill_Dodge(0.7f, 0.4f, false));
-        skills.Add(new Skill_AoeDash(1f, 0.4f, false));
-        skills.Add(new Skill_ThunderStrike(1f, 1.8f,0.25f,3, false));
-        skills.Add(new Skill_Laser(1f, 1.8f, 0.25f, 3, false));
-        foreach (Skill skill in skills)
+        skillManager = GetComponent<SkillManager>();
+        skillManager.AddActiveSkill(new Skill_BasicAttack(0.4f, 0.4f, false));
+        skillManager.AddActiveSkill(new Skill_Dodge(0.7f, 0.4f, false));
+        skillManager.AddActiveSkill(new Skill_AoeDash(10f, 0.4f, false));
+        skillManager.AddActiveSkill(new Skill_ThunderStrike(8f, 0.8f,0.25f,3, false, GetComponent<SpriteRenderer>().material));
+        //skills.Add(new Skill_Laser(1f, 1.8f, 0.25f, 3, false));
+        foreach (Skill skill in skillManager.activeSkills)
         {
             skill.Anim = anim;
         }
@@ -42,7 +45,6 @@ public class PlayerController : MonoBehaviour
         MovementInput();
         BattleInput();
         InteractionInput();
-        UpdateTimers();
     }
 
 
@@ -53,12 +55,8 @@ public class PlayerController : MonoBehaviour
     {
         float x = 0;
         float y = 0;
-        if (!disableMovement)
-        {
-            x = Input.GetAxis("Horizontal");
-            y = Input.GetAxis("Vertical");
-
-        }
+        x = Input.GetAxis("Horizontal");
+        y = Input.GetAxis("Vertical");
         if (x == 0 || y == 0) // Checks if the player is moving diagonaly, Reduces Movement speed acordingly
         {
             movementSpeedMod = GetComponent<Statusmanager>().TotalMovementSpeed;
@@ -69,7 +67,10 @@ public class PlayerController : MonoBehaviour
             movementSpeedMod = GetComponent<Statusmanager>().TotalMovementSpeed * DIAGONAL_SPEED;
         }
         movementDirection = new Vector2(x, y);
-        rb.velocity = movementDirection * movementSpeedMod;
+        if (!skillManager.disableMovement)
+        {
+            rb.velocity = movementDirection * movementSpeedMod;
+        }
         // Set Parameter for Animator
         if (x != 0 || y != 0)
         {
@@ -93,45 +94,37 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void BattleInput()
     {
-        if (Input.GetAxis("Attack2") == 1 && skills[0].CooldownTimer <= 0 && skills[0].SpCost <= myStatus.Sp) // Style 1 (BASICATTACK)
+        if (Input.GetAxis("Attack2") == 1 && skillManager.activeSkills[0].CooldownTimer <= 0 && skillManager.activeSkills[0].SpCost <= myStatus.Sp) // Style 1 (BASICATTACK)
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 heading = mousePosition - (Vector2)transform.position;
             float distance = heading.magnitude;
             Vector2 attackDirection = heading / distance;
-            skills[0].ActivateSkill(gameObject, attackDirection, null);
+            skillManager.activeSkills[0].ActivateSkill(gameObject, attackDirection, null);
         }
-        if (Input.GetAxis("Attack1") == 1 && skills[1].CooldownTimer <= 0 && skills[1].SpCost <= myStatus.Sp) // Dash
+        if (Input.GetAxis("Attack1") == 1 && skillManager.activeSkills[1].CooldownTimer <= 0 && skillManager.activeSkills[1].SpCost <= myStatus.Sp) // Dash
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 heading = mousePosition - (Vector2)transform.position;
             float distance = heading.magnitude;
             Vector2 attackDirection = heading / distance;
-            skills[1].ActivateSkill(gameObject, movementDirection, null);
+            skillManager.activeSkills[1].ActivateSkill(gameObject, movementDirection, null);
         }
-        if (Input.GetAxis("Attack3") == 1 && skills[2].CooldownTimer <= 0 && skills[2].SpCost <= myStatus.Sp) // Dash and Spin
+        if (Input.GetAxis("Attack3") == 1 && skillManager.activeSkills[2].CooldownTimer <= 0 && skillManager.activeSkills[2].SpCost <= myStatus.Sp) // Dash and Spin
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 heading = mousePosition - (Vector2)transform.position;
             float distance = heading.magnitude;
             Vector2 attackDirection = heading / distance;
-            skills[2].ActivateSkill(gameObject, attackDirection, null);
+            skillManager.activeSkills[2].ActivateSkill(gameObject, attackDirection, null);
         }
-        if (Input.GetAxis("Attack4") == 1 && skills[3].CooldownTimer <= 0 && skills[3].SpCost <= myStatus.Sp) // Test
+        if (Input.GetAxis("Attack4") == 1 && skillManager.activeSkills[3].CooldownTimer <= 0 && skillManager.activeSkills[3].SpCost <= myStatus.Sp) // Test
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 heading = mousePosition - (Vector2)transform.position;
             float distance = heading.magnitude;
             Vector2 attackDirection = heading / distance;
-            skills[3].ActivateSkill(gameObject, mousePosition, null);
-        }
-        if (Input.GetAxis("Attack5") == 1 && skills[4].CooldownTimer <= 0 && skills[4].SpCost <= myStatus.Sp) // Test 2
-        {
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 heading = mousePosition - (Vector2)transform.position;
-            float distance = heading.magnitude;
-            Vector2 attackDirection = heading / distance;
-            skills[4].ActivateSkill(gameObject, mousePosition, GameObject.Find("Target"));
+            skillManager.activeSkills[3].ActivateSkill(gameObject, mousePosition, null);
         }
     }
 
@@ -176,28 +169,34 @@ public class PlayerController : MonoBehaviour
 
 
     /// <summary>
-    /// Updates the Timers of skills
+    /// Changes Color of an Material
     /// </summary>
-    private void UpdateTimers()
+    /// <param name="m"></param>
+    /// <param name="colors"></param>
+    public void ChangeSwordGlow()
     {
-        int spellsThatDontAllowMovementThatAreCasting = 0;
-        foreach(Skill skill in skills)
-        {
-            if(skill.CasttimeTimer > 0)
+        Color result = new Color(0, 0, 0, 0);
+        Material m = GetComponent<SpriteRenderer>().material;
+        if(swordGlowColor.Count > 0)
+        { 
+            foreach (Color c in swordGlowColor)
             {
-                skill.SkillCastingPhase(gameObject);
+                result += c;
             }
-            spellsThatDontAllowMovementThatAreCasting += skill.UpdateTimers(gameObject);
-        }
-        if(spellsThatDontAllowMovementThatAreCasting > 0)
-        {
-            disableMovement = true;
+            result /= swordGlowColor.Count;
+            float h;
+            float s;
+            float v;
+            Color.RGBToHSV(result, out h, out s, out v);
+            v = 1;
+            result = Color.HSVToRGB(h, s, v);
+            m.SetColor("_color", result);
+            blended = result;
         }
         else
         {
-            disableMovement = false;
+            m.SetColor("_color", baseSwordGlowColor);
         }
-        
     }
 
 }

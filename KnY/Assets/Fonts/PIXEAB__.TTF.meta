@@ -8,13 +8,12 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Pixel Arial 11
   fontNames:
   - Pixel Arial 11
   fallbackFontReferences:
   - {fileID: 12800000, guid: 9b0d2eb44f47ad242afae21551d59561, type: 3}
   customCharacters: 
-  fontRenderingMode: 0
+  fontRenderingMode: 3
   ascentCalculationMode: 1
   useLegacyBoundsCalculation: 0
   shouldRoundAdvanceValue: 1

@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EyeAI : BaseEnemyAI
+public class EyeAI : AI_BaseAI
 {
 
     public Transform bodyTransform;

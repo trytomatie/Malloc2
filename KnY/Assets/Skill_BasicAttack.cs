@@ -21,7 +21,7 @@ class Skill_BasicAttack : Skill
         this.BaseCooldown = cooldown;
         this.BaseCasttime = casttime;
         this.AllowsMovement = allowsMovement;
-        this.SpCost = 5;
+        this.SpCost = 3;
     }
 
 
@@ -37,7 +37,6 @@ class Skill_BasicAttack : Skill
         Cooldown = (float)(BaseCooldown / factor);
         if (Anim.GetBool("IsAttacking"))
         {
-            Debug.Log("Suff");
             Anim.SetBool("NextAttack",true);
             attackPhase++;
             SetAttackParameters(source.GetComponent<Animator>(), direction.x, direction.y, attackPhase);
@@ -60,6 +59,11 @@ class Skill_BasicAttack : Skill
     /// </summary>
     public override void SkillCastingPhase(GameObject source)
     {
+        if(CasttimeTimer > 0.1f)
+        { 
+            Rigidbody2D rb = source.GetComponent<Rigidbody2D>();
+            rb.velocity = Direction * (source.GetComponent<Statusmanager>().movementSpeed * 0.35f);
+        }
         if (!InitialApplication)
         {
             Statusmanager sourceStatus = source.GetComponent<Statusmanager>();
@@ -74,7 +78,7 @@ class Skill_BasicAttack : Skill
                 attackPhase = 2;
             }
             damageObject.GetComponent<DamageObject>().SetValues(damage, sourceStatus.CriticalStrikeChance, 0.1f, 0.2f, source, 2);
-            damageObject.GetComponent<DamageObject>().SetKnockbackParameters(0.4f, 0.25f);
+            damageObject.GetComponent<DamageObject>().SetKnockbackParameters(0.3f, 0.15f);
             sourceStatus.ApplyStatusEffect(new StatusEffect_HiddenSlow(Casttime ,0.65f));
 
             if (attackPhase == 4)

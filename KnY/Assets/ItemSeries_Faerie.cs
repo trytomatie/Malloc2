@@ -16,6 +16,7 @@ public class ItemSeries_Faerie : ItemSeries
         this.conditionsNeeded[0] = 3;
         this.conditionsNeeded[1] = 5;
         this.image = ItemIcons.GetSeriesIcon(id);
+        this.color = Color.HSVToRGB( 289f / 360f, 1f, 1f);
     }
     public override void ApplyEffect(GameObject g)
     {

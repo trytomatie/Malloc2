@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AI_ThunderBirdBossEnemy : BaseEnemyAI
+public class AI_ThunderBirdBossEnemy : AI_BaseAI
 {
 
     public Transform bodyTransform;
@@ -14,8 +14,8 @@ public class AI_ThunderBirdBossEnemy : BaseEnemyAI
     void Start()
     {
         Initialize();
-        skills.Add(new Skill_ThunderCircle(10, 1.2f, 0.5f, 5, 8, false));
-        skills.Add(new Skill_ThunderWall(10, 1.5f, 0.25f, 12, 12, false));
+        skills.Add(new Skill_ThunderCircle(10, 1.2f, 0.5f, 5, 8, false, fxMaterial));
+        skills.Add(new Skill_ThunderWall(10, 1.5f, 0.25f, 12, 12, false, fxMaterial));
         skills.Add(new Skill_Teleport(10, 1f, false));
         skills[2].CooldownTimer = 10;
         sm = GetComponent<Statusmanager>();

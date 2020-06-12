@@ -6,7 +6,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-public class BaseEnemyAI : MonoBehaviour
+public class AI_BaseAI : MonoBehaviour
 {
 
     public enum Mode
@@ -36,6 +36,7 @@ public class BaseEnemyAI : MonoBehaviour
     public float attackCooldownTimer = 0;
     public float attackSpeedTimer = 0;
     public Vector2 attackDirection;
+    public Material fxMaterial;
 
 
 

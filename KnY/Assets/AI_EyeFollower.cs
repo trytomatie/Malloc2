@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AI_EyeFollower : BaseEnemyAI
+public class AI_EyeFollower : AI_BaseAI
 {
 
     public Transform bodyTransform;
@@ -25,7 +25,13 @@ public class AI_EyeFollower : BaseEnemyAI
 	// Update is called once per frame
 	void Update () {
         AttackCooldownTimerUpdate();
-        if(Target == null && skills[0].CooldownTimer <= 0)
+        if(Target != null && Target.GetComponent<Statusmanager>().Hp <= 0)
+        {
+            print("Condition met");
+            Target = GetRandomTargetInRange();
+            skills[0].Target = Target;
+        }
+        if((skills[0].CooldownTimer <= 0))
         { 
             Target = GetRandomTargetInRange();
         }
@@ -45,7 +51,6 @@ public class AI_EyeFollower : BaseEnemyAI
                 if (skills[0].CooldownTimer <= 0)
                 {
                     skills[0].ActivateSkill(gameObject, Vector2.zero, Target);
-                    Target = null;
                 }
                 break;
         }

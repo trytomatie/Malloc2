@@ -16,7 +16,7 @@ class Skill_ThunderCircle : Skill
     /// <summary>
     /// Initializes base Skill Atributes
     /// </summary>
-    public Skill_ThunderCircle(float cooldown, float casttime,float delayBetweenStrikes, int numberOfStrikes,int numberOfLines,bool allowsMovement)
+    public Skill_ThunderCircle(float cooldown, float casttime,float delayBetweenStrikes, int numberOfStrikes,int numberOfLines,bool allowsMovement, Material fxMaterial)
     {
         this.Cooldown = cooldown;
         this.Casttime = casttime;
@@ -26,7 +26,7 @@ class Skill_ThunderCircle : Skill
         this.delayBetweenStrikes = delayBetweenStrikes;
         this.numberOfStrikes = numberOfStrikes;
         this.numberOfLines = numberOfLines;
-        
+        this.FxMaterial = fxMaterial;
     }
 
 
@@ -77,6 +77,7 @@ class Skill_ThunderCircle : Skill
                 projectile.transform.GetChild(5).GetComponent<CircleCollider2D>().radius = 0.15f;
                 projectile.GetComponent<Animator>().SetFloat("DamageAnimation", 0);
                 GameObject fx = GameObject.Instantiate(PublicGameResources.GetResource().damageFx, ray.GetPoint(projectileSpeed * strikesCompleted + 0.1f) + new Vector2(0, 0.2f), Quaternion.identity);
+                fx.GetComponent<SpriteRenderer>().material = FxMaterial;
                 fx.GetComponent<Animator>().SetFloat("DamageAnimation", 6);
             }
             strikesCompleted++;

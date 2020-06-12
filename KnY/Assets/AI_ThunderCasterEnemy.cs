@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AI_ThunderCasterEnemy : BaseEnemyAI
+public class AI_ThunderCasterEnemy : AI_BaseAI
 {
 
     public Transform bodyTransform;
@@ -13,7 +13,8 @@ public class AI_ThunderCasterEnemy : BaseEnemyAI
     void Start()
     {
         Initialize();
-        skills.Add(new Skill_ThunderStrike(3, 0.5f,1, 1, false));
+        skills.Add(new Skill_ThunderStrike(3, 0.5f,1, 1, false, fxMaterial));
+
         foreach(Skill skill in skills)
         {
             skill.Anim = GetComponent<Animator>();

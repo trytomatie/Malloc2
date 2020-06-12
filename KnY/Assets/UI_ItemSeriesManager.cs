@@ -19,8 +19,8 @@ public class UI_ItemSeriesManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        instances.RemoveAll(item => item == null);
-        instances.Add(this);
+        Instances.RemoveAll(item => item == null);
+        Instances.Add(this);
     }
 
     void OnEnable()
@@ -35,12 +35,16 @@ public class UI_ItemSeriesManager : MonoBehaviour
     public static void ClearItemSeriesDisplays()
     {
 
-        foreach(UI_ItemSeriesManager instance in instances)
+        foreach(UI_ItemSeriesManager instance in Instances)
         { 
             List<GameObject> removalList = new List<GameObject>();
             foreach(GameObject go in instance.itemSeriesDisplays)
             {
-                removalList.Add(go);
+                if(go != null)
+                {
+                    removalList.Add(go);
+                }
+
             }
             foreach(GameObject go in removalList)
             {
@@ -56,10 +60,11 @@ public class UI_ItemSeriesManager : MonoBehaviour
     /// </summary>
     public static void FillItemSeriesDisplays()
     {
-        int pos = -40;
-        int posProgress = -70;
-        foreach (UI_ItemSeriesManager instance in instances)
+
+        foreach (UI_ItemSeriesManager instance in Instances)
         {
+            int pos = -40;
+            int posProgress = -70;
             foreach (ItemSeries series in instance.PlayerInventory.itemSeries.Values)
             {
                 if(series.totalConditionsMet >0)
@@ -92,6 +97,20 @@ public class UI_ItemSeriesManager : MonoBehaviour
         set
         {
             playerInventory = value;
+        }
+    }
+
+    public static List<UI_ItemSeriesManager> Instances
+    {
+        get
+        {
+            instances.RemoveAll(item => item == null);
+            return instances;
+        }
+
+        set
+        {
+            instances = value;
         }
     }
 }
