@@ -47,12 +47,12 @@ class Skill_ThunderStrike : Skill
     /// </summary>
     public override void SkillCastingPhase(GameObject source)
     {
-        if (Anim != null)
-        {
-            Anim.SetInteger("AnimationState", 1);
-        }
         if (!InitialApplication)
         {
+            if (Anim != null)
+            {
+                Anim.SetInteger("AnimationState", 1);
+            }
             GroundAoeIndicator.InstantiateGroundAoeIndicator(Direction, new Vector2(1, 1), Casttime);
             InitialApplication = true;
         }
@@ -69,7 +69,7 @@ class Skill_ThunderStrike : Skill
 
     IEnumerator ThunderStrike(GameObject source)
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.4f);
         Statusmanager s = source.GetComponent<Statusmanager>();
         int strikesCompleted = 0;
         while (strikesCompleted < numberOfStrikes)

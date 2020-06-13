@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
 public class ChunkSettings : MonoBehaviour
@@ -18,6 +19,7 @@ public class ChunkSettings : MonoBehaviour
     private Chunk_TriggerEvent cte;
     public System.Random myRandom;
     public int weight = 100;
+    public UnityEvent conclusionEvent;
 
 
     public enum ChunkType
@@ -94,7 +96,7 @@ public class ChunkSettings : MonoBehaviour
 
         set
         {
-            cte.DisableBarrier();
+            conclusionEvent.Invoke();
             concluded = value;
         }
     }

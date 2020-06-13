@@ -616,7 +616,6 @@ public class MapGenerator : MonoBehaviour
             repeats--;
         }
         while (repeats > 0 && numberOfRooms < minNumberOfRooms);
-        print(numberOfRooms);
         SetUpTunnelMapChunkSpawns(chunksEligableForSpawn, mapSpawnCard);
 
         return chunksEligableForSpawn; 

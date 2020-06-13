@@ -29,8 +29,11 @@ public class PlayerController : MonoBehaviour
         skillManager = GetComponent<SkillManager>();
         skillManager.AddActiveSkill(new Skill_BasicAttack(0.4f, 0.4f, false));
         skillManager.AddActiveSkill(new Skill_Dodge(0.7f, 0.4f, false));
+
+
         skillManager.AddActiveSkill(new Skill_AoeDash(10f, 0.4f, false));
         skillManager.AddActiveSkill(new Skill_ThunderStrike(8f, 0.8f,0.25f,3, false, GetComponent<SpriteRenderer>().material));
+        skillManager.AddPassiveSkill(PassiveSkill.GenerateRandomPassive());
         //skills.Add(new Skill_Laser(1f, 1.8f, 0.25f, 3, false));
         foreach (Skill skill in skillManager.activeSkills)
         {

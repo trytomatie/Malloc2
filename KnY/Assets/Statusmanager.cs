@@ -46,6 +46,8 @@ public class Statusmanager : MonoBehaviour {
 
     public int criticalStrikeChance = 1;
     public float damageOverTimeDamageMultiplier = 1;
+    public float experienceGainMultiplier = 1;
+    public float manaGainMuliplier = 1;
 
 
     public List<StatusEffect> statusEffects = new List<StatusEffect>(); 
@@ -134,8 +136,8 @@ public class Statusmanager : MonoBehaviour {
                     }
                     else
                     { 
-                        gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().Mana += Mana;
-                        gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().Experinece += Mana;
+                        gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().Mana += (int)(Mana * gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().manaGainMuliplier);
+                        gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().Experinece += (int)(Mana * gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().experienceGainMultiplier);
                     }
                 }
                 if (GetComponent<PlayerController>() != null)

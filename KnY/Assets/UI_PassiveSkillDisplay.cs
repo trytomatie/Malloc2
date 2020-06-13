@@ -5,12 +5,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UI_SkillDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UI_PassiveSkillDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public Skill skill = null;
+    public PassiveSkill skill = null;
     private GameObject descriptionDisplay;
     private bool mouseEntered;
-    public Text cooldownText;
     
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -20,8 +19,7 @@ public class UI_SkillDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExit
             return;
         }
         mouseEntered = true;
-        DescriptionDisplay.GetComponent<UI_ArtifactDisplayDescriptionPopup>().text.text = skill.Name + "\nCost: " + skill.SpCost + "\n" +
-            "Description: " + skill.Description;
+        DescriptionDisplay.GetComponent<UI_ArtifactDisplayDescriptionPopup>().text.text = skill.Name + "\n" + skill.Description;
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -43,17 +41,6 @@ public class UI_SkillDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExit
         if (mouseEntered)
         {
             DescriptionDisplay.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        }
-
-        if(skill.CooldownTimer > 0)
-        {
-            cooldownText.text = skill.CooldownTimer.ToString("0");
-            GetComponent<Image>().color = new Color32(111, 111, 111,255);
-        }
-        else
-        {
-            cooldownText.text = "";
-            GetComponent<Image>().color = new Color32(255, 255, 255, 255);
         }
     }
 

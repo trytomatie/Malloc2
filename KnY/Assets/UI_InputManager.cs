@@ -11,6 +11,7 @@ public class UI_InputManager : MonoBehaviour
     public GameObject inventory;
     public GameObject traderInventory;
     public GameObject infoPopup;
+    public UI_PassiveSkillExchangeManager passiveSkillExchangeManager;
     public static UI_InputManager Instance
     {
         get
@@ -27,7 +28,8 @@ public class UI_InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        if(Instance == null)
+        UI_PassiveSkillExchangeManager.Instances.Add(passiveSkillExchangeManager);
+        if (Instance == null)
         {
             Instance = this;
         }
@@ -69,6 +71,9 @@ public class UI_InputManager : MonoBehaviour
             else if(inventory.activeSelf)
             {
                 CloseInventory();
+            }else if(passiveSkillExchangeManager.gameObject.activeSelf)
+            {
+                UI_PassiveSkillExchangeManager.CloseSkillExchagneWindow();
             }
             UI_ArtifactDisplayDescriptionPopup.DespawnAllInstances();
             GameObject.Find("ItemContextMenu").transform.position = new Vector3(10000, 10000, 10000);

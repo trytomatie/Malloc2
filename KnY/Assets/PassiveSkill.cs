@@ -5,263 +5,100 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
+[Serializable]
 public class PassiveSkill
 {
-    private float cooldown = 0;
-    private float baseCooldown = 0;
-    private float casttime = 0;
-    private float baseCasttime = 0;
-    private float cooldownTimer = 0;
-    private float casttimeTimer = 0;
-    private int spCost = 25;
-    private bool initialApplication = false;
-    private bool allowsMovement = false;
-    private Vector2 direction;
-    private GameObject target;
-    private Animator anim;
-    private float speedIncrease = 0;
-    private Material fxMaterial;
+    private List<PassiveSkillAttribute> passiveSkillAttributes = new List<PassiveSkillAttribute>();
+    private string name = "Passive";
+    private string description = "";
 
-    public virtual void ActivateSkill(GameObject source, Vector2 direction, GameObject target)
+
+    public void ApplyEffects(GameObject source)
     {
-        if(CooldownTimer <= 0 && CasttimeTimer <= 0)
+        foreach(PassiveSkillAttribute a in PassiveSkillAttributes)
         {
-            source.GetComponent<Statusmanager>().Sp -= spCost;
-            this.Direction = direction;
-            this.Target = target;
-            CooldownTimer = Cooldown;
-            CasttimeTimer = Casttime;
+            a.ApplyEffect(source);
         }
     }
 
-    public virtual void SkillCastingPhase(GameObject source)
+    public void RemoveEffects(GameObject source)
     {
-
+        foreach (PassiveSkillAttribute a in PassiveSkillAttributes)
+        {
+            a.RemoveEffect(source);
+        }
     }
 
-    public virtual void OnCastEnd(GameObject source)
-    {
 
+    public void AddRandomAttribute()
+    {
+        int i = UnityEngine.Random.Range(0, 6);
+        PassiveSkillAttribute psa = new PassiveSkillAttribute_IncreaseHP(50);
+        switch (i)
+        {
+            case 1:
+                psa = new PassiveSkillAttribute_IncreaseHP(50);
+                break;
+            case 2:
+                psa = new PassiveSkillAttribute_IncreaseSP(50);
+                break;
+            case 3:
+                psa = new PassiveSkillAttribute_IncreaseATK(20);
+                break;
+            case 4:
+                psa = new PassiveSkillAttribute_IncreaseDEF(10);
+                break;
+            case 5:
+                psa = new PassiveSkillAttribute_Scout();
+                break;
+            case 6:
+                psa = new PassiveSkillAttribute_RoadOfThorns();
+                break;
+        }
+        Description += psa.Name + "\n";
+        passiveSkillAttributes.Add(psa);
     }
 
-    public int UpdateTimers(GameObject source)
+    public static PassiveSkill GenerateRandomPassive()
     {
-        int canMove = 0;
-        if(CooldownTimer > 0)
-        {
-            CooldownTimer -= Time.deltaTime;
-        }
-        if(CooldownTimer < 0)
-        {
-            CooldownTimer = 0;
-        }
-        if(CasttimeTimer > 0)
-        {
-            if (!AllowsMovement)
-            {
-                canMove = 1;
-            }
-            CasttimeTimer -= Time.deltaTime;
-        }
-        if(CasttimeTimer < 0)
-        {
-            initialApplication = false;
-            OnCastEnd(source);
-            CasttimeTimer = 0;
-        }
-        return canMove;
+        PassiveSkill p = new PassiveSkill();
+        p.AddRandomAttribute();
+        p.AddRandomAttribute();
+        return p;
     }
 
-    public void SetAttackParameters(Animator anim, float x, float y, int type)
-    {
-        anim.SetFloat("AttackDirX", x);
-        anim.SetFloat("AttackDirY", y);
-        anim.SetFloat("AttackType", type);
-        anim.SetBool("IsAttacking", true);
-    }
 
-    #region Properties
-    public float Cooldown
+    public string Name
     {
         get
         {
-            return cooldown;
+            return name;
         }
 
         set
         {
-            cooldown = value;
+            name = value;
         }
     }
 
-    public float Casttime
+    public string Description
     {
         get
         {
-            return casttime;
+            return description;
         }
 
         set
         {
-            casttime = value;
+            description = value;
         }
     }
 
-    public float CooldownTimer
+    public List<PassiveSkillAttribute> PassiveSkillAttributes
     {
         get
         {
-            return cooldownTimer;
-        }
-
-        set
-        {
-            cooldownTimer = value;
+            return passiveSkillAttributes;
         }
     }
-
-    public float CasttimeTimer
-    {
-        get
-        {
-            return casttimeTimer;
-        }
-
-        set
-        {
-            casttimeTimer = value;
-        }
-    }
-
-    public bool InitialApplication
-    {
-        get
-        {
-            return initialApplication;
-        }
-
-        set
-        {
-            initialApplication = value;
-        }
-    }
-
-    public bool AllowsMovement
-    {
-        get
-        {
-            return allowsMovement;
-        }
-
-        set
-        {
-            allowsMovement = value;
-        }
-    }
-
-    public Vector2 Direction
-    {
-        get
-        {
-            return direction;
-        }
-
-        set
-        {
-            direction = value;
-        }
-    }
-
-    public GameObject Target
-    {
-        get
-        {
-            return target;
-        }
-
-        set
-        {
-            target = value;
-        }
-    }
-
-    public float BaseCasttime
-    {
-        get
-        {
-            return baseCasttime;
-        }
-
-        set
-        {
-            baseCasttime = value;
-        }
-    }
-
-    public float BaseCooldown
-    {
-        get
-        {
-            return baseCooldown;
-        }
-
-        set
-        {
-            baseCooldown = value;
-        }
-    }
-
-    public float SpeedIncrease
-    {
-        get
-        {
-            return speedIncrease;
-        }
-
-        set
-        {
-            speedIncrease = value;
-        }
-    }
-
-    public int SpCost
-    {
-        get
-        {
-            return spCost;
-        }
-
-        set
-        {
-            spCost = value;
-        }
-    }
-
-    public Animator Anim
-    {
-        get
-        {
-            return anim;
-        }
-
-        set
-        {
-            anim = value;
-        }
-    }
-
-    public Material FxMaterial
-    {
-        get
-        {
-            return fxMaterial;
-        }
-
-        set
-        {
-            fxMaterial = value;
-        }
-    }
-    #endregion
-
 }

@@ -31,7 +31,7 @@ Material:
     m_Floats:
     - Vector1_2CACB9D7: 0.09
     - Vector1_6EB82AD: 0.277
-    - _Fade: 0
+    - _Fade: -0.0037825836
     - _fade: 0.522
     m_Colors:
     - Color_7C7CD313: {r: 1, g: 1, b: 1, a: 0}

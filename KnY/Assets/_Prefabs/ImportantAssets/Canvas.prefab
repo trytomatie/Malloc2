@@ -4902,6 +4902,7 @@ GameObject:
   - component: {fileID: 5256281236982154614}
   - component: {fileID: 4526780906695226883}
   - component: {fileID: 8593722861282919938}
+  - component: {fileID: 5387792742112208909}
   m_Layer: 5
   m_Name: ArrowRight
   m_TagString: Untagged
@@ -4966,6 +4967,49 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5387792742112208909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761864894561312758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.5754717, g: 0.5727572, b: 0.5727572, a: 1}
+    m_PressedColor: {r: 0.3679245, g: 0.35577607, b: 0.35577607, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 8593722861282919938}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &763250108310295996
 GameObject:
   m_ObjectHideFlags: 0
@@ -5445,7 +5489,7 @@ GameObject:
   - component: {fileID: 9010018708788382261}
   - component: {fileID: 2066977353932315607}
   - component: {fileID: 1615834393998335243}
-  - component: {fileID: 1868521899020932365}
+  - component: {fileID: 666404180}
   m_Layer: 5
   m_Name: SkillSlot
   m_TagString: Untagged
@@ -5510,7 +5554,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1868521899020932365
+--- !u!114 &666404180
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5519,15 +5563,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2544085947942459816}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44ae31019b10ee24d9cdf3dfcceb9ed5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4fff2a25ecead3a439568c74691346b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPersistent: 1
-  inventorysThatHavePermission:
-  - {fileID: 0}
-  allowsArtifactItems: 0
-  allowsNonArtifactItems: 1
-  isInactiveArtifactInventorySlot: 0
 --- !u!1 &2630630222535684143
 GameObject:
   m_ObjectHideFlags: 0
@@ -5539,7 +5577,7 @@ GameObject:
   - component: {fileID: 4120427248635043261}
   - component: {fileID: 5048755280044813512}
   - component: {fileID: 5478337183056596012}
-  - component: {fileID: 4284879129393094103}
+  - component: {fileID: 947939097}
   m_Layer: 5
   m_Name: SkillSlot
   m_TagString: Untagged
@@ -5604,7 +5642,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4284879129393094103
+--- !u!114 &947939097
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5613,15 +5651,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2630630222535684143}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44ae31019b10ee24d9cdf3dfcceb9ed5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4fff2a25ecead3a439568c74691346b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPersistent: 1
-  inventorysThatHavePermission:
-  - {fileID: 0}
-  allowsArtifactItems: 0
-  allowsNonArtifactItems: 1
-  isInactiveArtifactInventorySlot: 0
 --- !u!1 &2637619553208388408
 GameObject:
   m_ObjectHideFlags: 0
@@ -5998,7 +6030,9 @@ MonoBehaviour:
   activeSkills:
   - {fileID: 2787746185002088840}
   - {fileID: 1458641492899838740}
-  passiveSkills: []
+  passiveSkills:
+  - {fileID: 3568028536571547913}
+  - {fileID: 3219048026953407424}
 --- !u!1 &2736391726407998269
 GameObject:
   m_ObjectHideFlags: 0
@@ -6010,7 +6044,6 @@ GameObject:
   - component: {fileID: 1930414685465366149}
   - component: {fileID: 6134715668739313359}
   - component: {fileID: 150007852543685113}
-  - component: {fileID: 2204891190225707377}
   m_Layer: 5
   m_Name: PasiveSkills
   m_TagString: Untagged
@@ -6076,51 +6109,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2204891190225707377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2736391726407998269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39ee254f507afed438491c7d6f5d2dc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryDisplayInstantiationTarget: {fileID: 4217920002952486998, guid: 5b6a14f7d714d074482715e113ab175d,
-    type: 3}
-  inventorySlots:
-  - {fileID: 2630630222535684143}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  activeArtifactSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  inactiveArtifactSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &2786271148582201245
 GameObject:
   m_ObjectHideFlags: 0
@@ -6570,6 +6558,7 @@ GameObject:
   - component: {fileID: 2511224332466659412}
   - component: {fileID: 2735315467371676288}
   - component: {fileID: 3615801653993640675}
+  - component: {fileID: 3219048026953407424}
   m_Layer: 5
   m_Name: PasiveSkillDisplay
   m_TagString: Untagged
@@ -6634,6 +6623,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3219048026953407424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3149202209590315985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fff2a25ecead3a439568c74691346b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3293359112455647065
 GameObject:
   m_ObjectHideFlags: 0
@@ -8163,7 +8164,7 @@ GameObject:
   - component: {fileID: 7379628225334414548}
   - component: {fileID: 7415924441940009564}
   - component: {fileID: 3574998673002770193}
-  - component: {fileID: 1980720402602285984}
+  - component: {fileID: 3568028536571547913}
   m_Layer: 5
   m_Name: PasiveSkillDisplay
   m_TagString: Untagged
@@ -8187,7 +8188,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 19.999939, y: -0.000030517578}
+  m_AnchoredPosition: {x: 20, y: 0}
   m_SizeDelta: {x: 58, y: 58}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &7415924441940009564
@@ -8228,7 +8229,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1980720402602285984
+--- !u!114 &3568028536571547913
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8237,12 +8238,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4697469410591551371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2de2161a860ba13408cfb45b0d47ef42, type: 3}
+  m_Script: {fileID: 11500000, guid: 4fff2a25ecead3a439568c74691346b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill:
-    cooldownTimer: 0
-  cooldownText: {fileID: 0}
 --- !u!1 &4792530661691320712
 GameObject:
   m_ObjectHideFlags: 0
@@ -8254,6 +8252,7 @@ GameObject:
   - component: {fileID: 2273633261207357849}
   - component: {fileID: 8250026426195826620}
   - component: {fileID: 831309324354141252}
+  - component: {fileID: 2985112103575716629}
   m_Layer: 5
   m_Name: ArrowLeft
   m_TagString: Untagged
@@ -8318,6 +8317,49 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2985112103575716629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4792530661691320712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.5754717, g: 0.5727572, b: 0.5727572, a: 1}
+    m_PressedColor: {r: 0.3679245, g: 0.35577607, b: 0.35577607, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 831309324354141252}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4880159403408135517
 GameObject:
   m_ObjectHideFlags: 0
@@ -8352,7 +8394,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.00022888184, y: -29.3}
+  m_AnchoredPosition: {x: -0.00035095215, y: -29.3}
   m_SizeDelta: {x: 580.00415, y: 574.0492}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8638535965520399213
@@ -8408,7 +8450,7 @@ GameObject:
   - component: {fileID: 9180081067583534556}
   - component: {fileID: 7524710198903815230}
   - component: {fileID: 2691979188620685741}
-  - component: {fileID: 3546284507785735852}
+  - component: {fileID: 1584624037}
   m_Layer: 5
   m_Name: SkillSlot
   m_TagString: Untagged
@@ -8473,7 +8515,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3546284507785735852
+--- !u!114 &1584624037
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8482,15 +8524,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4881123634720307245}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44ae31019b10ee24d9cdf3dfcceb9ed5, type: 3}
+  m_Script: {fileID: 11500000, guid: 4fff2a25ecead3a439568c74691346b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPersistent: 1
-  inventorysThatHavePermission:
-  - {fileID: 0}
-  allowsArtifactItems: 0
-  allowsNonArtifactItems: 1
-  isInactiveArtifactInventorySlot: 0
 --- !u!1 &4934550249516818827
 GameObject:
   m_ObjectHideFlags: 0
@@ -9144,7 +9180,7 @@ GameObject:
   - component: {fileID: 9078976283571976653}
   - component: {fileID: 1329985592860999084}
   m_Layer: 5
-  m_Name: InventoryTitle
+  m_Name: SkillExchange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9210,7 +9246,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Skills
+  m_Text: Skill Exchange
 --- !u!1 &5981823971996406755
 GameObject:
   m_ObjectHideFlags: 0
@@ -9509,7 +9545,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 8.640015, y: -100.73001}
+  m_AnchoredPosition: {x: 8.640137, y: -100.73001}
   m_SizeDelta: {x: 282.71387, y: 388.20337}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &3405905009594687513
@@ -10277,7 +10313,6 @@ GameObject:
   - component: {fileID: 8429507430999114112}
   - component: {fileID: 5358982245221123987}
   - component: {fileID: 6149473064326967744}
-  - component: {fileID: 1046756034669950477}
   m_Layer: 5
   m_Name: PasiveSkills
   m_TagString: Untagged
@@ -10343,51 +10378,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1046756034669950477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7160218453923349601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39ee254f507afed438491c7d6f5d2dc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryDisplayInstantiationTarget: {fileID: 4217920002952486998, guid: 5b6a14f7d714d074482715e113ab175d,
-    type: 3}
-  inventorySlots:
-  - {fileID: 2544085947942459816}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  activeArtifactSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  inactiveArtifactSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &7432794485323325266
 GameObject:
   m_ObjectHideFlags: 0
@@ -10996,7 +10986,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 950754b54b380ee4c8e5673dec3269a5, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -12815,6 +12805,7 @@ MonoBehaviour:
   inventory: {fileID: 7694051093437162586}
   traderInventory: {fileID: 970092925}
   infoPopup: {fileID: 1187440106}
+  passiveSkillExchangeManager: {fileID: 1154553802}
 --- !u!1 &7694051092667272092
 GameObject:
   m_ObjectHideFlags: 0
@@ -15099,7 +15090,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 950754b54b380ee4c8e5673dec3269a5, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -15308,7 +15299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 950754b54b380ee4c8e5673dec3269a5, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -15527,7 +15518,6 @@ GameObject:
   - component: {fileID: 112121213579038540}
   - component: {fileID: 2541376938160290179}
   - component: {fileID: 3799269717406555673}
-  - component: {fileID: 3633738664946753599}
   m_Layer: 5
   m_Name: PasiveSkills
   m_TagString: Untagged
@@ -15593,51 +15583,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3633738664946753599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7747145351264416987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39ee254f507afed438491c7d6f5d2dc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryDisplayInstantiationTarget: {fileID: 4217920002952486998, guid: 5b6a14f7d714d074482715e113ab175d,
-    type: 3}
-  inventorySlots:
-  - {fileID: 4881123634720307245}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  activeArtifactSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  inactiveArtifactSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &7791997849914530024
 GameObject:
   m_ObjectHideFlags: 0
@@ -16486,7 +16431,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Skill 1
+  m_Text: 'Skill 2
 
 '
 --- !u!1 &8893136191802083422
@@ -16689,6 +16634,7 @@ GameObject:
   - component: {fileID: 4438147949049964169}
   - component: {fileID: 286798843910710612}
   - component: {fileID: 7753826189377525762}
+  - component: {fileID: 1154553802}
   m_Layer: 5
   m_Name: SkillsExchangeWindow
   m_TagString: Untagged
@@ -16785,6 +16731,21 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1154553802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9129937192820877528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e562722c5e279f649b6a53b068ddbf57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  passiveSkill1: {fileID: 947939097}
+  passiveSkill2: {fileID: 1584624037}
+  newPassiveSkill: {fileID: 666404180}
 --- !u!1 &9140530623906146801
 GameObject:
   m_ObjectHideFlags: 0

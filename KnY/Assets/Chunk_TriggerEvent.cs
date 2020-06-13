@@ -8,6 +8,7 @@ public class Chunk_TriggerEvent : MonoBehaviour
 {
     public UnityEvent onTriggerAction;
     private SpawnDirector_Room mySpawnDirector;
+    public ScriptableObject_InteractableSpawnCard spawnCard;
     public GameObject barrier;
     public bool isTriggerd = false;
     public GameObject goThatTriggeredMe;
@@ -66,6 +67,12 @@ public class Chunk_TriggerEvent : MonoBehaviour
         Material m = barrier.GetComponent<TilemapRenderer>().material;
         Director.GetInstance().SetFadeMaterial(1, 0, m, 2f);
         barrier.GetComponent<TilemapCollider2D>().enabled = false;
+    }
+
+    public void DisableBarrierAndSpawnInteractable()
+    {
+        Instantiate(spawnCard.instance,transform.position,Quaternion.identity);
+        DisableBarrier();
     }
 
     public void NormalEnemyRoomEvent()
