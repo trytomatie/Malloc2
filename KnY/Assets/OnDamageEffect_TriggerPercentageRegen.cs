@@ -20,7 +20,7 @@ public class OnDamageEffect_TriggerPercentageRegen : OnDamageEffect
 
     public override void ApplyEffect(GameObject g)
     {
-        int healAmount = (int)(statusRef.maxHp * percentage / regenDuration);
+        int healAmount = (int)(statusRef.MaxHp * percentage / regenDuration);
         g.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_Regen(regenDuration, healAmount));
     }
 

@@ -31954,7 +31954,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c36bb0077dcac674c8ba4df58cfb7d0f, type: 2}
   - {fileID: 11400000, guid: dd760da2b9491264e971b0d2156268b6, type: 2}
   - {fileID: 11400000, guid: 951fbeb0d0f6c52408e521a891a2dea2, type: 2}
-  - {fileID: 11400000, guid: 76413394d8104744fb63501954959887, type: 2}
+  - {fileID: 11400000, guid: 0703ec255de276e4897f60d370c3c5e9, type: 2}
   mobPool:
   - {fileID: 11400000, guid: a6df44ecb5855d04894d4ce20abe22ec, type: 2}
   spawnLocations: []
@@ -32032,7 +32032,7 @@ MonoBehaviour:
   onTriggerAction:
     m_PersistentCalls:
       m_Calls: []
-  spawnCard: {fileID: 0}
+  price: []
   barrier: {fileID: 1532040108387287648}
   isTriggerd: 0
   goThatTriggeredMe: {fileID: 0}

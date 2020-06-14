@@ -31,7 +31,6 @@ public class Item_DivineWaters : ProcItem {
     }
     public override void ProcEffect(GameObject g)
     {
-        Debug.Log("I Proced this badboy");
         float durration = this.durration;
         int totalBarrier = barrier + (barrierPerStack * stacks);
         owner.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_DivineWaterBarrier(durration, totalBarrier));

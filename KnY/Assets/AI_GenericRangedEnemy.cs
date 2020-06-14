@@ -94,7 +94,7 @@ public class AI_GenericRangedEnemy : AI_BaseAI
                 if(skills[0].CooldownTimer <=0)
                 {
                     GetComponent<Animator>().SetInteger("AnimationState", 1);
-                    skills[0].ActivateSkill(gameObject, CalculateNormalizedDirection(transform.position, Target.transform.position), null);
+                    skills[0].ActivateSkill(gameObject, CalculateNormalizedDirection(transform.position, Target.transform.position),Vector2.zero, null);
                     break;
                 }
                 if(!disableMovement)

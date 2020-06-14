@@ -16,6 +16,9 @@ public class PublicGameResources : MonoBehaviour {
     public Material[] itemMaterials;
     public Material[] itemDescriptionMaterials;
     public Material[] statusEffectMaterials;
+    public Material healingMaterial;
+    public Material defenceSpellMaterial;
+    public Material poisonMaterial;
     public static int FLOOR_LAYER = -9999;
     public GameObject corruptedAmethystFollower;
     public GameObject gazeFollower;

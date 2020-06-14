@@ -27,6 +27,7 @@ public class AnimatorToggleEnemyBehaivourGunner : StateMachineBehaviour
                 animator.SetInteger("AnimationState", 2);
                 break;
             case AI_BaseAI.Mode.Attack:
+                animator.SetBool("IsAttacking", true);
                 break;
             case AI_BaseAI.Mode.AttackPrep:
 

@@ -15,3 +15,4 @@ MonoBehaviour:
   instance: {fileID: 3875135025429602740, guid: f6058973689ebc4468af5c93ec72a787,
     type: 3}
   chanceToSpawn: 10
+  cost: 0

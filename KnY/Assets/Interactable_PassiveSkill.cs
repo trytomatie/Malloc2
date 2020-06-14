@@ -14,7 +14,7 @@ public class Interactable_PassiveSkill : MonoBehaviour
 
     private void Interact(GameObject g)
     {
-        PassiveSkill p = PassiveSkill.GenerateRandomPassive();
+        PassiveSkill p = PassiveSkill.GenerateRandomPassive(GameObject.FindObjectOfType< MapGenerator>().currentFloor,g.GetComponent<Statusmanager>().characterClass);
         UI_PassiveSkillExchangeManager.OpenSkillExchangeWindow(p);
         Destroy(gameObject);
     }

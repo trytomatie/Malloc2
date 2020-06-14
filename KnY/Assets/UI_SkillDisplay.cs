@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class UI_SkillDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public Skill skill = null;
+    private Skill skill = null;
     private GameObject descriptionDisplay;
     private bool mouseEntered;
     public Text cooldownText;
@@ -15,18 +15,18 @@ public class UI_SkillDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(skill == null)
+        if(Skill == null)
         {
             return;
         }
         mouseEntered = true;
-        DescriptionDisplay.GetComponent<UI_ArtifactDisplayDescriptionPopup>().text.text = skill.Name + "\nCost: " + skill.SpCost + "\n" +
-            "Description: " + skill.Description;
+        DescriptionDisplay.GetComponent<UI_ArtifactDisplayDescriptionPopup>().text.text = Skill.Name + "\nCost: " + Skill.SpCost + "\n" +
+            "Description: " + Skill.Description;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (skill == null)
+        if (Skill == null)
         {
             return;
         }
@@ -36,7 +36,7 @@ public class UI_SkillDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     private void Update()
     {
-        if (skill == null)
+        if (Skill == null)
         {
             return;
         }
@@ -45,14 +45,20 @@ public class UI_SkillDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExit
             DescriptionDisplay.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
 
-        if(skill.CooldownTimer > 0)
+        if(Skill.CooldownTimer > 0)
         {
-            cooldownText.text = skill.CooldownTimer.ToString("0");
+            if(cooldownText != null)
+            { 
+            cooldownText.text = Skill.CooldownTimer.ToString("0");
+            }
             GetComponent<Image>().color = new Color32(111, 111, 111,255);
         }
         else
         {
-            cooldownText.text = "";
+            if (cooldownText != null)
+            {
+                cooldownText.text = "";
+            }
             GetComponent<Image>().color = new Color32(255, 255, 255, 255);
         }
     }
@@ -74,4 +80,24 @@ public class UI_SkillDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExit
         }
     }
 
+    public Skill Skill
+    {
+        get
+        {
+            return skill;
+        }
+
+        set
+        {
+            skill = value;
+            if(skill != null)
+            { 
+                 GetComponent<Image>().sprite = skill.Image;
+            }
+            else
+            {
+                GetComponent<Image>().sprite = ItemIcons.GetSkillIcon(0);
+            }
+        }
+    }
 }

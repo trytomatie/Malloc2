@@ -19,20 +19,22 @@ public class Skill
     private bool initialApplication = false;
     private bool allowsMovement = false;
     private Vector2 direction;
+    private Vector2 position;
     private GameObject target;
     private Animator anim;
     private float speedIncrease = 0;
     private Material fxMaterial;
     private String name = "NAME PLEASE!";
     private String description = "PLEASE FOR THE LOVE OF GOD, GIVE ME A DESCRIPTION PLEASE";
-
-    public virtual void ActivateSkill(GameObject source, Vector2 direction, GameObject target)
+    private Sprite image = null;
+    public virtual void ActivateSkill(GameObject source, Vector2 direction,Vector2 position, GameObject target)
     {
         if(CooldownTimer <= 0 && CasttimeTimer <= 0)
         {
             source.GetComponent<Statusmanager>().Sp -= spCost;
             this.Direction = direction;
             this.Target = target;
+            this.Position = position;
             CooldownTimer = Cooldown;
             CasttimeTimer = Casttime;
         }
@@ -82,6 +84,35 @@ public class Skill
         anim.SetFloat("AttackDirY", y);
         anim.SetFloat("AttackType", type);
         anim.SetBool("IsAttacking", true);
+    }
+
+    public static Skill GenerateRandomSkill(GameObject target)
+    {
+        int i = UnityEngine.Random.Range(0, 5);
+        Skill s = null;
+        switch(i)
+        {
+            case 0:
+                s = new Skill_ThunderStrike(10, 0.8f, 0.25f, 3, false, target.GetComponent<SpriteRenderer>().material);
+                break;
+            case 1:
+                s = new Skill_Cure(30, 1.8f, false);
+                break;
+            case 2:
+                s = new Skill_AoeDash(10f, 0.4f, false);
+                break;
+            case 3:
+                s = new Skill_Rampart(30f, 1f, false);
+                break;
+            case 4:
+                s = new Skill_PoisonSting(8f, 0.6f, false);
+                break;
+            default:
+                s = new Skill_Cure(30, 1.8f, false);
+                break;
+        }
+        s.Anim = target.GetComponent<Animator>();
+        return s;
     }
 
     #region Properties
@@ -290,6 +321,32 @@ public class Skill
         set
         {
             description = value;
+        }
+    }
+
+    public Sprite Image
+    {
+        get
+        {
+            return image;
+        }
+
+        set
+        {
+            image = value;
+        }
+    }
+
+    public Vector2 Position
+    {
+        get
+        {
+            return position;
+        }
+
+        set
+        {
+            position = value;
         }
     }
     #endregion

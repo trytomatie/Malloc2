@@ -21,7 +21,7 @@ public class StatusEffect_KingsContract : StatusEffect {
         if(!effectApplied)
         { 
             g.GetComponent<Statusmanager>().BaseAttackDamageMultiplyier += attackDamageMultiplier * stackSize * AncientLabyrnithDirector.kingsContractScaling;
-            g.GetComponent<Statusmanager>().maxHp += (int)(hpGain * stackSize  *AncientLabyrnithDirector.kingsContractScaling);
+            g.GetComponent<Statusmanager>().MaxHp += (int)(hpGain * stackSize  *AncientLabyrnithDirector.kingsContractScaling);
             g.GetComponent<Statusmanager>().Hp += (int)(hpGain * stackSize * AncientLabyrnithDirector.kingsContractScaling);
             effectApplied = true;
         }
@@ -32,7 +32,7 @@ public class StatusEffect_KingsContract : StatusEffect {
         if (effectApplied)
         {
             g.GetComponent<Statusmanager>().BaseAttackDamageMultiplyier -= attackDamageMultiplier * stackSize * AncientLabyrnithDirector.kingsContractScaling;
-            g.GetComponent<Statusmanager>().maxHp -= (int)(hpGain * stackSize * AncientLabyrnithDirector.kingsContractScaling);
+            g.GetComponent<Statusmanager>().MaxHp -= (int)(hpGain * stackSize * AncientLabyrnithDirector.kingsContractScaling);
             g.GetComponent<Statusmanager>().Hp -= (int)(hpGain * stackSize * AncientLabyrnithDirector.kingsContractScaling);
         }
     }

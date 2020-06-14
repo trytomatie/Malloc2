@@ -19,16 +19,17 @@ class Skill_Teleport : Skill
         this.BaseCooldown = cooldown;
         this.BaseCasttime = casttime;
         this.AllowsMovement = allowsMovement;
-        
+        this.Image = ItemIcons.GetSkillIcon(1);
+
     }
 
 
     /// <summary>
     /// Sets Parameter for Skill Actiavtion
     /// </summary>
-    public override void ActivateSkill(GameObject source, Vector2 position, GameObject target)
+    public override void ActivateSkill(GameObject source, Vector2 direction, Vector2 position, GameObject target)
     {
-        base.ActivateSkill(source, position, target);
+        base.ActivateSkill(source, direction,position, target);
     }
 
     /// <summary>

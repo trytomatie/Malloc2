@@ -71,6 +71,20 @@ public class UI_StatuseffectManager : MonoBehaviour
                     xPos += 65;
                 }
             }
+            foreach (StatusEffect statuseffect in instance.playerStatusmanager.onRoomEnterEffects)
+            {
+                if (!statuseffect.hidden)
+                {
+                    GameObject instanceDisplay = Instantiate(instance.statusEffectDisplayInstantiationTarget, instance.transform);
+                    instanceDisplay.GetComponent<RectTransform>().anchoredPosition = new Vector3(xPos, yPos);
+                    instanceDisplay.GetComponent<RectTransform>().localPosition = new Vector3(instanceDisplay.GetComponent<RectTransform>().localPosition.x, instanceDisplay.GetComponent<RectTransform>().localPosition.y, -1);
+                    instanceDisplay.GetComponent<Image>().sprite = statuseffect.image;
+                    instanceDisplay.GetComponent<Image>().material = PublicGameResources.GetResource().statusEffectMaterials[(int)statuseffect.type];
+                    instanceDisplay.GetComponent<UI_StatusEffectDisplayOnHover>().statusEffect = statuseffect;
+                    instance.artifactDisplays.Add(instanceDisplay);
+                    xPos += 65;
+                }
+            }
         }
     }
 }

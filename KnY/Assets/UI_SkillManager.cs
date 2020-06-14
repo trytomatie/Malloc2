@@ -19,35 +19,35 @@ public class UI_SkillManager : MonoBehaviour
         {
             if(instance.mySkillManger.activeSkills.Count > 2)
             { 
-            instance.activeSkills[0].skill = instance.mySkillManger.activeSkills[2];
+            instance.activeSkills[0].Skill = instance.mySkillManger.activeSkills[2];
             }
             else
             {
-                instance.activeSkills[0].skill = null;
+                instance.activeSkills[0].Skill = null;
             }
             if (instance.mySkillManger.activeSkills.Count > 3)
             {
-                instance.activeSkills[1].skill = instance.mySkillManger.activeSkills[3];
+                instance.activeSkills[1].Skill = instance.mySkillManger.activeSkills[3];
             }
             else
             {
-                instance.activeSkills[1].skill = null;
+                instance.activeSkills[1].Skill = null;
             }
-            if(instance.mySkillManger.passiveSkills.Count > 0)
+            if(instance.mySkillManger.PassiveSkills[0] != null)
             {
-                instance.passiveSkills[0].skill = instance.mySkillManger.passiveSkills[0];
-            }
-            else
-            {
-                instance.passiveSkills[0].skill = null;
-            }
-            if (instance.mySkillManger.passiveSkills.Count > 1)
-            {
-                instance.passiveSkills[1].skill = instance.mySkillManger.passiveSkills[1];
+                instance.passiveSkills[0].Skill = instance.mySkillManger.PassiveSkills[0];
             }
             else
             {
-                instance.passiveSkills[1].skill = null;
+                instance.passiveSkills[0].Skill = null;
+            }
+            if (instance.mySkillManger.PassiveSkills[1] != null)
+            {
+                instance.passiveSkills[1].Skill = instance.mySkillManger.PassiveSkills[1];
+            }
+            else
+            {
+                instance.passiveSkills[1].Skill = null;
             }
         }
     }

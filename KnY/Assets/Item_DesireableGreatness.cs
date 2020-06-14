@@ -17,19 +17,22 @@ public class Item_DesireableGreatness : Item
         this.series.Add(ItemSeries.Series.Royal);
     }
 
+    public override void PickUpEffect(GameObject g)
+    {
+
+        int healAmount = g.GetComponent<Statusmanager>().MaxHp;
+        g.GetComponent<Statusmanager>().ApplyHeal(g,healAmount);
+    }
     public override void ApplyEffect(GameObject g)
     {
         g.GetComponent<Statusmanager>().AttackDamageFlatBonus += attackDamagePerStack * stacks;
-        g.GetComponent<Statusmanager>().maxHp += healthPerStack * stacks;
-        int healAmount = g.GetComponent<Statusmanager>().maxHp;
-        g.GetComponent<Statusmanager>().Hp += healAmount;
-        Director.GetInstance().SpawnDamageText(healAmount.ToString(), g.transform, Color.green, false);
+        g.GetComponent<Statusmanager>().MaxHp += healthPerStack * stacks;
     }
 
     public override void RemoveEffect(GameObject g)
     {
         g.GetComponent<Statusmanager>().AttackDamageFlatBonus -= attackDamagePerStack * stacks;
-        g.GetComponent<Statusmanager>().maxHp -= healthPerStack * stacks;
+        g.GetComponent<Statusmanager>().MaxHp -= healthPerStack * stacks;
     }
 
 

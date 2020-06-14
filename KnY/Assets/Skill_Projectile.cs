@@ -21,16 +21,17 @@ class Skill_Projectile : Skill
         this.AllowsMovement = allowsMovement;
         this.projectileSpeed = projectileSpeed;
         this.FxMaterial = fxMaterial;
+        this.Image = ItemIcons.GetSkillIcon(1);
     }
 
 
     /// <summary>
     /// Sets Parameter for Skill Actiavtion
     /// </summary>
-    public override void ActivateSkill(GameObject source, Vector2 direction, GameObject target)
+    public override void ActivateSkill(GameObject source, Vector2 direction, Vector2 position, GameObject target)
     {
         // Calculate Attackspeed
-        base.ActivateSkill(source,direction,target);
+        base.ActivateSkill(source,direction, position, target);
     }
 
     /// <summary>

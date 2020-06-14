@@ -17,6 +17,7 @@ class Skill_ThunderStrike : Skill
     /// </summary>
     public Skill_ThunderStrike(float cooldown, float casttime,float delayBetweenStrikes, int numberOfStrikes,bool allowsMovement, Material fxMaterial)
     {
+
         this.Cooldown = cooldown;
         this.Casttime = casttime;
         this.BaseCooldown = cooldown;
@@ -28,18 +29,17 @@ class Skill_ThunderStrike : Skill
         this.SpCost = 50;
         this.numberOfStrikes = numberOfStrikes;
         this.FxMaterial = fxMaterial;
-
-
+        this.Image = ItemIcons.GetSkillIcon(3);
     }
 
 
     /// <summary>
     /// Sets Parameter for Skill Actiavtion
     /// </summary>
-    public override void ActivateSkill(GameObject source, Vector2 position, GameObject target)
+    public override void ActivateSkill(GameObject source, Vector2 direction, Vector2 position, GameObject target)
     {
         // Calculate Attackspeed
-        base.ActivateSkill(source, position, target);
+        base.ActivateSkill(source, direction, position, target);
     }
 
     /// <summary>
@@ -53,7 +53,7 @@ class Skill_ThunderStrike : Skill
             {
                 Anim.SetInteger("AnimationState", 1);
             }
-            GroundAoeIndicator.InstantiateGroundAoeIndicator(Direction, new Vector2(1, 1), Casttime);
+            GroundAoeIndicator.InstantiateGroundAoeIndicator(Position, new Vector2(1, 1), Casttime);
             InitialApplication = true;
         }
     }
@@ -74,11 +74,11 @@ class Skill_ThunderStrike : Skill
         int strikesCompleted = 0;
         while (strikesCompleted < numberOfStrikes)
         { 
-            GameObject projectile = GameObject.Instantiate(PublicGameResources.GetResource().damageObject, Direction, Quaternion.identity);
+            GameObject projectile = GameObject.Instantiate(PublicGameResources.GetResource().damageObject, Position, Quaternion.identity);
             projectile.GetComponent<DamageObject>().SetValues(s.totalAttackDamage, s.criticalStrikeChance, 0, 0.5f, source, 6);
             projectile.transform.GetChild(5).GetComponent<CircleCollider2D>().radius = 0.15f;
             projectile.GetComponent<Animator>().SetFloat("DamageAnimation", 0);
-            GameObject fx = GameObject.Instantiate(PublicGameResources.GetResource().damageFx, Direction + new Vector2(0, 0.2f), Quaternion.identity);
+            GameObject fx = GameObject.Instantiate(PublicGameResources.GetResource().damageFx, Position + new Vector2(0, 0.2f), Quaternion.identity);
             fx.GetComponent<SpriteRenderer>().material = FxMaterial;
             fx.GetComponent<Animator>().SetFloat("DamageAnimation", 6);
             strikesCompleted++;

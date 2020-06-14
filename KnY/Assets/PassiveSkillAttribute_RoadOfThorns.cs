@@ -12,6 +12,7 @@ public class PassiveSkillAttribute_RoadOfThorns : PassiveSkillAttribute
     public PassiveSkillAttribute_RoadOfThorns()
     {
         this.Name = "Road of Thorns";
+
     }
 
     public override void ApplyEffect(GameObject source)

@@ -24,13 +24,14 @@ class Skill_AoeDash : Skill
         this.Name = "Spin Dash";
         this.Description = "Dashes forward and deals damage in an area for " + Director.damageColorText + damageMutliplicator * 100 + Director.colorEndText + " % Attackdamage";
         this.SpCost = 40;
+        this.Image = ItemIcons.GetSkillIcon(1);
     }
 
 
     /// <summary>
     /// Sets Parameter for Skill Actiavtion
     /// </summary>
-    public override void ActivateSkill(GameObject source, Vector2 direction, GameObject target)
+    public override void ActivateSkill(GameObject source, Vector2 direction,Vector2 position, GameObject target)
     {
         mousePosOnActivation = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float dashDistance = 0.9f;
@@ -85,7 +86,7 @@ class Skill_AoeDash : Skill
 
             }
         }
-        base.ActivateSkill(source,direction,target);
+        base.ActivateSkill(source,direction,position,target);
     }
 
     /// <summary>

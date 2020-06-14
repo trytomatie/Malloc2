@@ -22,7 +22,9 @@ public class ItemSeries
         Faerie = 4,
         Royal = 5,
         Scout = 6,
-        Minionmancer = 7
+        Minionmancer = 7,
+        Spellblade = 8,
+        Magus = 9
     }
 
     public virtual void ApplyEffect(GameObject g)
@@ -61,6 +63,9 @@ public class ItemSeries
                         break;
                     case Series.Scout:
                         UpdateSeries(mySeries, Series.Scout, new ItemSeries_Scout());
+                        break;
+                    case Series.Spellblade:
+                        UpdateSeries(mySeries, Series.Spellblade, new ItemSeries_SpellBlade());
                         break;
                 }
             }

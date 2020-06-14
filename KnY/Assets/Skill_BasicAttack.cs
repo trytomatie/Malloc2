@@ -22,13 +22,14 @@ class Skill_BasicAttack : Skill
         this.BaseCasttime = casttime;
         this.AllowsMovement = allowsMovement;
         this.SpCost = 3;
+        this.Image = ItemIcons.GetSkillIcon(1);
     }
 
 
     /// <summary>
     /// Sets Parameter for Skill Actiavtion
     /// </summary>
-    public override void ActivateSkill(GameObject source, Vector2 direction, GameObject target)
+    public override void ActivateSkill(GameObject source, Vector2 direction, Vector2 position, GameObject target)
     {
         // Calculate Attackspeed
         float factor = (float)source.GetComponent<Statusmanager>().TotalAttackSpeed() / 100;
@@ -51,7 +52,7 @@ class Skill_BasicAttack : Skill
         {
             Cooldown = BaseCooldown * 2.5f;
         }
-        base.ActivateSkill(source, direction, target);
+        base.ActivateSkill(source, direction, position, target);
     }
 
     /// <summary>
@@ -71,6 +72,10 @@ class Skill_BasicAttack : Skill
             GameObject damageObject = GameObject.Instantiate(PublicGameResources.GetResource().damageObject, (Vector2)source.transform.position + Direction * 0.15f, Quaternion.identity);
             damageObject.GetComponent<Animator>().SetFloat("DamageAnimation", 1);
             damageObject.transform.up = mousePosition - (Vector2)source.transform.position;
+            if(sourceStatus.ContainsStatusEffect(new StatusEffect_ItemSeriesSpellBlade()))
+            {
+                damageObject.GetComponent<DamageObject>().applyStatusEffect = new StatusEffect_OnHitGiveSP(new StatusEffect_ItemSeriesSpellBlade().spGain);
+            }
             int damage = sourceStatus.totalAttackDamage;
             if(attackPhase == 4)
             {

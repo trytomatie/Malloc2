@@ -17,14 +17,14 @@ public class StatusEffect_DivineProtection : StatusEffect {
     {
         if(!effectApplied)
         { 
-            g.GetComponent<Statusmanager>().Barrier += g.GetComponent<Statusmanager>().maxHp * 2;
+            g.GetComponent<Statusmanager>().Barrier += g.GetComponent<Statusmanager>().MaxHp * 2;
             effectApplied = true;
         }
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().Barrier -= g.GetComponent<Statusmanager>().maxHp * 2; 
+        g.GetComponent<Statusmanager>().Barrier -= g.GetComponent<Statusmanager>().MaxHp * 2; 
     }
 
     public override void OnAdditionalApplication(GameObject g, StatusEffect s)

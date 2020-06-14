@@ -7,6 +7,8 @@ using Pathfinding;
 public class Statusmanager : MonoBehaviour {
 
     public enum Faction  {EnemyFaction, PlayerFaction };
+    public enum CharacterClass { Undefined, Warrior, Mage};
+    public CharacterClass characterClass = CharacterClass.Undefined;
     public Faction faction = Faction.EnemyFaction;
     public int level = 1;
     public int maxHp = 100;
@@ -44,15 +46,21 @@ public class Statusmanager : MonoBehaviour {
     private float totalAttackDamageMultiplyier = 1;
     public int totalAttackDamage = 0;
 
+    private int magicPower = 0;
+    private float magicPowerMultiplier = 1;
+    private int totalMagicPower = 0;
+
     public int criticalStrikeChance = 1;
     public float damageOverTimeDamageMultiplier = 1;
     public float experienceGainMultiplier = 1;
     public float manaGainMuliplier = 1;
+    private float hpMultiplier = 1;
 
 
     public List<StatusEffect> statusEffects = new List<StatusEffect>(); 
     public List<OnDamageEffect> onDamageEffects = new List<OnDamageEffect>();
     public List<OnDeathEffect> onDeathEffects = new List<OnDeathEffect>();
+    public List<StatusEffect> onRoomEnterEffects = new List<StatusEffect>();
     public List<Animator> anims = new List<Animator>();
 
     public int hpGrowth;
@@ -166,7 +174,7 @@ public class Statusmanager : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if (Hp < maxHp && hp > 0)
+        if (Hp < MaxHp && hp > 0)
         {
             hpRegenDecimals += ((healthRegeneration * healthRegenerationPercentage * Time.fixedDeltaTime) / 5);
             if(hpRegenDecimals >= 1)
@@ -279,6 +287,28 @@ public class Statusmanager : MonoBehaviour {
         }
     }
 
+    public void ApplyOnRoomEnterEffects(StatusEffect statuseffect)
+    {
+        foreach (StatusEffect s in onRoomEnterEffects)
+        {
+            if (s.statusName == statuseffect.statusName)
+            {
+                s.OnAdditionalApplication(gameObject, statuseffect);
+                return;
+            }
+        }
+        onRoomEnterEffects.Add(statuseffect);
+    }
+
+    public void TriggerOnRoomEnterEffects()
+    {
+        foreach (StatusEffect s in onRoomEnterEffects)
+        {
+            s.ApplyEffect(gameObject);
+        }
+
+    }
+
     private void ProcOnDeathEffects()
     {
         foreach(OnDeathEffect s in onDeathEffects)
@@ -340,6 +370,13 @@ public class Statusmanager : MonoBehaviour {
         Director.GetInstance().SpawnDamageText(damage.ToString(), transform, color, crit);
     }
 
+    public void ApplyHeal(GameObject g,int healAmount)
+    {
+        int regen = healAmount;
+        Hp += healAmount;
+        Director.GetInstance().SpawnDamageText(healAmount.ToString(), g.transform, Color.green, false);
+    }
+
     public void AddFollower(GameObject g)
     {
         Followers.Add(g);
@@ -393,7 +430,7 @@ public class Statusmanager : MonoBehaviour {
     /// </summary>
     public void LevelUp()
     {
-        maxHp += hpGrowth;
+        MaxHp += hpGrowth;
         Hp += hpGrowth;
         maxSp += spGrowth;
         Mana += manaGrowth;
@@ -498,9 +535,9 @@ public class Statusmanager : MonoBehaviour {
         {
            
             hp = value;
-            if(hp > maxHp)
+            if(hp > MaxHp)
             {
-                hp = maxHp;
+                hp = MaxHp;
             }
             if (gameObject.name == "Player")
             {
@@ -614,7 +651,14 @@ public class Statusmanager : MonoBehaviour {
 
         set
         {
-            sp = value;
+            if(value < maxSp)
+            { 
+                sp = value;
+            }
+            else
+            {
+                sp = maxSp;
+            }
             if (gameObject.name == "Player")
             {
                 UI_ResourceManager.UpdateSpBar();
@@ -661,6 +705,76 @@ public class Statusmanager : MonoBehaviour {
         set
         {
             followers = value;
+        }
+    }
+
+    public int MaxHp
+    {
+        get
+        {
+            return (int)(maxHp * HpMultiplier);
+        }
+
+        set
+        {
+            maxHp = value;
+        }
+    }
+
+    public float HpMultiplier
+    {
+        get
+        {
+            return hpMultiplier;
+        }
+
+        set
+        {
+            hpMultiplier = value;
+            if (gameObject.name == "Player")
+            {
+                UI_ResourceManager.UpdateUI(); // fix that sometime??? // Later Note: What's the problem // Even Later Note: Maybe check for PlayerController you dumbass? // Even Laterer Note: checking name is faster?
+            }
+        }
+    }
+
+    public int TotalMagicPower
+    {
+        get
+        {
+
+            return (int)(totalMagicPower * magicPowerMultiplier);
+        }
+
+        set
+        {
+            totalMagicPower = value;
+        }
+    }
+
+    public float MagicPowerMultiplier
+    {
+        get
+        {
+            return magicPowerMultiplier;
+        }
+
+        set
+        {
+            magicPowerMultiplier = value;
+        }
+    }
+
+    public int MagicPower
+    {
+        get
+        {
+            return magicPower;
+        }
+
+        set
+        {
+            magicPower = value;
         }
     }
 

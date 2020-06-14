@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f6af88549b74214bad4ef7d84c6e735, type: 3}
-  m_Name: PassivePickup
+  m_Name: SkillManaCrystal
   m_EditorClassIdentifier: 
-  instance: {fileID: 5238590499242739081, guid: efca4b83d464d024785cc45194807e81,
+  instance: {fileID: 3875135025429602740, guid: 6ddbb22830e59e348b62535f8a97c7d5,
     type: 3}
-  chanceToSpawn: 90
-  cost: 0
+  chanceToSpawn: 15
+  cost: 18

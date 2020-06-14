@@ -82,7 +82,7 @@ public class UI_ResourceManager : MonoBehaviour
         }
         Instance.hpText.text = "" + Instance.Statusmanager.Hp + barrier;
 
-        float hpPercent = (float)Instance.Statusmanager.Hp / (float)Instance.Statusmanager.maxHp;
+        float hpPercent = (float)Instance.Statusmanager.Hp / (float)Instance.Statusmanager.MaxHp;
         Instance.hpBar.GetComponent<Image>().fillAmount = hpPercent;
     }
     public static void UpdateSpBar()

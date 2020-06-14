@@ -15,7 +15,7 @@ public class DamageObject : MonoBehaviour {
     public Dictionary<GameObject, bool> damagedObjects = new Dictionary<GameObject, bool>();
 
     public Collider2D myCollider;
-
+    public StatusEffect applyStatusEffect;
     public double procCoefficient = 1;
     private float _knockbackStrenght;
     private float _knockbackDurration;
@@ -115,6 +115,11 @@ public class DamageObject : MonoBehaviour {
 
             ApplyKnockbackOnTarget(other);
         }
+        // Apply Set Statuseffect
+        if(applyStatusEffect != null)
+        {
+            other.GetComponent<Statusmanager>().ApplyStatusEffect(applyStatusEffect);
+        }
         // Apply Bleed Effect
         float distance = Vector2.Distance(other.transform.position, origin.transform.position);
 
@@ -128,11 +133,18 @@ public class DamageObject : MonoBehaviour {
     /// <summary>
     /// Calculates damage in accordance to armor
     /// </summary>
-    public static int CalculateDamageDealt(Statusmanager otherStatus,int damage)
-    {
-
+    public static int CalculateDamageDealt(Statusmanager otherStatus, int damage)
+    {        
         // Get Armor damage Reduction
-        float damageMultiplier = 100f / (100f + otherStatus.defence);
+        float damageMultiplier = 0;
+        if (otherStatus.defence >= 0)
+        { 
+            damageMultiplier = 100f / (100f + otherStatus.defence);
+        }
+        else
+        {
+            damageMultiplier = 2 - (100f / (100f - otherStatus.defence));
+        }
         // Calculat damage
         int damageDealt = Mathf.RoundToInt((damage * damageMultiplier) + UnityEngine.Random.Range(0, 10) - otherStatus.flatDamageReduction);
         return damageDealt;
@@ -150,7 +162,15 @@ public class DamageObject : MonoBehaviour {
         }
 
         // Get Armor damage Reduction
-        float damageMultiplier = 100f / (100f + otherStatus.defence);
+        float damageMultiplier = 0;
+        if (otherStatus.defence >= 0)
+        {
+            damageMultiplier = 100f / (100f + otherStatus.defence);
+        }
+        else
+        {
+            damageMultiplier = 2 - (100f / (100f - otherStatus.defence));
+        }
         // Calculat damage
         int damageDealt = Mathf.RoundToInt((damage * damageMultiplier) + rndDamage);
         return damageDealt;

@@ -8,6 +8,7 @@ using UnityEngine;
 public class PassiveSkillAttribute_IncreaseHP : PassiveSkillAttribute
 {
     private int hpIncrease = 0;
+    
     public PassiveSkillAttribute_IncreaseHP(int hpIncrease)
     {
         HpIncrease = hpIncrease;
@@ -15,12 +16,12 @@ public class PassiveSkillAttribute_IncreaseHP : PassiveSkillAttribute
 
     public override void ApplyEffect(GameObject source)
     {
-        source.GetComponent<Statusmanager>().maxHp += HpIncrease;
+        source.GetComponent<Statusmanager>().MaxHp += HpIncrease;
     }
 
     public override void RemoveEffect(GameObject source)
     {
-        source.GetComponent<Statusmanager>().maxHp -= HpIncrease;
+        source.GetComponent<Statusmanager>().MaxHp -= HpIncrease;
     }
 
     public int HpIncrease

@@ -18,6 +18,8 @@ public class Director : MonoBehaviour {
     public float timeScale = 1;
     public System.Random globalRandom;
     public int difficultyScaling = 2;
+    public Statusmanager.CharacterClass characterClass = Statusmanager.CharacterClass.Undefined;
+    
     public static int globalRandomSeed = 1337;
 
     private IEnumerator darkenLevel_coroutine;
@@ -278,6 +280,12 @@ public class Director : MonoBehaviour {
     {
         int i = GameObject.Find("DifficultyDropDown").GetComponent<Dropdown>().value;
         GetInstance().difficultyScaling = i;
+    }
+
+    public static void SetContact()
+    {
+        int i = GameObject.Find("ContractDropDown").GetComponent<Dropdown>().value;
+        GetInstance().characterClass = (Statusmanager.CharacterClass)i;
     }
 
     public static void SetGlobalSeed()

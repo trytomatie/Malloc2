@@ -8,7 +8,7 @@ public class Chunk_TriggerEvent : MonoBehaviour
 {
     public UnityEvent onTriggerAction;
     private SpawnDirector_Room mySpawnDirector;
-    public ScriptableObject_InteractableSpawnCard spawnCard;
+    public List<ScriptableObject_InteractableSpawnCard> price = new List<ScriptableObject_InteractableSpawnCard>();
     public GameObject barrier;
     public bool isTriggerd = false;
     public GameObject goThatTriggeredMe;
@@ -71,8 +71,14 @@ public class Chunk_TriggerEvent : MonoBehaviour
 
     public void DisableBarrierAndSpawnInteractable()
     {
-        Instantiate(spawnCard.instance,transform.position,Quaternion.identity);
+        int i = UnityEngine.Random.Range(0, price.Count);
+        Instantiate(price[i].instance, transform.position,Quaternion.identity);
         DisableBarrier();
+    }
+
+    public void TrigerOnRoomEnterEffects(GameObject g)
+    {
+        g.GetComponent<Statusmanager>().TriggerOnRoomEnterEffects();
     }
 
     public void NormalEnemyRoomEvent()
@@ -80,6 +86,7 @@ public class Chunk_TriggerEvent : MonoBehaviour
         EnableBarrier();
         SpawnMobs();
         SummonFollowers();
+        TrigerOnRoomEnterEffects(goThatTriggeredMe);
     }
 
     public void SummonFollowers()
@@ -94,7 +101,7 @@ public class Chunk_TriggerEvent : MonoBehaviour
         {
             if(scoutActive)
             {
-                follower.transform.position = GetComponent<SpawnDirector_Room>().spawnLocations[UnityEngine.Random.Range(0, GetComponent<SpawnDirector_Room>().spawnLocations.Count)].position;
+                follower.transform.position = GetComponent<SpawnDirector_Room>().SpawnLocations[UnityEngine.Random.Range(0, GetComponent<SpawnDirector_Room>().SpawnLocations.Count)].position;
             }
             else
             { 

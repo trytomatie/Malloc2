@@ -77,6 +77,10 @@ MonoBehaviour:
   - {fileID: 2100000, guid: bbfb8e44e8295c741a6c17b4114e53b4, type: 2}
   - {fileID: 2100000, guid: 5a70f88b2e6c9694096d3a6cd57ce168, type: 2}
   - {fileID: 2100000, guid: 70b3a1c3eae2fa742a9e3608a4afbb1b, type: 2}
+  healingMaterial: {fileID: 2100000, guid: 14c49af85aa7255418b1fde766d1fbf0, type: 2}
+  defenceSpellMaterial: {fileID: 2100000, guid: 37f0910e36e99024fa38688c6f607067,
+    type: 2}
+  poisonMaterial: {fileID: 2100000, guid: 067805ca969e4f84e86dcc3eef73841d, type: 2}
   corruptedAmethystFollower: {fileID: 4099386691832577026, guid: 3369d662ba38e174abdb6b2826ef0a0a,
     type: 3}
   gazeFollower: {fileID: 6947983543195073192, guid: d54985b1ecd6589458974c6532dad40b,
@@ -176,9 +180,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5b028ea414613fa4cb7d5cfaf88bd0ca, type: 3}
   - {fileID: 21300000, guid: 36b157a95ce31174982cdaa7be6459ee, type: 3}
   - {fileID: 4872730301728079812, guid: bc68e4ca2ffe6554c9e7ec12a9f9ad27, type: 3}
-  - {fileID: 21300000, guid: e7ae5e3db4ce19b4f81c41ac233fa66d, type: 3}
-  - {fileID: 21300000, guid: e7ae5e3db4ce19b4f81c41ac233fa66d, type: 3}
-  - {fileID: 21300000, guid: e7ae5e3db4ce19b4f81c41ac233fa66d, type: 3}
+  - {fileID: 21300000, guid: 3ec408eda9f12de41911c1cf8f4b3879, type: 3}
+  - {fileID: 21300000, guid: 4d87ce0c41e8a994c8839606f7a77bd7, type: 3}
+  - {fileID: 21300000, guid: cb055fdfbaa0d1a428ad1f5924bf3311, type: 3}
   - {fileID: 21300000, guid: e7ae5e3db4ce19b4f81c41ac233fa66d, type: 3}
   - {fileID: 21300000, guid: e7ae5e3db4ce19b4f81c41ac233fa66d, type: 3}
   - {fileID: 21300000, guid: e7ae5e3db4ce19b4f81c41ac233fa66d, type: 3}
@@ -201,6 +205,17 @@ MonoBehaviour:
   - {fileID: 227125247781274165, guid: 9529c9a021f527d4f86ec323243e8970, type: 3}
   - {fileID: 227125247781274165, guid: 9529c9a021f527d4f86ec323243e8970, type: 3}
   - {fileID: 227125247781274165, guid: 9529c9a021f527d4f86ec323243e8970, type: 3}
+  skillIcons:
+  - {fileID: 9154700437574773083, guid: 09276f9ff0d14cb4f84b40516514ebb6, type: 3}
+  - {fileID: 21300000, guid: ebe7540eeacdc5f459bac589ebd0a555, type: 3}
+  - {fileID: 21300000, guid: f79737f978534bc4fb4591f5a6143020, type: 3}
+  - {fileID: 21300000, guid: 6ca0233246a4e954f95864442be9c398, type: 3}
+  - {fileID: 21300000, guid: 8dec93c42fa2b744795e7b2548943cc0, type: 3}
+  - {fileID: 21300000, guid: 9d0ab8fea25906a43a8efcdee6b0a9b4, type: 3}
+  - {fileID: 21300000, guid: da84e331d79b50f4791e2769ec1f954e, type: 3}
+  - {fileID: 21300000, guid: fc418a3a24d95af4da50dbb0d3564ab1, type: 3}
+  - {fileID: 21300000, guid: 24f6995e33aab154e829a0c12fd7b29d, type: 3}
+  - {fileID: 21300000, guid: 8dec93c42fa2b744795e7b2548943cc0, type: 3}
 --- !u!1001 &1447885621702032603
 PrefabInstance:
   m_ObjectHideFlags: 0

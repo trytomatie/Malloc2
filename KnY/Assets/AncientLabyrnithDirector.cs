@@ -6,7 +6,13 @@ using UnityEngine;
 /// </summary>
 public class AncientLabyrnithDirector : MonoBehaviour
 {
+    public enum Contract
+    {
+        Warrior,
+        Mage,
+    }
     private int difficulty;
+    private Contract contract;
     public static float kingsContractScaling = 0.75f;
     private static float playerBonusRegen = 10;
     private static int playerBonusFlatDamageReduction = 25;
@@ -48,17 +54,22 @@ public class AncientLabyrnithDirector : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        UI_InputManager.Instance.OpenInfoPopup();
 
         Difficulty = Director.GetInstance().difficultyScaling;
         Statusmanager playerStatus =  GameObject.FindObjectOfType<PlayerController>().GetComponent<Statusmanager>();
+        playerStatus.characterClass = Director.GetInstance().characterClass;
         playerStatus.healthRegeneration += playerBonusRegen;
         playerStatus.flatDamageReduction += playerBonusFlatDamageReduction;
         playerStatus.AttackDamageFlatBonus += playerBonusDamage;
 
         Director.GetInstance().timePassed = new System.TimeSpan();
+    }
+
+    private void Start()
+    {
+        UI_InputManager.Instance.OpenInfoPopup();
     }
 
     // Update is called once per frame

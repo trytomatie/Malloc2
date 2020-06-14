@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         GameObject.Find("DifficultyDropDown").GetComponent<Dropdown>().value = Director.GetInstance().difficultyScaling;
+        GameObject.Find("ContractDropDown").GetComponent<Dropdown>().value = (int)Director.GetInstance().characterClass;
         SetDifficulty();
         SetSeed();
     }
@@ -42,6 +43,11 @@ public class MainMenu : MonoBehaviour
     public void SetDifficulty()
     {
         Director.SetDifficulty();
+    }
+
+    public void SetContract()
+    {
+        Director.SetContact();
     }
 
     public void SetSeed()

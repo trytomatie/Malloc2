@@ -27,8 +27,6 @@ public class Item
         Item_TitansKidney = 4,
         Item_BootsOfFlight = 7,
         Item_RedFairy = 9,
-        Item_SpeedCrystal = 12,
-        Item_DexterityCrystal = 13,
         Item_Blight = 5,
         Item_CorruptedAmethyst = 8,
         Item_WitchsHeart = 21,
@@ -36,12 +34,14 @@ public class Item
         Item_DarkFairy = 26,
         Item_CompassionateProminence = 28,
         Item_VaingloriousAuthority = 34,
+        Item_EvilStaff = 37,
+        Item_EnergizedCrystal = 38,
+        Item_MageRobe = 39
     }
     public enum UncommonItems
     {
         Item_Affectionate_Eminence = 3,
         Item_TotemOfGrief = 1,
-        Item_MightCrystal = 11,
         Item_Affliction = 20,
         Item_InheritedArmor = 22,
         Item_DivineClockwork = 24,
@@ -83,10 +83,17 @@ public class Item
     }
     public enum RemovedItems
     {
-        Item_BandanaOfMight = 2
+        Item_BandanaOfMight = 2,
+        Item_SpeedCrystal = 12,
+        Item_DexterityCrystal = 13,
+        Item_MightCrystal = 11,
     }
 
 
+    public virtual void PickUpEffect(GameObject g)
+    {
+
+    }
     public virtual void ApplyEffect(GameObject g)
     {
 
@@ -272,6 +279,15 @@ public class Item
             case 36:
                 item = new Item_InstantSeries();
                 return item;
+            case 37:
+                item = new Item_EvilStaff();
+                return item;
+            case 38:
+                item = new Item_EnergizedCrystal();
+                return item;
+            case 39:
+                item = new Item_MageRobe();
+                return item;
             default:
                 return null;
         }
@@ -343,7 +359,7 @@ public class Item
 
     public static int GenerateRandomUncommonItemID()
     {
-        UncommonItems id = UncommonItems.Item_MightCrystal;
+        UncommonItems id = UncommonItems.Item_Affectionate_Eminence;
         Array values = Enum.GetValues(typeof(UncommonItems));
         id = (UncommonItems)values.GetValue(rnd.Next(values.Length));
         return (int)id;

@@ -5,11 +5,32 @@ using UnityEngine;
 public class SkillManager : MonoBehaviour
 {
     public List<Skill> activeSkills = new List<Skill>();
-    public List<PassiveSkill> passiveSkills = new List<PassiveSkill>();
+    private PassiveSkill[] passiveSkills = new PassiveSkill[2];
     public bool disableMovement;
+
+    public PassiveSkill[] PassiveSkills
+    {
+        get
+        {
+            return passiveSkills;
+        }
+
+        set
+        {
+            passiveSkills = value;
+        }
+    }
+
     public void AddActiveSkill(Skill skill)
     {
         activeSkills.Add(skill);
+        UI_SkillManager.UpdateSkills();
+    }
+
+    public void RemoveActiveSkill(Skill skill)
+    {
+        activeSkills.Remove(skill);
+        activeSkills.RemoveAll(item => item == null);
         UI_SkillManager.UpdateSkills();
     }
 
@@ -19,7 +40,14 @@ public class SkillManager : MonoBehaviour
         {
             return;
         }
-        passiveSkills.Add(skill);
+        if(skill.Type1 == PassiveSkill.Type.Weapon)
+        {
+            PassiveSkills[0] = skill;
+        }
+        else
+        {
+            PassiveSkills[1] = skill;
+        }
         skill.ApplyEffects(gameObject);
         UI_SkillManager.UpdateSkills();
     }
@@ -30,7 +58,15 @@ public class SkillManager : MonoBehaviour
         {
             return;
         }
-        passiveSkills.Remove(skill);
+        if (skill.Type1 == PassiveSkill.Type.Weapon)
+        {
+            PassiveSkills[0] = null;
+        }
+        else
+        {
+
+            PassiveSkills[1] = null;
+        }
         skill.RemoveEffects(gameObject);
         UI_SkillManager.UpdateSkills();
     }
@@ -48,6 +84,10 @@ public class SkillManager : MonoBehaviour
         int spellsThatDontAllowMovementThatAreCasting = 0;
         foreach (Skill skill in activeSkills)
         {
+            if(skill == null)
+            {
+                continue;
+            }
             if (skill.CasttimeTimer > 0)
             {
                 skill.SkillCastingPhase(gameObject);

@@ -18,6 +18,7 @@ public class StatusEffect_RoadOfThorns : StatusEffect {
         {
             g.GetComponent<Statusmanager>().experienceGainMultiplier += 1;
             g.GetComponent<Statusmanager>().manaGainMuliplier += 1;
+            g.GetComponent<Statusmanager>().defence -= 100;
             effectApplied = true;
         }
     }
@@ -28,6 +29,7 @@ public class StatusEffect_RoadOfThorns : StatusEffect {
         {
             g.GetComponent<Statusmanager>().experienceGainMultiplier -= 1;
             g.GetComponent<Statusmanager>().manaGainMuliplier -= 1;
+            g.GetComponent<Statusmanager>().defence += 100;
         }
     }
 

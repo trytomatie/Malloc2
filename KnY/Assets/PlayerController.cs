@@ -32,8 +32,9 @@ public class PlayerController : MonoBehaviour
 
 
         skillManager.AddActiveSkill(new Skill_AoeDash(10f, 0.4f, false));
-        skillManager.AddActiveSkill(new Skill_ThunderStrike(8f, 0.8f,0.25f,3, false, GetComponent<SpriteRenderer>().material));
-        skillManager.AddPassiveSkill(PassiveSkill.GenerateRandomPassive());
+        //skillManager.AddActiveSkill(new Skill_Cure(12f, 0.8f, false));
+
+        skillManager.AddPassiveSkill(PassiveSkill.GenerateRandomPassive(1, myStatus.characterClass));
         //skills.Add(new Skill_Laser(1f, 1.8f, 0.25f, 3, false));
         foreach (Skill skill in skillManager.activeSkills)
         {
@@ -103,7 +104,7 @@ public class PlayerController : MonoBehaviour
             Vector2 heading = mousePosition - (Vector2)transform.position;
             float distance = heading.magnitude;
             Vector2 attackDirection = heading / distance;
-            skillManager.activeSkills[0].ActivateSkill(gameObject, attackDirection, null);
+            skillManager.activeSkills[0].ActivateSkill(gameObject, attackDirection, mousePosition,null);
         }
         if (Input.GetAxis("Attack1") == 1 && skillManager.activeSkills[1].CooldownTimer <= 0 && skillManager.activeSkills[1].SpCost <= myStatus.Sp) // Dash
         {
@@ -111,23 +112,23 @@ public class PlayerController : MonoBehaviour
             Vector2 heading = mousePosition - (Vector2)transform.position;
             float distance = heading.magnitude;
             Vector2 attackDirection = heading / distance;
-            skillManager.activeSkills[1].ActivateSkill(gameObject, movementDirection, null);
+            skillManager.activeSkills[1].ActivateSkill(gameObject, movementDirection, mousePosition,null);
         }
-        if (Input.GetAxis("Attack3") == 1 && skillManager.activeSkills[2].CooldownTimer <= 0 && skillManager.activeSkills[2].SpCost <= myStatus.Sp) // Dash and Spin
+        if (skillManager.activeSkills.Count > 2 && Input.GetAxis("Attack3") == 1 && skillManager.activeSkills[2].CooldownTimer <= 0 && skillManager.activeSkills[2].SpCost <= myStatus.Sp) // Dash and Spin
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 heading = mousePosition - (Vector2)transform.position;
             float distance = heading.magnitude;
             Vector2 attackDirection = heading / distance;
-            skillManager.activeSkills[2].ActivateSkill(gameObject, attackDirection, null);
+            skillManager.activeSkills[2].ActivateSkill(gameObject, attackDirection, mousePosition, null);
         }
-        if (Input.GetAxis("Attack4") == 1 && skillManager.activeSkills[3].CooldownTimer <= 0 && skillManager.activeSkills[3].SpCost <= myStatus.Sp) // Test
+        if (skillManager.activeSkills.Count > 3 && Input.GetAxis("Attack4") == 1 && skillManager.activeSkills[3].CooldownTimer <= 0 && skillManager.activeSkills[3].SpCost <= myStatus.Sp) // Test
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 heading = mousePosition - (Vector2)transform.position;
             float distance = heading.magnitude;
             Vector2 attackDirection = heading / distance;
-            skillManager.activeSkills[3].ActivateSkill(gameObject, mousePosition, null);
+            skillManager.activeSkills[3].ActivateSkill(gameObject, attackDirection, mousePosition, null);
         }
     }
 

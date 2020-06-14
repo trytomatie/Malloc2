@@ -98,7 +98,7 @@ public class AI_ThunderCasterEnemy : AI_BaseAI
                 PathFindingActive(false);  // not gonna move
                 if(skills[0].CooldownTimer <=0)
                 {
-                    skills[0].ActivateSkill(gameObject, (Vector2)target.transform.position + new Vector2(UnityEngine.Random.Range(-0.3f,0.3f), UnityEngine.Random.Range(-0.3f, 0.3f)), null);
+                    skills[0].ActivateSkill(gameObject, Vector2.zero, (Vector2)target.transform.position + new Vector2(UnityEngine.Random.Range(-0.3f,0.3f), UnityEngine.Random.Range(-0.3f, 0.3f)), null);
                     break;
                 }
                 if(!disableMovement)

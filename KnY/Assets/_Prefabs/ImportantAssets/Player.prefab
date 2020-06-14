@@ -187,6 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d19854395c0f24384b1615f8b67340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterClass: 0
   faction: 1
   level: 1
   maxHp: 500
@@ -213,7 +214,10 @@ MonoBehaviour:
   totalAttackDamage: 0
   criticalStrikeChance: 1
   damageOverTimeDamageMultiplier: 1
+  experienceGainMultiplier: 1
+  manaGainMuliplier: 1
   statusEffects: []
+  onRoomEnterEffects: []
   anims: []
   hpGrowth: 86
   spGrowth: 0
@@ -350,6 +354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeSkills: []
+  passiveSkills: []
   disableMovement: 0
 --- !u!1 &1887257620399214062
 GameObject:

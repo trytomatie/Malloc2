@@ -50,7 +50,7 @@ public class AI_EyeFollower : AI_BaseAI
             case Mode.Attack:
                 if (skills[0].CooldownTimer <= 0)
                 {
-                    skills[0].ActivateSkill(gameObject, Vector2.zero, Target);
+                    skills[0].ActivateSkill(gameObject, Vector2.zero,Vector2.zero, Target);
                 }
                 break;
         }

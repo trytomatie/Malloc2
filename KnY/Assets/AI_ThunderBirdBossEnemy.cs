@@ -133,7 +133,7 @@ public class AI_ThunderBirdBossEnemy : AI_BaseAI
                     {
                         a.SetInteger("AnimationState", 2);
                     }
-                    skills[2].ActivateSkill(gameObject, pos - offset, null);
+                    skills[2].ActivateSkill(gameObject, pos - offset, Vector2.zero, null);
                     internalAttackCooldownTimer = internalAttackCooldown-1;
                     mode = Mode.IdleAfterAttack;
                     break;
@@ -145,7 +145,7 @@ public class AI_ThunderBirdBossEnemy : AI_BaseAI
                         a.SetInteger("AnimationState", 3);
                     }
                     internalAttackCooldownTimer = internalAttackCooldown;
-                    skills[0].ActivateSkill(gameObject, Vector2.zero, null);
+                    skills[0].ActivateSkill(gameObject, Vector2.zero, Vector2.zero, null);
                     mode = Mode.IdleAfterAttack;
                     break;
                 }
@@ -156,7 +156,7 @@ public class AI_ThunderBirdBossEnemy : AI_BaseAI
                         a.SetInteger("AnimationState", 3);
                     }
                     internalAttackCooldownTimer = internalAttackCooldown;
-                    skills[1].ActivateSkill(gameObject, PublicGameResources.CalculateNormalizedDirection(transform.position,target.transform.position), null);
+                    skills[1].ActivateSkill(gameObject, PublicGameResources.CalculateNormalizedDirection(transform.position,target.transform.position), Vector2.zero, null);
                     mode = Mode.IdleAfterAttack;
                     break;
                 }
@@ -200,7 +200,7 @@ public class AI_ThunderBirdBossEnemy : AI_BaseAI
 
     private void BossBehaviour()
     {
-        if(sm.Hp / sm.maxHp > 0.75f)
+        if(sm.Hp / sm.MaxHp > 0.75f)
         {
             foreach(Skill s in skills)
             {
@@ -208,7 +208,7 @@ public class AI_ThunderBirdBossEnemy : AI_BaseAI
             }
             internalAttackCooldown = 3;
         }
-        if (sm.Hp / sm.maxHp > 0.5f)
+        if (sm.Hp / sm.MaxHp > 0.5f)
         {
             foreach (Skill s in skills)
             {
@@ -216,7 +216,7 @@ public class AI_ThunderBirdBossEnemy : AI_BaseAI
             }
             internalAttackCooldown = 2.5f;
         }
-        if (sm.Hp / sm.maxHp > 0.25f)
+        if (sm.Hp / sm.MaxHp > 0.25f)
         {
             foreach (Skill s in skills)
             {

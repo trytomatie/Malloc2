@@ -14,7 +14,6 @@ public class ItemSeries_Curse : ItemSeries
         this.conditionsNeeded[0] = 3;
         this.image = ItemIcons.GetSeriesIcon(id);
         this.color = Color.HSVToRGB( 123f / 360f, 1f, 1f);
-        Debug.Log(color);
     }
     public override void ApplyEffect(GameObject g)
     {

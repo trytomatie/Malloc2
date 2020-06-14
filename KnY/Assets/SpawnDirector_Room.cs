@@ -9,8 +9,8 @@ public class SpawnDirector_Room : MonoBehaviour
 {
     public List<ScriptableObject_InteractableSpawnCard> interactablePool;
     public List<MobSpawnAtributes_ScriptableObject> mobPool;
-    public List<Transform> spawnLocations;
-    public List<Transform> interactableSpawnLocations;
+    private List<Transform> spawnLocations = new List<Transform>();
+    private List<Transform> interactableSpawnLocations = new List<Transform>();
     private System.Random rnd;
     private float timer = 0;
     public MapGenerator mapGenerator;
@@ -62,6 +62,48 @@ public class SpawnDirector_Room : MonoBehaviour
         }
     }
 
+    public List<Transform> SpawnLocations
+    {
+        get
+        {
+            if(spawnLocations.Count == 0)
+            {
+                Transform parent = transform.Find("MobSpawnPoints");
+                for(int i = 0; i < parent.childCount;i++)
+                {
+                    spawnLocations.Add(parent.GetChild(i));
+                }
+            }
+            return spawnLocations;
+        }
+
+        set
+        {
+            spawnLocations = value;
+        }
+    }
+
+    public List<Transform> InteractableSpawnLocations
+    {
+        get
+        {
+            if (interactableSpawnLocations.Count == 0)
+            {
+                Transform parent = transform.Find("InteractableSpawnPoints");
+                for (int i = 0; i < parent.childCount; i++)
+                {
+                    interactableSpawnLocations.Add(parent.GetChild(i));
+                }
+            }
+            return interactableSpawnLocations;
+        }
+
+        set
+        {
+            interactableSpawnLocations = value;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,7 +112,7 @@ public class SpawnDirector_Room : MonoBehaviour
         {
             mapGenerator = FindObjectOfType<MapGenerator>();
         }
-        if(spawnLocations.Count == 0)
+        if(SpawnLocations.Count == 0)
         {
             Debug.LogWarning("No MobSpawnLocations Defined!");
         }
@@ -96,13 +138,13 @@ public class SpawnDirector_Room : MonoBehaviour
             return;
         }
         GameObject interactableSpawned = Instantiate(interactable.instance, spawnLocation.transform.position, Quaternion.identity);
-        interactableSpawned.GetComponent<Interactable_Chest>().cost = interactable.cost;
+        interactableSpawned.GetComponent<Interactable_BlankChest>().cost = interactable.cost;
     }
 
     public void SpawnEnemys()
     {
         hasBeenTriggerd = true;
-        foreach (Transform spawnLocation in spawnLocations)
+        foreach (Transform spawnLocation in SpawnLocations)
         {
             SpawnRandomMob(spawnLocation);
         }
@@ -110,7 +152,7 @@ public class SpawnDirector_Room : MonoBehaviour
 
     public void SpawnInteractables()
     {
-        foreach (Transform spawnLocation in interactableSpawnLocations)
+        foreach (Transform spawnLocation in InteractableSpawnLocations)
         {
             SpawnRandomInteractable(spawnLocation);
         }
@@ -119,7 +161,7 @@ public class SpawnDirector_Room : MonoBehaviour
     public void SpawnEnemys(GameObject target)
     {
         hasBeenTriggerd = true;
-        foreach (Transform spawnLocation in spawnLocations)
+        foreach (Transform spawnLocation in SpawnLocations)
         {
             SpawnRandomMob(spawnLocation,target);
         }
@@ -129,7 +171,12 @@ public class SpawnDirector_Room : MonoBehaviour
     {
         MobSpawnAtributes_ScriptableObject mob = null;
         int rndChance = rnd.Next(0, CombinedWeight);
-        foreach (MobSpawnAtributes_ScriptableObject m in mobPool)
+        List<MobSpawnAtributes_ScriptableObject> myMobPool = mobPool;
+        if(spawnLocation.GetComponent<ForcedSpawn>() != null && spawnLocation.GetComponent<ForcedSpawn>().mobPool.Count > 0)
+        {
+            myMobPool = spawnLocation.GetComponent<ForcedSpawn>().mobPool;
+        }
+        foreach (MobSpawnAtributes_ScriptableObject m in myMobPool)
         {
             if (m.chanceToSpawn >= rndChance)
             {
@@ -150,8 +197,19 @@ public class SpawnDirector_Room : MonoBehaviour
     public void SpawnRandomMob(Transform spawnLocation,GameObject target)
     {
         MobSpawnAtributes_ScriptableObject mob = null;
-        int rndChance = rnd.Next(0, CombinedWeight);
-        foreach (MobSpawnAtributes_ScriptableObject m in mobPool)
+        List<MobSpawnAtributes_ScriptableObject> myMobPool = mobPool;
+        int myCombinedWeight = CombinedWeight;
+        if (spawnLocation.GetComponent<ForcedSpawn>() != null && spawnLocation.GetComponent<ForcedSpawn>().mobPool.Count > 0)
+        {
+            myMobPool = spawnLocation.GetComponent<ForcedSpawn>().mobPool;
+            myCombinedWeight = 0;
+            foreach (MobSpawnAtributes_ScriptableObject m in spawnLocation.GetComponent<ForcedSpawn>().mobPool)
+            {
+                myCombinedWeight += m.chanceToSpawn;
+            }
+        }
+        int rndChance = rnd.Next(0, myCombinedWeight);
+        foreach (MobSpawnAtributes_ScriptableObject m in myMobPool)
         { 
             if (m.chanceToSpawn >= rndChance)
             {

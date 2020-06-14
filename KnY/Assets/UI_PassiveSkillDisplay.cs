@@ -7,24 +7,24 @@ using UnityEngine.UI;
 
 public class UI_PassiveSkillDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public PassiveSkill skill = null;
+    private PassiveSkill skill = null;
     private GameObject descriptionDisplay;
     private bool mouseEntered;
     
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(skill == null)
+        if(Skill == null)
         {
             return;
         }
         mouseEntered = true;
-        DescriptionDisplay.GetComponent<UI_ArtifactDisplayDescriptionPopup>().text.text = skill.Name + "\n" + skill.Description;
+        DescriptionDisplay.GetComponent<UI_ArtifactDisplayDescriptionPopup>().text.text = Skill.Name + "\n" + Skill.Description;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (skill == null)
+        if (Skill == null)
         {
             return;
         }
@@ -34,7 +34,7 @@ public class UI_PassiveSkillDisplay : MonoBehaviour, IPointerEnterHandler, IPoin
 
     private void Update()
     {
-        if (skill == null)
+        if (Skill == null)
         {
             return;
         }
@@ -61,4 +61,24 @@ public class UI_PassiveSkillDisplay : MonoBehaviour, IPointerEnterHandler, IPoin
         }
     }
 
+    public PassiveSkill Skill
+    {
+        get
+        {
+            return skill;
+        }
+
+        set
+        {
+            skill = value;
+            if (skill != null)
+            {
+                GetComponent<Image>().sprite = ItemIcons.GetSkillIcon(skill.ImageId);
+            }
+            else
+            {
+                GetComponent<Image>().sprite = ItemIcons.GetSkillIcon(0) ;
+            }
+        }
+    }
 }

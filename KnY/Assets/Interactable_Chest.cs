@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interactable_Chest : MonoBehaviour {
+public class Interactable_Chest : Interactable_BlankChest {
 
-    public int cost = 3;
-    public GameObject spawnItem;
     public int chanceForCommonItem = 90;
     public int chanceForUncommonItem = 10;
     public int chanceForRareItem = 0;
@@ -84,7 +82,7 @@ public class Interactable_Chest : MonoBehaviour {
                 }
             }
         }
-        item.transform.Find("ItemObject").GetComponent<Interactable_Item>()._itemId = id;
-        item.transform.Find("ItemObject").GetComponent<SpriteRenderer>().material = Item.GetItemMaterial(id);
+        item.transform.GetChild(0).GetComponent<Interactable_Item>()._itemId = id;
+        item.transform.GetChild(0).GetComponent<SpriteRenderer>().material = Item.GetItemMaterial(id);
     }
 }

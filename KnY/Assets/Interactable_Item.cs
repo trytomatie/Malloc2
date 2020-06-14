@@ -25,6 +25,7 @@ public class Interactable_Item : MonoBehaviour
         { 
             Item item = Item.GenerateItem(_itemId);
             g.GetComponent<Inventory>().AddItem(item);
+            item.PickUpEffect(g);
             GameObject.FindObjectOfType<ItemDescriptionManager>().SetDescriptionProperties(item.itemName, item.description, GameObject.FindObjectOfType<ItemIcons>().GetIcon(_itemId),Item.GetItemDescriptionMaterial(_itemId));
             GameObject.FindObjectOfType<ItemDescriptionManager>().Show(5f);
             Destroy(gameObject);
@@ -33,6 +34,7 @@ public class Interactable_Item : MonoBehaviour
         {
             Item item = Item.GenerateItem(_itemId);
             g.GetComponent<Inventory>().AddInactiveArtifact(item);
+            item.PickUpEffect(g);
             GameObject.FindObjectOfType<ItemDescriptionManager>().SetDescriptionProperties(item.itemName + " (inactive) ", item.description, GameObject.FindObjectOfType<ItemIcons>().GetIcon(_itemId), Item.GetItemDescriptionMaterial(_itemId));
             GameObject.FindObjectOfType<ItemDescriptionManager>().Show(5f);
             Destroy(gameObject);

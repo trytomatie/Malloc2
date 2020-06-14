@@ -40,7 +40,7 @@ public class UI_MiniHpBarManager : MonoBehaviour
     }
     private void UpdateUpBar()
     {
-        float hpPercent = (float)statusmanager.Hp / (float)statusmanager.maxHp;
+        float hpPercent = (float)statusmanager.Hp / (float)statusmanager.MaxHp;
         hpBar.GetComponent<Image>().fillAmount = hpPercent;
     }
 
