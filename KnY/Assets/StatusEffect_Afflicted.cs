@@ -42,6 +42,5 @@ public class StatusEffect_Afflicted : StatusEffect {
         {
             duration = newEffect.duration;
         }
-        damage += newEffect.damage;
     }
 }

@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 5854624612466544140}
   m_Layer: 0
   m_Name: ActiveSkillPickup
-  m_TagString: Untagged
+  m_TagString: SpawnedInteractable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

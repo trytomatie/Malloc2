@@ -173,7 +173,7 @@ public class AI_BaseAI : MonoBehaviour
         if(attackDelayTimer == attackDelay)
         {
             attackDirection = CalculateNormalizedDirection(transform.position, Target.transform.position);
-            GetComponent<Collider2D>().isTrigger = true;
+            gameObject.layer = 12;
         }
         if(attackDelayTimer > 0)
         {
@@ -184,7 +184,7 @@ public class AI_BaseAI : MonoBehaviour
         {
             attackSpeedTimer = time;
             Statusmanager s = GetComponent<Statusmanager>();
-            GetComponent<Collider2D>().isTrigger = false;
+            gameObject.layer = 0;
             GameObject damageObject = Instantiate(PublicGameResources.GetResource().damageObject, transform);
             damageObject.GetComponent<DamageObject>().SetValues(s.totalAttackDamage, s.CriticalStrikeChance, 0, time + 0.05f, gameObject, 6);
             damageObject.GetComponent<DamageObject>().SetKnockbackParameters(1, 0.25f);

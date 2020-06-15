@@ -17,10 +17,12 @@ public class PassiveSkillAttribute
         { "PassiveSkillAttribute_IncreaseSP", 40 },
         { "PassiveSkillAttribute_RoadOfThorns", 10 },
         { "PassiveSkillAttribute_Scout", 20 },
-        { "PassiveSkillAttribute_RollingThunder", 5 },
-        { "PassiveSkillAttribute_Striker", 5 },
+        { "PassiveSkillAttribute_RollingThunder", 25 },
+        { "PassiveSkillAttribute_Striker", 25 },
         { "PassiveSkillAttribute_Rest", 35 },
-        { "PassiveSkillAttribute_Glass", 5 },
+        { "PassiveSkillAttribute_Glass", 25 },
+        { "PassiveSkillAttribute_IncreaseMagicAttack", 100 },
+        { "PassiveSkillAttribute_MinionRest",5 }
     };
     private static Dictionary<String, int> baseattributeWeights;
 

@@ -42,7 +42,7 @@ public class CameraFollow : MonoBehaviour {
             screenShakeTimer -= Time.fixedDeltaTime;
         }
         Vector2 desiredPosition = target.position + offset;
-        if (conditionalTarget.gameObject.activeSelf)
+        if (conditionalTarget.gameObject.activeSelf && !Director.GetInstance().isMobile)
         {
             Vector2 mousePos = Cursor.GetWorldPositionOnPlane(Input.mousePosition,0);
             // desiredPosition = ((Vector2)target.position + mousePos) / 2;

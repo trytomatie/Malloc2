@@ -6,7 +6,7 @@ public class StatusEffect_RoadOfThorns : StatusEffect {
     public StatusEffect_RoadOfThorns()
     {
         this.statusName = "Road of Thorns";
-        this.description = "Double experience and mana gained, but decrase your defences by 100";
+        this.description = "Double experience and mana gained, but decrase your defences by 200";
         this.image = new Item_BootsOfFlight().image;
         this.type = Type.Series;
         this.duration = 36000;
@@ -18,7 +18,7 @@ public class StatusEffect_RoadOfThorns : StatusEffect {
         {
             g.GetComponent<Statusmanager>().experienceGainMultiplier += 1;
             g.GetComponent<Statusmanager>().manaGainMuliplier += 1;
-            g.GetComponent<Statusmanager>().defence -= 100;
+            g.GetComponent<Statusmanager>().defence -= 200;
             effectApplied = true;
         }
     }
@@ -29,7 +29,7 @@ public class StatusEffect_RoadOfThorns : StatusEffect {
         {
             g.GetComponent<Statusmanager>().experienceGainMultiplier -= 1;
             g.GetComponent<Statusmanager>().manaGainMuliplier -= 1;
-            g.GetComponent<Statusmanager>().defence += 100;
+            g.GetComponent<Statusmanager>().defence += 200;
         }
     }
 

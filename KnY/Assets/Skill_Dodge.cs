@@ -83,17 +83,22 @@ class Skill_Dodge : Skill
                         invertedDistance += 0.02f;
                         int layerMask = 1 << LayerMask.NameToLayer("MapCollision");
                         layerMask = layerMask << LayerMask.NameToLayer("UnpasableMapCollision");
-                        backTrackHits = Physics2D.CircleCastAll(invertedRay.GetPoint(invertedDistance), source.GetComponent<CircleCollider2D>().radius, Vector2.zero, 0, layerMask);
+                        backTrackHits = Physics2D.CircleCastAll(invertedRay.GetPoint(invertedDistance), source.GetComponent<CircleCollider2D>().radius*0.3f, Vector2.zero, 0, layerMask);
+                        foreach(RaycastHit2D backtrackhit in backTrackHits)
+                        {
+                            Debug.Log(backtrackhit.collider.gameObject);
+                        }
                     }
-                    while (backTrackHits.Length != 0 && invertedDistance <= dashDistance);
-                    if (invertedDistance > dashDistance)
+                    while (backTrackHits.Length != 0 && invertedDistance <= dashDistance -0.1f);
+                    if (backTrackHits.Length == 0)
                     {
                         source.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_Intangible(Casttime));
+                        targetPosition = invertedRay.GetPoint(invertedDistance);
                     }
                     else
                     {
                         source.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_Intangible(Casttime));
-                        targetPosition = invertedRay.GetPoint(invertedDistance);
+
                     }
                 }
 

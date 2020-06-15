@@ -20,7 +20,9 @@ public class Director : MonoBehaviour {
     public int difficultyScaling = 2;
     public Statusmanager.CharacterClass characterClass = Statusmanager.CharacterClass.Undefined;
     
+
     public static int globalRandomSeed = 1337;
+    public bool isMobile;
 
     private IEnumerator darkenLevel_coroutine;
     private Material currentFadeMaterial;
@@ -66,11 +68,22 @@ public class Director : MonoBehaviour {
         globalRandom = new System.Random();
         Statusmanager.EnemyFactionEntities = new List<GameObject>();
         Statusmanager.PlayerFactionEntities = new List<GameObject>();
+        Physics.IgnoreLayerCollision(12, 0);
+        Physics.IgnoreLayerCollision(12, 12);
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void OnLevelWasLoaded(int level)
+    {
+        if(level == 3 && isMobile)
+        {
+            GameObject.Find("Canvas").transform.GetChild(1).gameObject.SetActive(true);
+
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
         Animator[] anims = GameObject.FindObjectsOfType<Animator>();
 		foreach(Animator a in anims)
         {

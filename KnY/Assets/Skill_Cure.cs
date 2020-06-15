@@ -21,7 +21,7 @@ class Skill_Cure : Skill
         this.BaseCasttime = casttime;
         this.AllowsMovement = allowsMovement;
         this.Name = "Cure";
-        this.Description = "Heals you for 30% of your MaxHp";
+        this.Description = "Heals you for 200% of your Magic Power";
         this.SpCost = 50;
         this.FxMaterial = PublicGameResources.GetResource().healingMaterial;
         this.Image = ItemIcons.GetSkillIcon(4);
@@ -67,7 +67,7 @@ class Skill_Cure : Skill
     {
         yield return new WaitForSeconds(0.4f);
         Statusmanager s = source.GetComponent<Statusmanager>();
-        int healAmount = (int)(source.GetComponent<Statusmanager>().MaxHp * 0.30f);
+        int healAmount = source.GetComponent<Statusmanager>().TotalMagicPower * 2;
         s.Hp += healAmount;
         Director.GetInstance().SpawnDamageText(healAmount.ToString(), source.transform, Color.green, false);
         yield return new WaitForSeconds(0.4f);

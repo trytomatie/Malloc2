@@ -42,10 +42,18 @@ public class SkillManager : MonoBehaviour
         }
         if(skill.Type1 == PassiveSkill.Type.Weapon)
         {
+            if(PassiveSkills[0] != null)
+            {
+                PassiveSkills[0].RemoveEffects(gameObject);
+            }
             PassiveSkills[0] = skill;
         }
         else
         {
+            if (PassiveSkills[1] != null)
+            {
+                PassiveSkills[1].RemoveEffects(gameObject);
+            }
             PassiveSkills[1] = skill;
         }
         skill.ApplyEffects(gameObject);

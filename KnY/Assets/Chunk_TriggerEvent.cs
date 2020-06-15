@@ -76,6 +76,15 @@ public class Chunk_TriggerEvent : MonoBehaviour
         DisableBarrier();
     }
 
+    public void DisableBarrierAndSpawnInteractableAndSpawnStairs()
+    {
+        int i = UnityEngine.Random.Range(0, price.Count);
+        Instantiate(price[i].instance, transform.position, Quaternion.identity);
+
+        Instantiate(PublicGameResources.GetResource().stairs, transform.position + new Vector3(0,0.5f,0), Quaternion.identity);
+        DisableBarrier();
+    }
+
     public void TrigerOnRoomEnterEffects(GameObject g)
     {
         g.GetComponent<Statusmanager>().TriggerOnRoomEnterEffects();

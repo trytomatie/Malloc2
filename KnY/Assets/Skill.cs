@@ -88,7 +88,7 @@ public class Skill
 
     public static Skill GenerateRandomSkill(GameObject target)
     {
-        int i = UnityEngine.Random.Range(0, 5);
+        int i = UnityEngine.Random.Range(0, 10);
         Skill s = null;
         switch(i)
         {
@@ -96,7 +96,7 @@ public class Skill
                 s = new Skill_ThunderStrike(10, 0.8f, 0.25f, 3, false, target.GetComponent<SpriteRenderer>().material);
                 break;
             case 1:
-                s = new Skill_Cure(30, 1.8f, false);
+                s = new Skill_Cure(20, 1.8f, false);
                 break;
             case 2:
                 s = new Skill_AoeDash(10f, 0.4f, false);
@@ -107,8 +107,23 @@ public class Skill
             case 4:
                 s = new Skill_PoisonSting(8f, 0.6f, false);
                 break;
+            case 5:
+                s = new Skill_PoisonSting(8f, 0.6f, false);
+                break;
+            case 6:
+                s = new Skill_BurnSlash(8f, 0.2f, false);
+                break;
+            case 7:
+                s = new Skill_Guard(30f, 1f, false);
+                break;
+            case 8:
+                s = new Skill_SummonReaver(20f, 1f, false);
+                break;
+            case 9:
+                s = new Skill_Solatii(30, 2f, false);
+                break;
             default:
-                s = new Skill_Cure(30, 1.8f, false);
+                s = new Skill_Solatii(30, 2f, false);
                 break;
         }
         s.Anim = target.GetComponent<Animator>();

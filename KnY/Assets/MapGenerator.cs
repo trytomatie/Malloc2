@@ -132,8 +132,9 @@ public class MapGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        GenerateNewMap();
+        Debug.Log(Director.globalRandomSeed);
         SetSeeds();
+        GenerateNewMap();
         int x = (int)Mathf.Round((Camera.main.transform.position.x / CHUNKSIZE));
         int y = (int)Mathf.Round((Camera.main.transform.position.y / CHUNKSIZE));
         CurrentCameraCoords = new Vector2(x, y);

@@ -21234,7 +21234,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7244760525146042261}
         m_TargetAssemblyTypeName: Chunk_TriggerEvent, Assembly-CSharp
-        m_MethodName: DisableBarrierAndSpawnInteractable
+        m_MethodName: DisableBarrierAndSpawnInteractableAndSpawnStairs
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

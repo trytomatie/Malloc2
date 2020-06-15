@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 3875135025429602746}
   - component: {fileID: 4403944934967466961}
   m_Layer: 9
-  m_Name: ManaCrystal(Skill)
+  m_Name: ManaCrystal(Equipment)
   m_TagString: SpawnedInteractable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -248,5 +248,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: 3
-  spawnItem: {fileID: 5238590499242739081, guid: 5d26fe75a6403b344ad462b64dca0105,
+  spawnItem: {fileID: 5238590499242739081, guid: efca4b83d464d024785cc45194807e81,
     type: 3}

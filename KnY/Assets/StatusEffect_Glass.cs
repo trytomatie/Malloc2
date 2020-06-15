@@ -20,6 +20,7 @@ public class StatusEffect_Glass : StatusEffect {
         {
             g.GetComponent<Statusmanager>().HpMultiplier -= 0.5f;
             g.GetComponent<Statusmanager>().TotalAttackDamageMultiplyier += 0.5f;
+            g.GetComponent<Statusmanager>().MagicPowerMultiplier += 0.5f;
             effectApplied = true;
             g.GetComponent<Statusmanager>().ApplyDamage(0, g, false);
         }
@@ -30,6 +31,7 @@ public class StatusEffect_Glass : StatusEffect {
         if (effectApplied)
         {
             g.GetComponent<Statusmanager>().HpMultiplier += 0.5f;
+            g.GetComponent<Statusmanager>().MagicPowerMultiplier -= 0.5f;
             g.GetComponent<Statusmanager>().TotalAttackDamageMultiplyier -= 0.5f;
         }
     }

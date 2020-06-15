@@ -1470,11 +1470,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1446861775382408125, guid: c7343dc8775d8694aa10a13be3563cfa,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1447885622279541041, guid: c7343dc8775d8694aa10a13be3563cfa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1530,68 +1525,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1447885622279541042, guid: c7343dc8775d8694aa10a13be3563cfa,
+    - target: {fileID: 1447885622279541043, guid: c7343dc8775d8694aa10a13be3563cfa,
         type: 3}
-      propertyPath: seriesIcons.Array.size
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1447885622279541042, guid: c7343dc8775d8694aa10a13be3563cfa,
-        type: 3}
-      propertyPath: seriesIcons.Array.data[6]
+      propertyPath: targetDummy
       value: 
-      objectReference: {fileID: 4798362189063147384, guid: e50a2b8e9449e014689f51fe0757103d,
-        type: 3}
-    - target: {fileID: 1447885622279541042, guid: c7343dc8775d8694aa10a13be3563cfa,
-        type: 3}
-      propertyPath: seriesIcons.Array.data[7]
-      value: 
-      objectReference: {fileID: 4798362189063147384, guid: e50a2b8e9449e014689f51fe0757103d,
-        type: 3}
-    - target: {fileID: 1447885622279541042, guid: c7343dc8775d8694aa10a13be3563cfa,
-        type: 3}
-      propertyPath: seriesIcons.Array.data[8]
-      value: 
-      objectReference: {fileID: 4798362189063147384, guid: e50a2b8e9449e014689f51fe0757103d,
-        type: 3}
-    - target: {fileID: 1447885622279541042, guid: c7343dc8775d8694aa10a13be3563cfa,
-        type: 3}
-      propertyPath: seriesIcons.Array.data[9]
-      value: 
-      objectReference: {fileID: 4798362189063147384, guid: e50a2b8e9449e014689f51fe0757103d,
-        type: 3}
-    - target: {fileID: 1447885622279541042, guid: c7343dc8775d8694aa10a13be3563cfa,
-        type: 3}
-      propertyPath: seriesIcons.Array.data[10]
-      value: 
-      objectReference: {fileID: 4798362189063147384, guid: e50a2b8e9449e014689f51fe0757103d,
-        type: 3}
-    - target: {fileID: 1447885622279541042, guid: c7343dc8775d8694aa10a13be3563cfa,
-        type: 3}
-      propertyPath: seriesIcons.Array.data[11]
-      value: 
-      objectReference: {fileID: 4798362189063147384, guid: e50a2b8e9449e014689f51fe0757103d,
-        type: 3}
-    - target: {fileID: 1447885622279541042, guid: c7343dc8775d8694aa10a13be3563cfa,
-        type: 3}
-      propertyPath: seriesIcons.Array.data[3]
-      value: 
-      objectReference: {fileID: 21300000, guid: 7ea8d41716cc6974a9c95ddb1ad38aed,
-        type: 3}
-    - target: {fileID: 1447885622279541042, guid: c7343dc8775d8694aa10a13be3563cfa,
-        type: 3}
-      propertyPath: icons.Array.data[35]
-      value: 
-      objectReference: {fileID: 21300000, guid: 8b2dcad7ea3dd0349be5b6c0e41b1cf3,
+      objectReference: {fileID: 4099386691832577026, guid: d9b44904982dd224bb64563347d3dc47,
         type: 3}
     - target: {fileID: 1447885622279541047, guid: c7343dc8775d8694aa10a13be3563cfa,
         type: 3}
       propertyPath: m_Name
       value: Game
-      objectReference: {fileID: 0}
-    - target: {fileID: 1447885622279541047, guid: c7343dc8775d8694aa10a13be3563cfa,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7343dc8775d8694aa10a13be3563cfa, type: 3}
@@ -3514,6 +3457,10 @@ MonoBehaviour:
       m_Image: {fileID: 21300000, guid: fc418a3a24d95af4da50dbb0d3564ab1, type: 3}
     - m_Text: Mage
       m_Image: {fileID: 21300000, guid: de556d77ce05edb4eaaf4110484331dc, type: 3}
+    - m_Text: Priest
+      m_Image: {fileID: 21300000, guid: 4d87ce0c41e8a994c8839606f7a77bd7, type: 3}
+    - m_Text: Summoner
+      m_Image: {fileID: 21300000, guid: e449a7a181cc8ac468bcb1f1a98834fe, type: 3}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

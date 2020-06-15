@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Vector2 movementDirection = Vector2.zero;
+    public Vector2 lastMovementDirection = Vector2.zero;
     public Vector2 aimDirection = Vector2.zero;
     private float movementSpeedMod;
     private const float DIAGONAL_SPEED = 0.66f;
@@ -30,9 +31,22 @@ public class PlayerController : MonoBehaviour
         skillManager.AddActiveSkill(new Skill_BasicAttack(0.4f, 0.4f, false));
         skillManager.AddActiveSkill(new Skill_Dodge(0.7f, 0.4f, false));
 
-
-        skillManager.AddActiveSkill(new Skill_AoeDash(10f, 0.4f, false));
-        //skillManager.AddActiveSkill(new Skill_Cure(12f, 0.8f, false));
+        if(myStatus.characterClass == Statusmanager.CharacterClass.Warrior)
+        { 
+            skillManager.AddActiveSkill(new Skill_AoeDash(10f, 0.4f, false));
+        }
+        else if (myStatus.characterClass == Statusmanager.CharacterClass.Mage)
+        {
+            skillManager.AddActiveSkill(new Skill_ThunderStrike(6f, 0.75f,0.25f,3, false,GetComponent<SpriteRenderer>().material));
+        }
+        else if (myStatus.characterClass == Statusmanager.CharacterClass.Priest)
+        {
+            skillManager.AddActiveSkill(new Skill_Cure(20f, 1.8f, false));
+        }
+        else if (myStatus.characterClass == Statusmanager.CharacterClass.Summoner)
+        {
+            skillManager.AddActiveSkill(new Skill_SummonReaver(20f, 2f, false));
+        }
 
         skillManager.AddPassiveSkill(PassiveSkill.GenerateRandomPassive(1, myStatus.characterClass));
         //skills.Add(new Skill_Laser(1f, 1.8f, 0.25f, 3, false));
@@ -47,7 +61,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         MovementInput();
-        BattleInput();
+        BattleInput(0);
         InteractionInput();
     }
 
@@ -59,8 +73,16 @@ public class PlayerController : MonoBehaviour
     {
         float x = 0;
         float y = 0;
-        x = Input.GetAxis("Horizontal");
-        y = Input.GetAxis("Vertical");
+        if(Director.GetInstance().isMobile)
+        {
+            x = GameObject.FindObjectOfType<VariableJoystick>().Direction.x;
+            y = GameObject.FindObjectOfType<VariableJoystick>().Direction.y;
+        }
+        else
+        { 
+            x = Input.GetAxis("Horizontal");
+            y = Input.GetAxis("Vertical");
+        }
         if (x == 0 || y == 0) // Checks if the player is moving diagonaly, Reduces Movement speed acordingly
         {
             movementSpeedMod = GetComponent<Statusmanager>().TotalMovementSpeed;
@@ -78,6 +100,7 @@ public class PlayerController : MonoBehaviour
         // Set Parameter for Animator
         if (x != 0 || y != 0)
         {
+            lastMovementDirection = movementDirection;
             anim.SetFloat("LastDirX", anim.GetFloat("DirX"));
             anim.SetFloat("LastDirY", anim.GetFloat("DirY"));
             anim.SetBool("IsMoving", true);
@@ -96,38 +119,50 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Handles Input for SkillComands
     /// </summary>
-    private void BattleInput()
+    public void BattleInput(int buttonValue)
     {
-        if (Input.GetAxis("Attack2") == 1 && skillManager.activeSkills[0].CooldownTimer <= 0 && skillManager.activeSkills[0].SpCost <= myStatus.Sp) // Style 1 (BASICATTACK)
+        if ((buttonValue==1 || (Input.GetAxis("Attack2") == 1 && !Director.GetInstance().isMobile)) && skillManager.activeSkills[0].CooldownTimer <= 0 && skillManager.activeSkills[0].SpCost <= myStatus.Sp) // Style 1 (BASICATTACK)
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 heading = mousePosition - (Vector2)transform.position;
             float distance = heading.magnitude;
             Vector2 attackDirection = heading / distance;
+            if(Director.GetInstance().isMobile)
+            {
+                attackDirection = lastMovementDirection;
+            }
             skillManager.activeSkills[0].ActivateSkill(gameObject, attackDirection, mousePosition,null);
         }
-        if (Input.GetAxis("Attack1") == 1 && skillManager.activeSkills[1].CooldownTimer <= 0 && skillManager.activeSkills[1].SpCost <= myStatus.Sp) // Dash
+        if ((buttonValue == 2 || (Input.GetAxis("Attack1") == 1 && !Director.GetInstance().isMobile)) && skillManager.activeSkills[1].CooldownTimer <= 0 && skillManager.activeSkills[1].SpCost <= myStatus.Sp) // Dash
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 heading = mousePosition - (Vector2)transform.position;
             float distance = heading.magnitude;
             Vector2 attackDirection = heading / distance;
-            skillManager.activeSkills[1].ActivateSkill(gameObject, movementDirection, mousePosition,null);
+            skillManager.activeSkills[1].ActivateSkill(gameObject, lastMovementDirection, mousePosition,null);
         }
-        if (skillManager.activeSkills.Count > 2 && Input.GetAxis("Attack3") == 1 && skillManager.activeSkills[2].CooldownTimer <= 0 && skillManager.activeSkills[2].SpCost <= myStatus.Sp) // Dash and Spin
+        if ((buttonValue == 3 || (Input.GetAxis("Attack3") == 1 && !Director.GetInstance().isMobile)) && skillManager.activeSkills.Count > 2 && skillManager.activeSkills[2].CooldownTimer <= 0 && skillManager.activeSkills[2].SpCost <= myStatus.Sp) // Dash and Spin
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 heading = mousePosition - (Vector2)transform.position;
             float distance = heading.magnitude;
             Vector2 attackDirection = heading / distance;
+            if (Director.GetInstance().isMobile)
+            {
+                attackDirection = lastMovementDirection;
+            }
             skillManager.activeSkills[2].ActivateSkill(gameObject, attackDirection, mousePosition, null);
         }
-        if (skillManager.activeSkills.Count > 3 && Input.GetAxis("Attack4") == 1 && skillManager.activeSkills[3].CooldownTimer <= 0 && skillManager.activeSkills[3].SpCost <= myStatus.Sp) // Test
+        if (skillManager.activeSkills.Count > 3 && ((buttonValue == 4 || Input.GetAxis("Attack4") == 1 && !Director.GetInstance().isMobile)) && skillManager.activeSkills[3].CooldownTimer <= 0 && skillManager.activeSkills[3].SpCost <= myStatus.Sp) // Test
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 heading = mousePosition - (Vector2)transform.position;
             float distance = heading.magnitude;
             Vector2 attackDirection = heading / distance;
+            if (Director.GetInstance().isMobile)
+            {
+                attackDirection = lastMovementDirection;
+            }
             skillManager.activeSkills[3].ActivateSkill(gameObject, attackDirection, mousePosition, null);
         }
     }
@@ -152,7 +187,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Interacts with interactabale
     /// </summary>
-    private void Interact()
+    public void Interact()
     {
         if (interactionRadius.GetComponent<InteractionRadius>()._target != null)
         {

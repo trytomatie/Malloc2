@@ -27,7 +27,7 @@ public class PassiveSkillAttribute_Glass : PassiveSkillAttribute
     {
         if(myEffectRefference != null)
         {
-            myEffectRefference.RemoveEffect(source);
+            myEffectRefference.duration = 0;
             myEffectRefference = null;
         }
     }

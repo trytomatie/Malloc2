@@ -6,6 +6,7 @@ public class PublicGameResources : MonoBehaviour {
     public GameObject damageObject;
     public GameObject damageFx;
     public GameObject bloodFx;
+    public GameObject stairs;
     public GameObject[] player;
     public Texture2D cursor;
     private static PublicGameResources instance;
@@ -19,6 +20,8 @@ public class PublicGameResources : MonoBehaviour {
     public Material healingMaterial;
     public Material defenceSpellMaterial;
     public Material poisonMaterial;
+    public Material fireMaterial;
+    public Material slashMaterial;
     public static int FLOOR_LAYER = -9999;
     public GameObject corruptedAmethystFollower;
     public GameObject gazeFollower;

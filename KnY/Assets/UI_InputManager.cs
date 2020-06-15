@@ -108,27 +108,27 @@ public class UI_InputManager : MonoBehaviour
         }
     }
 
-    private void OpenInventory()
+    public void OpenInventory()
     {
         Time.timeScale = 0;
         inventory.SetActive(true);
     }
 
-    private void CloseInventory()
+    public void CloseInventory()
     {
         Time.timeScale = 1;
         inventory.SetActive(false);
     }
 
 
-    private void OpenTraderInventory()
+    public void OpenTraderInventory()
     {
         Time.timeScale = 0;
         traderInventory.SetActive(true);
     }
 
 
-    private void CloseTraderInventory()
+    public void CloseTraderInventory()
     {
         Time.timeScale = 1;
         traderInventory.SetActive(false);
@@ -140,7 +140,7 @@ public class UI_InputManager : MonoBehaviour
         infoPopup.SetActive(true);
     }
 
-    private void CloseInfoPopup()
+    public void CloseInfoPopup()
     {
         Time.timeScale = 1;
         infoPopup.SetActive(false);
@@ -160,5 +160,23 @@ public class UI_InputManager : MonoBehaviour
         statsText += String.Format("SpRegen.: {0}\n", s.spRegeneration);
         stats.text = statsText;
     }
+
+    public void TriggerBattleInputOnPlayer(int i)
+    {
+        GameObject.FindObjectOfType<PlayerController>().BattleInput(i);
+    }
+
+    public void TriggerInteractionOnPlayer(int i)
+    {
+        GameObject.FindObjectOfType<PlayerController>().Interact();
+    }
+
+
+    public void LoadNextLevel()
+    {
+        GameObject.FindObjectOfType<MapGenerator>().GenerateNewMap();
+    }
+
+
 
 }

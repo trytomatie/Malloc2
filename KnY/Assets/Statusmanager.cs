@@ -7,7 +7,7 @@ using Pathfinding;
 public class Statusmanager : MonoBehaviour {
 
     public enum Faction  {EnemyFaction, PlayerFaction };
-    public enum CharacterClass { Undefined, Warrior, Mage};
+    public enum CharacterClass { Undefined, Warrior, Mage, Priest, Summoner };
     public CharacterClass characterClass = CharacterClass.Undefined;
     public Faction faction = Faction.EnemyFaction;
     public int level = 1;
@@ -33,6 +33,7 @@ public class Statusmanager : MonoBehaviour {
     public bool isDead = false;
     [SerializeField]
     private int mana = 0;
+    [SerializeField]
     private long experinece = 0;
     public long maxExperience = 100;
 
@@ -46,7 +47,7 @@ public class Statusmanager : MonoBehaviour {
     private float totalAttackDamageMultiplyier = 1;
     public int totalAttackDamage = 0;
 
-    private int magicPower = 0;
+    public int magicPower = 0;
     private float magicPowerMultiplier = 1;
     private int totalMagicPower = 0;
 
@@ -70,6 +71,7 @@ public class Statusmanager : MonoBehaviour {
     public int baseAttackDamageGrowth;
     public int defenceGrwoth;
     public float movementSpeedGrowth;
+    public int magicPowerGrowth;
 
     public GameObject gameObjectThatDamagedMeLast;
 
@@ -134,13 +136,13 @@ public class Statusmanager : MonoBehaviour {
                 {
                     if(gameObjectThatDamagedMeLast.GetComponent<AI_GenericFollower>() != null)
                     {
-                        gameObjectThatDamagedMeLast.GetComponent<AI_GenericFollower>().followTarget.GetComponent<Statusmanager>().Mana += Mana;
-                        gameObjectThatDamagedMeLast.GetComponent<AI_GenericFollower>().followTarget.GetComponent<Statusmanager>().Experinece += Experinece;
+                        gameObjectThatDamagedMeLast.GetComponent<AI_GenericFollower>().followTarget.GetComponent<Statusmanager>().Mana += (int)(Mana * gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().manaGainMuliplier);
+                        gameObjectThatDamagedMeLast.GetComponent<AI_GenericFollower>().followTarget.GetComponent<Statusmanager>().Experinece += (int)(Mana * gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().experienceGainMultiplier);
                     }
-                    else if(gameObjectThatDamagedMeLast.GetComponent<AI_EyeFollower>())
+                    else if(gameObjectThatDamagedMeLast.GetComponent<AI_EyeFollower>() != null)
                     {
-                        gameObjectThatDamagedMeLast.GetComponent<AI_EyeFollower>().followTarget.GetComponent<Statusmanager>().Mana += Mana;
-                        gameObjectThatDamagedMeLast.GetComponent<AI_EyeFollower>().followTarget.GetComponent<Statusmanager>().Experinece += Experinece;
+                        gameObjectThatDamagedMeLast.GetComponent<AI_EyeFollower>().followTarget.GetComponent<Statusmanager>().Mana += (int)(Mana * gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().manaGainMuliplier);
+                        gameObjectThatDamagedMeLast.GetComponent<AI_EyeFollower>().followTarget.GetComponent<Statusmanager>().Experinece += (int)(Mana * gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().experienceGainMultiplier);
                     }
                     else
                     { 
@@ -374,7 +376,7 @@ public class Statusmanager : MonoBehaviour {
     {
         int regen = healAmount;
         Hp += healAmount;
-        Director.GetInstance().SpawnDamageText(healAmount.ToString(), g.transform, Color.green, false);
+        Director.GetInstance().SpawnDamageText("+" + healAmount.ToString(), g.transform, Color.green, false);
     }
 
     public void AddFollower(GameObject g)
@@ -438,6 +440,7 @@ public class Statusmanager : MonoBehaviour {
         TotalMovementSpeed += movementSpeedGrowth;
         healthRegeneration += healthRegenerationGrowth;
         BaseAttackDamage += baseAttackDamageGrowth;
+        MagicPower += magicPowerGrowth;
         CallculateAttackDamage();
         long prevMaxExperinece = maxExperience;
         if(level < 25)
@@ -445,7 +448,7 @@ public class Statusmanager : MonoBehaviour {
 
             maxExperience = (int)(50 * Mathf.Pow((1.55f), (level-1)));
         }
-        Experinece -= maxExperience;
+        Experinece -= prevMaxExperinece;
 
     }
 
@@ -743,7 +746,7 @@ public class Statusmanager : MonoBehaviour {
         get
         {
 
-            return (int)(totalMagicPower * magicPowerMultiplier);
+            return (int)(magicPower * magicPowerMultiplier);
         }
 
         set

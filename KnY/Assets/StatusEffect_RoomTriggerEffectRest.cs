@@ -8,7 +8,7 @@ public class StatusEffect_RoomTriggerEffectRest : StatusEffect {
     public StatusEffect_RoomTriggerEffectRest(int healing)
     {
         this.statusName = "Rest";
-        this.description = "Heals you when enter a room with enemies";
+        this.description = "Heals you when you enter a room with enemies";
         this.image = new Item_DarkCoin().image;
         this.type = Type.Buff;
         this.duration = 36000;
