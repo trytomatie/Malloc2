@@ -14,7 +14,7 @@ public class Item_DivineWaters : ProcItem {
         this.attribute = "Light";
         this.itemName = "Divine Waters";
         this.description = "Chance to gain a temporary barrier on hit";
-        this.procChance = 15;
+        this.procChance = 18;
         this.detailedDescription = procChance + procChancePerStack + "/% chance to gain a barrier that shields for " + barrier + " + " + barrierPerStack + " for" + durration + " seconds";
         this.series.Add(ItemSeries.Series.Divine);
         this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];

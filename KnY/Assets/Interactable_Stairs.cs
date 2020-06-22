@@ -16,7 +16,7 @@ public class Interactable_Stairs : MonoBehaviour {
 
     private void Interact(GameObject g)
     {
-        g.GetComponent<Statusmanager>().ApplyHeal(g,g.GetComponent<Statusmanager>().MaxHp);
+        g.GetComponent<Statusmanager>().ApplyHeal(g,g.GetComponent<Statusmanager>().TotalMaxHp);
         GameObject.FindObjectOfType<MapGenerator>().GenerateNewMap();
     }
 

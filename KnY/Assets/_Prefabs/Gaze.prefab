@@ -183,8 +183,8 @@ GameObject:
   - component: {fileID: 6947983543195073189}
   - component: {fileID: 6947983543195073187}
   - component: {fileID: 6947983543195073186}
-  - component: {fileID: 766676547529867218}
   - component: {fileID: 6947983543195073197}
+  - component: {fileID: 1172811394365819027}
   m_Layer: 0
   m_Name: Gaze
   m_TagString: Enemy
@@ -318,6 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d19854395c0f24384b1615f8b67340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterClass: 0
   faction: 1
   level: 1
   maxHp: 100
@@ -335,16 +336,20 @@ MonoBehaviour:
   movementSpeedMultiplier: 1
   isDead: 0
   mana: 4
+  experinece: 0
   maxExperience: 100
   intangible: 1
   baseAttackSpeed: 1
   bonusAttackSpeed: 0
   baseAttackDamage: 20
   baseAttackDamageMultiplyier: 1
-  totalAttackDamage: 0
+  magicPower: 0
   criticalStrikeChance: 1
   damageOverTimeDamageMultiplier: 1
+  experienceGainMultiplier: 1
+  manaGainMuliplier: 1
   statusEffects: []
+  onRoomEnterEffects: []
   anims: []
   hpGrowth: 240
   spGrowth: 0
@@ -353,9 +358,9 @@ MonoBehaviour:
   baseAttackDamageGrowth: 20
   defenceGrwoth: 0
   movementSpeedGrowth: 0
+  magicPowerGrowth: 0
   gameObjectThatDamagedMeLast: {fileID: 0}
   uiHeigthOffset: 0.16
-  followers: []
 --- !u!58 &6947983543195073186
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -372,22 +377,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.06661254}
   serializedVersion: 2
   m_Radius: 0.051862687
---- !u!114 &766676547529867218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6947983543195073192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7933edda9507d62439baa1ac360f8942, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  inactiveArtifacts: []
-  isPlayerInventory: 0
-  artifactItemsCount: 0
 --- !u!114 &6947983543195073197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,15 +402,32 @@ MonoBehaviour:
   attackCooldownTimer: 0
   attackSpeedTimer: 0
   attackDirection: {x: 0, y: 0}
+  fxMaterial: {fileID: 0}
   wanderCooldownTimer: 0
+  wanderPosition: {x: 0, y: 0}
   pathfinding: 1
   randomChance: 0
   statusEffect_Stunned: 0
   cancleUpdate: 0
   isHopping: 0
   direction: {x: 0, y: 0}
+  skills: []
   disableMovement: 0
   targetIsFollowTarget: 1
-  bodyTransform: {fileID: 1348681802956764633}
   followTarget: {fileID: 0}
+  bodyTransform: {fileID: 1348681802956764633}
   leachRange: 0
+--- !u!114 &1172811394365819027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6947983543195073192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697e7e344ee749b4d883f38a2d6ab673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerInventory: 0
+  artifactItemsCount: 0

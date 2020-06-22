@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class Inventory : MonoBehaviour {
 
-    public List<Item> items = new List<Item>();
-    public List<Item> inactiveArtifacts = new List<Item>();
+    public Item[,] items = new Item[3,21]; // [0] == Active [1] Inactive [2] OtherItems
     public Dictionary<ItemSeries.Series, ItemSeries> itemSeries = new Dictionary<ItemSeries.Series, ItemSeries>();
     public bool isPlayerInventory = false;
     public int artifactItemsCount = 0;
@@ -20,26 +20,44 @@ public class Inventory : MonoBehaviour {
         {
             return;
         }
-        foreach (Item inventoryItem in items)
+        bool containsItem = ContainsItem(item.itemId, 0);
+        if (!item.artifactItem)
         {
-            if (inventoryItem.itemId == item.itemId)
+            for (int i = 0; i < 21; i++)
             {
-                inventoryItem.AddAditionalStack(gameObject, item);
-                if (isPlayerInventory)
+                if (items[2, i] != null && items[2, i].itemName == item.itemName)
                 {
-                    UpdateInventoryUI();
+                    items[2, i].AddAditionalStack(gameObject, item);
+                    break;
                 }
-                return;
+                else if (items[2, i] == null && !containsItem)
+                {
+                    item.ApplyEffect(gameObject);
+                    item.owner = this;
+                    items[2, i] = item;
+                    break;
+                }
             }
         }
-        item.owner = this;
-        item.ApplyEffect(gameObject);
-        items.Add(item);
-        if(item.position == 0)
-        { 
-            item.position = AssignInventoryPosition(item.artifactItem,items);
+        else
+        {
+            int i = 0;
+            for (int o = 0; o < 7; o++)
+            {
+                if (items[i, o] != null && items[i, o].itemName == item.itemName)
+                {
+                    items[i, o].AddAditionalStack(gameObject, item);
+                    break;
+                }
+                else if (items[i, o] == null && !containsItem)
+                {
+                    item.ApplyEffect(gameObject);
+                    item.owner = this;
+                    items[i, o] = item;
+                    break;
+                }
+            }
         }
-
         CheckItemSeries();
         CountArtifactItems();
         if (isPlayerInventory)
@@ -47,6 +65,7 @@ public class Inventory : MonoBehaviour {
             UpdateInventoryUI();
         }
     }
+
 
     /// <summary>
     /// Adds an Artifact to the inactive artifact inventroy
@@ -58,112 +77,56 @@ public class Inventory : MonoBehaviour {
         {
             return;
         }
-        foreach (Item inventoryItem in inactiveArtifacts)
+        bool containsItem = ContainsItem(item.itemId, 1);
+        for (int o = 0; o < 7; o++)
         {
-            if (inventoryItem.itemId == item.itemId)
+            if (items[1, o] != null && items[1, o].itemName == item.itemName)
             {
-                inventoryItem.AddAditionalStackWithoutReapplication(gameObject, item);
-                return;
+                items[1, o].stacks++;
+                break;
             }
-        }
-        item.owner = this;
-        item.position = AssignInventoryPosition(item.artifactItem,inactiveArtifacts);
-        inactiveArtifacts.Add(item);
-    }
-
-    public int AssignInventoryPosition(bool isArtifactItem,List<Item> itemList)
-    {
-        if(isArtifactItem)
-        {
-            bool[] positions = new bool[8];
-            foreach(Item i in itemList)
+            if (items[1, o] == null && !containsItem)
             {
-                if(i.artifactItem)
-                {
-                    positions[i.position] = true;
-                }
+                item.owner = this;
+                items[1, o] = item;
+                break;
             }
-            for(int i = 1; i < positions.Length;i++)
-            {
-                if(!positions[i])
-                {
-                    return i;
-                }
-            }
-        }
-        else
-        {
-            bool[] positions = new bool[21];
-            foreach (Item i in items)
-            {
-                if (!i.artifactItem)
-                {
-                    positions[i.position] = true;
-                }
-            }
-            for (int i = 1; i < positions.Length; i++)
-            {
-                if (!positions[i])
-                {
-                    return i;
-                }
-            }
-        }
-        return 0;
-    }
-
-    public void SwitchArtifactInInventorys(Item activeArtifact,Item inactiveArtifact)
-    {
-        Item item1 = activeArtifact;
-        Item item2 = inactiveArtifact;
-        int posA = item1.position;
-        item1.position = item2.position;
-        item2.position = posA;
-        RemoveItem(activeArtifact);
-        inactiveArtifacts.Add(activeArtifact);
-        inactiveArtifacts.Remove(inactiveArtifact);
-        AddItem(inactiveArtifact);
-        CheckItemSeries();
-    }
-
-    public void SwitchArtifactInInventorys(Item artifact, bool activeArtifact)
-    {
-        if(activeArtifact)
-        {
-            RemoveItem(artifact);
-            inactiveArtifacts.Add(artifact);
-        }
-        else
-        {
-            inactiveArtifacts.Remove(artifact);
-            AddItem(artifact);
         }
         CheckItemSeries();
+        CountArtifactItems();
+        if (isPlayerInventory)
+        {
+            UpdateInventoryUI();
+        }
+    }
+
+    public bool ContainsItem(int id,int y)
+    {
+        for(int o = 0; o < 21;o++)
+        {
+            if(items[y,o] != null && items[y, o].itemId == id)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public bool ContainsItem(int id)
     {
-        foreach(Item item in items)
-        {
-            if(item.itemId == id)
+        for(int y = 0; y < 3;y++)
+        { 
+            for (int o = 0; o < 21; o++)
             {
-                return true;
+                if (items[y, o] != null && items[y, o].itemId == id)
+                {
+                    return true;
+                }
             }
         }
         return false;
     }
 
-    public bool ContainsInactiveArtifact(int id)
-    {
-        foreach (Item item in inactiveArtifacts)
-        {
-            if (item.itemId == id)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
 
     private void CheckItemSeries()
     {
@@ -171,7 +134,7 @@ public class Inventory : MonoBehaviour {
         {
             series.RemoveEffect(gameObject);
         }
-        itemSeries = ItemSeries.CheckSeries(items, itemSeries);
+            itemSeries = ItemSeries.CheckSeries(ActiveItemList(), itemSeries);
         foreach (ItemSeries series in itemSeries.Values)
         {
             series.ApplyEffect(gameObject);
@@ -193,12 +156,38 @@ public class Inventory : MonoBehaviour {
         
     }
 
+    public List<Item> ActiveItemList()
+    {
+        List<Item> activeItems = new List<Item>();
+        for (int i = 0; i < 7; i++)
+        {
+            if (items[0, i] != null)
+            {
+                activeItems.Add(items[0, i]);
+            }
+        }
+        return activeItems;
+    }
+
+    public List<Item> InactiveItemList()
+    {
+        List<Item> inactiveItems = new List<Item>();
+        for (int i = 0; i < 7; i++)
+        {
+            if (items[1, i] != null)
+            {
+                inactiveItems.Add(items[0, i]);
+            }
+        }
+        return inactiveItems;
+    }
+
     public void CountArtifactItems()
     {
         artifactItemsCount = 0;
-        foreach(Item item in items)
+        for(int i = 0; i < 7;i++)
         {
-            if(item.artifactItem)
+            if(items[0, i] != null)
             {
                 artifactItemsCount++;
             }
@@ -207,32 +196,68 @@ public class Inventory : MonoBehaviour {
 
     public void RemoveItem(Item pItem)
     {
-        Item itemToBeRemoved = null;
-        foreach(Item item in items)
+        for(int i = 0; i < 3;i++)
         {
-            if(item.itemId == pItem.itemId)
+            for(int o = 0; o < 20;o++)
             {
-                itemToBeRemoved = item;
-            }
-        }
-        if (itemToBeRemoved != null)
-        {
-            itemToBeRemoved.RemoveEffect(gameObject);
-            items.Remove(itemToBeRemoved);
-        }
-        else
-        {
-            foreach (Item item in inactiveArtifacts)
-            {
-                if (item.itemId == pItem.itemId)
+                if(items[i, o] != null && items[i,o].itemName == pItem.itemName)
                 {
-                    itemToBeRemoved = item;
+                    if(GetComponent<Statusmanager>() != null)
+                    { 
+                        if(i != 1)
+                        { 
+                            items[i, o].RemoveEffect(gameObject);
+                        }
+                        CheckItemSeries();
+                        CountArtifactItems();
+                    }
+                    items[i, o] = null;
+                    if (isPlayerInventory)
+                    {
+                        UpdateInventoryUI();
+                    }
+                    return;
                 }
             }
-            if (itemToBeRemoved != null)
+        }
+
+    }
+
+    public void SwapItemPositions(Vector2Int posA,Vector2Int posB)
+    {
+        if(posA.x == 0 && posB.x == 1)
+        {
+            if (items[posA.x, posA.y] != null)
             {
-                inactiveArtifacts.Remove(itemToBeRemoved);
+                items[posA.x, posA.y].RemoveEffect(gameObject);
             }
+            if (items[posB.x, posB.y] != null)
+            {
+                items[posB.x, posB.y].ApplyEffect(gameObject);
+            }
+            Item holder = items[posA.x, posA.y];
+            items[posA.x, posA.y] = items[posB.x, posB.y];
+            items[posB.x, posB.y] = holder;
+        }
+        if (posA.x == 1 && posB.x == 0)
+        {
+            if (items[posA.x, posA.y] != null)
+            { 
+                items[posA.x, posA.y].ApplyEffect(gameObject);
+            }
+            if (items[posB.x, posB.y] != null)
+            {
+                items[posB.x, posB.y].RemoveEffect(gameObject);
+            }
+            Item holder = items[posA.x, posA.y];
+            items[posA.x, posA.y] = items[posB.x, posB.y];
+            items[posB.x, posB.y] = holder;
+        }
+        if (posA.x ==posB.x)
+        {
+            Item holder = items[posA.x, posA.y];
+            items[posA.x, posA.y] = items[posB.x, posB.y];
+            items[posB.x, posB.y] = holder;
         }
         CheckItemSeries();
         CountArtifactItems();

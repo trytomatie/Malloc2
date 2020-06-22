@@ -20,7 +20,7 @@ public class Item_DesireableGreatness : Item
     public override void PickUpEffect(GameObject g)
     {
 
-        int healAmount = g.GetComponent<Statusmanager>().MaxHp;
+        int healAmount = g.GetComponent<Statusmanager>().TotalMaxHp;
         g.GetComponent<Statusmanager>().ApplyHeal(g,healAmount);
     }
     public override void ApplyEffect(GameObject g)

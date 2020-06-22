@@ -11,7 +11,8 @@ public class Item_DarkFairy : Item {
         this.itemId = 26;
         this.attribute = "Dark";
         this.itemName = "Dark Fairy";
-        this.description = "Gain Attack Damage";
+        this.description = "Increases Strength";
+        this.detailedDescription = string.Format("Increases Strength by {0}", attackDamageBonus);
         this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
         this.series.Add(ItemSeries.Series.Faerie);
     }
@@ -19,11 +20,11 @@ public class Item_DarkFairy : Item {
 
     public override void ApplyEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().AttackDamageFlatBonus += (int)(attackDamageBonus * stacks * effectMutliplier);
+        g.GetComponent<Statusmanager>().Strength += (int)(attackDamageBonus * stacks * effectMutliplier);
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().AttackDamageFlatBonus -= (int)(attackDamageBonus * stacks * effectMutliplier);
+        g.GetComponent<Statusmanager>().Strength -= (int)(attackDamageBonus * stacks * effectMutliplier);
     }
 }

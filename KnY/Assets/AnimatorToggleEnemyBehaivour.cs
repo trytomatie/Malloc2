@@ -13,41 +13,83 @@ public class AnimatorToggleEnemyBehaivour : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        AI_BaseAI b = animator.gameObject.GetComponent<AI_BaseAI>();
-        animator.speed = 1;
-        switch(b.mode)
-        {
-            case AI_BaseAI.Mode.Idle:
-                animator.SetInteger("AnimationState", 0);
-                break;
-            case AI_BaseAI.Mode.PathfinderFollow:
-                animator.SetInteger("AnimationState", 1);
-                break;
-            case AI_BaseAI.Mode.RegularFollow:
-                animator.SetInteger("AnimationState", 1); 
-                break;
-            case AI_BaseAI.Mode.Attack:
-                break;
-            case AI_BaseAI.Mode.AttackPrep:
-
-                break;
-            case AI_BaseAI.Mode.Ftarget_PathfinderFollow:
-                animator.SetInteger("AnimationState", 1);
-                break;
-            case AI_BaseAI.Mode.Wander:
-                if (animator.gameObject.GetComponent<Rigidbody2D>().velocity != Vector2.zero)
-                {
-                    animator.SetInteger("AnimationState", 1);
-                }
-                else
-                {
+        if(animator.gameObject.GetComponent<AI_BaseAI>() != null)
+        { 
+            AI_BaseAI b = animator.gameObject.GetComponent<AI_BaseAI>();
+            animator.speed = 1;
+            switch (b.mode)
+            {
+                case AI_BaseAI.Mode.Idle:
                     animator.SetInteger("AnimationState", 0);
-                }
-                break;
-            default:
-                animator.SetInteger("AnimationState", -1);
-                break;
+                    break;
+                case AI_BaseAI.Mode.PathfinderFollow:
+                    animator.SetInteger("AnimationState", 1);
+                    break;
+                case AI_BaseAI.Mode.RegularFollow:
+                    animator.SetInteger("AnimationState", 1);
+                    break;
+                case AI_BaseAI.Mode.Attack:
+                    break;
+                case AI_BaseAI.Mode.AttackPrep:
+
+                    break;
+                case AI_BaseAI.Mode.Ftarget_PathfinderFollow:
+                    animator.SetInteger("AnimationState", 1);
+                    break;
+                case AI_BaseAI.Mode.Wander:
+                    if (animator.gameObject.GetComponent<Rigidbody2D>().velocity != Vector2.zero)
+                    {
+                        animator.SetInteger("AnimationState", 1);
+                    }
+                    else
+                    {
+                        animator.SetInteger("AnimationState", 0);
+                    }
+                    break;
+                default:
+                    animator.SetInteger("AnimationState", -1);
+                    break;
+            }
         }
+        else
+        {
+            AI_BaseFollowerAI b = animator.gameObject.GetComponent<AI_BaseFollowerAI>();
+            animator.speed = 1;
+            switch (b.mode)
+            {
+                case AI_BaseFollowerAI.Mode.Idle:
+                    animator.SetInteger("AnimationState", 0);
+                    break;
+                case AI_BaseFollowerAI.Mode.PathfinderFollow:
+                    animator.SetInteger("AnimationState", 1);
+                    break;
+                case AI_BaseFollowerAI.Mode.RegularFollow:
+                    animator.SetInteger("AnimationState", 1);
+                    break;
+                case AI_BaseFollowerAI.Mode.Attack:
+                    break;
+                case AI_BaseFollowerAI.Mode.AttackPrep:
+
+                    break;
+                case AI_BaseFollowerAI.Mode.Ftarget_PathfinderFollow:
+                    animator.SetInteger("AnimationState", 1);
+                    break;
+                case AI_BaseFollowerAI.Mode.Wander:
+                    if (animator.gameObject.GetComponent<Rigidbody2D>().velocity != Vector2.zero)
+                    {
+                        animator.SetInteger("AnimationState", 1);
+                    }
+                    else
+                    {
+                        animator.SetInteger("AnimationState", 0);
+                    }
+                    break;
+                default:
+                    animator.SetInteger("AnimationState", -1);
+                    break;
+            }
+        }
+       
     }
 
     // OnStateExit is called before OnStateExit is called on any state inside this state machine

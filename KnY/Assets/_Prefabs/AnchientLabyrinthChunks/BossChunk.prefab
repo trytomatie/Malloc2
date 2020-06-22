@@ -21199,6 +21199,7 @@ MonoBehaviour:
   interactablePool: []
   mobPool:
   - {fileID: 11400000, guid: 28eafdf100c978d4880bc67e08fcc892, type: 2}
+  - {fileID: 11400000, guid: bdfb93ee5f2e72b44a0120c5b85b1674, type: 2}
   mapGenerator: {fileID: 0}
   enemyList: []
   hasBeenTriggerd: 0

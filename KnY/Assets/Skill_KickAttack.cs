@@ -60,7 +60,7 @@ class Skill_KickAttack : Skill
         if(InitialApplication == false)
         {
             GameObject damageObject = GameObject.Instantiate(PublicGameResources.GetResource().damageObject, source.transform);
-            damageObject.GetComponent<DamageObject>().SetValues(source.GetComponent<Statusmanager>().totalAttackDamage, source.GetComponent<Statusmanager>().CriticalStrikeChance, 0, Casttime, source.gameObject, 6);
+            damageObject.GetComponent<DamageObject>().SetValues(source.GetComponent<Statusmanager>().TotalAttackDamage, source.GetComponent<Statusmanager>().CriticalStrikeChance, 0, Casttime, source.gameObject, 6);
             damageObject.transform.GetChild(5).GetComponent<CircleCollider2D>().offset = new Vector2(0, -0.05f);
             damageObject.transform.GetChild(5).GetComponent<CircleCollider2D>().radius = 0.08792716f;
             damageObject.GetComponent<DamageObject>().SetKnockbackParameters(1, 0.25f);

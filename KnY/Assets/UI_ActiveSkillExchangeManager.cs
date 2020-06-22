@@ -7,6 +7,8 @@ public class UI_ActiveSkillExchangeManager : MonoBehaviour
     private static List<UI_ActiveSkillExchangeManager> instances = new List<UI_ActiveSkillExchangeManager>();
     public UI_SkillDisplay activeSkill1;
     public UI_SkillDisplay activeSkill2;
+    public UI_SkillDisplay activeSkill3;
+    public UI_SkillDisplay activeSkill4;
     public UI_SkillDisplay newActiveSkill;
     private static SkillManager mySkillmanager;
 
@@ -19,6 +21,8 @@ public class UI_ActiveSkillExchangeManager : MonoBehaviour
     {
         activeSkill1.Skill = null;
         activeSkill2.Skill = null;
+        activeSkill3.Skill = null;
+        activeSkill4.Skill = null;
         newActiveSkill.Skill = null;
     }
 
@@ -28,21 +32,40 @@ public class UI_ActiveSkillExchangeManager : MonoBehaviour
         foreach (UI_ActiveSkillExchangeManager instance in Instances)
         {
             instance.ClearAllSlots();
-            if (MySkillmanager.activeSkills.Count > 2)
-            { 
-            instance.activeSkill1.Skill = MySkillmanager.activeSkills[2];
+            if (MySkillmanager.ActiveSkills[2] != null)
+            {
+                instance.activeSkill1.Skill = MySkillmanager.ActiveSkills[2];
             }
             else
             {
                 instance.activeSkill1.Skill = null;
             }
-            if (MySkillmanager.activeSkills.Count > 3)
+
+            if (MySkillmanager.ActiveSkills[3] != null)
             {
-                instance.activeSkill2.Skill = MySkillmanager.activeSkills[3];
+                instance.activeSkill2.Skill = MySkillmanager.ActiveSkills[3];
             }
             else
             {
                 instance.activeSkill2.Skill = null;
+            }
+
+            if (MySkillmanager.ActiveSkills[4] != null)
+            {
+                instance.activeSkill3.Skill = MySkillmanager.ActiveSkills[4];
+            }
+            else
+            {
+                instance.activeSkill3.Skill = null;
+            }
+
+            if (MySkillmanager.ActiveSkills[5] != null)
+            {
+                instance.activeSkill4.Skill = MySkillmanager.ActiveSkills[5];
+            }
+            else
+            {
+                instance.activeSkill4.Skill = null;
             }
             instance.newActiveSkill.Skill = newSkill;
             instance.gameObject.SetActive(true);
@@ -54,8 +77,8 @@ public class UI_ActiveSkillExchangeManager : MonoBehaviour
     {
         foreach (UI_ActiveSkillExchangeManager instance in Instances)
         {
-            MySkillmanager.RemoveActiveSkill(instance.activeSkill1.Skill);
-            MySkillmanager.AddActiveSkill(instance.newActiveSkill.Skill);
+            MySkillmanager.RemoveActiveSkill(0);
+            MySkillmanager.AddActiveSkill(instance.newActiveSkill.Skill,0);
             break;
         }
         CloseSkillExchagneWindow();
@@ -65,8 +88,30 @@ public class UI_ActiveSkillExchangeManager : MonoBehaviour
     {
         foreach (UI_ActiveSkillExchangeManager instance in Instances)
         {
-            MySkillmanager.RemoveActiveSkill(instance.activeSkill2.Skill);
-            MySkillmanager.AddActiveSkill(instance.newActiveSkill.Skill);
+            MySkillmanager.RemoveActiveSkill(1);
+            MySkillmanager.AddActiveSkill(instance.newActiveSkill.Skill,1);
+            break;
+        }
+        CloseSkillExchagneWindow();
+    }
+
+    public static void ExchangeThrid()
+    {
+        foreach (UI_ActiveSkillExchangeManager instance in Instances)
+        {
+            MySkillmanager.RemoveActiveSkill(2);
+            MySkillmanager.AddActiveSkill(instance.newActiveSkill.Skill, 2);
+            break;
+        }
+        CloseSkillExchagneWindow();
+    }
+
+    public static void ExchangeFourth()
+    {
+        foreach (UI_ActiveSkillExchangeManager instance in Instances)
+        {
+            MySkillmanager.RemoveActiveSkill(3);
+            MySkillmanager.AddActiveSkill(instance.newActiveSkill.Skill, 3);
             break;
         }
         CloseSkillExchagneWindow();

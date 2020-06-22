@@ -76,10 +76,14 @@ class Skill_BasicAttack : Skill
             {
                 damageObject.GetComponent<DamageObject>().applyStatusEffect = new StatusEffect_OnHitGiveSP(new StatusEffect_ItemSeriesSpellBlade().spGain);
             }
-            int damage = sourceStatus.totalAttackDamage;
+            int damage = sourceStatus.TotalAttackDamage;
+            if(sourceStatus.ContainsStatusEffect(new StatusEffect_ItemSeriesMagus()))
+            {
+                damage += (int)(sourceStatus.TotalMagicPower * 0.3f);
+            }
             if(attackPhase == 4)
             {
-                damage = sourceStatus.totalAttackDamage * 2;
+                damage = damage * 2;
                 attackPhase = 2;
             }
             damageObject.GetComponent<DamageObject>().SetValues(damage, sourceStatus.CriticalStrikeChance, 0.1f, 0.2f, source, 2);

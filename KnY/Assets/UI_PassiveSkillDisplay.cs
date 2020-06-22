@@ -8,8 +8,9 @@ using UnityEngine.UI;
 public class UI_PassiveSkillDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private PassiveSkill skill = null;
-    private GameObject descriptionDisplay;
+    public GameObject descriptionDisplay;
     private bool mouseEntered;
+    public bool hasDedicatedWindow;
     
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -20,6 +21,7 @@ public class UI_PassiveSkillDisplay : MonoBehaviour, IPointerEnterHandler, IPoin
         }
         mouseEntered = true;
         DescriptionDisplay.GetComponent<UI_ArtifactDisplayDescriptionPopup>().text.text = Skill.Name + "\n" + Skill.Description;
+        DescriptionDisplay.GetComponent<RectTransform>().pivot = new Vector3(0, 1.1f, 0);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -29,6 +31,7 @@ public class UI_PassiveSkillDisplay : MonoBehaviour, IPointerEnterHandler, IPoin
             return;
         }
         UI_ArtifactDisplayDescriptionPopup.DespawnAllInstances();
+        DescriptionDisplay.GetComponent<RectTransform>().pivot = new Vector3(0, 0, 0);
         mouseEntered = false;
     }
 
@@ -41,6 +44,7 @@ public class UI_PassiveSkillDisplay : MonoBehaviour, IPointerEnterHandler, IPoin
         if (mouseEntered)
         {
             DescriptionDisplay.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
         }
     }
 
@@ -73,6 +77,10 @@ public class UI_PassiveSkillDisplay : MonoBehaviour, IPointerEnterHandler, IPoin
             skill = value;
             if (skill != null)
             {
+                if(hasDedicatedWindow)
+                {
+                    DescriptionDisplay.GetComponent<UI_ArtifactDisplayDescriptionPopup>().text.text = skill.Name + "\n" + skill.Description;
+                }
                 GetComponent<Image>().sprite = ItemIcons.GetSkillIcon(skill.ImageId);
             }
             else

@@ -58,8 +58,12 @@ public class UI_ArtifactManager : MonoBehaviour
         {
             int xPos = 40;
             int yPos = 0;
-            foreach (Item item in instance.playerInventory.items)
+            foreach (Item item in instance.playerInventory.ActiveItemList())
             {
+                if(item == null)
+                {
+                    continue;
+                }
                 if(item.artifactItem)
                 { 
                     GameObject instanceDisplay = Instantiate(instance.artifactDisplayInstantiationTarget, instance.transform);

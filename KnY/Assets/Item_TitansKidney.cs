@@ -12,7 +12,9 @@ public class Item_TitansKidney : Item {
         this.attribute = "Earth";
         this.itemName = "Titans Kidney";
         this.description = "Increases health regeneration.";
+        this.description = "Increases health regeneration by " + healthRegenerationBonus + " per stack";
         this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
+        this.series.Add(ItemSeries.Series.Minionmancer);
     }
 
 

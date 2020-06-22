@@ -17,23 +17,46 @@ public class UI_SkillManager : MonoBehaviour
     {
         foreach(UI_SkillManager instance in Instances)
         {
-            if(instance.mySkillManger.activeSkills.Count > 2)
+            if(instance.mySkillManger.ActiveSkills[2] != null)
             { 
-            instance.activeSkills[0].Skill = instance.mySkillManger.activeSkills[2];
+                instance.activeSkills[0].Skill = instance.mySkillManger.ActiveSkills[2];
             }
             else
             {
                 instance.activeSkills[0].Skill = null;
             }
-            if (instance.mySkillManger.activeSkills.Count > 3)
+
+            if (instance.mySkillManger.ActiveSkills[3] != null)
             {
-                instance.activeSkills[1].Skill = instance.mySkillManger.activeSkills[3];
+                instance.activeSkills[1].Skill = instance.mySkillManger.ActiveSkills[3];
             }
             else
             {
                 instance.activeSkills[1].Skill = null;
             }
-            if(instance.mySkillManger.PassiveSkills[0] != null)
+
+            if (instance.mySkillManger.ActiveSkills[4] != null)
+            {
+                instance.activeSkills[2].Skill = instance.mySkillManger.ActiveSkills[4];
+            }
+            else
+            {
+                instance.activeSkills[2].Skill = null;
+            }
+
+            if (instance.mySkillManger.ActiveSkills[5] != null)
+            {
+                instance.activeSkills[3].Skill = instance.mySkillManger.ActiveSkills[5];
+            }
+            else
+            {
+                instance.activeSkills[3].Skill = null;
+            }
+
+
+
+
+            if (instance.mySkillManger.PassiveSkills[0] != null)
             {
                 instance.passiveSkills[0].Skill = instance.mySkillManger.PassiveSkills[0];
             }
@@ -41,6 +64,7 @@ public class UI_SkillManager : MonoBehaviour
             {
                 instance.passiveSkills[0].Skill = null;
             }
+
             if (instance.mySkillManger.PassiveSkills[1] != null)
             {
                 instance.passiveSkills[1].Skill = instance.mySkillManger.PassiveSkills[1];

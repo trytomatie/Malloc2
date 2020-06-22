@@ -79,7 +79,7 @@ class Skill_BurnSlash : Skill
         damageObject.transform.up = mousePosition - (Vector2)source.transform.position;
         damageObject.GetComponent<DamageObject>().SetValues(1, sourceStatus.CriticalStrikeChance, 0.1f, 0.2f, source, 2);
 
-        damageObject.GetComponent<DamageObject>().applyStatusEffect = (new StatusEffect_Posion(duration, (int)((source.GetComponent<Statusmanager>().TotalMagicPower * damage) / duration * 0.25f)));
+        damageObject.GetComponent<DamageObject>().applyStatusEffect = (new StatusEffect_Burn(duration, (int)((source.GetComponent<Statusmanager>().TotalMagicPower * damage) / duration * 0.25f)));
         damageObject.GetComponent<DamageObject>().SetKnockbackParameters(0.3f, 0.15f);
         sourceStatus.ApplyStatusEffect(new StatusEffect_HiddenSlow(Casttime, 0.65f));
 

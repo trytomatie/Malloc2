@@ -17,11 +17,15 @@ public class Item_VaingloriousAuthority : Item {
         this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
     }
 
+    public override void PickUpEffect(GameObject g)
+    {
+        g.GetComponent<Statusmanager>().Hp += hpGain * stacks;
+    }
     public override void ApplyEffect(GameObject g)
     {
         g.GetComponent<Statusmanager>().MaxHp += hpGain * stacks;
         g.GetComponent<Statusmanager>().maxSp += spGain * stacks;
-        g.GetComponent<Statusmanager>().Hp += hpGain * stacks;
+
     }
 
     public override void RemoveEffect(GameObject g)

@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using UnityEngine.UI;
 
 public class Statusmanager : MonoBehaviour {
 
     public enum Faction  {EnemyFaction, PlayerFaction };
-    public enum CharacterClass { Undefined, Warrior, Mage, Priest, Summoner };
+    public enum CharacterClass { Undefined, Warrior, Mage, Priest, Summoner, Paladin };
     public CharacterClass characterClass = CharacterClass.Undefined;
     public Faction faction = Faction.EnemyFaction;
     public int level = 1;
@@ -22,6 +23,12 @@ public class Statusmanager : MonoBehaviour {
     public float healthRegeneration = 0;
     public float healthRegenerationPercentage = 1;
     public int barrier = 0;
+
+    private int strength;
+    private int dexterity;
+    private int intellect;
+    private int piety;
+
 
     public float movementSpeed = 1;
     public float movementSpeedFlatAdjustments = 0;
@@ -45,7 +52,7 @@ public class Statusmanager : MonoBehaviour {
     public float baseAttackDamageMultiplyier = 1;
     private int attackDamageFlatBonus = 20;
     private float totalAttackDamageMultiplyier = 1;
-    public int totalAttackDamage = 0;
+    private int totalAttackDamage = 0;
 
     public int magicPower = 0;
     private float magicPowerMultiplier = 1;
@@ -129,20 +136,14 @@ public class Statusmanager : MonoBehaviour {
         {
             if(isDead == false)
             { 
-                //TriggerCorpseExplosition();
                 isDead = true;
                 GetComponent<Collider2D>().enabled = false;
                 if (gameObjectThatDamagedMeLast != null)
                 {
-                    if(gameObjectThatDamagedMeLast.GetComponent<AI_GenericFollower>() != null)
+                    if(gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().faction == Faction.PlayerFaction)
                     {
-                        gameObjectThatDamagedMeLast.GetComponent<AI_GenericFollower>().followTarget.GetComponent<Statusmanager>().Mana += (int)(Mana * gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().manaGainMuliplier);
-                        gameObjectThatDamagedMeLast.GetComponent<AI_GenericFollower>().followTarget.GetComponent<Statusmanager>().Experinece += (int)(Mana * gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().experienceGainMultiplier);
-                    }
-                    else if(gameObjectThatDamagedMeLast.GetComponent<AI_EyeFollower>() != null)
-                    {
-                        gameObjectThatDamagedMeLast.GetComponent<AI_EyeFollower>().followTarget.GetComponent<Statusmanager>().Mana += (int)(Mana * gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().manaGainMuliplier);
-                        gameObjectThatDamagedMeLast.GetComponent<AI_EyeFollower>().followTarget.GetComponent<Statusmanager>().Experinece += (int)(Mana * gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().experienceGainMultiplier);
+                        GameObject.FindObjectOfType<PlayerController>().GetComponent<Statusmanager>().Mana += (int)(Mana * gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().manaGainMuliplier);
+                        GameObject.FindObjectOfType<PlayerController>().GetComponent<Statusmanager>().Experinece += (int)(Mana * gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().experienceGainMultiplier);
                     }
                     else
                     { 
@@ -155,28 +156,57 @@ public class Statusmanager : MonoBehaviour {
                     GetComponent<PlayerController>().enabled = false;
                     GetComponent<Statusmanager>().hp = -999999;
                 }
-                //Destroy(gameObject, 6);
-                GetComponent<Animator>().SetInteger("DeathAnimation", UnityEngine.Random.Range(1, 4));
-                GetComponent<Animator>().SetInteger("AnimationState", -1);
+                if((gameObjectThatDamagedMeLast.GetComponent<PlayerController>() != null || gameObjectThatDamagedMeLast.GetComponent<AI_EyeFollower>() != null || gameObjectThatDamagedMeLast.GetComponent<AI_GenericFollower>() != null) && Mana > 0)
+                {
+                    Api.AddKill();
+                    Api.SaveCurrent();
+                }
                 GetComponent<DepthSorter>().enabled = false;
-                GetComponent<SpriteRenderer>().sortingOrder = PublicGameResources.FLOOR_LAYER +1;
-                GetComponent<AI_BaseAI>().mode = AI_BaseAI.Mode.Dead;
-                GetComponent<AI_BaseAI>().enabled = false;
+                GetComponent<SpriteRenderer>().sortingOrder = PublicGameResources.FLOOR_LAYER + 1;
+
                 GetComponent<KnockbackHandler>().enabled = false;
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 tag = "Untagged";
-                GetComponent<AIPath>().enabled = false;
-                Camera.main.transform.parent.GetComponent<CameraFollow>().ActivateScreenShake(0.25f);
-                Material mat = GetComponent<SpriteRenderer>().material;
-                Director.GetInstance().SetFadeMaterial(1, 0, mat, 0.5f);
-                Destroy(gameObject, 40);
+                foreach (StatusEffect s in statusEffects)
+                {
+                    s.duration = 0;
+                }
+
+                if (GetComponent<PlayerController>() != null)
+                {
+                    GetComponent<Animator>().SetInteger("DeathAnimation", 1);
+                    GetComponent<Animator>().SetInteger("AnimationState", -1);
+                    GameObject.Find("PC_UI").SetActive(false);
+                    Director.GetInstance().SetFadeMaterial(0, 1, GameObject.Find("DeathBackground").GetComponent<SpriteRenderer>().material, 2);
+                    gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Foreground";
+                    gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2998;
+                    GameObject.FindObjectOfType<UI_InputManager>().deathUI.SetActive(true);
+                    GameObject.FindObjectOfType<UI_InputManager>().deathUI.transform.Find("Stats").GetComponent<Text>().text = String.Format("Kills: {0}", Api.Kills);
+                }
+                else
+                {
+                    GetComponent<Animator>().SetInteger("DeathAnimation", UnityEngine.Random.Range(1, 4));
+                    GetComponent<Animator>().SetInteger("AnimationState", -1);
+                    GetComponent<AI_BaseAI>().mode = AI_BaseAI.Mode.Dead;
+                    GetComponent<AI_BaseAI>().enabled = false;
+                    GetComponent<AIPath>().enabled = false;
+
+                    Camera.main.transform.parent.GetComponent<CameraFollow>().ActivateScreenShake(0.25f);
+                    Material mat = GetComponent<SpriteRenderer>().material;
+                    Director.GetInstance().SetFadeMaterial(1, 0, mat, 0.5f);
+                    Destroy(gameObject, 10);
+                }
+
+
+
+
             }
         }
     }
 
     void FixedUpdate()
     {
-        if (Hp < MaxHp && hp > 0)
+        if (Hp < TotalMaxHp && hp > 0)
         {
             hpRegenDecimals += ((healthRegeneration * healthRegenerationPercentage * Time.fixedDeltaTime) / 5);
             if(hpRegenDecimals >= 1)
@@ -254,6 +284,21 @@ public class Statusmanager : MonoBehaviour {
         foreach (StatusEffect s in statusEffects)
         {
             if (s.statusName == statusEffect.statusName)
+            {
+                if (s.duration > 0)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public bool ContainsStatusEffect(String statusEffectName)
+    {
+        foreach (StatusEffect s in statusEffects)
+        {
+            if (s.statusName == statusEffectName)
             {
                 if (s.duration > 0)
                 {
@@ -441,7 +486,6 @@ public class Statusmanager : MonoBehaviour {
         healthRegeneration += healthRegenerationGrowth;
         BaseAttackDamage += baseAttackDamageGrowth;
         MagicPower += magicPowerGrowth;
-        CallculateAttackDamage();
         long prevMaxExperinece = maxExperience;
         if(level < 25)
         { 
@@ -467,7 +511,6 @@ public class Statusmanager : MonoBehaviour {
         set
         {
             baseAttackDamage = value;
-            CallculateAttackDamage();
             
         }
     }
@@ -482,7 +525,6 @@ public class Statusmanager : MonoBehaviour {
         set
         {
             baseAttackDamageMultiplyier = value;
-            CallculateAttackDamage();
         }
     }
 
@@ -496,7 +538,6 @@ public class Statusmanager : MonoBehaviour {
         set
         {
             attackDamageFlatBonus = value;
-            CallculateAttackDamage();
         }
     }
 
@@ -510,7 +551,6 @@ public class Statusmanager : MonoBehaviour {
         set
         {
             totalAttackDamageMultiplyier = value;
-            CallculateAttackDamage();
                 }
     }
 
@@ -538,9 +578,9 @@ public class Statusmanager : MonoBehaviour {
         {
            
             hp = value;
-            if(hp > MaxHp)
+            if(hp > TotalMaxHp)
             {
-                hp = MaxHp;
+                hp = TotalMaxHp;
             }
             if (gameObject.name == "Player")
             {
@@ -715,12 +755,20 @@ public class Statusmanager : MonoBehaviour {
     {
         get
         {
-            return (int)(maxHp * HpMultiplier);
+            return maxHp;
         }
 
         set
         {
             maxHp = value;
+        }
+    }
+
+    public int TotalMaxHp
+    {
+        get
+        {
+            return (int)(maxHp * HpMultiplier);
         }
     }
 
@@ -733,7 +781,14 @@ public class Statusmanager : MonoBehaviour {
 
         set
         {
-            hpMultiplier = value;
+            if(value < 0.1f)
+            {
+                hpMultiplier = 0.1f;
+            }
+            else
+            {
+                hpMultiplier = value;
+            }
             if (gameObject.name == "Player")
             {
                 UI_ResourceManager.UpdateUI(); // fix that sometime??? // Later Note: What's the problem // Even Later Note: Maybe check for PlayerController you dumbass? // Even Laterer Note: checking name is faster?
@@ -746,7 +801,7 @@ public class Statusmanager : MonoBehaviour {
         get
         {
 
-            return (int)(magicPower * magicPowerMultiplier);
+            return (int)((magicPower + intellect + ((int)(piety / 2)) * magicPowerMultiplier));
         }
 
         set
@@ -781,9 +836,16 @@ public class Statusmanager : MonoBehaviour {
         }
     }
 
-    private void CallculateAttackDamage()
-    {
-        totalAttackDamage = (int)(((baseAttackDamage * BaseAttackDamageMultiplyier) + AttackDamageFlatBonus) * TotalAttackDamageMultiplyier);
-    }
+    public int Strength { get => strength; set => strength = value; }
+    public int Dexterity { get => dexterity; set => dexterity = value; }
+    public int Intellect { get => intellect; set => intellect = value; }
+    public int Piety { get => piety; set => piety = value; }
+    public int TotalAttackDamage {
+        get 
+        {
+            return (int)((((baseAttackDamage + strength + ((int)(dexterity / 2)))* BaseAttackDamageMultiplyier) + AttackDamageFlatBonus) * TotalAttackDamageMultiplyier);
+        } 
+        set => totalAttackDamage = value; }
+
 
 }

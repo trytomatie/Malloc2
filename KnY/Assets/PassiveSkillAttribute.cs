@@ -8,20 +8,23 @@ using UnityEngine;
 public class PassiveSkillAttribute
 {
     private string name;
-    public int bonusWeightAplications = 0;
     private static Dictionary<String, int> attributeWeights = new Dictionary<String, int>()
     {
-        { "PassiveSkillAttribute_IncreaseATK", 100 },
+        { "PassiveSkillAttribute_IncreaseATK", 50 },
         { "PassiveSkillAttribute_IncreaseDEF", 80 },
         { "PassiveSkillAttribute_IncreaseHP", 110 },
         { "PassiveSkillAttribute_IncreaseSP", 40 },
+        { "PassiveSkillAttribute_IncreaseSTR", 50 },
+        { "PassiveSkillAttribute_IncreaseINT", 50 },
+        { "PassiveSkillAttribute_IncreaseDEX", 50 },
+        { "PassiveSkillAttribute_IncreasePIE", 50 },
         { "PassiveSkillAttribute_RoadOfThorns", 10 },
         { "PassiveSkillAttribute_Scout", 20 },
         { "PassiveSkillAttribute_RollingThunder", 25 },
         { "PassiveSkillAttribute_Striker", 25 },
         { "PassiveSkillAttribute_Rest", 35 },
         { "PassiveSkillAttribute_Glass", 25 },
-        { "PassiveSkillAttribute_IncreaseMagicAttack", 100 },
+        { "PassiveSkillAttribute_IncreaseMagicAttack", 50 },
         { "PassiveSkillAttribute_MinionRest",5 }
     };
     private static Dictionary<String, int> baseattributeWeights;

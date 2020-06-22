@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net.Security;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,6 +34,22 @@ public class UI_TraderInventory : MonoBehaviour
     {
         ClearInventoryDisplays();
         FillInventoryDisplays();
+        UI_ArtifactManager.ClearInventoryDisplays();
+        UI_ArtifactManager.FillInventoryDisplays();
+        UI_InventoryManager.ClearInventoryDisplays();
+        UI_InventoryManager.FillInventoryDisplays();
+        UI_ItemSeriesManager.ClearItemSeriesDisplays();
+        UI_ItemSeriesManager.FillItemSeriesDisplays();
+    }
+
+    private void OnDisable()
+    {
+        UI_ArtifactManager.ClearInventoryDisplays();
+        UI_ArtifactManager.FillInventoryDisplays();
+        UI_InventoryManager.ClearInventoryDisplays();
+        UI_InventoryManager.FillInventoryDisplays();
+        UI_ItemSeriesManager.ClearItemSeriesDisplays();
+        UI_ItemSeriesManager.FillItemSeriesDisplays();
     }
 
     /// <summary>
@@ -47,9 +64,12 @@ public class UI_TraderInventory : MonoBehaviour
         }
         foreach (GameObject go in removalList)
         {
-            inventoryDisplays.Remove(go);
-            go.transform.SetParent(null);
-            Destroy(go);
+            if(go != null)
+            {
+                inventoryDisplays.Remove(go);
+                go.transform.SetParent(null);
+                Destroy(go);
+            }
         }
 
     }
@@ -63,16 +83,16 @@ public class UI_TraderInventory : MonoBehaviour
         {
             foreach (GameObject inventorySlot in traderInventorySlots)
             {
+               inventorySlot.GetComponent<UI_InventoryDropHandler>().IsFrozen = false;
+               inventorySlot.GetComponent<UI_InventoryDropHandler>().inventorysThatHavePermission = new List<Inventory>();
                 if (inventorySlot.transform.childCount == 0)
                 {
-                    GameObject instanceDisplay = Instantiate(inventoryDisplayInstantiationTarget, inventorySlot.transform);
-                    instanceDisplay.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, -1);
-                    instanceDisplay.GetComponent<Image>().sprite = FindObjectOfType<ItemIcons>().GetIcon(item.itemId);
-                    instanceDisplay.GetComponent<Image>().material = Item.GetItemMaterial(item.itemId);
-                    instanceDisplay.GetComponent<UI_ArtifactDisplayOnHover>().item = item;
-                    instanceDisplay.transform.GetChild(0).GetComponent<Text>().text = "x" + item.stacks;
-                    inventoryDisplays.Add(instanceDisplay);
-                    break;
+                    inventorySlot.GetComponent<UI_InventoryDropHandler>().inventorysThatHavePermission.Add(traderInventory);
+                    if (item != null)
+                    {
+                        CreateInventoryDisplayForTrader(item, inventorySlot);
+                        break;
+                    }
                 }
             }
         }
@@ -83,6 +103,17 @@ public class UI_TraderInventory : MonoBehaviour
         }
         UpdateCosts();
 
+    }
+
+    public static void CreateInventoryDisplayForTrader(Item item, GameObject inventorySlot)
+    {
+        GameObject instanceDisplay = Instantiate(instance.inventoryDisplayInstantiationTarget, inventorySlot.transform);
+        instanceDisplay.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, -1);
+        instanceDisplay.GetComponent<Image>().sprite = FindObjectOfType<ItemIcons>().GetIcon(item.itemId);
+        instanceDisplay.GetComponent<Image>().material = Item.GetItemMaterial(item.itemId);
+        instanceDisplay.GetComponent<UI_ArtifactDisplayOnHover>().item = item;
+        instanceDisplay.transform.GetChild(0).GetComponent<Text>().text = "x" + item.stacks;
+        instance.inventoryDisplays.Add(instanceDisplay);
     }
 
     public void UpdateTraderLists()
@@ -166,8 +197,22 @@ public class UI_TraderInventory : MonoBehaviour
 
     public void TradeItems()
     {
-        int itemAmountDifference = itemsToBuy.Count - itemsToSell.Count;
-        if (UI_InventoryManager.playerInventory.artifactItemsCount + UI_InventoryManager.playerInventory.inactiveArtifacts.Count + itemAmountDifference > 14)
+        int itemAmountDifference = 0;
+        foreach(Item item in itemsToBuy.Keys)
+        {
+            if (UI_InventoryManager.playerInventory.ContainsItem(item.itemId, 0) || UI_InventoryManager.playerInventory.ContainsItem(item.itemId, 1))
+            {
+                itemAmountDifference++;
+            }
+        }
+        foreach (Item item in itemsToSell.Keys)
+        {
+            if (UI_InventoryManager.playerInventory.ContainsItem(item.itemId, 0) || UI_InventoryManager.playerInventory.ContainsItem(item.itemId, 1))
+            {
+                itemAmountDifference--;
+            }
+        }
+        if (UI_InventoryManager.playerInventory.artifactItemsCount + UI_InventoryManager.playerInventory.InactiveItemList().Count + itemAmountDifference > 14)
         {
             return;
         }
@@ -191,20 +236,35 @@ public class UI_TraderInventory : MonoBehaviour
         foreach (Item item in itemsToBuy.Keys) // Buy Items
         {
 
-            if (UI_InventoryManager.playerInventory.artifactItemsCount <= 6 || UI_InventoryManager.playerInventory.ContainsItem(item.itemId))
+            if (UI_InventoryManager.playerInventory.ContainsItem(item.itemId, 0))
             {
                 UI_InventoryManager.playerInventory.AddItem(item);
-                traderInventory.items.Remove(item);
+                traderInventory.RemoveItem(item);
                 inventoryDisplays.Remove(itemsToBuy[item].gameObject);
                 Destroy(itemsToBuy[item].gameObject);
             }
-            else if (UI_InventoryManager.playerInventory.inactiveArtifacts.Count <= 6 || UI_InventoryManager.playerInventory.ContainsItem(item.itemId))
+            else if (UI_InventoryManager.playerInventory.ContainsItem(item.itemId, 1))
             {
                 UI_InventoryManager.playerInventory.AddInactiveArtifact(item);
-                traderInventory.items.Remove(item);
+                traderInventory.RemoveItem(item);
                 inventoryDisplays.Remove(itemsToBuy[item].gameObject);
                 Destroy(itemsToBuy[item].gameObject);
             }
+            else if (UI_InventoryManager.playerInventory.artifactItemsCount <= 6)
+            {
+                UI_InventoryManager.playerInventory.AddItem(item);
+                traderInventory.RemoveItem(item);
+                inventoryDisplays.Remove(itemsToBuy[item].gameObject);
+                Destroy(itemsToBuy[item].gameObject);
+            }
+            else if (UI_InventoryManager.playerInventory.InactiveItemList().Count <= 6)
+            {
+                UI_InventoryManager.playerInventory.AddInactiveArtifact(item);
+                traderInventory.RemoveItem(item);
+                inventoryDisplays.Remove(itemsToBuy[item].gameObject);
+                Destroy(itemsToBuy[item].gameObject);
+            }
+
         }
         List<Item> coinsThatNeedToBeBalanced = new List<Item>();
         foreach (Item coin in coins) // Payback
@@ -251,8 +311,14 @@ public class UI_TraderInventory : MonoBehaviour
         }
         itemsToBuy = new Dictionary<Item, UI_ArtifactDisplayOnHover>();
         itemsToSell = new Dictionary<Item, UI_ArtifactDisplayOnHover>();
+        UI_ArtifactManager.ClearInventoryDisplays();
+        UI_ArtifactManager.FillInventoryDisplays();
         UI_InventoryManager.ClearInventoryDisplays();
         UI_InventoryManager.FillInventoryDisplays();
+        UI_ItemSeriesManager.ClearItemSeriesDisplays();
+        UI_ItemSeriesManager.FillItemSeriesDisplays();
+        ClearInventoryDisplays();
+        FillInventoryDisplays();
         UpdateCosts();
     }
 }

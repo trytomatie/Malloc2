@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 68465948}
   - component: {fileID: 7691277236368854181}
   - component: {fileID: 7869144413122803579}
-  - component: {fileID: -3742785538767334995}
+  - component: {fileID: 6193400665509166947}
   m_Layer: 0
   m_Name: ZombieEnemy
   m_TagString: Enemy
@@ -57,6 +57,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -137,14 +138,18 @@ MonoBehaviour:
   attackCooldownTimer: 0
   attackSpeedTimer: 0
   attackDirection: {x: 0, y: 0}
+  fxMaterial: {fileID: 0}
   wanderCooldownTimer: 0
+  wanderPosition: {x: 0, y: 0}
   pathfinding: 1
   randomChance: 0
   statusEffect_Stunned: 0
   cancleUpdate: 0
   isHopping: 0
   direction: {x: 0, y: 0}
+  skills: []
   disableMovement: 0
+  targetIsFollowTarget: 1
   bodyTransform: {fileID: 4099386691832577085}
 --- !u!114 &4099386691832577081
 MonoBehaviour:
@@ -201,7 +206,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 6.94
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -257,6 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d19854395c0f24384b1615f8b67340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterClass: 0
   faction: 0
   level: 1
   maxHp: 159
@@ -274,6 +280,7 @@ MonoBehaviour:
   movementSpeedMultiplier: 1
   isDead: 0
   mana: 3
+  experinece: 0
   maxExperience: 100
   intangible: 0
   baseAttackSpeed: 1
@@ -281,9 +288,13 @@ MonoBehaviour:
   baseAttackDamage: 20
   baseAttackDamageMultiplyier: 1
   totalAttackDamage: 0
+  magicPower: 0
   criticalStrikeChance: 1
   damageOverTimeDamageMultiplier: 1
+  experienceGainMultiplier: 1
+  manaGainMuliplier: 1
   statusEffects: []
+  onRoomEnterEffects: []
   anims: []
   hpGrowth: 340
   spGrowth: 0
@@ -292,6 +303,7 @@ MonoBehaviour:
   baseAttackDamageGrowth: 16
   defenceGrwoth: 0
   movementSpeedGrowth: 0.02
+  magicPowerGrowth: 0
   gameObjectThatDamagedMeLast: {fileID: 0}
   uiHeigthOffset: 0.16
 --- !u!114 &68465948
@@ -335,7 +347,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.06661254}
   serializedVersion: 2
   m_Radius: 0.051862687
---- !u!114 &-3742785538767334995
+--- !u!114 &6193400665509166947
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -344,10 +356,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4099386691832577026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7933edda9507d62439baa1ac360f8942, type: 3}
+  m_Script: {fileID: 11500000, guid: 697e7e344ee749b4d883f38a2d6ab673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
-  inactiveArtifacts: []
   isPlayerInventory: 0
   artifactItemsCount: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
-    public List<Skill> activeSkills = new List<Skill>();
+    private Skill[] activeSkills = new Skill[6];
     private PassiveSkill[] passiveSkills = new PassiveSkill[2];
     public bool disableMovement;
 
@@ -21,16 +21,17 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    public void AddActiveSkill(Skill skill)
+    public Skill[] ActiveSkills { get => activeSkills; set => activeSkills = value; }
+
+    public void AddActiveSkill(Skill skill,int index)
     {
-        activeSkills.Add(skill);
+        ActiveSkills[index+2] = skill;
         UI_SkillManager.UpdateSkills();
     }
 
-    public void RemoveActiveSkill(Skill skill)
+    public void RemoveActiveSkill(int index)
     {
-        activeSkills.Remove(skill);
-        activeSkills.RemoveAll(item => item == null);
+        ActiveSkills[index + 2] = null;
         UI_SkillManager.UpdateSkills();
     }
 
@@ -90,7 +91,7 @@ public class SkillManager : MonoBehaviour
     private void UpdateTimers()
     {
         int spellsThatDontAllowMovementThatAreCasting = 0;
-        foreach (Skill skill in activeSkills)
+        foreach (Skill skill in ActiveSkills)
         {
             if(skill == null)
             {

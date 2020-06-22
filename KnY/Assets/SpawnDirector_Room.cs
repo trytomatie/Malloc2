@@ -138,7 +138,15 @@ public class SpawnDirector_Room : MonoBehaviour
             return;
         }
         GameObject interactableSpawned = Instantiate(interactable.instance, spawnLocation.transform.position, Quaternion.identity);
-        interactableSpawned.GetComponent<Interactable_BlankChest>().cost = interactable.cost;
+        if(interactableSpawned.GetComponent<Interactable_BlankChest>() != null)
+        { 
+            interactableSpawned.GetComponent<Interactable_BlankChest>().cost = interactable.cost;
+        }
+        else if(interactableSpawned.GetComponent<Interactable_Chest>() != null)
+        {
+            print("YO wtf why aws this huer");
+            interactableSpawned.GetComponent<Interactable_Chest>().cost = interactable.cost;
+        }
     }
 
     public void SpawnEnemys()

@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DeathBackgroundMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: 608322f9b7a3f4e49851acc4a5b1cb3f,
+    type: 3}
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_F2E0BF5F:
+        m_Texture: {fileID: 2800000, guid: 5abf6c8c628dfbc45ae5107c8f721d40, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: c4ad76413e85aeb4e8a8e2c1e2450725, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture2DAsset_EF14BE15_Out_0:
+        m_Texture: {fileID: 2800000, guid: c5d8218e884a0fc43b9f751e5dda514f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _emission:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_3712269A: 6.91
+    - Vector1_72D43B52: 1
+    - Vector1_A269E10C: 2.69
+    - _fade: 0
+    - _isVisible: 1
+    m_Colors:
+    - _color: {r: 0, g: 0, b: 0, a: 0}
+    - _hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []

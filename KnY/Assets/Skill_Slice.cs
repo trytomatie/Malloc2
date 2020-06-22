@@ -24,8 +24,8 @@ class Skill_Slice : Skill
         this.BaseCasttime = casttime;
         this.AllowsMovement = allowsMovement;
         this.SpCost = 25;
-        this.Image = ItemIcons.GetSkillIcon(11);
-        this.Name = "Posion Sting";
+        this.Image = ItemIcons.GetSkillIcon(13);
+        this.Name = "Slice";
         this.Description = "Deals damage" + Director.variableColorText + damage*100 + Director.colorEndText + "% Attackdamage, has an increased critical strike chance.";
         this.FxMaterial = PublicGameResources.GetResource().slashMaterial;
     }
@@ -42,7 +42,6 @@ class Skill_Slice : Skill
         float factor = (float)source.GetComponent<Statusmanager>().TotalAttackSpeed() / 100;
         source.GetComponent<Animator>().SetFloat("SpeedIncrease",(float)((1 * factor) - 1) * 0.4f);
         Casttime = (float)(BaseCasttime / factor);
-        Cooldown = (float)(BaseCooldown / factor);
         base.ActivateSkill(source, direction, position, target);
     }
 
@@ -77,7 +76,7 @@ class Skill_Slice : Skill
         GameObject damageObject = GameObject.Instantiate(PublicGameResources.GetResource().damageObject, (Vector2)source.transform.position + Direction * 0.15f, Quaternion.identity);
         damageObject.GetComponent<Animator>().SetFloat("DamageAnimation", 1);
         damageObject.transform.up = mousePosition - (Vector2)source.transform.position;
-        damageObject.GetComponent<DamageObject>().SetValues((int)(sourceStatus.totalAttackDamage * damage), sourceStatus.CriticalStrikeChance + (int)crtChance, 0.1f, 0.2f, source, 2);
+        damageObject.GetComponent<DamageObject>().SetValues((int)(sourceStatus.TotalAttackDamage * damage), sourceStatus.CriticalStrikeChance + (int)crtChance, 0.1f, 0.2f, source, 2);
         damageObject.GetComponent<DamageObject>().SetKnockbackParameters(0.3f, 0.15f);
         sourceStatus.ApplyStatusEffect(new StatusEffect_HiddenSlow(Casttime, 0.65f));
 

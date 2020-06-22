@@ -31,21 +31,21 @@ public class AncientLabyrnithDirector : MonoBehaviour
             difficulty = value;
             if (difficulty == 0)
             {
-                kingsContractScaling = 0.5f;
+                kingsContractScaling = 0.75f;
                 playerBonusRegen = 25;
                 playerBonusFlatDamageReduction = 25;
-                playerBonusDamage = 10;
+                playerBonusDamage = 20;
             }
             if (difficulty == 1)
             {
-                kingsContractScaling = 0.75f;
+                kingsContractScaling = 1f;
                 playerBonusRegen = 10;
                 playerBonusFlatDamageReduction = 10;
-                playerBonusDamage = 20;
+                playerBonusDamage = 10;
             }
             if (difficulty == 2)
             {
-                kingsContractScaling = 1f;
+                kingsContractScaling = 1.25f;
                 playerBonusRegen = 0;
                 playerBonusFlatDamageReduction = 0;
                 playerBonusDamage = 0;
@@ -56,7 +56,7 @@ public class AncientLabyrnithDirector : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-
+        Api.ResetCurrent();
         Difficulty = Director.GetInstance().difficultyScaling;
         Statusmanager playerStatus =  GameObject.FindObjectOfType<PlayerController>().GetComponent<Statusmanager>();
         playerStatus.characterClass = Director.GetInstance().characterClass;

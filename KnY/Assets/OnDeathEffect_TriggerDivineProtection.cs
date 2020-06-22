@@ -12,7 +12,7 @@ public class OnDeathEffect_TriggerDivineProtection : OnDeathEffect
     public override void ApplyEffect(GameObject g)
     {
         g.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_DivineProtection(50));
-        ItemSeries_Divine.extraCondtionMet = false;
+        ((ItemSeries_Divine)g.GetComponent<Inventory>().itemSeries[ItemSeries.Series.Divine]).extraCondtionMet = false;
         UI_InfoTitleManager.Show("<Color=red>Conditions Lost:</color> " + new ItemSeries_Divine().seriesName, "Use your second chance well!", 3);
     }
 

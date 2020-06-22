@@ -13,9 +13,7 @@ public class UI_ArtifactDisplayDescriptionPopup : MonoBehaviour
     public Text text;
     public static void DespawnAllInstances()
     {
-        foreach(UI_ArtifactDisplayDescriptionPopup o in GameObject.FindObjectsOfType<UI_ArtifactDisplayDescriptionPopup>())
-        {
+        UI_ArtifactDisplayDescriptionPopup o = GameObject.Find("ItemDescriptionPopupWindow").GetComponent<UI_ArtifactDisplayDescriptionPopup>();
             o.transform.position = new Vector3(10000, 10000);
-        }
     }
 }

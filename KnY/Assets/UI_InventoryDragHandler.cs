@@ -17,6 +17,10 @@ public class UI_InventoryDragHandler : MonoBehaviour, IDragHandler, IEndDragHand
 
     public void OnDrag(PointerEventData eventData)
     {
+        if(transform.parent.GetComponent<UI_InventoryDropHandler>().IsFrozen)
+        {
+            return;
+        }
         currentlyDragging = gameObject;
         GetComponent<Image>().raycastTarget = false;
         transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);

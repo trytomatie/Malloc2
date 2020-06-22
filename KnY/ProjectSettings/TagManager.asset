@@ -9,6 +9,7 @@ TagManager:
   - Objects
   - Enemy
   - SpawnedInteractable
+  - ManaGemText
   layers:
   - Default
   - TransparentFX

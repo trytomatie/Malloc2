@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 8276288782881259566}
   - component: {fileID: 8276288782881259567}
   - component: {fileID: 8276288782881259573}
-  - component: {fileID: 1735208251709261120}
+  - component: {fileID: -2021765811203077152}
   m_Layer: 0
   m_Name: GunnerEnemy
   m_TagString: Enemy
@@ -168,7 +168,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 6.96
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d19854395c0f24384b1615f8b67340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterClass: 0
   faction: 0
   level: 1
   maxHp: 100
@@ -241,6 +242,7 @@ MonoBehaviour:
   movementSpeedMultiplier: 1
   isDead: 0
   mana: 4
+  experinece: 0
   maxExperience: 100
   intangible: 0
   baseAttackSpeed: 1
@@ -248,9 +250,13 @@ MonoBehaviour:
   baseAttackDamage: 20
   baseAttackDamageMultiplyier: 1
   totalAttackDamage: 0
+  magicPower: 0
   criticalStrikeChance: 1
   damageOverTimeDamageMultiplier: 1
+  experienceGainMultiplier: 1
+  manaGainMuliplier: 1
   statusEffects: []
+  onRoomEnterEffects: []
   anims: []
   hpGrowth: 240
   spGrowth: 0
@@ -259,6 +265,7 @@ MonoBehaviour:
   baseAttackDamageGrowth: 20
   defenceGrwoth: 0
   movementSpeedGrowth: 0
+  magicPowerGrowth: 0
   gameObjectThatDamagedMeLast: {fileID: 0}
   uiHeigthOffset: 0.16
 --- !u!58 &8276288782881259568
@@ -329,16 +336,18 @@ MonoBehaviour:
   attackDirection: {x: 0, y: 0}
   fxMaterial: {fileID: 2100000, guid: fcc2bba536fbdfe4dbeecdf5a667f722, type: 2}
   wanderCooldownTimer: 0
+  wanderPosition: {x: 0, y: 0}
   pathfinding: 1
   randomChance: 0
   statusEffect_Stunned: 0
   cancleUpdate: 0
   isHopping: 0
   direction: {x: 0, y: 0}
+  skills: []
   disableMovement: 0
   targetIsFollowTarget: 1
   bodyTransform: {fileID: 0}
---- !u!114 &1735208251709261120
+--- !u!114 &-2021765811203077152
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -347,10 +356,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8276288782881259578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7933edda9507d62439baa1ac360f8942, type: 3}
+  m_Script: {fileID: 11500000, guid: 697e7e344ee749b4d883f38a2d6ab673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
-  inactiveArtifacts: []
   isPlayerInventory: 0
   artifactItemsCount: 0

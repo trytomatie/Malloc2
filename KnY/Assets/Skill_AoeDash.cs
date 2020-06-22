@@ -125,7 +125,7 @@ class Skill_AoeDash : Skill
         fx3.transform.up = -(mousePosOnActivation - (Vector2)source.transform.position);
         damageObject.GetComponent<Animator>().SetFloat("DamageAnimation", 1);
         damageObject.transform.up = mousePosOnActivation - (Vector2)source.transform.position;
-        damageObject.GetComponent<DamageObject>().SetValues((int)(sourceStatus.totalAttackDamage * damageMutliplicator), sourceStatus.CriticalStrikeChance, 0.1f, 0.2f, source, 3);
+        damageObject.GetComponent<DamageObject>().SetValues((int)(sourceStatus.TotalAttackDamage * damageMutliplicator), sourceStatus.CriticalStrikeChance, 0.1f, 0.2f, source, 3);
         damageObject.GetComponent<DamageObject>().SetKnockbackParameters(0.6f, 0.35f);
         sourceStatus.ApplyStatusEffect(new StatusEffect_HiddenSlow(Casttime, 0.65f));
 

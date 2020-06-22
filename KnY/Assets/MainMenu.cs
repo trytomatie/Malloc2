@@ -6,11 +6,14 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject buyButton;
+    public Image contractImage;
     // Start is called before the first frame update
     void Start()
     {
         GameObject.Find("DifficultyDropDown").GetComponent<Dropdown>().value = Director.GetInstance().difficultyScaling;
         GameObject.Find("ContractDropDown").GetComponent<Dropdown>().value = (int)Director.GetInstance().characterClass;
+        Api.AddManaGem(0);
         SetDifficulty();
         SetSeed();
     }
@@ -23,11 +26,19 @@ public class MainMenu : MonoBehaviour
 
     public void StartButton()
     {
-        SceneManager.LoadScene("Level1");
+        int i = GameObject.Find("ContractDropDown").GetComponent<Dropdown>().value;
+        if (Api.ContractUnlocks[(Statusmanager.CharacterClass)i] == -1)
+        {
+            SceneManager.LoadScene("Tutorial");
+        }
     }
     public void AncientLabyrinthButton()
     {
-        SceneManager.LoadScene("AncientLabyrinth");
+        int i = GameObject.Find("ContractDropDown").GetComponent<Dropdown>().value;
+        if (Api.ContractUnlocks[(Statusmanager.CharacterClass)i] == -1)
+        {
+            SceneManager.LoadScene("AncientLabyrinth");
+        }
     }
 
     public void IntroButton()
@@ -47,7 +58,31 @@ public class MainMenu : MonoBehaviour
 
     public void SetContract()
     {
-        Director.SetContact();
+        int i = GameObject.Find("ContractDropDown").GetComponent<Dropdown>().value;
+        if(Api.ContractUnlocks[(Statusmanager.CharacterClass)i] != -1)
+        {
+            buyButton.SetActive(true);
+            buyButton.GetComponent<Text>().text = "Buy for " + Api.ContractUnlocks[(Statusmanager.CharacterClass)i] + " Mana Gems";
+            contractImage.color = new Color32(66, 66, 66, 255);
+        }
+        else
+        {
+            buyButton.SetActive(false);
+            contractImage.color = new Color32(255, 255, 255, 255);
+        }
+        Director.SetContact(i);
+    }
+
+    public void BuyContract()
+    {
+        int i = GameObject.Find("ContractDropDown").GetComponent<Dropdown>().value;
+        if(Api.ManaGems >= Api.ContractUnlocks[(Statusmanager.CharacterClass)i])
+        {
+            Api.ManaGems -= Api.ContractUnlocks[(Statusmanager.CharacterClass)i];
+            Api.ContractUnlocks[(Statusmanager.CharacterClass)i] = -1;
+        }
+        Api.SaveCurrent();
+        SetContract();
     }
 
     public void SetSeed()

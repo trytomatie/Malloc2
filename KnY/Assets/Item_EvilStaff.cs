@@ -10,8 +10,8 @@ public class Item_EvilStaff : Item {
         this.itemId = 37;
         this.attribute = "Dark";
         this.itemName = "Evil Staff";
-        this.description = "Increases Magic Power";
-        this.detailedDescription = "Increases Magic Power by " + magicPowerGain + " per stack";
+        this.description = "Increases Intellect";
+        this.detailedDescription = "Increases Intellect by " + magicPowerGain + " per stack";
         this.series.Add(ItemSeries.Series.Curse);
         this.series.Add(ItemSeries.Series.Spellblade);
         this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
@@ -19,12 +19,12 @@ public class Item_EvilStaff : Item {
 
     public override void ApplyEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().MagicPower += magicPowerGain * stacks;
+        g.GetComponent<Statusmanager>().Intellect += magicPowerGain * stacks;
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().MagicPower -= magicPowerGain * stacks;
+        g.GetComponent<Statusmanager>().Intellect -= magicPowerGain * stacks;
     }
 
 }

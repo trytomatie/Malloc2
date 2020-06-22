@@ -1,0 +1,834 @@
+fileFormatVersion: 2
+guid: 35d17526e15df9c43a2f85a2994d786e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2869540361070405974
+    second: spr_CrystalBabyWalk_0-sheet_0
+  - first:
+      213: 3233119145304531954
+    second: spr_CrystalBabyWalk_0-sheet_1
+  - first:
+      213: 8319448156082560661
+    second: spr_CrystalBabyWalk_0-sheet_2
+  - first:
+      213: 6917026754154638712
+    second: spr_CrystalBabyWalk_0-sheet_3
+  - first:
+      213: -6471125666405084540
+    second: spr_CrystalBabyWalk_0-sheet_4
+  - first:
+      213: -6485657333427234106
+    second: spr_CrystalBabyWalk_0-sheet_5
+  - first:
+      213: 4095094514586426311
+    second: spr_CrystalBabyWalk_0-sheet_6
+  - first:
+      213: 7703613383505769332
+    second: spr_CrystalBabyWalk_0-sheet_7
+  - first:
+      213: 77890658954237382
+    second: spr_CrystalBabyWalk_0-sheet_8
+  - first:
+      213: -4518943467034025028
+    second: spr_CrystalBabyWalk_0-sheet_9
+  - first:
+      213: 8856484097442872094
+    second: spr_CrystalBabyWalk_0-sheet_10
+  - first:
+      213: 2182285810711948739
+    second: spr_CrystalBabyWalk_0-sheet_11
+  - first:
+      213: -7226902299215554097
+    second: spr_CrystalBabyWalk_0-sheet_12
+  - first:
+      213: 4358189544320823257
+    second: spr_CrystalBabyWalk_0-sheet_13
+  - first:
+      213: -7513313141947850372
+    second: spr_CrystalBabyWalk_0-sheet_14
+  - first:
+      213: -6487120469779031101
+    second: spr_CrystalBabyWalk_0-sheet_15
+  - first:
+      213: 2243730199592465389
+    second: spr_CrystalBabyWalk_0-sheet_16
+  - first:
+      213: -7274147789549645898
+    second: spr_CrystalBabyWalk_0-sheet_17
+  - first:
+      213: 2101809442086466254
+    second: spr_CrystalBabyWalk_0-sheet_18
+  - first:
+      213: -3823847462312600612
+    second: spr_CrystalBabyWalk_0-sheet_19
+  - first:
+      213: 4075207761015024589
+    second: spr_CrystalBabyWalk_0-sheet_20
+  - first:
+      213: 6597921355975665076
+    second: spr_CrystalBabyWalk_0-sheet_21
+  - first:
+      213: 3613910803984328106
+    second: spr_CrystalBabyWalk_0-sheet_22
+  - first:
+      213: -8130855418375177288
+    second: spr_CrystalBabyWalk_0-sheet_23
+  - first:
+      213: 440580609586379426
+    second: spr_CrystalBabyWalk_0-sheet_24
+  - first:
+      213: -6594590042885999195
+    second: spr_CrystalBabyWalk_0-sheet_25
+  - first:
+      213: 3538939642511622778
+    second: spr_CrystalBabyWalk_0-sheet_26
+  - first:
+      213: -2500176792496144991
+    second: spr_CrystalBabyWalk_0-sheet_27
+  - first:
+      213: -1188155435456228201
+    second: spr_CrystalBabyWalk_0-sheet_28
+  - first:
+      213: -105047479537591083
+    second: spr_CrystalBabyWalk_0-sheet_29
+  - first:
+      213: 7782002817200564344
+    second: spr_CrystalBabyWalk_0-sheet_30
+  - first:
+      213: -7329452022998681363
+    second: spr_CrystalBabyWalk_0-sheet_31
+  - first:
+      213: -1233088113522817882
+    second: spr_CrystalBabyWalk_0-sheet_32
+  - first:
+      213: 2607442761154316340
+    second: spr_CrystalBabyWalk_0-sheet_33
+  - first:
+      213: 2340122460387762005
+    second: spr_CrystalBabyWalk_0-sheet_34
+  - first:
+      213: 4091991894754701676
+    second: spr_CrystalBabyWalk_0-sheet_35
+  - first:
+      213: -1850497373736553312
+    second: spr_CrystalBabyWalk_0-sheet_36
+  - first:
+      213: -7743888524991139259
+    second: spr_CrystalBabyWalk_0-sheet_37
+  - first:
+      213: -5488205649209011490
+    second: spr_CrystalBabyWalk_0-sheet_38
+  - first:
+      213: -2257294299701484234
+    second: spr_CrystalBabyWalk_0-sheet_39
+  - first:
+      213: 3870449301408099898
+    second: spr_CrystalBabyWalk_0-sheet_40
+  - first:
+      213: -6417846544793269493
+    second: spr_CrystalBabyWalk_0-sheet_41
+  - first:
+      213: -7146567565448284902
+    second: spr_CrystalBabyWalk_0-sheet_42
+  - first:
+      213: 6759215683589663173
+    second: spr_CrystalBabyWalk_0-sheet_43
+  - first:
+      213: -3005440348916778015
+    second: spr_CrystalBabyWalk_0-sheet_44
+  - first:
+      213: -2123792369985448190
+    second: spr_CrystalBabyWalk_0-sheet_45
+  - first:
+      213: -3615131130924872566
+    second: spr_CrystalBabyWalk_0-sheet_46
+  - first:
+      213: 4047802870049174362
+    second: spr_CrystalBabyWalk_0-sheet_47
+  - first:
+      213: -1760025612270342748
+    second: spr_CrystalBabyWalk_0-sheet_48
+  - first:
+      213: 3190912778736900928
+    second: spr_CrystalBabyWalk_0-sheet_49
+  - first:
+      213: 9021097557649410255
+    second: spr_CrystalBabyWalk_0-sheet_50
+  - first:
+      213: -2460924865037902366
+    second: spr_CrystalBabyWalk_0-sheet_51
+  - first:
+      213: 1160006671428840312
+    second: spr_CrystalBabyWalk_0-sheet_52
+  - first:
+      213: 8378915513803027251
+    second: spr_CrystalBabyWalk_0-sheet_53
+  - first:
+      213: -7135165414424856933
+    second: spr_CrystalBabyWalk_0-sheet_54
+  - first:
+      213: 6049542694555166214
+    second: spr_CrystalBabyWalk_0-sheet_55
+  - first:
+      213: 4429350954779765040
+    second: spr_CrystalBabyWalk_0-sheet_56
+  - first:
+      213: -1744585222904696671
+    second: spr_CrystalBabyWalk_0-sheet_57
+  - first:
+      213: 5753909582311002781
+    second: spr_CrystalBabyWalk_0-sheet_58
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 134
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6596f3241c7a2d720800000000000000
+      internalID: 2869540361070405974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_1
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 134
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f3246c9bb85edc20800000000000000
+      internalID: 3233119145304531954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 134
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59e5496050e947370800000000000000
+      internalID: 8319448156082560661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 134
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87da2475f273eff50800000000000000
+      internalID: 6917026754154638712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_4
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 134
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 482130ded71f136a0800000000000000
+      internalID: -6471125666405084540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_5
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 134
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ca992a84015ef5a0800000000000000
+      internalID: -6485657333427234106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_6
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 134
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cb1397a3c2b4d830800000000000000
+      internalID: 4095094514586426311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_7
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 134
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4737eca8e8bb8ea60800000000000000
+      internalID: 7703613383505769332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_8
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 134
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c5d9424429b41100800000000000000
+      internalID: 77890658954237382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 67
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb36d5febdc7941c0800000000000000
+      internalID: -4518943467034025028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_10
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 67
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1b7afaec5d88ea70800000000000000
+      internalID: 8856484097442872094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_11
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 67
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cd6cd1f169094e10800000000000000
+      internalID: 2182285810711948739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_12
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 67
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc99dcc06a2e4bb90800000000000000
+      internalID: -7226902299215554097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_13
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 67
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9df6015cc466b7c30800000000000000
+      internalID: 4358189544320823257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_14
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 67
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c71acef21895bb790800000000000000
+      internalID: -7513313141947850372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_15
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 67
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cbd7af8d4e19f5a0800000000000000
+      internalID: -6487120469779031101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_16
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 67
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de3768e8ab4532f10800000000000000
+      internalID: 2243730199592465389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_17
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 67
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bf433020290d0b90800000000000000
+      internalID: -7274147789549645898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec2302d3d802b2d10800000000000000
+      internalID: 2101809442086466254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_19
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 0
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdb149d1ef6feeac0800000000000000
+      internalID: -3823847462312600612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_20
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcb27350edb0e8830800000000000000
+      internalID: 4075207761015024589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_21
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 0
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b5a4e61486809b50800000000000000
+      internalID: 6597921355975665076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_22
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa5ae699ab0372230800000000000000
+      internalID: 3613910803984328106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_23
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 0
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bbffab7316692f80800000000000000
+      internalID: -8130855418375177288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyWalk_0-sheet_24
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 56
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aa3259eab14d1600800000000000000
+      internalID: 440580609586379426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures:
+    - texture: {fileID: 2800000, guid: 472e30af595fc7f44ab211e8d77db5ff, type: 3}
+      name: _emission
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

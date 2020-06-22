@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 7691277236368854181}
   - component: {fileID: 7869144413122803579}
   - component: {fileID: -4115955097000964925}
+  - component: {fileID: -4413842791187189712}
   m_Layer: 0
   m_Name: ZombieFollower
   m_TagString: Untagged
@@ -249,6 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d19854395c0f24384b1615f8b67340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterClass: 0
   faction: 1
   level: 1
   maxHp: 1500
@@ -266,6 +268,7 @@ MonoBehaviour:
   movementSpeedMultiplier: 1
   isDead: 0
   mana: 0
+  experinece: 0
   maxExperience: 100
   intangible: 0
   baseAttackSpeed: 1
@@ -273,9 +276,13 @@ MonoBehaviour:
   baseAttackDamage: 20
   baseAttackDamageMultiplyier: 1
   totalAttackDamage: 0
+  magicPower: 0
   criticalStrikeChance: 1
   damageOverTimeDamageMultiplier: 1
+  experienceGainMultiplier: 1
+  manaGainMuliplier: 1
   statusEffects: []
+  onRoomEnterEffects: []
   anims: []
   hpGrowth: 500
   spGrowth: 0
@@ -284,9 +291,9 @@ MonoBehaviour:
   baseAttackDamageGrowth: 25
   defenceGrwoth: 1
   movementSpeedGrowth: 0.02
+  magicPowerGrowth: 0
   gameObjectThatDamagedMeLast: {fileID: 0}
   uiHeigthOffset: 0.16
-  followers: []
 --- !u!50 &4099386691832577031
 Rigidbody2D:
   serializedVersion: 4
@@ -300,7 +307,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 6.94
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -410,14 +417,32 @@ MonoBehaviour:
   attackCooldownTimer: 0
   attackSpeedTimer: 0
   attackDirection: {x: 0, y: 0}
+  fxMaterial: {fileID: 0}
   wanderCooldownTimer: 0
+  wanderPosition: {x: 0, y: 0}
   pathfinding: 1
   randomChance: 0
   statusEffect_Stunned: 0
   cancleUpdate: 0
   isHopping: 0
   direction: {x: 0, y: 0}
+  skills: []
   disableMovement: 0
-  bodyTransform: {fileID: 0}
+  targetIsFollowTarget: 1
   followTarget: {fileID: 0}
+  bodyTransform: {fileID: 0}
   leachRange: 0.29
+--- !u!114 &-4413842791187189712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4099386691832577026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697e7e344ee749b4d883f38a2d6ab673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerInventory: 0
+  artifactItemsCount: 0

@@ -132,6 +132,10 @@ public class MapGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        if (Director.GetInstance().isMobile)
+        {
+            debug_GenerateWholeMap = true;
+        }
         Debug.Log(Director.globalRandomSeed);
         SetSeeds();
         GenerateNewMap();
@@ -318,6 +322,9 @@ public class MapGenerator : MonoBehaviour
                 break;
             case 5:
                 searchedType = ChunkSettings.ChunkType.Spawn;
+                break;
+            case 6:
+                searchedType = ChunkSettings.ChunkType.Trader;
                 break;
         }
         for (int o = 0; o < chunkTiles.Count; o++)
@@ -669,6 +676,7 @@ public class MapGenerator : MonoBehaviour
         int numberOfTreasureChunks = map.numberOfTreasureChunks;
         int numberOfStandardChunks = map.numberOfStandardChunks;
         int numberOfSpecialChunks = map.numberOfSpecialChunks;
+        int numberOfTraderChunks = map.numberOfTraderChunks;
         bool spawnChunkSet = false;
         int timeout = 0;
         while (numberOfBossChunks > 0 && timeout < 1000)
@@ -725,6 +733,17 @@ public class MapGenerator : MonoBehaviour
             {
                 numberOfSpecialChunks--;
                 myMap[v] = 4;
+            }
+            timeout++;
+        }
+        timeout = 0;
+        while (numberOfTraderChunks > 0 && timeout < 1000)
+        {
+            Vector2 v = myMap.ElementAt(seed.Next(0, myMap.Count)).Key;
+            if (myMap[v] == 0)
+            {
+                numberOfTraderChunks--;
+                myMap[v] = 6;
             }
             timeout++;
         }

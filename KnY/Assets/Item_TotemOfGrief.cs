@@ -12,6 +12,7 @@ public class Item_TotemOfGrief : Item {
         this.attribute = "Water";
         this.itemName = "Totem Of Grief";
         this.description = "Increases Attackspeed!";
+        this.detailedDescription = string.Format("Increases Attackspeed by {0}% per stack", attackSpeedBonus);
         this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
     }
 

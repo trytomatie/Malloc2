@@ -17,6 +17,7 @@ public class Item_Blight : ProcItem {
         this.itemName = "Blight";
         this.attribute = "Dark";
         this.description = "Chance to inflict Blight onhit.";
+        this.detailedDescription = string.Format("Inflicts Blight on hit : {0}% + {1}% chanche to hit per stack, 5 + {2} duration per stack, 5 + {3} damage per stack", procChance, procChancePerStack, durrationPerStack, damagePerStack);
         this.procChance = baseProcChance;
         this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
         this.series.Add(ItemSeries.Series.Curse);

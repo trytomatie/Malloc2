@@ -67,7 +67,7 @@ class Skill_Solatii : Skill
     {
         yield return new WaitForSeconds(0.4f);
         Statusmanager s = source.GetComponent<Statusmanager>();
-        int healAmount = (int)(source.GetComponent<Statusmanager>().MaxHp * 0.30f);
+        int healAmount = (int)(source.GetComponent<Statusmanager>().TotalMaxHp * 0.30f);
         s.Hp += healAmount;
         Director.GetInstance().SpawnDamageText(healAmount.ToString(), source.transform, Color.green, false);
         yield return new WaitForSeconds(0.4f);

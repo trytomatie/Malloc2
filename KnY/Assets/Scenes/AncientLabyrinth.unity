@@ -591,6 +591,7 @@ MonoBehaviour:
   - {fileID: 4901484312855246618, guid: 8295aa43a8731014981584cf20b87c09, type: 3}
   - {fileID: 4901484312855246618, guid: 72d1f75777f1cd84f88a1949eebbbc3e, type: 3}
   - {fileID: 4901484312855246618, guid: dcf9f8b2b67f6444fa47fe1107c2bf62, type: 3}
+  - {fileID: 4901484312855246618, guid: 5a3bf8e8adcfad0469e95b6c44c427a5, type: 3}
   mapSpawnCard: {fileID: 11400000, guid: 29176116c4ba8e44daa439428e981fda, type: 2}
   spawnTable:
   - {fileID: 11400000, guid: 35b52c857c5a8af45a70bd391e91d7d4, type: 2}
@@ -801,14 +802,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &2021715887 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1887257620313748272, guid: 0569a9e23b97956469374cb303821481,
+  m_CorrespondingSourceObject: {fileID: 2021715887, guid: 0569a9e23b97956469374cb303821481,
     type: 3}
   m_PrefabInstance: {fileID: 1887257618308914335}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2021715878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7933edda9507d62439baa1ac360f8942, type: 3}
+  m_Script: {fileID: 11500000, guid: 697e7e344ee749b4d883f38a2d6ab673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1887257618308914335
@@ -907,6 +908,10 @@ PrefabInstance:
       propertyPath: inventorysThatHavePermission.Array.data[0]
       value: 
       objectReference: {fileID: 2021715887}
+    - target: {fileID: 332768914, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 2021715887}
     - target: {fileID: 348312883, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
       propertyPath: inventorysThatHavePermission.Array.data[0]
       value: 
@@ -927,6 +932,10 @@ PrefabInstance:
       propertyPath: inventorysThatHavePermission.Array.data[0]
       value: 
       objectReference: {fileID: 2021715887}
+    - target: {fileID: 832288490, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 2021715887}
     - target: {fileID: 942874887, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
       propertyPath: inventorysThatHavePermission.Array.data[0]
       value: 
@@ -939,11 +948,19 @@ PrefabInstance:
       propertyPath: inventorysThatHavePermission.Array.data[0]
       value: 
       objectReference: {fileID: 2021715887}
+    - target: {fileID: 1087748799, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 2021715887}
     - target: {fileID: 1139217361, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
       propertyPath: inventorysThatHavePermission.Array.data[0]
       value: 
       objectReference: {fileID: 2021715887}
     - target: {fileID: 1217611965, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 2021715887}
+    - target: {fileID: 1369059702, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
       propertyPath: inventorysThatHavePermission.Array.data[0]
       value: 
       objectReference: {fileID: 2021715887}
@@ -964,6 +981,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2021715887}
     - target: {fileID: 2029516241, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 2021715887}
+    - target: {fileID: 2048024718, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
+      propertyPath: inventorysThatHavePermission.Array.data[0]
+      value: 
+      objectReference: {fileID: 2021715887}
+    - target: {fileID: 2089938694, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
       propertyPath: inventorysThatHavePermission.Array.data[0]
       value: 
       objectReference: {fileID: 2021715887}
@@ -1137,11 +1162,6 @@ PrefabInstance:
       propertyPath: mySkillManger
       value: 
       objectReference: {fileID: 2021715879}
-    - target: {fileID: 7694051092110133704, guid: 8e7ed1752d676c04abdb20f6920127cb,
-        type: 3}
-      propertyPath: playerInventory
-      value: 
-      objectReference: {fileID: 2021715887}
     - target: {fileID: 7694051092641456674, guid: 8e7ed1752d676c04abdb20f6920127cb,
         type: 3}
       propertyPath: m_Camera
@@ -1256,6 +1276,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694051093577512721, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: m_Text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7808060791010863914, guid: 8e7ed1752d676c04abdb20f6920127cb,
         type: 3}
@@ -1395,6 +1420,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Camera Holder
+      objectReference: {fileID: 0}
+    - target: {fileID: 8003006590928700766, guid: c0401e36f1566484e831d9f83a21a16b,
+        type: 3}
+      propertyPath: m_Volume
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0401e36f1566484e831d9f83a21a16b, type: 3}

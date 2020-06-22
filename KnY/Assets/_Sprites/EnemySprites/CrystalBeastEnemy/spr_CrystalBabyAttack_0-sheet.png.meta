@@ -1,0 +1,1602 @@
+fileFormatVersion: 2
+guid: 0c727eb8da01ab149b049fac3f97ea20
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6863668466810122682
+    second: spr_CrystalBabyAttack_0-sheet_0
+  - first:
+      213: -4938364875238083833
+    second: spr_CrystalBabyAttack_0-sheet_1
+  - first:
+      213: -7986259640311847849
+    second: spr_CrystalBabyAttack_0-sheet_2
+  - first:
+      213: -1375280247999495895
+    second: spr_CrystalBabyAttack_0-sheet_3
+  - first:
+      213: -3439755708448748207
+    second: spr_CrystalBabyAttack_0-sheet_4
+  - first:
+      213: 5946133118548834701
+    second: spr_CrystalBabyAttack_0-sheet_5
+  - first:
+      213: -4609575280482801248
+    second: spr_CrystalBabyAttack_0-sheet_6
+  - first:
+      213: -6521423086634780666
+    second: spr_CrystalBabyAttack_0-sheet_7
+  - first:
+      213: 7212306505551418116
+    second: spr_CrystalBabyAttack_0-sheet_8
+  - first:
+      213: 2071975324982716279
+    second: spr_CrystalBabyAttack_0-sheet_9
+  - first:
+      213: -373355904061640516
+    second: spr_CrystalBabyAttack_0-sheet_10
+  - first:
+      213: -229924121075004617
+    second: spr_CrystalBabyAttack_0-sheet_11
+  - first:
+      213: -5092993374430313912
+    second: spr_CrystalBabyAttack_0-sheet_12
+  - first:
+      213: -7668109961913706175
+    second: spr_CrystalBabyAttack_0-sheet_13
+  - first:
+      213: 426282572417230703
+    second: spr_CrystalBabyAttack_0-sheet_14
+  - first:
+      213: 3160200646466443360
+    second: spr_CrystalBabyAttack_0-sheet_15
+  - first:
+      213: -3862254885089223046
+    second: spr_CrystalBabyAttack_0-sheet_16
+  - first:
+      213: 8292559054791405453
+    second: spr_CrystalBabyAttack_0-sheet_17
+  - first:
+      213: -5967968487662015569
+    second: spr_CrystalBabyAttack_0-sheet_18
+  - first:
+      213: 6743082137389971537
+    second: spr_CrystalBabyAttack_0-sheet_19
+  - first:
+      213: 741496295033226930
+    second: spr_CrystalBabyAttack_0-sheet_20
+  - first:
+      213: -9071438893495031682
+    second: spr_CrystalBabyAttack_0-sheet_21
+  - first:
+      213: -8642542411186144459
+    second: spr_CrystalBabyAttack_0-sheet_22
+  - first:
+      213: -2888575777345807016
+    second: spr_CrystalBabyAttack_0-sheet_23
+  - first:
+      213: 6995718450930566995
+    second: spr_CrystalBabyAttack_0-sheet_24
+  - first:
+      213: -7209899212069937175
+    second: spr_CrystalBabyAttack_0-sheet_25
+  - first:
+      213: -843224871962144818
+    second: spr_CrystalBabyAttack_0-sheet_26
+  - first:
+      213: 3761357930191433693
+    second: spr_CrystalBabyAttack_0-sheet_27
+  - first:
+      213: -2794234701910490241
+    second: spr_CrystalBabyAttack_0-sheet_28
+  - first:
+      213: 3022039488168828041
+    second: spr_CrystalBabyAttack_0-sheet_29
+  - first:
+      213: -6713228911984545172
+    second: spr_CrystalBabyAttack_0-sheet_30
+  - first:
+      213: 6338222555574343798
+    second: spr_CrystalBabyAttack_0-sheet_31
+  - first:
+      213: -3802252539583459433
+    second: spr_CrystalBabyAttack_0-sheet_32
+  - first:
+      213: -3904021676623207787
+    second: spr_CrystalBabyAttack_0-sheet_33
+  - first:
+      213: -1711837834795465516
+    second: spr_CrystalBabyAttack_0-sheet_34
+  - first:
+      213: -2053455292996385296
+    second: spr_CrystalBabyAttack_0-sheet_35
+  - first:
+      213: -2825633430533227412
+    second: spr_CrystalBabyAttack_0-sheet_36
+  - first:
+      213: -6576498841848652896
+    second: spr_CrystalBabyAttack_0-sheet_37
+  - first:
+      213: 4221229043624436643
+    second: spr_CrystalBabyAttack_0-sheet_38
+  - first:
+      213: 8768081889655537007
+    second: spr_CrystalBabyAttack_0-sheet_39
+  - first:
+      213: 5689619244617881474
+    second: spr_CrystalBabyAttack_0-sheet_40
+  - first:
+      213: 1664440541334646436
+    second: spr_CrystalBabyAttack_0-sheet_41
+  - first:
+      213: -2859545142585393257
+    second: spr_CrystalBabyAttack_0-sheet_42
+  - first:
+      213: -2051566539438068365
+    second: spr_CrystalBabyAttack_0-sheet_43
+  - first:
+      213: -3277471413510268150
+    second: spr_CrystalBabyAttack_0-sheet_44
+  - first:
+      213: -3214408815334277781
+    second: spr_CrystalBabyAttack_0-sheet_45
+  - first:
+      213: -4541194873116942703
+    second: spr_CrystalBabyAttack_0-sheet_46
+  - first:
+      213: 2611493337908044621
+    second: spr_CrystalBabyAttack_0-sheet_47
+  - first:
+      213: 941673322510016730
+    second: spr_CrystalBabyAttack_0-sheet_48
+  - first:
+      213: 1474878468008644232
+    second: spr_CrystalBabyAttack_0-sheet_49
+  - first:
+      213: 9002308324636856381
+    second: spr_CrystalBabyAttack_0-sheet_50
+  - first:
+      213: -8922957014074421832
+    second: spr_CrystalBabyAttack_0-sheet_51
+  - first:
+      213: -3742312150678707067
+    second: spr_CrystalBabyAttack_0-sheet_52
+  - first:
+      213: 673680916131352379
+    second: spr_CrystalBabyAttack_0-sheet_53
+  - first:
+      213: 7627385578516077539
+    second: spr_CrystalBabyAttack_0-sheet_54
+  - first:
+      213: 2913128096926037996
+    second: spr_CrystalBabyAttack_0-sheet_55
+  - first:
+      213: -5617740816188429382
+    second: spr_CrystalBabyAttack_0-sheet_56
+  - first:
+      213: -6158513091880784755
+    second: spr_CrystalBabyAttack_0-sheet_57
+  - first:
+      213: -5015958017602620393
+    second: spr_CrystalBabyAttack_0-sheet_58
+  - first:
+      213: 4871924676076805155
+    second: spr_CrystalBabyAttack_0-sheet_59
+  - first:
+      213: 1689506242046662409
+    second: spr_CrystalBabyAttack_0-sheet_60
+  - first:
+      213: -8671079824362631106
+    second: spr_CrystalBabyAttack_0-sheet_61
+  - first:
+      213: -5253502119885367674
+    second: spr_CrystalBabyAttack_0-sheet_62
+  - first:
+      213: -111434637070639549
+    second: spr_CrystalBabyAttack_0-sheet_63
+  - first:
+      213: 8578007842072194870
+    second: spr_CrystalBabyAttack_0-sheet_64
+  - first:
+      213: 6055609508527226256
+    second: spr_CrystalBabyAttack_0-sheet_65
+  - first:
+      213: 5885609420275135930
+    second: spr_CrystalBabyAttack_0-sheet_66
+  - first:
+      213: -7186889594305241341
+    second: spr_CrystalBabyAttack_0-sheet_67
+  - first:
+      213: 2009764659094486702
+    second: spr_CrystalBabyAttack_0-sheet_68
+  - first:
+      213: 5831824714881022098
+    second: spr_CrystalBabyAttack_0-sheet_69
+  - first:
+      213: 5529373427557572825
+    second: spr_CrystalBabyAttack_0-sheet_70
+  - first:
+      213: -7397486300066193476
+    second: spr_CrystalBabyAttack_0-sheet_71
+  - first:
+      213: -6102629666463950843
+    second: spr_CrystalBabyAttack_0-sheet_72
+  - first:
+      213: -4819843517006714792
+    second: spr_CrystalBabyAttack_0-sheet_73
+  - first:
+      213: -3077214435056775971
+    second: spr_CrystalBabyAttack_0-sheet_74
+  - first:
+      213: 4393362594357686207
+    second: spr_CrystalBabyAttack_0-sheet_75
+  - first:
+      213: 2176153023031834344
+    second: spr_CrystalBabyAttack_0-sheet_76
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 444
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64e8bbb05e95fb0a0800000000000000
+      internalID: -6863668466810122682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_1
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 444
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 703fa208f47677bb0800000000000000
+      internalID: -4938364875238083833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 444
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7546c2f8b2b1b2190800000000000000
+      internalID: -7986259640311847849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 444
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9210167a6e50aece0800000000000000
+      internalID: -1375280247999495895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_4
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 444
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15d4ac368688340d0800000000000000
+      internalID: -3439755708448748207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_5
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 444
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d89f94e3198e48250800000000000000
+      internalID: 5946133118548834701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_6
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 444
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a9a66974bf7700c0800000000000000
+      internalID: -4609575280482801248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_7
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 444
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6083a1331404f75a0800000000000000
+      internalID: -6521423086634780666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_8
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 444
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40391aaed82471460800000000000000
+      internalID: 7212306505551418116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 370
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77728fc849221cc10800000000000000
+      internalID: 2071975324982716279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_10
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 370
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb07c9b88c291daf0800000000000000
+      internalID: -373355904061640516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_11
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 370
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73bc706ea352fccf0800000000000000
+      internalID: -229924121075004617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_12
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 370
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 842c9a1828d0259b0800000000000000
+      internalID: -5092993374430313912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_13
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 370
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 149df75fd96659590800000000000000
+      internalID: -7668109961913706175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_14
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 370
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f676ed6bdb57ae500800000000000000
+      internalID: 426282572417230703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_15
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 370
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06897979eb94bdb20800000000000000
+      internalID: 3160200646466443360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_16
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 370
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7e5d3625a3866ac0800000000000000
+      internalID: -3862254885089223046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_17
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 370
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8f6ac34686151370800000000000000
+      internalID: 8292559054791405453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 296
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fab2e26b7448d2da0800000000000000
+      internalID: -5967968487662015569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_19
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 296
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15839624a7d349d50800000000000000
+      internalID: 6743082137389971537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_20
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 296
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b649b3a3f25a4a00800000000000000
+      internalID: 741496295033226930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_21
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 296
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e78e09f8366cb1280800000000000000
+      internalID: -9071438893495031682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_22
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 296
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53b700997758f0880800000000000000
+      internalID: -8642542411186144459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_23
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 296
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85d518482a7b9e7d0800000000000000
+      internalID: -2888575777345807016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_24
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 296
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 357cc50cdd8c51160800000000000000
+      internalID: 6995718450930566995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_25
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 296
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9efd336cdda41fb90800000000000000
+      internalID: -7209899212069937175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_26
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 296
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecf0ce052734c44f0800000000000000
+      internalID: -843224871962144818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 222
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddfa826eb17033430800000000000000
+      internalID: 3761357930191433693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_28
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 222
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f734e85d752e839d0800000000000000
+      internalID: -2794234701910490241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_29
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 222
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98c918d27e070f920800000000000000
+      internalID: 3022039488168828041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_30
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 222
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c62774d6fd1d5d2a0800000000000000
+      internalID: -6713228911984545172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_31
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 222
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 678906c35d3e5f750800000000000000
+      internalID: 6338222555574343798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_32
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 222
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79f0dcfd57fab3bc0800000000000000
+      internalID: -3802252539583459433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_33
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 222
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 592e27138f022d9c0800000000000000
+      internalID: -3904021676623207787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_34
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 222
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d441f71f845e38e0800000000000000
+      internalID: -1711837834795465516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_35
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 222
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f50eca6a49a083e0800000000000000
+      internalID: -2053455292996385296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 148
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6c3993ad5559c8d0800000000000000
+      internalID: -2825633430533227412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_37
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 148
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0abd7d9a5259bb4a0800000000000000
+      internalID: -6576498841848652896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_38
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 148
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a3ebcc3371d49a30800000000000000
+      internalID: 4221229043624436643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_39
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 148
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6d347af50c7ea970800000000000000
+      internalID: 8768081889655537007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_40
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 148
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 287dcaede8695fe40800000000000000
+      internalID: 5689619244617881474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_41
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 148
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aea2009ad7491710800000000000000
+      internalID: 1664440541334646436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_42
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 148
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79ff005e7dad058d0800000000000000
+      internalID: -2859545142585393257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_43
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 148
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37d67bf1a1f5783e0800000000000000
+      internalID: -2051566539438068365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_44
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 148
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0b193c3d151482d0800000000000000
+      internalID: -3277471413510268150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 74
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6dbd1f86302463d0800000000000000
+      internalID: -3214408815334277781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_46
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 74
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19e1a0cb25f6af0c0800000000000000
+      internalID: -4541194873116942703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_47
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 74
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d43ee43ca53ed3420800000000000000
+      internalID: 2611493337908044621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_48
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 74
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad0ebaac5ee711d00800000000000000
+      internalID: 941673322510016730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_49
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 74
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88e07840722d77410800000000000000
+      internalID: 1474878468008644232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_50
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 74
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d30958899bf9eec70800000000000000
+      internalID: 9002308324636856381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_51
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 74
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bd830e1fd94b2480800000000000000
+      internalID: -8922957014074421832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_52
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 74
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 584ea243de2a01cc0800000000000000
+      internalID: -3742312150678707067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_53
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 74
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3f08f15935695900800000000000000
+      internalID: 673680916131352379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_54
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eb5364a5cae9d960800000000000000
+      internalID: 7627385578516077539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_55
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 0
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce77c7ad1928d6820800000000000000
+      internalID: 2913128096926037996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_56
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 0
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abb20e2ed76c902b0800000000000000
+      internalID: -5617740816188429382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_57
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 0
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8c6addd8f0988aa0800000000000000
+      internalID: -6158513091880784755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_CrystalBabyAttack_0-sheet_58
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 0
+        width: 57
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 714f58832ccb36ab0800000000000000
+      internalID: -5015958017602620393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures:
+    - texture: {fileID: 2800000, guid: 8f874f7c076448a4f9ea0867919d774a, type: 3}
+      name: _emission
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

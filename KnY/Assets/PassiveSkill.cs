@@ -95,7 +95,23 @@ public class PassiveSkill
         }
         else if (i > 0 && i < PassiveSkillAttribute.Weight(ref i, "PassiveSkillAttribute_IncreaseMagicAttack"))
         {
-            psa = new PassiveSkillAttribute_IncreaseMagicAttack(UnityEngine.Random.Range(1 * currentFloor, 10 * currentFloor));
+            psa = new PassiveSkillAttribute_IncreaseMagicAttack(UnityEngine.Random.Range(5 * currentFloor, 10 * currentFloor));
+        }
+        else if (i > 0 && i < PassiveSkillAttribute.Weight(ref i, "PassiveSkillAttribute_IncreaseSTR"))
+        {
+            psa = new PassiveSkillAttribute_IncreaseSTR(UnityEngine.Random.Range(5 * currentFloor, 20 * currentFloor));
+        }
+        else if (i > 0 && i < PassiveSkillAttribute.Weight(ref i, "PassiveSkillAttribute_IncreaseINT"))
+        {
+            psa = new PassiveSkillAttribute_IncreaseINT(UnityEngine.Random.Range(5 * currentFloor, 20 * currentFloor));
+        }
+        else if (i > 0 && i < PassiveSkillAttribute.Weight(ref i, "PassiveSkillAttribute_IncreaseDEX"))
+        {
+            psa = new PassiveSkillAttribute_IncreaseDEX(UnityEngine.Random.Range(5 * currentFloor, 20 * currentFloor));
+        }
+        else if (i > 0 && i < PassiveSkillAttribute.Weight(ref i, "PassiveSkillAttribute_IncreasePIE"))
+        {
+            psa = new PassiveSkillAttribute_IncreasePIE(UnityEngine.Random.Range(5 * currentFloor, 20 * currentFloor));
         }
         AddAtribute(psa);
     }
@@ -131,16 +147,17 @@ public class PassiveSkill
             case Statusmanager.CharacterClass.Warrior:
 
                 PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseATK"] = 120;
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseSTR"] = 120;
                 PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseHP"] = 120;
                 PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseSP"] = 20;
-                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseMagicAttack"] = 50;
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseINT"] = 20;
                 PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_Striker"] = 20;
 
                 p.attributeNumberWeight[2] = 0;
                 p.attributeNumberWeight[3] = 10;
 
 
-                p.AddAtribute(new PassiveSkillAttribute_IncreaseATK(UnityEngine.Random.Range(10 * currentFloor, 20 * currentFloor)));
+                p.AddAtribute(new PassiveSkillAttribute_IncreaseSTR(UnityEngine.Random.Range(10 * currentFloor, 50 * currentFloor)));
                 p.AddAtribute(new PassiveSkillAttribute_IncreaseHP(UnityEngine.Random.Range(10 * currentFloor, 10 * currentFloor)));
                 skip = 2;
                 foreach (float weight in p.attributeNumberWeight)
@@ -158,11 +175,13 @@ public class PassiveSkill
                 break;
             case Statusmanager.CharacterClass.Mage:
                 PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseATK"] = 60;
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseINT"] = 150;
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreasePIE"] = 60;
                 PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseSP"] = 120;
-                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseMagicAttack"] = 150;
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseMagicAttack"] = 100;
                 PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_Glass"] = 20;
-                p.AddAtribute(new PassiveSkillAttribute_IncreaseMagicAttack(UnityEngine.Random.Range(10 * currentFloor, 20 * currentFloor)));
-                p.AddAtribute(new PassiveSkillAttribute_IncreaseSP(UnityEngine.Random.Range(10 * currentFloor, 20 * currentFloor)));
+                p.AddAtribute(new PassiveSkillAttribute_IncreaseINT(UnityEngine.Random.Range(10 * currentFloor, 50 * currentFloor)));
+                p.AddAtribute(new PassiveSkillAttribute_IncreaseSP(UnityEngine.Random.Range(10 * currentFloor, 50 * currentFloor)));
                 skip = 2;
                 foreach (float weight in p.attributeNumberWeight)
                 {
@@ -179,11 +198,13 @@ public class PassiveSkill
                 break;
             case Statusmanager.CharacterClass.Priest:
                 PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseATK"] = 40;
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreasePIE"] = 150;
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseINT"] = 70;
                 PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseSP"] = 100;
                 PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseHP"] = 120;
-                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseMagicAttack"] = 150;
-                p.AddAtribute(new PassiveSkillAttribute_IncreaseMagicAttack(UnityEngine.Random.Range(10 * currentFloor, 20 * currentFloor)));
-                p.AddAtribute(new PassiveSkillAttribute_IncreaseSP(UnityEngine.Random.Range(20 * currentFloor, 50 * currentFloor)));
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseMagicAttack"] = 70;
+                p.AddAtribute(new PassiveSkillAttribute_IncreasePIE(UnityEngine.Random.Range(30 + 10 * currentFloor, 50 * currentFloor)));
+                p.AddAtribute(new PassiveSkillAttribute_IncreaseSP(UnityEngine.Random.Range(20 * currentFloor, 70 * currentFloor)));
                 skip = 2;
                 foreach (float weight in p.attributeNumberWeight)
                 {
@@ -203,9 +224,32 @@ public class PassiveSkill
                 PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseATK"] = 40;
                 PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseMagicAttack"] = 40;
                 PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseHP"] = 190;
-                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_Scout"] = 80;
-                p.AddAtribute(new PassiveSkillAttribute_MinionRest(UnityEngine.Random.Range(30 * currentFloor, 100 * currentFloor)));
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_Scout"] = 40;
+                p.AddAtribute(new PassiveSkillAttribute_MinionRest(UnityEngine.Random.Range(60 * currentFloor, 200 * currentFloor)));
                 skip = 1;
+                foreach (float weight in p.attributeNumberWeight)
+                {
+                    if (skip > 0)
+                    {
+                        skip--;
+                        continue;
+                    }
+                    if (weight < rndInt)
+                    {
+                        p.AddRandomAttribute(currentFloor);
+                    }
+                }
+                break;
+            case Statusmanager.CharacterClass.Paladin:
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseATK"] = 40;
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseSTR"] = 100;
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreasePIE"] = 100;
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseMagicAttack"] = 40;
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseHP"] = 250;
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseDEF"] = 250;
+                p.AddAtribute(new PassiveSkillAttribute_IncreaseHP(UnityEngine.Random.Range(10 * currentFloor, 100 * currentFloor)));
+                p.AddAtribute(new PassiveSkillAttribute_IncreaseDEF(UnityEngine.Random.Range(5 * currentFloor, 30 * currentFloor)));
+                skip = 2;
                 foreach (float weight in p.attributeNumberWeight)
                 {
                     if (skip > 0)

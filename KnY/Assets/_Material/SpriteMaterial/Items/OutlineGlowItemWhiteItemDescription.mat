@@ -29,10 +29,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Alpha: 0.082
-    - _Fade: 1
+    - _Alpha: 0.119
+    - _Fade: 0.919
     - _OutlineThickness: 1
     - _ShowOutline: 1
     m_Colors:
     - _OutlineColour: {r: 1.5806497, g: 1.5806497, b: 1.5806497, a: 1}
-    - _Sensitivity: {r: 5.74, g: 4.36, b: 3.09, a: 17.19}
+    - _Sensitivity: {r: 5, g: 5, b: 448.4, a: 145.37}
+    - _color: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []

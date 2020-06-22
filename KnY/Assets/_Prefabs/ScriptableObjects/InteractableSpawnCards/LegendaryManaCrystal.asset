@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   instance: {fileID: 3875135025429602740, guid: 845417cf85e3e874dbef687e2b24e2f7,
     type: 3}
-  chanceToSpawn: 2343
-  cost: 96
+  chanceToSpawn: 0
+  cost: 60

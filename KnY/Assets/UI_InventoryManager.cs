@@ -31,6 +31,16 @@ public class UI_InventoryManager : MonoBehaviour
         FillInventoryDisplays();
     }
 
+    private void OnDisable()
+    {
+        UI_ArtifactManager.ClearInventoryDisplays();
+        UI_ArtifactManager.FillInventoryDisplays();
+        UI_InventoryManager.ClearInventoryDisplays();
+        UI_InventoryManager.FillInventoryDisplays();
+        UI_ItemSeriesManager.ClearItemSeriesDisplays();
+        UI_ItemSeriesManager.FillItemSeriesDisplays();
+    }
+
     /// <summary>
     /// Clears Inventory-Displays
     /// </summary>
@@ -66,56 +76,26 @@ public class UI_InventoryManager : MonoBehaviour
             {
                 continue;
             }
-            foreach (Item item in instance.PlayerInventory.items)
+            for(int i = 0; i < 3; i++)
             {
-                if(!item.artifactItem)
+                for (int o = 0; o < 21; o++)
                 {
-                    int i = 0;
-                    foreach (GameObject inventorySlot in instance.inventorySlots)
-                    {
-                        GameObject target = inventorySlot;
-                        i++;
-                        if (item.position == i)
-                        { 
-                            if (target != null)
-                            {
-                                CreateInventoryDisplay(instance, item, i, target);
-                                break;
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    int i = 0;
-                    foreach (GameObject inventorySlot in instance.activeArtifactSlots)
-                    {
-                        GameObject target = inventorySlot;
-                        i++;
-                        if (item.position == i)
+                    if(PlayerInventory.items[i, o] != null)
+                    { 
+                        if(i == 0)
                         {
-                            if (target != null)
-                            {
-                                CreateInventoryDisplay(instance, item, i, target);
-                                break;
-                            }
+                            instance.activeArtifactSlots[o].GetComponent<UI_InventoryDropHandler>().IsFrozen = false;
+                            CreateInventoryDisplay(instance, PlayerInventory.items[i, o], instance.activeArtifactSlots[o]);
                         }
-                    }
-                }
-            }
-            foreach(Item item in instance.PlayerInventory.inactiveArtifacts)
-            {
-                int i = 0;
-                foreach (GameObject inventorySlot in instance.inactiveArtifactSlots)
-                {
-                    GameObject target = inventorySlot;
-                    i++;
-                    if (item.position == i )
-                    {
-                        if (target != null)
+                        else if (i == 1)
                         {
-                            CreateInventoryDisplay(instance, item, i, target);
-                            break;
+                            instance.inactiveArtifactSlots[o].GetComponent<UI_InventoryDropHandler>().IsFrozen = false;
+                            CreateInventoryDisplay(instance, PlayerInventory.items[i, o], instance.inactiveArtifactSlots[o]);
+                        }
+                        else if(i == 2)
+                        {
+                            instance.inventorySlots[o].GetComponent<UI_InventoryDropHandler>().IsFrozen = false;
+                            CreateInventoryDisplay(instance, PlayerInventory.items[i, o], instance.inventorySlots[o]);
                         }
                     }
                 }
@@ -123,9 +103,8 @@ public class UI_InventoryManager : MonoBehaviour
         }
     }
 
-    private static void CreateInventoryDisplay(UI_InventoryManager instance, Item item, int i, GameObject target)
+    private static void CreateInventoryDisplay(UI_InventoryManager instance, Item item, GameObject target)
     {
-        item.position = i;
         GameObject instanceDisplay = Instantiate(instance.inventoryDisplayInstantiationTarget, target.transform);
         instanceDisplay.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, -1);
         instanceDisplay.GetComponent<Image>().sprite = FindObjectOfType<ItemIcons>().GetIcon(item.itemId);
@@ -135,7 +114,7 @@ public class UI_InventoryManager : MonoBehaviour
         instance.InventoryDisplays.Add(instanceDisplay);
     }
 
-    public Inventory PlayerInventory
+    public static Inventory PlayerInventory
     {
         get
         {

@@ -9,4 +9,5 @@ public class ScriptableObject_MapSpawnCard : ScriptableObject
     public int numberOfStandardChunks;
     public int numberOfBossChunks;
     public int numberOfSpecialChunks;
+    public int numberOfTraderChunks;
 }

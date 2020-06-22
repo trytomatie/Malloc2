@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Map1
   m_EditorClassIdentifier: 
   numberOfTreasureChunks: 6
-  numberOfStandardChunks: 3
+  numberOfStandardChunks: 8
   numberOfBossChunks: 1
   numberOfSpecialChunks: 2
+  numberOfTraderChunks: 2

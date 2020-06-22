@@ -27,7 +27,14 @@ public class UI_PassiveSkillExchangeManager : MonoBehaviour
 
     public static void OpenSkillExchangeWindow(PassiveSkill newSkill)
     {
-        cost = 5 * GameObject.FindObjectOfType<MapGenerator>().currentFloor;
+        if(GameObject.FindObjectOfType<MapGenerator>() != null)
+        { 
+            cost = 5 * GameObject.FindObjectOfType<MapGenerator>().currentFloor;
+        }
+        else
+        {
+            cost = 5;
+        }
         foreach (UI_PassiveSkillExchangeManager instance in Instances)
         {
             instance.costText.text = "Reroll \n(Cost: " + cost+")";
@@ -74,7 +81,15 @@ public class UI_PassiveSkillExchangeManager : MonoBehaviour
             foreach (UI_PassiveSkillExchangeManager instance in Instances)
             {
                 instance.costText.text = "Reroll \n(Cost: " + cost+")";
-                instance.newPassiveSkill.Skill = PassiveSkill.GenerateRandomPassive(GameObject.FindObjectOfType<MapGenerator>().currentFloor, MySkillmanager.GetComponent<Statusmanager>().characterClass);
+                if (GameObject.FindObjectOfType<MapGenerator>() != null)
+                {
+
+                    instance.newPassiveSkill.Skill = PassiveSkill.GenerateRandomPassive(GameObject.FindObjectOfType<MapGenerator>().currentFloor, MySkillmanager.GetComponent<Statusmanager>().characterClass);
+                }
+                else
+                {
+                    instance.newPassiveSkill.Skill = PassiveSkill.GenerateRandomPassive(1, MySkillmanager.GetComponent<Statusmanager>().characterClass);
+                }
             }
         }
     }

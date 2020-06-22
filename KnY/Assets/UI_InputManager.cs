@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UI_InputManager : MonoBehaviour
@@ -15,6 +16,7 @@ public class UI_InputManager : MonoBehaviour
     public UI_ActiveSkillExchangeManager activeSkillExchangeManager;
     public GameObject statsPanel;
     public Text stats;
+    public GameObject deathUI;
     public static UI_InputManager Instance
     {
         get
@@ -64,33 +66,9 @@ public class UI_InputManager : MonoBehaviour
         }
         if (Input.GetButtonDown("Escape"))
         {
-            if (traderInventory.activeSelf)
-            {
-                CloseTraderInventory();
-            }
-            else if(infoPopup.activeSelf)
-            {
-                CloseInfoPopup();
-            }
-            else if(inventory.activeSelf)
-            {
-                CloseInventory();
-            }else if(passiveSkillExchangeManager.gameObject.activeSelf)
-            {
-                UI_PassiveSkillExchangeManager.CloseSkillExchagneWindow();
-            }
-            else if (activeSkillExchangeManager.gameObject.activeSelf)
-            {
-                UI_ActiveSkillExchangeManager.CloseSkillExchagneWindow();
-            }
-            else if (statsPanel.activeSelf)
-            {
-                statsPanel.SetActive(false);
-            }
-            UI_ArtifactDisplayDescriptionPopup.DespawnAllInstances();
-            GameObject.Find("ItemContextMenu").transform.position = new Vector3(10000, 10000, 10000);
+            EscapeActions();
         }
-        if(Input.GetButtonDown("CharacterMenu"))
+        if (Input.GetButtonDown("CharacterMenu"))
         {
             if(statsPanel.activeSelf)
             {
@@ -106,6 +84,41 @@ public class UI_InputManager : MonoBehaviour
         {
             RefreshStatsText();
         }
+
+        if(Input.GetKeyDown(KeyCode.V))
+        {
+            GetComponent<Canvas>().enabled = !GetComponent<Canvas>().enabled;
+        }
+    }
+
+    public void EscapeActions()
+    {
+        if (traderInventory.activeSelf)
+        {
+            CloseTraderInventory();
+        }
+        else if (infoPopup.activeSelf)
+        {
+            CloseInfoPopup();
+        }
+        else if (inventory.activeSelf)
+        {
+            CloseInventory();
+        }
+        else if (passiveSkillExchangeManager.gameObject.activeSelf)
+        {
+            UI_PassiveSkillExchangeManager.CloseSkillExchagneWindow();
+        }
+        else if (activeSkillExchangeManager.gameObject.activeSelf)
+        {
+            UI_ActiveSkillExchangeManager.CloseSkillExchagneWindow();
+        }
+        else if (statsPanel.activeSelf)
+        {
+            statsPanel.SetActive(false);
+        }
+        UI_ArtifactDisplayDescriptionPopup.DespawnAllInstances();
+        GameObject.Find("ItemContextMenu").transform.position = new Vector3(10000, 10000, 10000);
     }
 
     public void OpenInventory()
@@ -151,13 +164,17 @@ public class UI_InputManager : MonoBehaviour
         Statusmanager s = GameObject.Find("Player").GetComponent<Statusmanager>();
         string statsText = "";
         statsText += String.Format("Class: {0} \n", s.characterClass.ToString());
-        statsText += String.Format("Hp: {0} / {1}\n", s.Hp, s.maxHp);
+        statsText += String.Format("Hp: {0} / {1}\n", s.Hp, s.TotalMaxHp);
         statsText += String.Format("Sp: {0} / {1}\n", s.Sp, s.maxSp);
-        statsText += String.Format("Attack Power: {0}( x {1})\n", s.totalAttackDamage,s.BaseAttackDamageMultiplyier);
+        statsText += String.Format("Attack Power: {0}( x {1})\n", s.TotalAttackDamage,s.TotalAttackDamageMultiplyier);
         statsText += String.Format("Magic Power: {0}( x {1})\n", s.TotalMagicPower, s.MagicPowerMultiplier);
         statsText += String.Format("Def: {0} \n", s.defence);
         statsText += String.Format("HpRegen.: {0}\n", s.healthRegeneration);
         statsText += String.Format("SpRegen.: {0}\n", s.spRegeneration);
+        statsText += String.Format("Str: {0}\n", s.Strength);
+        statsText += String.Format("Dex.: {0}\n", s.Dexterity);
+        statsText += String.Format("Int.: {0}\n", s.Intellect);
+        statsText += String.Format("Pie.: {0}\n", s.Piety);
         stats.text = statsText;
     }
 
@@ -175,6 +192,11 @@ public class UI_InputManager : MonoBehaviour
     public void LoadNextLevel()
     {
         GameObject.FindObjectOfType<MapGenerator>().GenerateNewMap();
+    }
+
+    public void GoBackToMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
 

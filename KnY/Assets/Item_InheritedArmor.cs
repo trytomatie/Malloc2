@@ -12,7 +12,8 @@ public class Item_InheritedArmor : Item {
         this.attribute = "Earth";
         this.itemName = "Inherited Armor";
         this.description = "Increases Max Hp and Defence";
-        this.series.Add(ItemSeries.Series.Inheritance);
+        this.detailedDescription = string.Format("Increases Max Hp by {0} per stack and Defence by {1} per stack", hpGain, defence);
+        this.series.Add(ItemSeries.Series.Minionmancer);
         this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
     }
 

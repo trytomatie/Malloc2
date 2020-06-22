@@ -19,8 +19,8 @@ GameObject:
   - component: {fileID: 2203658910592134350}
   - component: {fileID: 8369975091726062967}
   - component: {fileID: 8331704649275698857}
-  - component: {fileID: 5952083582035855487}
   - component: {fileID: 2771695505322255825}
+  - component: {fileID: -740608657029959601}
   m_Layer: 0
   m_Name: ThunderBirdBoss
   m_TagString: Enemy
@@ -168,7 +168,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 8.7
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -242,6 +242,7 @@ MonoBehaviour:
   movementSpeedMultiplier: 1
   isDead: 0
   mana: 10
+  experinece: 0
   maxExperience: 7000
   intangible: 0
   baseAttackSpeed: 1
@@ -249,6 +250,7 @@ MonoBehaviour:
   baseAttackDamage: 0
   baseAttackDamageMultiplyier: 1
   totalAttackDamage: 0
+  magicPower: 0
   criticalStrikeChance: 1
   damageOverTimeDamageMultiplier: 1
   experienceGainMultiplier: 1
@@ -263,6 +265,7 @@ MonoBehaviour:
   baseAttackDamageGrowth: 32
   defenceGrwoth: 2
   movementSpeedGrowth: 0
+  magicPowerGrowth: 0
   gameObjectThatDamagedMeLast: {fileID: 0}
   uiHeigthOffset: 0.16
 --- !u!114 &2203658910592134350
@@ -306,22 +309,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.23735255}
   serializedVersion: 2
   m_Radius: 0.13020214
---- !u!114 &5952083582035855487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2771695505322255824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7933edda9507d62439baa1ac360f8942, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  inactiveArtifacts: []
-  isPlayerInventory: 0
-  artifactItemsCount: 0
 --- !u!114 &2771695505322255825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,6 +336,7 @@ MonoBehaviour:
   attackDirection: {x: 0, y: 0}
   fxMaterial: {fileID: 2100000, guid: 86f7c5495e1cb414289c9ac3e5f7dbcf, type: 2}
   wanderCooldownTimer: 0
+  wanderPosition: {x: 0, y: 0}
   pathfinding: 1
   randomChance: 0
   statusEffect_Stunned: 0
@@ -359,3 +347,17 @@ MonoBehaviour:
   disableMovement: 0
   targetIsFollowTarget: 1
   bodyTransform: {fileID: 0}
+--- !u!114 &-740608657029959601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2771695505322255824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697e7e344ee749b4d883f38a2d6ab673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerInventory: 0
+  artifactItemsCount: 0

@@ -24,7 +24,9 @@ public class ItemSeries
         Scout = 6,
         Minionmancer = 7,
         Spellblade = 8,
-        Magus = 9
+        Magus = 9,
+        Hero = 10,
+        Vendorstrike = 11
     }
 
     public virtual void ApplyEffect(GameObject g)
@@ -66,6 +68,15 @@ public class ItemSeries
                         break;
                     case Series.Spellblade:
                         UpdateSeries(mySeries, Series.Spellblade, new ItemSeries_SpellBlade());
+                        break;
+                    case Series.Minionmancer:
+                        UpdateSeries(mySeries, Series.Minionmancer, new ItemSeries_Minonmancer());
+                        break;
+                    case Series.Vendorstrike:
+                        UpdateSeries(mySeries, Series.Vendorstrike, new ItemSeries_VendorStrike());
+                        break;
+                    case Series.Magus:
+                        UpdateSeries(mySeries, Series.Magus, new ItemSeries_Magus());
                         break;
                 }
             }

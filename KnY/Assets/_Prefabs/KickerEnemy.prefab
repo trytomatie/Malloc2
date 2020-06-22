@@ -19,8 +19,8 @@ GameObject:
   - component: {fileID: 8914914620656077109}
   - component: {fileID: 1226321019533308044}
   - component: {fileID: 1624940452918578002}
-  - component: {fileID: 4014633598542753156}
   - component: {fileID: 4853703814304497706}
+  - component: {fileID: 3705790135167627894}
   m_Layer: 0
   m_Name: KickerEnemy
   m_TagString: Enemy
@@ -242,13 +242,14 @@ MonoBehaviour:
   movementSpeedMultiplier: 1
   isDead: 0
   mana: 3
+  experinece: 0
   maxExperience: 100
   intangible: 0
   baseAttackSpeed: 1
   bonusAttackSpeed: 0
   baseAttackDamage: 20
   baseAttackDamageMultiplyier: 1
-  totalAttackDamage: 0
+  magicPower: 0
   criticalStrikeChance: 1
   damageOverTimeDamageMultiplier: 1
   experienceGainMultiplier: 1
@@ -263,6 +264,7 @@ MonoBehaviour:
   baseAttackDamageGrowth: 16
   defenceGrwoth: 0
   movementSpeedGrowth: 0.02
+  magicPowerGrowth: 0
   gameObjectThatDamagedMeLast: {fileID: 0}
   uiHeigthOffset: 0.07
 --- !u!114 &8914914620656077109
@@ -306,22 +308,6 @@ CircleCollider2D:
   m_Offset: {x: -0.010662347, y: -0.097711086}
   serializedVersion: 2
   m_Radius: 0.03409213
---- !u!114 &4014633598542753156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4853703814304497707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7933edda9507d62439baa1ac360f8942, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  inactiveArtifacts: []
-  isPlayerInventory: 0
-  artifactItemsCount: 0
 --- !u!114 &4853703814304497706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,6 +335,7 @@ MonoBehaviour:
   attackDirection: {x: 0, y: 0}
   fxMaterial: {fileID: 0}
   wanderCooldownTimer: 0
+  wanderPosition: {x: 0, y: 0}
   pathfinding: 1
   randomChance: 0
   statusEffect_Stunned: 0
@@ -359,3 +346,17 @@ MonoBehaviour:
   disableMovement: 0
   targetIsFollowTarget: 1
   bodyTransform: {fileID: 0}
+--- !u!114 &3705790135167627894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4853703814304497707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 697e7e344ee749b4d883f38a2d6ab673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayerInventory: 0
+  artifactItemsCount: 0

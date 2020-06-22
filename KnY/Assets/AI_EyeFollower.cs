@@ -4,11 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AI_EyeFollower : AI_BaseAI
+public class AI_EyeFollower : AI_BaseFollowerAI
 {
 
     public Transform bodyTransform;
-    public GameObject followTarget;
     public float leachRange;
 	
     void Start()

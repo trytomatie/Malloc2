@@ -153,7 +153,7 @@ public class PlayerControllerRetiered : MonoBehaviour
             GameObject damageObject = Instantiate(PublicGameResources.GetResource().damageObject, PlayerPosition2D() + attackDirection * 0.15f, Quaternion.identity);
             damageObject.GetComponent<Animator>().SetFloat("DamageAnimation", 7);
             damageObject.transform.up = mousePosition - (Vector2)transform.position;
-            damageObject.GetComponent<DamageObject>().SetValues(_myStatus.totalAttackDamage + 10, GetComponent<Statusmanager>().CriticalStrikeChance, 0.2f, 0.4f, gameObject, 1);
+            damageObject.GetComponent<DamageObject>().SetValues(_myStatus.TotalAttackDamage + 10, GetComponent<Statusmanager>().CriticalStrikeChance, 0.2f, 0.4f, gameObject, 1);
 
             attackMoveMod = 0.15f;
             castTime = 0.4f;
@@ -165,7 +165,7 @@ public class PlayerControllerRetiered : MonoBehaviour
             GameObject damageObject = Instantiate(PublicGameResources.GetResource().damageObject, PlayerPosition2D() + attackDirection * 0.15f, Quaternion.identity);
             damageObject.GetComponent<Animator>().SetFloat("DamageAnimation", 1);
             damageObject.transform.up = mousePosition - (Vector2)transform.position;
-            damageObject.GetComponent<DamageObject>().SetValues(_myStatus.totalAttackDamage, GetComponent<Statusmanager>().CriticalStrikeChance, 0.1f, 0.2f, gameObject, 2);
+            damageObject.GetComponent<DamageObject>().SetValues(_myStatus.TotalAttackDamage, GetComponent<Statusmanager>().CriticalStrikeChance, 0.1f, 0.2f, gameObject, 2);
             damageObject.GetComponent<DamageObject>().SetKnockbackParameters(0.4f, 0.25f);
             attackMoveMod = 0.5f;
             // Calculate Attackspeed
@@ -188,7 +188,7 @@ public class PlayerControllerRetiered : MonoBehaviour
             SetAttackParameters(attackDirection.x, attackDirection.y, 3);
             GameObject damageObject = Instantiate(PublicGameResources.GetResource().damageObject, PlayerPosition2D(), Quaternion.identity);
             damageObject.GetComponent<Animator>().SetFloat("DamageAnimation", 2);
-            damageObject.GetComponent<DamageObject>().SetValues(_myStatus.totalAttackDamage, GetComponent<Statusmanager>().CriticalStrikeChance, 0.2f, 0.4f, gameObject, 3);
+            damageObject.GetComponent<DamageObject>().SetValues(_myStatus.TotalAttackDamage, GetComponent<Statusmanager>().CriticalStrikeChance, 0.2f, 0.4f, gameObject, 3);
             damageObject.GetComponent<DamageObject>().SetKnockbackParameters(1.2f, 0.15f);
             GameObject damageObject2 = Instantiate(PublicGameResources.GetResource().damageObject, PlayerPosition2D(), Quaternion.identity);
             damageObject2.GetComponent<Animator>().SetFloat("DamageAnimation", 2);
@@ -468,7 +468,7 @@ public class PlayerControllerRetiered : MonoBehaviour
         {
             GameObject damageObject = Instantiate(PublicGameResources.GetResource().damageObject, targetList[i].transform.position, Quaternion.identity);
             damageObject.GetComponent<Animator>().SetFloat("DamageAnimation", 1);
-            damageObject.GetComponent<DamageObject>().SetValues(_myStatus.totalAttackDamage * 5, GetComponent<Statusmanager>().CriticalStrikeChance, 0.0f, 0.4f, gameObject, 4);
+            damageObject.GetComponent<DamageObject>().SetValues(_myStatus.TotalAttackDamage * 5, GetComponent<Statusmanager>().CriticalStrikeChance, 0.0f, 0.4f, gameObject, 4);
         }
         // Remove Stun Effect from all targets
         foreach(StatusEffect_Stunned effect in effectInstances)
@@ -483,7 +483,7 @@ public class PlayerControllerRetiered : MonoBehaviour
         yield return new WaitForSeconds(0.15f);
         GameObject damageObject = Instantiate(PublicGameResources.GetResource().damageObject, PlayerPosition2D(), Quaternion.identity);
         damageObject.GetComponent<Animator>().SetFloat("DamageAnimation", 2);
-        damageObject.GetComponent<DamageObject>().SetValues(_myStatus.totalAttackDamage, GetComponent<Statusmanager>().CriticalStrikeChance, 0.2f, 0.4f, gameObject, 3);
+        damageObject.GetComponent<DamageObject>().SetValues(_myStatus.TotalAttackDamage, GetComponent<Statusmanager>().CriticalStrikeChance, 0.2f, 0.4f, gameObject, 3);
         for (int i = 0; i < targetList.Count; i++)
         {
             float distance = 1000;
@@ -498,7 +498,7 @@ public class PlayerControllerRetiered : MonoBehaviour
                 SetAttackParameters(direction.x, direction.y, 3);
                 damageObject = Instantiate(PublicGameResources.GetResource().damageObject, PlayerPosition2D(), Quaternion.identity);
                 damageObject.GetComponent<Animator>().SetFloat("DamageAnimation", 2);
-                damageObject.GetComponent<DamageObject>().SetValues(_myStatus.totalAttackDamage * i, GetComponent<Statusmanager>().CriticalStrikeChance, 0.2f, 0.4f, gameObject, 3);
+                damageObject.GetComponent<DamageObject>().SetValues(_myStatus.TotalAttackDamage * i, GetComponent<Statusmanager>().CriticalStrikeChance, 0.2f, 0.4f, gameObject, 3);
                 damageObject.transform.up = direction;
                 yield return new WaitForSeconds(0.25f);
             }

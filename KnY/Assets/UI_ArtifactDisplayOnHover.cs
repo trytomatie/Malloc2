@@ -58,10 +58,15 @@ public class UI_ArtifactDisplayOnHover : MonoBehaviour, IPointerEnterHandler, IP
         }
         mouseEntered = true;
         DescriptionDisplay.GetComponent<RectTransform>().localScale = transform.parent.GetComponent<RectTransform>().localScale;
-        DescriptionDisplay.GetComponent<UI_ArtifactDisplayDescriptionPopup>().text.text = item.itemName + "\n"+ 
-            "Atribute: " +item.attribute + "\n" +
-            "Series: " + series + "\n\n"+ 
-            item.description;
+        string description = item.description;
+        if(Options.detailedDescriptions == 1 && item.detailedDescription != "")
+        {
+            description = item.detailedDescription;
+        }
+        DescriptionDisplay.GetComponent<UI_ArtifactDisplayDescriptionPopup>().text.text = item.itemName + "\n" +
+            "Atribute: " + item.attribute + "\n" +
+            "Series: " + series + "\n\n" +
+            description;
     }
 
     public void Update()

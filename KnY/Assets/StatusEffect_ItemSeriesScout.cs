@@ -16,6 +16,7 @@ public class StatusEffect_ItemSeriesScout : StatusEffect {
     {
         if(!effectApplied)
         {
+            effectApplied = true;
         }
     }
 

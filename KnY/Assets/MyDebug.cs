@@ -26,7 +26,9 @@ public class MyDebug : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
-            Instantiate(enemy2, (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
+            StatusEffect effect = Interactable_Goetze.GetDivineProtection(-1);
+            FindObjectOfType<PlayerController>().GetComponent<Statusmanager>().ApplyStatusEffect(effect);
+            UI_InfoTitleManager.Show("<Color=yellow>Divine Protection!!! </color>\n" + effect.statusName, effect.description, 3);
         }
         if (Input.GetKeyDown(KeyCode.KeypadPlus))
         {
@@ -42,10 +44,10 @@ public class MyDebug : MonoBehaviour {
         {
             Instantiate(chest, (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
         }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            SceneManager.LoadScene(0);
-        }
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    SceneManager.LoadScene(0);
+        //}
         if (Input.GetKeyDown(KeyCode.L))
         {
             FindObjectOfType<PlayerController>().GetComponent<Statusmanager>().Mana += 10000;

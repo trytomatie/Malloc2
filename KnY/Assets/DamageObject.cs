@@ -95,8 +95,8 @@ public class DamageObject : MonoBehaviour {
         if(procCoefficient > 0 && origin.GetComponent<Inventory>() != null)
         {
             int rnd = UnityEngine.Random.Range(1, 101);
-            List<Item> items = origin.GetComponent<Inventory>().items;
-            foreach(Item item in items)
+            List<Item> items = origin.GetComponent<Inventory>().ActiveItemList();
+            foreach (Item item in items)
             {
                 if(item.GetType().BaseType == typeof(ProcItem))
                 {

@@ -49,7 +49,7 @@ class Skill_Projectile : Skill
     {
         Statusmanager s = source.GetComponent<Statusmanager>();
         GameObject projectile = GameObject.Instantiate(PublicGameResources.GetResource().damageObject, source.transform.position,Quaternion.identity);
-        projectile.GetComponent<DamageObject>().SetValues(s.totalAttackDamage, s.criticalStrikeChance, 0, 10f, source, 6);
+        projectile.GetComponent<DamageObject>().SetValues(s.TotalAttackDamage, s.criticalStrikeChance, 0, 10f, source, 6);
         projectile.GetComponent<SpriteRenderer>().material = FxMaterial;
         projectile.GetComponent<Rigidbody2D>().velocity = Direction * projectileSpeed;
         projectile.transform.GetChild(5).GetComponent<CircleCollider2D>().radius = 0.05f;

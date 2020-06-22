@@ -17,10 +17,14 @@ public class Item_BigChonkerFairy : Item {
         this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
     }
 
+    public override void PickUpEffect(GameObject g)
+    {
+        g.GetComponent<Statusmanager>().Hp += hpGain * stacks;
+    }
     public override void ApplyEffect(GameObject g)
     {
         g.GetComponent<Statusmanager>().MaxHp += hpGain * stacks;
-        g.GetComponent<Statusmanager>().Hp += hpGain * stacks;
+
     }
 
     public override void RemoveEffect(GameObject g)

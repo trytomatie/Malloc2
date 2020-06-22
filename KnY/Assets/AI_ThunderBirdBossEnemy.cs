@@ -162,6 +162,7 @@ public class AI_ThunderBirdBossEnemy : AI_BaseAI
                 }
                 break;
         }
+        //BossBehaviour();
         UpdateTimers();
         if(internalAttackCooldown > 0)
         {
@@ -200,7 +201,7 @@ public class AI_ThunderBirdBossEnemy : AI_BaseAI
 
     private void BossBehaviour()
     {
-        if(sm.Hp / sm.MaxHp > 0.75f)
+        if(sm.Hp / sm.TotalMaxHp > 0.75f)
         {
             foreach(Skill s in skills)
             {
@@ -208,7 +209,7 @@ public class AI_ThunderBirdBossEnemy : AI_BaseAI
             }
             internalAttackCooldown = 3;
         }
-        if (sm.Hp / sm.MaxHp > 0.5f)
+        if (sm.Hp / sm.TotalMaxHp > 0.5f)
         {
             foreach (Skill s in skills)
             {
@@ -216,7 +217,7 @@ public class AI_ThunderBirdBossEnemy : AI_BaseAI
             }
             internalAttackCooldown = 2.5f;
         }
-        if (sm.Hp / sm.MaxHp > 0.25f)
+        if (sm.Hp / sm.TotalMaxHp > 0.25f)
         {
             foreach (Skill s in skills)
             {

@@ -42,7 +42,7 @@ public class AI_BaseAI : MonoBehaviour
 
 
     public float wanderCooldownTimer = 0;
-    private Vector2 wanderPosition;
+    public Vector2 wanderPosition;
 
     public bool pathfinding = true;
     [HideInInspector]
@@ -64,13 +64,13 @@ public class AI_BaseAI : MonoBehaviour
         Initialize();
     }
 
-    public void Initialize()
+    public virtual void Initialize()
     {
         rb = GetComponent<Rigidbody2D>();
         attackingAnimators.Add(GetComponent<Animator>());
         StartCoroutine(TimerThread());
     }
-    IEnumerator TimerThread()
+    public IEnumerator TimerThread()
     {
         while (true)
         {
@@ -142,6 +142,10 @@ public class AI_BaseAI : MonoBehaviour
 
     public void GoToWanderPositon()
     {
+        if(wanderPosition == Vector2.zero)
+        {
+            return;
+        }
         float wanderDistance = Vector2.Distance(wanderPosition, transform.position);
         rb.velocity = Vector2.zero;
         if (wanderDistance > 0.05f)
@@ -186,7 +190,7 @@ public class AI_BaseAI : MonoBehaviour
             Statusmanager s = GetComponent<Statusmanager>();
             gameObject.layer = 0;
             GameObject damageObject = Instantiate(PublicGameResources.GetResource().damageObject, transform);
-            damageObject.GetComponent<DamageObject>().SetValues(s.totalAttackDamage, s.CriticalStrikeChance, 0, time + 0.05f, gameObject, 6);
+            damageObject.GetComponent<DamageObject>().SetValues(s.TotalAttackDamage, s.CriticalStrikeChance, 0, time + 0.05f, gameObject, 6);
             damageObject.GetComponent<DamageObject>().SetKnockbackParameters(1, 0.25f);
             damageObject.GetComponent<DamageObject>().followParent = true;
             mode = Mode.Attack;

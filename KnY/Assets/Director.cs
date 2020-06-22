@@ -65,21 +65,27 @@ public class Director : MonoBehaviour {
             Destroy(gameObject);
             return;
         }
+
+        Api.ReadSaveData();
+        Api.ResetCurrent();
         globalRandom = new System.Random();
         Statusmanager.EnemyFactionEntities = new List<GameObject>();
         Statusmanager.PlayerFactionEntities = new List<GameObject>();
         Physics.IgnoreLayerCollision(12, 0);
         Physics.IgnoreLayerCollision(12, 12);
+        Options.RestorePlayerPrefs();
 
     }
 
     private void OnLevelWasLoaded(int level)
     {
-        if(level == 3 && isMobile)
+        if((level == 3 || level == 1 ) && isMobile)
         {
             GameObject.Find("Canvas").transform.GetChild(1).gameObject.SetActive(true);
 
         }
+        Options.ApplyMusicSettings();
+        print("I did shit");
     }
 
     // Update is called once per frame
@@ -295,9 +301,8 @@ public class Director : MonoBehaviour {
         GetInstance().difficultyScaling = i;
     }
 
-    public static void SetContact()
+    public static void SetContact(int i)
     {
-        int i = GameObject.Find("ContractDropDown").GetComponent<Dropdown>().value;
         GetInstance().characterClass = (Statusmanager.CharacterClass)i;
     }
 
@@ -314,4 +319,34 @@ public class Director : MonoBehaviour {
             globalRandomSeed = UnityEngine.Random.Range(0, 10000);
         }
     }
+
+    public static Vector2 RotateDirectionalVector(Vector2 direction,float angle)
+    {
+        float x = direction.x * Mathf.Cos(angle) + direction.y * Mathf.Sin(angle);
+        float y = -direction.x * Mathf.Sin(angle) + direction.y * Mathf.Cos(angle);
+        return new Vector2(x, y);
+    }
+
+
+    #region Options
+    public static void SetMusicVolume(Slider slider)
+    {
+        Options.musicVolume = slider.value;
+        Options.SavePlayerPrefs();
+    }
+
+    public static void SetDetailedDescription(Toggle toggle)
+    {
+        if (toggle.isOn)
+        {
+            Options.detailedDescriptions = 1;
+        }
+        else
+        {
+            Options.detailedDescriptions = 0;
+        }
+        Options.SavePlayerPrefs();
+
+    }
+    #endregion
 }

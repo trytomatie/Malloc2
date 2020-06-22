@@ -22,8 +22,11 @@ public class PublicGameResources : MonoBehaviour {
     public Material poisonMaterial;
     public Material fireMaterial;
     public Material slashMaterial;
+    public Material earthMaterial;
+    public Material smokeMaterial;
     public static int FLOOR_LAYER = -9999;
     public GameObject corruptedAmethystFollower;
+    public GameObject crystalSpider;
     public GameObject gazeFollower;
     public GameObject blackMarble;
     public GameObject itemContextMenuItem;

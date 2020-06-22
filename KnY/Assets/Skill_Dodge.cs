@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pathfinding;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,59 +52,69 @@ class Skill_Dodge : Skill
         }
         if (!hasHitUnpassableTerain)
         {
-            RaycastHit2D[] hits2 = Physics2D.CircleCastAll(ray.GetPoint(dashDistance), source.GetComponent<CircleCollider2D>().radius, Vector2.zero);
-            Debug.DrawLine((Vector2)source.transform.position + c.offset, ray.GetPoint(dashDistance), Color.blue, 1);
-            if (hits2.Length == 0)
+            // RaycastHit2D[] hits2 = Physics2D.CircleCastAll(ray.GetPoint(dashDistance), source.GetComponent<CircleCollider2D>().radius, new Vector2(direction.x,direction.y),0.01f );
+            bool isTerainOnEndPos = false;
+            foreach (RaycastHit2D hit in checkTerain)
+            {
+                if (hit.collider.bounds.Contains(ray.GetPoint(dashDistance)))
+                {
+                    isTerainOnEndPos = true;
+                    break;
+                }
+            }
+            if(!isTerainOnEndPos)
             {
                 targetPosition = (Vector2)ray.GetPoint(dashDistance + source.GetComponent<CircleCollider2D>().radius) - c.offset;
                 source.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_HiddenElusive(Casttime));
             }
-            else 
+            else
             {
-                bool isTerainOnEndPos = false;
-                foreach(RaycastHit2D hit in hits2)
+                bool noOverlap = true;
+                float invertedDistance = 0.02f;
+                Vector3 endpoint = Vector3.zero;
+                do
                 {
-                    if(hit.collider.gameObject.layer == 8 || hit.collider.gameObject.layer == 11)
-                    {
-                        isTerainOnEndPos = true;
+                    noOverlap = true;
+                    endpoint = ray.GetPoint(dashDistance - invertedDistance);
+                    RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(endpoint.x, endpoint.y), new Vector2(1,1), 0);
+                    foreach (RaycastHit2D hit in hits)
+                    { 
+                        if (hit.collider.gameObject.layer == 8 || hit.collider.gameObject.layer == 11)
+                        {
+                            Debug.DrawLine(new Vector3(endpoint.x, endpoint.y, 1), endpoint, Color.red, 10);
+                            noOverlap = false;
+                            break;
+                        }
                     }
-                }
-                if(!isTerainOnEndPos)
+                    invertedDistance += 0.02f;
+                } while (invertedDistance < dashDistance - 0.1f && noOverlap == false);
+                if(noOverlap == true)
                 {
-                    targetPosition = (Vector2)ray.GetPoint(dashDistance + source.GetComponent<CircleCollider2D>().radius) - c.offset;
-                    source.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_HiddenElusive(Casttime));
+                        source.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_HiddenElusive(Casttime));
+                        targetPosition = endpoint;
                 }
                 else
                 {
-                    Ray2D invertedRay = new Ray2D(ray.GetPoint(dashDistance + source.GetComponent<CircleCollider2D>().radius), -direction);
-                    float invertedDistance = 0;
-                    RaycastHit2D[] backTrackHits = new RaycastHit2D[0];
-                    do
-                    {
-                        invertedDistance += 0.02f;
-                        int layerMask = 1 << LayerMask.NameToLayer("MapCollision");
-                        layerMask = layerMask << LayerMask.NameToLayer("UnpasableMapCollision");
-                        backTrackHits = Physics2D.CircleCastAll(invertedRay.GetPoint(invertedDistance), source.GetComponent<CircleCollider2D>().radius*0.3f, Vector2.zero, 0, layerMask);
-                        foreach(RaycastHit2D backtrackhit in backTrackHits)
-                        {
-                            Debug.Log(backtrackhit.collider.gameObject);
-                        }
-                    }
-                    while (backTrackHits.Length != 0 && invertedDistance <= dashDistance -0.1f);
-                    if (backTrackHits.Length == 0)
-                    {
                         source.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_Intangible(Casttime));
-                        targetPosition = invertedRay.GetPoint(invertedDistance);
-                    }
-                    else
-                    {
-                        source.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_Intangible(Casttime));
-
-                    }
                 }
 
 
             }
+        }
+        if(Anim != null)
+        {
+            Anim.SetInteger("AnimationState", 4);
+        }
+
+        if(source.GetComponent<Statusmanager>().ContainsStatusEffect(new StatusEffect_DivineProtectionOfSwiftness()))
+        {
+            Cooldown = BaseCooldown / 2;
+            this.SpCost = 10;
+        }
+        else
+        {
+            Cooldown = BaseCooldown;
+            this.SpCost = 20;
         }
         base.ActivateSkill(source,direction, position, target);
     }
@@ -126,11 +137,11 @@ class Skill_Dodge : Skill
             if(source.GetComponent<Statusmanager>().ContainsStatusEffect(new StatusEffect_RollingThunder()))
             { 
                 GameObject projectile = GameObject.Instantiate(PublicGameResources.GetResource().damageObject, source.transform.position, Quaternion.identity);
-                projectile.GetComponent<DamageObject>().SetValues((int)(source.GetComponent<Statusmanager>().totalAttackDamage * 0.1f), 0, 0, 0.5f, source, 6);
+                projectile.GetComponent<DamageObject>().SetValues((int)(source.GetComponent<Statusmanager>().TotalAttackDamage * 0.1f), 0, 0, 0.5f, source, 6);
                 projectile.GetComponent<DamageObject>().procCoefficient = 0.1f;
                 projectile.transform.GetChild(5).GetComponent<CircleCollider2D>().radius = 0.15f;
                 projectile.GetComponent<Animator>().SetFloat("DamageAnimation", 0);
-                GameObject fx = GameObject.Instantiate(PublicGameResources.GetResource().damageFx, (Vector2)source.transform.position + new Vector2(0, 0.2f), Quaternion.identity);
+                GameObject fx = GameObject.Instantiate(PublicGameResources.GetResource().damageFx, (Vector2)source.transform.position + new Vector2(0, 0.2f) + source.GetComponent<Collider2D>().offset, Quaternion.identity);
                 fx.GetComponent<SpriteRenderer>().material = FxMaterial;
                 fx.GetComponent<Animator>().SetFloat("DamageAnimation", 6);
             }

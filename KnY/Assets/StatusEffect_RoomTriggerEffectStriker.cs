@@ -19,11 +19,14 @@ public class StatusEffect_RoomTriggerEffectStriker : StatusEffect {
     public override void ApplyEffect(GameObject g)
     {
             int i = 0;
-            foreach(Skill skill in g.GetComponent<SkillManager>().activeSkills)
+            foreach(Skill skill in g.GetComponent<SkillManager>().ActiveSkills)
             {
                 if (i >= 2)
                 {
-                    skill.CooldownTimer -= 10;
+                    if(skill != null)
+                    { 
+                        skill.CooldownTimer -= 10;
+                    }
                 }
                 i++;
             }

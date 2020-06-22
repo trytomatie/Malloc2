@@ -93,7 +93,7 @@ public class AI_Kicker : AI_BaseAI
             }
         }
         GameObject damageObject = Instantiate(PublicGameResources.GetResource().damageObject, (Vector2)bodyTransform.position + direction * 0.2f, Quaternion.identity);
-        damageObject.GetComponent<DamageObject>().SetValues(GetComponent<Statusmanager>().totalAttackDamage, GetComponent<Statusmanager>().CriticalStrikeChance, 0f, 0.07f, gameObject, 5);
+        damageObject.GetComponent<DamageObject>().SetValues(GetComponent<Statusmanager>().TotalAttackDamage, GetComponent<Statusmanager>().CriticalStrikeChance, 0f, 0.07f, gameObject, 5);
         damageObject.GetComponent<Animator>().SetFloat("DamageAnimation", 11);
         damageObject.GetComponent<DamageObject>().SetKnockbackParameters(0.4f,0.1f);
         damageObject.transform.right = direction * -1;

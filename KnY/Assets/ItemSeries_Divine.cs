@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemSeries_Divine : ItemSeries
 {
-    public static bool extraCondtionMet = true;
+    public bool extraCondtionMet = true;
     public StatusEffect_ItemSeriesDivine myEffectRefference;
     public ItemSeries_Divine()
     {

@@ -101,7 +101,7 @@ public class AI_ThunderCasterEnemy : AI_BaseAI
                     skills[0].ActivateSkill(gameObject, Vector2.zero, (Vector2)target.transform.position + new Vector2(UnityEngine.Random.Range(-0.3f,0.3f), UnityEngine.Random.Range(-0.3f, 0.3f)), null);
                     break;
                 }
-                if(!disableMovement)
+                if (!disableMovement)
                 {
                     mode = Mode.IdleAfterAttack;
                 }
@@ -180,7 +180,7 @@ public class AI_ThunderCasterEnemy : AI_BaseAI
             }
         }
         GameObject damageObject = Instantiate(PublicGameResources.GetResource().damageObject, (Vector2)bodyTransform.position + direction * 0.2f, Quaternion.identity);
-        damageObject.GetComponent<DamageObject>().SetValues(GetComponent<Statusmanager>().totalAttackDamage, GetComponent<Statusmanager>().CriticalStrikeChance, 0f, 0.07f, gameObject, 5);
+        damageObject.GetComponent<DamageObject>().SetValues(GetComponent<Statusmanager>().TotalAttackDamage, GetComponent<Statusmanager>().CriticalStrikeChance, 0f, 0.07f, gameObject, 5);
         damageObject.GetComponent<Animator>().SetFloat("DamageAnimation", 11);
         damageObject.GetComponent<DamageObject>().SetKnockbackParameters(0.4f,0.1f);
         damageObject.transform.right = direction * -1;

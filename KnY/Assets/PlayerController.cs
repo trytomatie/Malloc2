@@ -28,31 +28,39 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         myStatus = GetComponent<Statusmanager>();
         skillManager = GetComponent<SkillManager>();
-        skillManager.AddActiveSkill(new Skill_BasicAttack(0.4f, 0.4f, false));
-        skillManager.AddActiveSkill(new Skill_Dodge(0.7f, 0.4f, false));
-
-        if(myStatus.characterClass == Statusmanager.CharacterClass.Warrior)
+        skillManager.AddActiveSkill(new Skill_BasicAttack(0.4f, 0.4f, false),-2);
+        skillManager.AddActiveSkill(new Skill_Dodge(0.7f, 0.4f, false),-1);
+        skillManager.AddActiveSkill(new Skill_SummonThySpiders(10f, 0.4f, false), 0);
+        if (myStatus.characterClass == Statusmanager.CharacterClass.Warrior)
         { 
-            skillManager.AddActiveSkill(new Skill_AoeDash(10f, 0.4f, false));
+            skillManager.AddActiveSkill(new Skill_AoeDash(10f, 0.4f, false),0);
         }
         else if (myStatus.characterClass == Statusmanager.CharacterClass.Mage)
         {
-            skillManager.AddActiveSkill(new Skill_ThunderStrike(6f, 0.75f,0.25f,3, false,GetComponent<SpriteRenderer>().material));
+            skillManager.AddActiveSkill(new Skill_ThunderStrike(6f, 0.75f,0.25f,3, false,GetComponent<SpriteRenderer>().material),0);
         }
         else if (myStatus.characterClass == Statusmanager.CharacterClass.Priest)
         {
-            skillManager.AddActiveSkill(new Skill_Cure(20f, 1.8f, false));
+            skillManager.AddActiveSkill(new Skill_Cure(20f, 1.8f, false),0);
         }
         else if (myStatus.characterClass == Statusmanager.CharacterClass.Summoner)
         {
-            skillManager.AddActiveSkill(new Skill_SummonReaver(20f, 2f, false));
+            skillManager.AddActiveSkill(new Skill_SummonReaver(20f, 2f, false),0);
+        }
+        else if (myStatus.characterClass == Statusmanager.CharacterClass.Paladin)
+        {
+            skillManager.AddActiveSkill(new Skill_Solatii(30, 2f, false), 0);
+            skillManager.AddActiveSkill(new Skill_Guard(30f, 1f, false), 1);
         }
 
         skillManager.AddPassiveSkill(PassiveSkill.GenerateRandomPassive(1, myStatus.characterClass));
         //skills.Add(new Skill_Laser(1f, 1.8f, 0.25f, 3, false));
-        foreach (Skill skill in skillManager.activeSkills)
+        foreach (Skill skill in skillManager.ActiveSkills)
         {
-            skill.Anim = anim;
+            if(skill != null)
+            { 
+                skill.Anim = anim;
+            }
         }
         //GetComponent<Inventory>().AddItem(new Item_BlackMarble());
     }
@@ -121,7 +129,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void BattleInput(int buttonValue)
     {
-        if ((buttonValue==1 || (Input.GetAxis("Attack2") == 1 && !Director.GetInstance().isMobile)) && skillManager.activeSkills[0].CooldownTimer <= 0 && skillManager.activeSkills[0].SpCost <= myStatus.Sp) // Style 1 (BASICATTACK)
+        if ((buttonValue==1 || (Input.GetAxis("Attack2") == 1 && !Director.GetInstance().isMobile)) && skillManager.ActiveSkills[0].CooldownTimer <= 0 && skillManager.ActiveSkills[0].SpCost <= myStatus.Sp) // Style 1 (BASICATTACK)
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 heading = mousePosition - (Vector2)transform.position;
@@ -131,29 +139,17 @@ public class PlayerController : MonoBehaviour
             {
                 attackDirection = lastMovementDirection;
             }
-            skillManager.activeSkills[0].ActivateSkill(gameObject, attackDirection, mousePosition,null);
+            skillManager.ActiveSkills[0].ActivateSkill(gameObject, attackDirection, mousePosition,null);
         }
-        if ((buttonValue == 2 || (Input.GetAxis("Attack1") == 1 && !Director.GetInstance().isMobile)) && skillManager.activeSkills[1].CooldownTimer <= 0 && skillManager.activeSkills[1].SpCost <= myStatus.Sp) // Dash
+        if ((buttonValue == 2 || (Input.GetAxis("Attack1") == 1 && !Director.GetInstance().isMobile)) && skillManager.ActiveSkills[1].CooldownTimer <= 0 && skillManager.ActiveSkills[1].SpCost <= myStatus.Sp) // Dash
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 heading = mousePosition - (Vector2)transform.position;
             float distance = heading.magnitude;
             Vector2 attackDirection = heading / distance;
-            skillManager.activeSkills[1].ActivateSkill(gameObject, lastMovementDirection, mousePosition,null);
+            skillManager.ActiveSkills[1].ActivateSkill(gameObject, lastMovementDirection, mousePosition,null);
         }
-        if ((buttonValue == 3 || (Input.GetAxis("Attack3") == 1 && !Director.GetInstance().isMobile)) && skillManager.activeSkills.Count > 2 && skillManager.activeSkills[2].CooldownTimer <= 0 && skillManager.activeSkills[2].SpCost <= myStatus.Sp) // Dash and Spin
-        {
-            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector2 heading = mousePosition - (Vector2)transform.position;
-            float distance = heading.magnitude;
-            Vector2 attackDirection = heading / distance;
-            if (Director.GetInstance().isMobile)
-            {
-                attackDirection = lastMovementDirection;
-            }
-            skillManager.activeSkills[2].ActivateSkill(gameObject, attackDirection, mousePosition, null);
-        }
-        if (skillManager.activeSkills.Count > 3 && ((buttonValue == 4 || Input.GetAxis("Attack4") == 1 && !Director.GetInstance().isMobile)) && skillManager.activeSkills[3].CooldownTimer <= 0 && skillManager.activeSkills[3].SpCost <= myStatus.Sp) // Test
+        if ((buttonValue == 3 || (Input.GetAxis("Attack3") == 1 && !Director.GetInstance().isMobile)) && skillManager.ActiveSkills[2] != null && skillManager.ActiveSkills[2].CooldownTimer <= 0 && skillManager.ActiveSkills[2].SpCost <= myStatus.Sp) // Dash and Spin
         {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 heading = mousePosition - (Vector2)transform.position;
@@ -163,7 +159,43 @@ public class PlayerController : MonoBehaviour
             {
                 attackDirection = lastMovementDirection;
             }
-            skillManager.activeSkills[3].ActivateSkill(gameObject, attackDirection, mousePosition, null);
+            skillManager.ActiveSkills[2].ActivateSkill(gameObject, attackDirection, mousePosition, null);
+        }
+        if (skillManager.ActiveSkills[3] != null && ((buttonValue == 4 || Input.GetAxis("Attack4") == 1 && !Director.GetInstance().isMobile)) && skillManager.ActiveSkills[3].CooldownTimer <= 0 && skillManager.ActiveSkills[3].SpCost <= myStatus.Sp) // Test
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 heading = mousePosition - (Vector2)transform.position;
+            float distance = heading.magnitude;
+            Vector2 attackDirection = heading / distance;
+            if (Director.GetInstance().isMobile)
+            {
+                attackDirection = lastMovementDirection;
+            }
+            skillManager.ActiveSkills[3].ActivateSkill(gameObject, attackDirection, mousePosition, null);
+        }
+        if ((buttonValue == 5 || ((Input.GetAxis("Attack5") == 1 && !Director.GetInstance().isMobile))) && skillManager.ActiveSkills[4] != null && skillManager.ActiveSkills[4].CooldownTimer <= 0 && skillManager.ActiveSkills[4].SpCost <= myStatus.Sp) // Dash and Spin
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 heading = mousePosition - (Vector2)transform.position;
+            float distance = heading.magnitude;
+            Vector2 attackDirection = heading / distance;
+            if (Director.GetInstance().isMobile)
+            {
+                attackDirection = lastMovementDirection;
+            }
+            skillManager.ActiveSkills[4].ActivateSkill(gameObject, attackDirection, mousePosition, null);
+        }
+        if (skillManager.ActiveSkills[5] != null && ((buttonValue == 6 || (Input.GetAxis("Attack6") == 1 && !Director.GetInstance().isMobile))) && skillManager.ActiveSkills[5].CooldownTimer <= 0 && skillManager.ActiveSkills[5].SpCost <= myStatus.Sp) // Test
+        {
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 heading = mousePosition - (Vector2)transform.position;
+            float distance = heading.magnitude;
+            Vector2 attackDirection = heading / distance;
+            if (Director.GetInstance().isMobile)
+            {
+                attackDirection = lastMovementDirection;
+            }
+            skillManager.ActiveSkills[5].ActivateSkill(gameObject, attackDirection, mousePosition, null);
         }
     }
 

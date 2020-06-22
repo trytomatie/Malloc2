@@ -16,7 +16,9 @@ public class StatusEffect {
     {
         Buff,
         Debuff,
-        Series
+        Series,
+        Curse,
+        Protection
     }
 
 

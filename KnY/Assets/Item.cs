@@ -36,7 +36,8 @@ public class Item
         Item_VaingloriousAuthority = 34,
         Item_EvilStaff = 37,
         Item_EnergizedCrystal = 38,
-        Item_MageRobe = 39
+        Item_MageRobe = 39,
+        Item_StaffOfThePriestess = 44
     }
     public enum UncommonItems
     {
@@ -59,7 +60,11 @@ public class Item
     }
     public enum EpicItems
     {
-        Item_BigChonkerFairy = 32
+        Item_BigChonkerFairy = 32,
+        Item_Amethyst = 40,
+        Item_PaladinsShield = 41,
+        Item_ShadowStrike = 42,
+        Item_ThunderStrike = 43
     }
 
     public enum LegendaryItems
@@ -287,6 +292,21 @@ public class Item
                 return item;
             case 39:
                 item = new Item_MageRobe();
+                return item;
+            case 40:
+                item = new Item_Amethyst();
+                return item;
+            case 41:
+                item = new Item_PaladinsShield();
+                return item;
+            case 42:
+                item = new Item_ShadowStrike();
+                return item;
+            case 43:
+                item = new Item_ThunderStrike();
+                return item;
+            case 44:
+                item = new Item_StaffOfThePriestess();
                 return item;
             default:
                 return null;

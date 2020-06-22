@@ -21,28 +21,62 @@ public class Interactable_Item : MonoBehaviour
 
     private void Interact(GameObject g)
     {
-        if(g.GetComponent<Inventory>().artifactItemsCount <= 6 || g.GetComponent<Inventory>().ContainsItem(_itemId))
-        { 
-            Item item = Item.GenerateItem(_itemId);
-            g.GetComponent<Inventory>().AddItem(item);
-            item.PickUpEffect(g);
-            GameObject.FindObjectOfType<ItemDescriptionManager>().SetDescriptionProperties(item.itemName, item.description, GameObject.FindObjectOfType<ItemIcons>().GetIcon(_itemId),Item.GetItemDescriptionMaterial(_itemId));
-            GameObject.FindObjectOfType<ItemDescriptionManager>().Show(5f);
-            Destroy(gameObject);
-        }
-        else if(g.GetComponent<Inventory>().inactiveArtifacts.Count <= 6 || g.GetComponent<Inventory>().ContainsInactiveArtifact(_itemId))
+        if(g.GetComponent<Inventory>().ContainsItem(_itemId, 0))
         {
-            Item item = Item.GenerateItem(_itemId);
-            g.GetComponent<Inventory>().AddInactiveArtifact(item);
-            item.PickUpEffect(g);
-            GameObject.FindObjectOfType<ItemDescriptionManager>().SetDescriptionProperties(item.itemName + " (inactive) ", item.description, GameObject.FindObjectOfType<ItemIcons>().GetIcon(_itemId), Item.GetItemDescriptionMaterial(_itemId));
-            GameObject.FindObjectOfType<ItemDescriptionManager>().Show(5f);
-            Destroy(gameObject);
+            AddItem(g);
+            return;
+        }
+        else if (g.GetComponent<Inventory>().ContainsItem(_itemId, 1))
+        {
+            AddInactiveItem(g);
+            return;
+        }
+
+        if (g.GetComponent<Inventory>().artifactItemsCount <= 6)
+        {
+            AddItem(g);
+            return;
+        }
+        else if(g.GetComponent<Inventory>().InactiveItemList().Count <= 6)
+        {
+            AddInactiveItem(g);
+            return;
         }
         else
         {
             UI_InfoTitleManager.Show("Can't pick up any more Artifacts", "Disenchant for more space", 3);
+            return;
         }
+    }
+
+    private void AddInactiveItem(GameObject g)
+    {
+        Item item = Item.GenerateItem(_itemId);
+        g.GetComponent<Inventory>().AddInactiveArtifact(item);
+        item.PickUpEffect(g);
+        string description = item.description;
+        if (Options.detailedDescriptions == 1 && item.detailedDescription != "")
+        {
+            description = item.detailedDescription;
+        }
+        GameObject.FindObjectOfType<ItemDescriptionManager>().SetDescriptionProperties(item.itemName + " (inactive) ", description, GameObject.FindObjectOfType<ItemIcons>().GetIcon(_itemId), Item.GetItemDescriptionMaterial(_itemId));
+        GameObject.FindObjectOfType<ItemDescriptionManager>().Show(5f);
+        Destroy(gameObject);
+    }
+
+    private void AddItem(GameObject g)
+    {
+        Item item = Item.GenerateItem(_itemId);
+        g.GetComponent<Inventory>().AddItem(item);
+        item.PickUpEffect(g);
+        string description = item.description;
+        if (Options.detailedDescriptions == 1 && item.detailedDescription != "")
+        {
+            description = item.detailedDescription;
+        }
+        GameObject.FindObjectOfType<ItemDescriptionManager>().SetDescriptionProperties(item.itemName, description, GameObject.FindObjectOfType<ItemIcons>().GetIcon(_itemId), Item.GetItemDescriptionMaterial(_itemId));
+        GameObject.FindObjectOfType<ItemDescriptionManager>().Show(5f);
+        Destroy(gameObject);
     }
 
     private void AlternateInteract(GameObject g)

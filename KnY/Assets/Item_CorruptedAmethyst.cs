@@ -12,6 +12,7 @@ public class Item_CorruptedAmethyst : Item {
         this.itemName = "Corrupted Amethyst";
         this.description = "Materialize an afflicted scavenger follower.";
         this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
+        this.series.Add(ItemSeries.Series.Minionmancer);
     }
 
 

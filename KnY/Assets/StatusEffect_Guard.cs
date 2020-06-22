@@ -6,7 +6,7 @@ public class StatusEffect_Guard : StatusEffect {
     int damageReduction = 0;
     public StatusEffect_Guard(int damageReduction,float duration)
     {
-        this.statusName = new Skill_Rampart(0,0,false).Name;
+        this.statusName = new Skill_Guard(0,0,false).Name;
         this.description = "Flat Damage Reduction increased";
         this.image = ItemIcons.GetSkillIcon(11);
         this.type = Type.Buff;

@@ -87,7 +87,7 @@ class Skill_ThunderWall : Skill
             foreach (Ray2D ray in rays)
             {
                 GameObject projectile = GameObject.Instantiate(PublicGameResources.GetResource().damageObject, ray.GetPoint(projectileSpeed * strikesCompleted + 0.1f), Quaternion.identity);
-                projectile.GetComponent<DamageObject>().SetValues(s.totalAttackDamage, s.criticalStrikeChance, 0, 0.5f, source, 6);
+                projectile.GetComponent<DamageObject>().SetValues(s.TotalAttackDamage, s.criticalStrikeChance, 0, 0.5f, source, 6);
                 projectile.transform.GetChild(5).GetComponent<CircleCollider2D>().radius = 0.06f;
                 projectile.GetComponent<Animator>().SetFloat("DamageAnimation", 0);
                 GameObject fx = GameObject.Instantiate(PublicGameResources.GetResource().damageFx, ray.GetPoint(projectileSpeed * strikesCompleted + 0.1f) + new Vector2(0, 0.2f), Quaternion.identity);
