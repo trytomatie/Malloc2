@@ -25,14 +25,14 @@ public class Item_DesireableGreatness : Item
     }
     public override void ApplyEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().AttackDamageFlatBonus += attackDamagePerStack * stacks;
-        g.GetComponent<Statusmanager>().MaxHp += healthPerStack * stacks;
+        g.GetComponent<Statusmanager>().AttackDamageFlatBonus += attackDamagePerStack * g.GetComponent<Statusmanager>().level;
+        g.GetComponent<Statusmanager>().MaxHp += healthPerStack * g.GetComponent<Statusmanager>().level;
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().AttackDamageFlatBonus -= attackDamagePerStack * stacks;
-        g.GetComponent<Statusmanager>().MaxHp -= healthPerStack * stacks;
+        g.GetComponent<Statusmanager>().AttackDamageFlatBonus -= attackDamagePerStack * g.GetComponent<Statusmanager>().level;
+        g.GetComponent<Statusmanager>().MaxHp -= healthPerStack * g.GetComponent<Statusmanager>().level;
     }
 
 

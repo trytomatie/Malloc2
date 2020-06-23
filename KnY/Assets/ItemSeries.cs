@@ -18,7 +18,7 @@ public class ItemSeries
         None = 0,
         Curse = 1,
         Divine = 2,
-        Inheritance = 3,
+        Slayer = 3,
         Faerie = 4,
         Royal = 5,
         Scout = 6,
@@ -77,6 +77,9 @@ public class ItemSeries
                         break;
                     case Series.Magus:
                         UpdateSeries(mySeries, Series.Magus, new ItemSeries_Magus());
+                        break;
+                    case Series.Slayer:
+                        UpdateSeries(mySeries, Series.Slayer, new ItemSeries_Slayer());
                         break;
                 }
             }

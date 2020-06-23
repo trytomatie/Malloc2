@@ -31,14 +31,13 @@ public class Item_Blight : ProcItem {
 
     public override void ProcEffect(GameObject g)
     {
-        int durration = this.durration + (int)(durrationPerStack * stacks);
-        int flatDamage =(int)((damage + (damagePerStack * stacks)) * owner.GetComponent<Statusmanager>().damageOverTimeDamageMultiplier);
+        int durration = this.durration + (int)(durrationPerStack * g.GetComponent<Statusmanager>().level);
+        int flatDamage =(int)((damage + (damagePerStack * g.GetComponent<Statusmanager>().level)) * owner.GetComponent<Statusmanager>().damageOverTimeDamageMultiplier);
         g.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_Blighted(durration, flatDamage));
     }
 
     public override void AddAditionalStack(GameObject g, Item otherItem)
     {
-        stacks+= otherItem.stacks;
-        procChance = baseProcChance+(procChancePerStack *stacks);
+
     }
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Item_MageRobe : Item {
 
-    public int intelectGain = 25;
-    public int pietyGain = 25;
+    public int intelectGain = 15;
+    public int pietyGain = 15;
     public Item_MageRobe()
     {
         this.itemId = 39;
@@ -20,14 +20,14 @@ public class Item_MageRobe : Item {
 
     public override void ApplyEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().Intellect += intelectGain * stacks;
-        g.GetComponent<Statusmanager>().Intellect += pietyGain * stacks;
+        g.GetComponent<Statusmanager>().Intellect += intelectGain * g.GetComponent<Statusmanager>().level;
+        g.GetComponent<Statusmanager>().Intellect += pietyGain * g.GetComponent<Statusmanager>().level;
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().Intellect -= intelectGain * stacks;
-        g.GetComponent<Statusmanager>().Intellect -= pietyGain * stacks;
+        g.GetComponent<Statusmanager>().Intellect -= intelectGain * g.GetComponent<Statusmanager>().level;
+        g.GetComponent<Statusmanager>().Intellect -= pietyGain * g.GetComponent<Statusmanager>().level;
     }
 
 }

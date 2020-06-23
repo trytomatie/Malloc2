@@ -17,12 +17,12 @@ public class Item_BandanaOfMight : Item {
 
     public override void ApplyEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().AttackDamageFlatBonus += attackDamageBonus * stacks;
+        g.GetComponent<Statusmanager>().AttackDamageFlatBonus += attackDamageBonus * g.GetComponent<Statusmanager>().level;
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().AttackDamageFlatBonus -= attackDamageBonus * stacks;
+        g.GetComponent<Statusmanager>().AttackDamageFlatBonus -= attackDamageBonus * g.GetComponent<Statusmanager>().level;
     }
 
 }

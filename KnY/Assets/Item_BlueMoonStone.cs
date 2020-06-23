@@ -23,7 +23,7 @@ public class Item_BlueMoonStone : Item
 
     public override void ApplyEffect(GameObject g)
     {
-        myEffectReference = new OnDamageEffect_TriggerRegen(healthRegen + healthRegenPerStack * stacks, durration + durrationPerStack * stacks);
+        myEffectReference = new OnDamageEffect_TriggerRegen(healthRegen + healthRegenPerStack * g.GetComponent<Statusmanager>().level, durration + durrationPerStack * g.GetComponent<Statusmanager>().level);
         g.GetComponent<Statusmanager>().onDamageEffects.Add(myEffectReference);
     }
 

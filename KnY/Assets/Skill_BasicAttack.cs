@@ -21,7 +21,7 @@ class Skill_BasicAttack : Skill
         this.BaseCooldown = cooldown;
         this.BaseCasttime = casttime;
         this.AllowsMovement = allowsMovement;
-        this.SpCost = 3;
+        this.SpCost = 1;
         this.Image = ItemIcons.GetSkillIcon(1);
     }
 

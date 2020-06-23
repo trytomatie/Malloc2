@@ -24,7 +24,12 @@ public class SkillGenerator
         { "Skill_SummonReaver", 60 },
         { "Skill_SpreadingEruption",10 },
         { "Skill_SummonThunder",80 },
-        { "Skill_SummonThySpiders",40 }
+        { "Skill_SummonThySpiders",40 },
+        { "Skill_LesserThunder",100 },
+        { "Skill_HolyRod",100 },
+        { "Skill_Smite",100 },
+        { "Skill_Assize",100 },
+        { "Skill_Drainage",100 },
     };
 
     public static Skill GetRandomSkill(GameObject target)
@@ -49,7 +54,8 @@ public class SkillGenerator
             if (characterClass == Statusmanager.CharacterClass.Mage)
             {
                 skillWeightRef = GetEmptyWeightList();
-                skillWeightRef["Skill_SummonThunder"] = 100;
+                skillWeightRef["Skill_LesserThunder"] = 100;
+                skillWeightRef["Skill_SummonThunder"] = 80;
                 skillWeightRef["Skill_Erruption"] = 40;
                 skillWeightRef["Skill_Cure"] = 40;
                 skillWeightRef["Skill_Slam"] = 60;
@@ -61,9 +67,12 @@ public class SkillGenerator
                 skillWeightRef = GetEmptyWeightList();
                 skillWeightRef["Skill_SummonThunder"] = 40;
                 skillWeightRef["Skill_Erruption"] = 5;
+                skillWeightRef["Skill_HolyRod"] = 100;
                 skillWeightRef["Skill_Cure"] = 100;
                 skillWeightRef["Skill_Slam"] = 70;
                 skillWeightRef["Skill_BurnSlash"] = 20;
+                skillWeightRef["Skill_Smite"] = 80;
+                skillWeightRef["Skill_Assize"] = 80;
             }
             if (characterClass == Statusmanager.CharacterClass.Summoner)
             {
@@ -84,6 +93,7 @@ public class SkillGenerator
                 skillWeightRef["Skill_Solatii"] = 5;
                 skillWeightRef["Skill_Slice"] = 20;
                 skillWeightRef["Skill_PoisonSting"] = 10;
+                skillWeightRef["Skill_Assize"] = 40;
             }
         }
         skillWeights = skillWeightRef;
@@ -150,6 +160,26 @@ public class SkillGenerator
         else if (i > 0 && i < Weight(ref i, "Skill_SummonThySpiders"))
         {
             skill = new Skill_SummonThySpiders(15, 1f, false);
+        }
+        else if (i > 0 && i < Weight(ref i, "Skill_LesserThunder"))
+        {
+            skill = new Skill_LesserThunder(5, 0.1f, false, target.GetComponent<SpriteRenderer>().material);
+        }
+        else if (i > 0 && i < Weight(ref i, "Skill_HolyRod"))
+        {
+            skill = new Skill_HolyRod(6, 0.1f, false);
+        }
+        else if (i > 0 && i < Weight(ref i, "Skill_Smite"))
+        {
+            skill = new Skill_Smite(7, 0.3f,8, false);
+        }
+        else if (i > 0 && i < Weight(ref i, "Skill_Assize"))
+        {
+            skill = new Skill_Assize(18, 0.7f, false);
+        }
+        else if (i > 0 && i < Weight(ref i, "Skill_Drainage"))
+        {
+            skill = new Skill_Drainage(12, 0.6f, false);
         }
         return skill;
 

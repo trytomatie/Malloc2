@@ -19,11 +19,11 @@ public class Item_TotemOfGrief : Item {
 
     public override void ApplyEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().bonusAttackSpeed += attackSpeedBonus * stacks;
+        g.GetComponent<Statusmanager>().bonusAttackSpeed += attackSpeedBonus * g.GetComponent<Statusmanager>().level;
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().bonusAttackSpeed -= attackSpeedBonus * stacks;
+        g.GetComponent<Statusmanager>().bonusAttackSpeed -= attackSpeedBonus * g.GetComponent<Statusmanager>().level;
     }
 }

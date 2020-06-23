@@ -10,14 +10,12 @@ public class Item_InstantSeries : Item {
         this.itemId = 36;
         this.attribute = "Instant";
         this.itemName = "Instant Series";
-        this.description = "Gives you 2 Random Series";
-        this.detailedDescription = "Gives you 2 Random Series";
+        this.description = "Gives you a Random Series";
+        this.detailedDescription = "Gives you a Random Series";
         System.Random rnd = new System.Random();
         ItemSeries.Series id = ItemSeries.Series.Divine;
         Array values = Enum.GetValues(typeof(ItemSeries.Series));
-        id = (ItemSeries.Series)values.GetValue(rnd.Next(values.Length));
-        this.series.Add(id);
-        this.series.Add(id);
+        id = ItemSeries.Series.Slayer;
         this.series.Add(id);
         this.series.Add(id);
         this.series.Add(id);

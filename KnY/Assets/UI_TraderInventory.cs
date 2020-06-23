@@ -197,21 +197,15 @@ public class UI_TraderInventory : MonoBehaviour
 
     public void TradeItems()
     {
-        int itemAmountDifference = 0;
-        foreach(Item item in itemsToBuy.Keys)
+
+        foreach (Item item in itemsToBuy.Keys) // Buy Items
         {
-            if (UI_InventoryManager.playerInventory.ContainsItem(item.itemId, 0) || UI_InventoryManager.playerInventory.ContainsItem(item.itemId, 1))
+            if(UI_InventoryManager.playerInventory.ContainsItem(item.itemId, 0) || UI_InventoryManager.playerInventory.ContainsItem(item.itemId, 1))
             {
-                itemAmountDifference++;
+                return;
             }
         }
-        foreach (Item item in itemsToSell.Keys)
-        {
-            if (UI_InventoryManager.playerInventory.ContainsItem(item.itemId, 0) || UI_InventoryManager.playerInventory.ContainsItem(item.itemId, 1))
-            {
-                itemAmountDifference--;
-            }
-        }
+        int itemAmountDifference = itemsToBuy.Keys.Count - itemsToSell.Keys.Count;
         if (UI_InventoryManager.playerInventory.artifactItemsCount + UI_InventoryManager.playerInventory.InactiveItemList().Count + itemAmountDifference > 14)
         {
             return;

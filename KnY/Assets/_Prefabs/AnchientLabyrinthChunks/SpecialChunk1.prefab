@@ -33302,7 +33302,7 @@ MonoBehaviour:
   - {fileID: 5298061341106560167}
   - {fileID: 482920208870070347}
   - {fileID: 4021375932860474376}
-  weight: 1000
+  weight: 20
   conclusionEvent:
     m_PersistentCalls:
       m_Calls:

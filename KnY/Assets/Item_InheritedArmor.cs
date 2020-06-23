@@ -19,14 +19,14 @@ public class Item_InheritedArmor : Item {
 
     public override void ApplyEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().MaxHp += hpGain * stacks;
+        g.GetComponent<Statusmanager>().MaxHp += hpGain * g.GetComponent<Statusmanager>().level;
         g.GetComponent<Statusmanager>().Hp += hpGain;
         g.GetComponent<Statusmanager>().defence += defence;
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().MaxHp -= hpGain * stacks;
+        g.GetComponent<Statusmanager>().MaxHp -= hpGain * g.GetComponent<Statusmanager>().level;
         g.GetComponent<Statusmanager>().defence -= defence;
     }
 

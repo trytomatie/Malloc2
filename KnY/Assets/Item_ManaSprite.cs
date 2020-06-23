@@ -18,12 +18,12 @@ public class Item_ManaSprite : Item {
 
     public override void ApplyEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().maxSp += spGain * stacks;
+        g.GetComponent<Statusmanager>().maxSp += spGain * g.GetComponent<Statusmanager>().level;
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().maxSp -= spGain * stacks;
+        g.GetComponent<Statusmanager>().maxSp -= spGain * g.GetComponent<Statusmanager>().level;
     }
 
 }

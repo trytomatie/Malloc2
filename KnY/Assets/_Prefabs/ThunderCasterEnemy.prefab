@@ -249,8 +249,7 @@ MonoBehaviour:
   bonusAttackSpeed: 0
   baseAttackDamage: 20
   baseAttackDamageMultiplyier: 1
-  totalAttackDamage: 0
-  magicPower: 20
+  magicPower: 200
   criticalStrikeChance: 1
   damageOverTimeDamageMultiplier: 1
   experienceGainMultiplier: 1
@@ -265,7 +264,7 @@ MonoBehaviour:
   baseAttackDamageGrowth: 20
   defenceGrwoth: 0
   movementSpeedGrowth: 0
-  magicPowerGrowth: 20
+  magicPowerGrowth: 200
   gameObjectThatDamagedMeLast: {fileID: 0}
   uiHeigthOffset: 0.16
 --- !u!58 &8276288782881259568

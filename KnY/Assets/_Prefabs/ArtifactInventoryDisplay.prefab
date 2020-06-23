@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Material: {fileID: 2100000, guid: f2f94b90be75fc24a9242cce654e884c, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -162,6 +163,7 @@ MonoBehaviour:
   m_Material: {fileID: 2100000, guid: e4014e7de9c9428488de2c5f9719a5f0, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -179,7 +181,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.3
-  m_Text: x1
+  m_Text: 
 --- !u!114 &7039465720343760982
 MonoBehaviour:
   m_ObjectHideFlags: 0

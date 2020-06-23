@@ -20,11 +20,11 @@ public class Item_TitansKidney : Item {
 
     public override void ApplyEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().healthRegeneration += healthRegenerationBonus * stacks;
+        g.GetComponent<Statusmanager>().healthRegeneration += healthRegenerationBonus * g.GetComponent<Statusmanager>().level;
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().healthRegeneration -= healthRegenerationBonus * stacks;
+        g.GetComponent<Statusmanager>().healthRegeneration -= healthRegenerationBonus * g.GetComponent<Statusmanager>().level;
     }
 }

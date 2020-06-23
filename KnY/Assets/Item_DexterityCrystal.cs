@@ -18,11 +18,11 @@ public class Item_DexterityCrystal : Item {
 
     public override void ApplyEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().maxSp += bonusSp * stacks;
+        g.GetComponent<Statusmanager>().maxSp += bonusSp * g.GetComponent<Statusmanager>().level;
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().maxSp -= bonusSp * stacks;
+        g.GetComponent<Statusmanager>().maxSp -= bonusSp * g.GetComponent<Statusmanager>().level;
     }
 }

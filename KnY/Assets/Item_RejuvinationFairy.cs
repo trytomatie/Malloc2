@@ -14,7 +14,7 @@ public class Item_RejuvinationFairy : Item {
         this.attribute = "Water";
         this.itemName = "Rejuvination Fairy";
         this.description = "Gain a shield that periodically refreshes every 5 seconds.";
-        this.detailedDescription = "Gain a shield (+ " + shieldAmount + "* stacksize) that refreshes every "+ refreshRate +" seconds";
+        this.detailedDescription = "Gain a shield (+ " + shieldAmount + "* g.GetComponent<Statusmanager>().levelize) that refreshes every "+ refreshRate +" seconds";
         this.image = GameObject.FindObjectOfType<ItemIcons>().icons[itemId];
         this.series.Add(ItemSeries.Series.Faerie);
     }
@@ -22,7 +22,7 @@ public class Item_RejuvinationFairy : Item {
 
     public override void ApplyEffect(GameObject g)
     {
-        myEffectReference = new StatusEffect_RejuvinationFairyShield(360000, (int)(shieldAmount * stacks * effectMutliplier));
+        myEffectReference = new StatusEffect_RejuvinationFairyShield(360000, (int)(shieldAmount * g.GetComponent<Statusmanager>().level * effectMutliplier));
         g.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectReference);
     }
 

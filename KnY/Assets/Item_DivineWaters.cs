@@ -32,14 +32,12 @@ public class Item_DivineWaters : ProcItem {
     public override void ProcEffect(GameObject g)
     {
         float durration = this.durration;
-        int totalBarrier = barrier + (barrierPerStack * stacks);
+        int totalBarrier = barrier + (barrierPerStack * g.GetComponent<Statusmanager>().level);
         owner.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_DivineWaterBarrier(durration, totalBarrier));
     }
 
     public override void AddAditionalStack(GameObject g, Item otherItem)
     {
-        stacks += otherItem.stacks;
-        procChance = procChance + (procChancePerStack * stacks);
     }
 
 }

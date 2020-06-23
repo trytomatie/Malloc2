@@ -21,7 +21,7 @@ public class Item_Gaze : Item {
 
     public override void ApplyEffect(GameObject g)
     {
-        for(int i = 0; i < stacks;i++)
+        for(int i = 0; i < g.GetComponent<Statusmanager>().level;i++)
         {
             GameObject follower = GameObject.Instantiate(PublicGameResources.GetResource().gazeFollower, g.transform.position, Quaternion.identity);
             follower.GetComponent<AI_EyeFollower>().followTarget = g;

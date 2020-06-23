@@ -30,14 +30,13 @@ public class Item_Affliction : ProcItem {
 
     public override void ProcEffect(GameObject g)
     {
-        int durration = this.durration + (int)(durrationPerStack * stacks);
-        int flatDamage =(int)((damage + (damagePerStack * stacks) + (owner.GetComponent<Statusmanager>().TotalAttackDamage * 0.1f)) * owner.GetComponent<Statusmanager>().damageOverTimeDamageMultiplier);
+        int durration = this.durration + (int)(durrationPerStack * g.GetComponent<Statusmanager>().level);
+        int flatDamage =(int)((damage + (damagePerStack * g.GetComponent<Statusmanager>().level) + (owner.GetComponent<Statusmanager>().TotalAttackDamage * 0.1f)) * owner.GetComponent<Statusmanager>().damageOverTimeDamageMultiplier);
         g.GetComponent<Statusmanager>().ApplyStatusEffect(new StatusEffect_Afflicted(durration, flatDamage));
     }
 
     public override void AddAditionalStack(GameObject g, Item otherItem)
     {
-        stacks+= otherItem.stacks;
-        procChance = baseProcChance+(procChancePerStack *stacks);
+
     }
 }

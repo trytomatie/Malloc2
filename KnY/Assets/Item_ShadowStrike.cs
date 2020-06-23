@@ -19,12 +19,12 @@ public class Item_ShadowStrike : Item {
 
     public override void ApplyEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().Strength += strengthBonus * stacks;
+        g.GetComponent<Statusmanager>().Strength += strengthBonus * g.GetComponent<Statusmanager>().level;
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().Strength -= strengthBonus * stacks;
+        g.GetComponent<Statusmanager>().Strength -= strengthBonus * g.GetComponent<Statusmanager>().level;
     }
 
 }

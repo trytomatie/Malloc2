@@ -19,18 +19,18 @@ public class Item_WitchsHeart : Item {
     public override void PickUpEffect(GameObject g)
     {
 
-        g.GetComponent<Statusmanager>().Hp += hpGain * stacks;
+        g.GetComponent<Statusmanager>().Hp += hpGain * g.GetComponent<Statusmanager>().level;
     }
 
     public override void ApplyEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().MaxHp += hpGain * stacks;
+        g.GetComponent<Statusmanager>().MaxHp += hpGain * g.GetComponent<Statusmanager>().level;
 
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().MaxHp -= hpGain * stacks;
+        g.GetComponent<Statusmanager>().MaxHp -= hpGain * g.GetComponent<Statusmanager>().level;
     }
 
 }

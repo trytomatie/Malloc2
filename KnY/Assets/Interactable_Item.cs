@@ -23,12 +23,12 @@ public class Interactable_Item : MonoBehaviour
     {
         if(g.GetComponent<Inventory>().ContainsItem(_itemId, 0))
         {
-            AddItem(g);
+            UI_InfoTitleManager.Show("Can't pick up any more of this Artifact", "",3);
             return;
         }
         else if (g.GetComponent<Inventory>().ContainsItem(_itemId, 1))
         {
-            AddInactiveItem(g);
+            UI_InfoTitleManager.Show("Can't pick up any more of this Artifact", "", 3);
             return;
         }
 

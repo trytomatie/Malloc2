@@ -37,13 +37,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_A269E10C: 5
+    - Vector1_A269E10C: 66
     - Vector1_D89DD995: 0
-    - _fade: 1
+    - _fade: 0
     - _isVisible: 1
     m_Colors:
     - Color_91C9DB1B: {r: 0, g: 0.35939628, b: 1.6272688, a: 0}
-    - _color: {r: 0, g: 0.808, b: 0.404, a: 0}
+    - _color: {r: 7.129739, g: 0, b: 0, a: 0}
     - _hurtColo: {r: 0, g: 0, b: 0, a: 0}
     - _hurtColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

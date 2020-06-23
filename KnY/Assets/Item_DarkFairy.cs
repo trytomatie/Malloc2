@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Item_DarkFairy : Item {
 
-    public int attackDamageBonus = 15;
+    public int attackDamageBonus = 25;
     public Item_DarkFairy()
     {
         this.itemId = 26;
@@ -20,11 +20,11 @@ public class Item_DarkFairy : Item {
 
     public override void ApplyEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().Strength += (int)(attackDamageBonus * stacks * effectMutliplier);
+        g.GetComponent<Statusmanager>().Strength += (int)(attackDamageBonus * g.GetComponent<Statusmanager>().level * effectMutliplier);
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().Strength -= (int)(attackDamageBonus * stacks * effectMutliplier);
+        g.GetComponent<Statusmanager>().Strength -= (int)(attackDamageBonus * g.GetComponent<Statusmanager>().level * effectMutliplier);
     }
 }

@@ -73,9 +73,10 @@ public class UI_AncientLabyrnith_Minimap : MonoBehaviour
                             g.transform.GetChild(4).GetComponent<Image>().sprite = instance.mapIcons[2];
                             break;
                         case ChunkSettings.ChunkType.Special:
-                            g.transform.GetChild(4).GetComponent<Image>().sprite = instance.mapIcons[5];
+
                             break;
                         case ChunkSettings.ChunkType.Trader:
+                            g.transform.GetChild(4).GetComponent<Image>().sprite = instance.mapIcons[5];
                             break;
                         case ChunkSettings.ChunkType.Treasure:
                             g.transform.GetChild(4).GetComponent<Image>().sprite = instance.mapIcons[1];

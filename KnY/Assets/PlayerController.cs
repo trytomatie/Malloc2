@@ -30,18 +30,19 @@ public class PlayerController : MonoBehaviour
         skillManager = GetComponent<SkillManager>();
         skillManager.AddActiveSkill(new Skill_BasicAttack(0.4f, 0.4f, false),-2);
         skillManager.AddActiveSkill(new Skill_Dodge(0.7f, 0.4f, false),-1);
-        skillManager.AddActiveSkill(new Skill_SummonThySpiders(10f, 0.4f, false), 0);
+        skillManager.AddActiveSkill(new Skill_Drainage(5, 0.5f, false), 0);
         if (myStatus.characterClass == Statusmanager.CharacterClass.Warrior)
         { 
             skillManager.AddActiveSkill(new Skill_AoeDash(10f, 0.4f, false),0);
         }
         else if (myStatus.characterClass == Statusmanager.CharacterClass.Mage)
         {
-            skillManager.AddActiveSkill(new Skill_ThunderStrike(6f, 0.75f,0.25f,3, false,GetComponent<SpriteRenderer>().material),0);
+            skillManager.AddActiveSkill(new Skill_LesserThunder(5, 0.1f, false, GetComponent<SpriteRenderer>().material), 0);
         }
         else if (myStatus.characterClass == Statusmanager.CharacterClass.Priest)
         {
-            skillManager.AddActiveSkill(new Skill_Cure(20f, 1.8f, false),0);
+            skillManager.AddActiveSkill(new Skill_HolyRod(6, 0.1f, false), 0);
+            skillManager.AddActiveSkill(new Skill_Cure(20f, 1.8f, false),1);
         }
         else if (myStatus.characterClass == Statusmanager.CharacterClass.Summoner)
         {

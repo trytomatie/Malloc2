@@ -19,19 +19,19 @@ public class Item_Amethyst : Item {
 
     public override void ApplyEffect(GameObject g)
     {
-        if(g.GetComponent<AI_BaseFollowerAI>() != null)
+        foreach (GameObject go in g.GetComponent<Statusmanager>().Followers)
         {
-            g.GetComponent<Statusmanager>().AttackDamageFlatBonus += damageIncrease;
-            g.GetComponent<Statusmanager>().TotalMagicPower += damageIncrease;
+            go.GetComponent<Statusmanager>().AttackDamageFlatBonus += damageIncrease * g.GetComponent<Statusmanager>().level;
+            go.GetComponent<Statusmanager>().TotalMagicPower += damageIncrease * g.GetComponent<Statusmanager>().level;
         }
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        if (g.GetComponent<AI_BaseFollowerAI>() != null)
+        foreach (GameObject go in g.GetComponent<Statusmanager>().Followers)
         {
-            g.GetComponent<Statusmanager>().AttackDamageFlatBonus -= damageIncrease;
-            g.GetComponent<Statusmanager>().TotalMagicPower -= damageIncrease;
+            go.GetComponent<Statusmanager>().AttackDamageFlatBonus-= damageIncrease * g.GetComponent<Statusmanager>().level;
+            go.GetComponent<Statusmanager>().TotalMagicPower -= damageIncrease * g.GetComponent<Statusmanager>().level;
         }
     }
 

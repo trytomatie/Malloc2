@@ -24,6 +24,7 @@ public class PublicGameResources : MonoBehaviour {
     public Material slashMaterial;
     public Material earthMaterial;
     public Material smokeMaterial;
+    public Material pietyMaterial;
     public static int FLOOR_LAYER = -9999;
     public GameObject corruptedAmethystFollower;
     public GameObject crystalSpider;

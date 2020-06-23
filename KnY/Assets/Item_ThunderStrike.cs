@@ -19,12 +19,12 @@ public class Item_ThunderStrike : Item {
 
     public override void ApplyEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().Intellect += intellectBonus * stacks;
+        g.GetComponent<Statusmanager>().Intellect += intellectBonus * g.GetComponent<Statusmanager>().level;
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().Intellect -= intellectBonus * stacks;
+        g.GetComponent<Statusmanager>().Intellect -= intellectBonus * g.GetComponent<Statusmanager>().level;
     }
 
 }

@@ -20,11 +20,11 @@ public class Item_BootsOfFlight : Item {
 
     public override void ApplyEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().Dexterity += dexterity * stacks;
+        g.GetComponent<Statusmanager>().Dexterity += dexterity * g.GetComponent<Statusmanager>().level;
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().Dexterity -= dexterity * stacks;
+        g.GetComponent<Statusmanager>().Dexterity -= dexterity * g.GetComponent<Statusmanager>().level;
     }
 }

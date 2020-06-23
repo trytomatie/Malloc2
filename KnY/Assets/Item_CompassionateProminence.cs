@@ -19,13 +19,13 @@ public class Item_CompassionateProminence : Item
 
     public override void ApplyEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().flatDamageReduction += flatDamageReduction * stacks;
+        g.GetComponent<Statusmanager>().flatDamageReduction += flatDamageReduction * g.GetComponent<Statusmanager>().level;
         g.GetComponent<Statusmanager>().healthRegeneration += healthRegeneration;
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().flatDamageReduction -= flatDamageReduction * stacks;
+        g.GetComponent<Statusmanager>().flatDamageReduction -= flatDamageReduction * g.GetComponent<Statusmanager>().level;
         g.GetComponent<Statusmanager>().healthRegeneration -= healthRegeneration;
     }
 

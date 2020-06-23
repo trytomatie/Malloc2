@@ -13,7 +13,9 @@ public class UI_ResourceManager : MonoBehaviour
     private Statusmanager statusmanager;
     public Image hpBar;
     public Image spBar;
+    public Image expBar;
     private static UI_ResourceManager instance;
+    public Image hpLowEffect;
 
     public static UI_ResourceManager Instance
     {
@@ -71,6 +73,8 @@ public class UI_ResourceManager : MonoBehaviour
         UpdateHpBar();
         Instance.manaText.text = "" + Instance.Statusmanager.Mana;
         Instance.levelText.text = "Level: " + Instance.Statusmanager.level;
+        float expPercent = (float)Instance.Statusmanager.Experinece / (float)Instance.Statusmanager.maxExperience;
+        Instance.expBar.GetComponent<Image>().fillAmount = expPercent;
     }
 
     public static void UpdateHpBar()
@@ -84,6 +88,19 @@ public class UI_ResourceManager : MonoBehaviour
 
         float hpPercent = (float)Instance.Statusmanager.Hp / (float)Instance.Statusmanager.TotalMaxHp;
         Instance.hpBar.GetComponent<Image>().fillAmount = hpPercent;
+        if(Instance.hpLowEffect != null)
+        {
+            Material material = Instance.hpLowEffect.GetComponent<Image>().material;
+            if (hpPercent < 0.40f)
+            {
+                material.SetFloat("_isVisible", 1);
+            }
+            else
+            {
+                material.SetFloat("_isVisible", 0);
+            }
+        }
+        
     }
     public static void UpdateSpBar()
     {

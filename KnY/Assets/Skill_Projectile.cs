@@ -8,6 +8,7 @@ using UnityEngine;
 class Skill_Projectile : Skill
 {
     private float projectileSpeed = 1;
+    public Vector2 castPos;
 
     /// <summary>
     /// Initializes base Skill Atributes
@@ -53,7 +54,9 @@ class Skill_Projectile : Skill
         projectile.GetComponent<SpriteRenderer>().material = FxMaterial;
         projectile.GetComponent<Rigidbody2D>().velocity = Direction * projectileSpeed;
         projectile.transform.GetChild(5).GetComponent<CircleCollider2D>().radius = 0.05f;
-        projectile.GetComponent<Animator>().SetFloat("DamageAnimation", 4);
+        projectile.GetComponent<Animator>().SetFloat("DamageAnimation", 16);
+        projectile.transform.right = ((Vector2)Position - (Vector2)source.transform.position);
+        projectile.GetComponent<Animator>().SetBool("LoopAnimation", true);
     }
 
 

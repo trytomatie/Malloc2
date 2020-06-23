@@ -159,7 +159,6 @@ public class Statusmanager : MonoBehaviour {
                 if((gameObjectThatDamagedMeLast.GetComponent<PlayerController>() != null || gameObjectThatDamagedMeLast.GetComponent<AI_EyeFollower>() != null || gameObjectThatDamagedMeLast.GetComponent<AI_GenericFollower>() != null) && Mana > 0)
                 {
                     Api.AddKill();
-                    Api.SaveCurrent();
                 }
                 GetComponent<DepthSorter>().enabled = false;
                 GetComponent<SpriteRenderer>().sortingOrder = PublicGameResources.FLOOR_LAYER + 1;
@@ -181,7 +180,8 @@ public class Statusmanager : MonoBehaviour {
                     gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Foreground";
                     gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2998;
                     GameObject.FindObjectOfType<UI_InputManager>().deathUI.SetActive(true);
-                    GameObject.FindObjectOfType<UI_InputManager>().deathUI.transform.Find("Stats").GetComponent<Text>().text = String.Format("Kills: {0}", Api.Kills);
+                    GameObject.FindObjectOfType<UI_InputManager>().deathUI.transform.Find("Stats").GetComponent<Text>().text = String.Format("Kills: {0}\nDamageDone: {1}\nDamageTaken: {2}", Api.Kills,Api.DamageDone,Api.DamageTaken);
+                    Api.SaveCurrent();
                 }
                 else
                 {
@@ -411,7 +411,12 @@ public class Statusmanager : MonoBehaviour {
         Color color = Color.white;
         if(GetComponent<PlayerController>() != null)
         {
+            Api.AddDamageTaken(damage);
             color = Color.red;
+        }
+        else
+        {
+            Api.AddDamageDone(damage);
         }
 
         Director.GetInstance().SpawnDamageText(damage.ToString(), transform, color, crit);
@@ -491,6 +496,13 @@ public class Statusmanager : MonoBehaviour {
         { 
 
             maxExperience = (int)(50 * Mathf.Pow((1.55f), (level-1)));
+        }
+        if(GetComponent<Inventory>() != null)
+        {
+            foreach(Item item in GetComponent<Inventory>().ActiveItemList())
+            {
+                item.RefreshEffect(gameObject);
+            }
         }
         Experinece -= prevMaxExperinece;
 
@@ -843,7 +855,7 @@ public class Statusmanager : MonoBehaviour {
     public int TotalAttackDamage {
         get 
         {
-            return (int)((((baseAttackDamage + strength + ((int)(dexterity / 2)))* BaseAttackDamageMultiplyier) + AttackDamageFlatBonus) * TotalAttackDamageMultiplyier);
+            return (int)((((baseAttackDamage + ((int)strength/2) + ((int)(dexterity / 3)))* BaseAttackDamageMultiplyier) + AttackDamageFlatBonus) * TotalAttackDamageMultiplyier);
         } 
         set => totalAttackDamage = value; }
 

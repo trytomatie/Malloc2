@@ -88,7 +88,6 @@ public class Skill
 
     public static Skill GenerateRandomSkill(GameObject target)
     {
-        int i = UnityEngine.Random.Range(0, 14);
         Skill s = SkillGenerator.GetRandomSkill(target);
         s.Anim = target.GetComponent<Animator>();
         return s;

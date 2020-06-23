@@ -18,12 +18,12 @@ public class Item_DivineDaggers : Item {
 
     public override void ApplyEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().bonusAttackSpeed += attackSpeed * stacks;
+        g.GetComponent<Statusmanager>().bonusAttackSpeed += attackSpeed * g.GetComponent<Statusmanager>().level;
     }
 
     public override void RemoveEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().bonusAttackSpeed -= attackSpeed * stacks;
+        g.GetComponent<Statusmanager>().bonusAttackSpeed -= attackSpeed * g.GetComponent<Statusmanager>().level;
     }
 
 }

@@ -88,6 +88,7 @@ MonoBehaviour:
   slashMaterial: {fileID: 2100000, guid: 8302caaccef00b547a7c9d149d922c4c, type: 2}
   earthMaterial: {fileID: 2100000, guid: e2dec96ead45b6f40a651c9b9ba83943, type: 2}
   smokeMaterial: {fileID: 2100000, guid: e699c2c2093622a48bb91848b61e1016, type: 2}
+  pietyMaterial: {fileID: 2100000, guid: 3d114bbaf51cf104a9905f2a9fb8a9c6, type: 2}
   corruptedAmethystFollower: {fileID: 4099386691832577026, guid: 3369d662ba38e174abdb6b2826ef0a0a,
     type: 3}
   crystalSpider: {fileID: 10707012811290057, guid: 4a06d8b2daa969749b6cdd774868396b,
@@ -200,10 +201,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 687147992e543894cb458176cd9a3dbc, type: 3}
   - {fileID: 21300000, guid: b20e75519986cff4ea7368ce0d4b0391, type: 3}
   - {fileID: 21300000, guid: 5b6102b7b19c86c4482ae5554f29f8f9, type: 3}
-  - {fileID: 21300000, guid: e7ae5e3db4ce19b4f81c41ac233fa66d, type: 3}
-  - {fileID: 21300000, guid: e7ae5e3db4ce19b4f81c41ac233fa66d, type: 3}
-  - {fileID: 21300000, guid: e7ae5e3db4ce19b4f81c41ac233fa66d, type: 3}
-  - {fileID: 21300000, guid: e7ae5e3db4ce19b4f81c41ac233fa66d, type: 3}
+  - {fileID: 21300000, guid: 9f04ff9e4b4cc4f4cada934bc083a3e4, type: 3}
+  - {fileID: 21300000, guid: dab1a2c73d0fc5943b13cbdb111972b1, type: 3}
+  - {fileID: 21300000, guid: b494f4d6476870a4e8eec677de7c2c6a, type: 3}
+  - {fileID: 21300000, guid: b89da17ceadc6d94e8ba2021e865f033, type: 3}
   - {fileID: 21300000, guid: e7ae5e3db4ce19b4f81c41ac233fa66d, type: 3}
   - {fileID: 21300000, guid: e7ae5e3db4ce19b4f81c41ac233fa66d, type: 3}
   - {fileID: 21300000, guid: e7ae5e3db4ce19b4f81c41ac233fa66d, type: 3}

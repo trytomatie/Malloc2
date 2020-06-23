@@ -84,7 +84,7 @@ public class UI_PassiveSkillExchangeManager : MonoBehaviour
                 if (GameObject.FindObjectOfType<MapGenerator>() != null)
                 {
 
-                    instance.newPassiveSkill.Skill = PassiveSkill.GenerateRandomPassive(GameObject.FindObjectOfType<MapGenerator>().currentFloor, MySkillmanager.GetComponent<Statusmanager>().characterClass);
+                    instance.newPassiveSkill.Skill = PassiveSkill.GenerateRandomPassive(GameObject.FindObjectOfType<MapGenerator>().currentFloor + MySkillmanager.GetComponent<Statusmanager>().level, MySkillmanager.GetComponent<Statusmanager>().characterClass);
                 }
                 else
                 {

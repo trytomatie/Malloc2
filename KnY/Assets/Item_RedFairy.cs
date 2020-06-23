@@ -26,11 +26,11 @@ public class Item_RedFairy : ProcItem {
 
     public override void ProcEffect(GameObject g)
     {
-        g.GetComponent<Statusmanager>().ApplyOnDeathEffect(new OnDeathEffect_HealKiller((int)(healAmount * stacks * effectMutliplier)));
+        g.GetComponent<Statusmanager>().ApplyOnDeathEffect(new OnDeathEffect_HealKiller((int)(healAmount * g.GetComponent<Statusmanager>().level * effectMutliplier)));
     }
 
     public override void AddAditionalStack(GameObject g,Item otherItem)
     {
-        stacks+= otherItem.stacks;
+
     }
 }

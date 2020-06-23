@@ -24760,6 +24760,7 @@ MonoBehaviour:
   interactablePool:
   - {fileID: 11400000, guid: 76413394d8104744fb63501954959887, type: 2}
   - {fileID: 11400000, guid: 1fe6c0c608fc329489c5bfc2e5e8c341, type: 2}
+  - {fileID: 11400000, guid: 72ff44ecdeb84d04790d460d50391264, type: 2}
   mobPool:
   - {fileID: 11400000, guid: ab49cbb238367184ab91c2e0f3357e5f, type: 2}
   - {fileID: 11400000, guid: 7e1569bd09cf1a344810e0fe5a138782, type: 2}

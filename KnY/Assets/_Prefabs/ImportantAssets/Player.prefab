@@ -5093,7 +5093,7 @@ MonoBehaviour:
   spRegeneration: 75
   defence: 0
   flatDamageReduction: 0
-  healthRegeneration: 5
+  healthRegeneration: 15
   healthRegenerationPercentage: 1
   barrier: 0
   movementSpeed: 0.8
@@ -5120,7 +5120,7 @@ MonoBehaviour:
   spGrowth: 0
   manaGrowth: 0
   healthRegenerationGrowth: 0
-  baseAttackDamageGrowth: 12
+  baseAttackDamageGrowth: 18
   defenceGrwoth: 1
   movementSpeedGrowth: 0
   magicPowerGrowth: 0

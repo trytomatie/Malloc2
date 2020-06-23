@@ -37,7 +37,8 @@ public class Item
         Item_EvilStaff = 37,
         Item_EnergizedCrystal = 38,
         Item_MageRobe = 39,
-        Item_StaffOfThePriestess = 44
+        Item_StaffOfThePriestess = 44,
+        Item_BoneSickle = 46,
     }
     public enum UncommonItems
     {
@@ -47,7 +48,8 @@ public class Item
         Item_InheritedArmor = 22,
         Item_DivineClockwork = 24,
         Item_RejuvinationFairy = 29,
-        Item_Gaze = 35
+        Item_Gaze = 35,
+        Item_DrinkingPouch = 48
     }
     public enum RareItems
     {
@@ -55,8 +57,7 @@ public class Item
         Item_BlueMoonStone = 6,
         Item_DesireableGreatness = 27,
         Item_ManaSprite = 31,
-
-            
+        Item_DreadnoughtArmor = 45,
     }
     public enum EpicItems
     {
@@ -64,7 +65,8 @@ public class Item
         Item_Amethyst = 40,
         Item_PaladinsShield = 41,
         Item_ShadowStrike = 42,
-        Item_ThunderStrike = 43
+        Item_ThunderStrike = 43,
+        Item_BowOfTheSlayer = 47
     }
 
     public enum LegendaryItems
@@ -308,6 +310,18 @@ public class Item
             case 44:
                 item = new Item_StaffOfThePriestess();
                 return item;
+            case 45:
+                item = new Item_DreadnoughtArmor();
+                return item;
+            case 46:
+                item = new Item_BoneSickle();
+                return item;
+            case 47:
+                item = new Item_BowOfTheSlayer();
+                return item;
+            case 48:
+                item = new Item_DrinkingPouch();
+                return item;
             default:
                 return null;
         }
@@ -323,19 +337,19 @@ public class Item
         }
         if (Enum.IsDefined(typeof(UncommonItems), item.itemId))
         {
-            stackSize = 9;
+            stackSize = 6;
         }
         if (Enum.IsDefined(typeof(RareItems), item.itemId))
         {
-            stackSize = 27;
+            stackSize = 9;
         }
         if (Enum.IsDefined(typeof(EpicItems), item.itemId))
         {
-            stackSize = 42;
+            stackSize = 12;
         }
         if (Enum.IsDefined(typeof(LegendaryItems), item.itemId))
         {
-            stackSize = 81;
+            stackSize = 15;
         }
         stackSize *= item.stacks;
         switch(item.attribute)

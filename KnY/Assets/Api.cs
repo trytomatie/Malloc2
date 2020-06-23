@@ -50,10 +50,12 @@ public class Api
     public static void AddDamageDone(int value)
     {
         DamageDone += value;
+        TotalDamageDone += value;
     }
     public static void AddDamageTaken(int value)
     {
         DamageTaken += value;
+        TotalDamageTaken += value;
     }
     public static void AddHealingDone(int value)
     {
