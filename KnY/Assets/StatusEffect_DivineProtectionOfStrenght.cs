@@ -10,7 +10,7 @@ public class StatusEffect_DivineProtectionOfStrenght : StatusEffect {
         this.statusName = "Divine Protection of Strength";
         this.image = new Item_LightCoin().image;
         this.strengthIncrease = value;
-        this.description = "Increases your attack damage by " + strengthIncrease;
+        this.description = "Increases your strength by " + strengthIncrease;
         this.duration = 36000;
         this.type = Type.Protection;
     }
@@ -19,7 +19,7 @@ public class StatusEffect_DivineProtectionOfStrenght : StatusEffect {
     {
         if(!effectApplied)
         {
-            g.GetComponent<Statusmanager>().AttackDamageFlatBonus += strengthIncrease;
+            g.GetComponent<Statusmanager>().Strength += strengthIncrease;
             effectApplied = true;
         }
     }
@@ -28,14 +28,14 @@ public class StatusEffect_DivineProtectionOfStrenght : StatusEffect {
     {
         if(effectApplied)
         {
-            g.GetComponent<Statusmanager>().AttackDamageFlatBonus -= strengthIncrease;
+            g.GetComponent<Statusmanager>().Strength -= strengthIncrease;
         }
     }
 
     public override void OnAdditionalApplication(GameObject g, StatusEffect s)
     {
         StatusEffect_DivineProtectionOfStrenght newEffect = (StatusEffect_DivineProtectionOfStrenght)s;
-        g.GetComponent<Statusmanager>().AttackDamageFlatBonus += newEffect.strengthIncrease;
+        g.GetComponent<Statusmanager>().Strength += newEffect.strengthIncrease;
         this.strengthIncrease += newEffect.strengthIncrease;
         this.description = "Increases your attack damage by " + strengthIncrease;
     }

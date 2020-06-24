@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class PassiveSkillAttribute_Glass : PassiveSkillAttribute
 {
-    private StatusEffect_Glass myEffectRefference;
+    private StatusEffect myEffectRefference;
     
     public PassiveSkillAttribute_Glass()
     {
@@ -19,13 +19,14 @@ public class PassiveSkillAttribute_Glass : PassiveSkillAttribute
         if(myEffectRefference == null)
         {
             myEffectRefference = new StatusEffect_Glass();
-            source.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectRefference);
+            myEffectRefference = source.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectRefference);
         }
     }
 
     public override void RemoveEffect(GameObject source)
     {
-        if(myEffectRefference != null)
+        myEffectRefference.RemoveStacks(1);
+        if (myEffectRefference.stacks == 0)
         {
             myEffectRefference.duration = 0;
             myEffectRefference = null;

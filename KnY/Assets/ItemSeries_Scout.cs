@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemSeries_Scout : ItemSeries
 {
-    public StatusEffect_ItemSeriesScout myEffectRefference;
+    public StatusEffect myEffectRefference;
     public ItemSeries_Scout()
     {
         this.id = 6;
@@ -20,7 +20,7 @@ public class ItemSeries_Scout : ItemSeries
         if(conditionsNeeded[0] <= totalConditionsMet && myEffectRefference == null)
         {
                 myEffectRefference = new StatusEffect_ItemSeriesScout();
-                g.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectRefference);
+            myEffectRefference = g.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectRefference);
                 UI_InfoTitleManager.Show("Series Aquired: " + seriesName, description[0], 3);
         }
     }

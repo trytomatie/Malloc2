@@ -21,9 +21,9 @@ public class SkillGenerator
         { "Skill_Slam", 100 },
         { "Skill_Solatii", 50 },
         { "Skill_Slice", 100 },
-        { "Skill_SummonReaver", 60 },
+        { "Skill_SummonReaver", 30 },
         { "Skill_SpreadingEruption",10 },
-        { "Skill_SummonThunder",80 },
+        { "Skill_SummonThunder",70 },
         { "Skill_SummonThySpiders",40 },
         { "Skill_LesserThunder",100 },
         { "Skill_HolyRod",100 },
@@ -38,7 +38,7 @@ public class SkillGenerator
         Dictionary<String, int> skillWeightRef = skillWeights;
         Statusmanager.CharacterClass characterClass = target.GetComponent<Statusmanager>().characterClass;
         int rndVal = UnityEngine.Random.Range(0, 100);
-        if(rndVal > 30)
+        if(rndVal > 35)
         { 
             if (characterClass == Statusmanager.CharacterClass.Warrior)
             {
@@ -56,8 +56,8 @@ public class SkillGenerator
                 skillWeightRef = GetEmptyWeightList();
                 skillWeightRef["Skill_LesserThunder"] = 100;
                 skillWeightRef["Skill_SummonThunder"] = 80;
-                skillWeightRef["Skill_Erruption"] = 40;
-                skillWeightRef["Skill_Cure"] = 40;
+                skillWeightRef["Skill_Erruption"] = 60;
+                skillWeightRef["Skill_Cure"] = 60;
                 skillWeightRef["Skill_Slam"] = 60;
                 skillWeightRef["Skill_BurnSlash"] = 100;
                 skillWeightRef["Skill_Slice"] = 20;
@@ -65,10 +65,10 @@ public class SkillGenerator
             if (characterClass == Statusmanager.CharacterClass.Priest)
             {
                 skillWeightRef = GetEmptyWeightList();
-                skillWeightRef["Skill_SummonThunder"] = 40;
+                skillWeightRef["Skill_SummonThunder"] = 10;
                 skillWeightRef["Skill_Erruption"] = 5;
-                skillWeightRef["Skill_HolyRod"] = 100;
-                skillWeightRef["Skill_Cure"] = 100;
+                skillWeightRef["Skill_HolyRod"] = 80;
+                skillWeightRef["Skill_Cure"] = 80;
                 skillWeightRef["Skill_Slam"] = 70;
                 skillWeightRef["Skill_BurnSlash"] = 20;
                 skillWeightRef["Skill_Smite"] = 80;
@@ -104,7 +104,8 @@ public class SkillGenerator
     {
 
         int i = UnityEngine.Random.Range(0, PassiveSkillAttribute.TotalWeight);
-        Skill skill = new Skill_ThunderStrike(10, 0.8f, 0.25f, 3, false, target.GetComponent<SpriteRenderer>().material);
+        Skill skill = new Skill_ThunderStrike(70, 0.8f, 0.25f, 3, false, target.GetComponent<SpriteRenderer>().material);
+
         if (i > 0 && i <Weight(ref i, "Skill_SummonThunder"))
         {
             skill = new Skill_ThunderStrike(10, 0.8f, 0.25f, 3, false, target.GetComponent<SpriteRenderer>().material);

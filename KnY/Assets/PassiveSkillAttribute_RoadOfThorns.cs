@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class PassiveSkillAttribute_RoadOfThorns : PassiveSkillAttribute
 {
-    private StatusEffect_RoadOfThorns myEffectRefference;
+    private StatusEffect myEffectRefference;
     
     public PassiveSkillAttribute_RoadOfThorns()
     {
@@ -20,13 +20,14 @@ public class PassiveSkillAttribute_RoadOfThorns : PassiveSkillAttribute
         if(myEffectRefference == null)
         {
             myEffectRefference = new StatusEffect_RoadOfThorns();
-            source.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectRefference);
+            myEffectRefference = source.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectRefference);
         }
     }
 
     public override void RemoveEffect(GameObject source)
     {
-        if(myEffectRefference != null)
+        myEffectRefference.RemoveStacks(1);
+        if (myEffectRefference.stacks == 0)
         {
             myEffectRefference.duration = 0;
             myEffectRefference = null;

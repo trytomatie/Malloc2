@@ -26922,10 +26922,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chunkType: 0
   concluded: 0
-  upIsOpen: 0
+  upIsOpen: 1
   downIsOpen: 0
   rightIsOpen: 1
-  leftIsOpen: 1
+  leftIsOpen: 0
   forceOpenings: 0
   mapDebugInfo: 
   adjustedExits: 00000000

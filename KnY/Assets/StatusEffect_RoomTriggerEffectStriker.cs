@@ -5,7 +5,6 @@ using UnityEngine;
 public class StatusEffect_RoomTriggerEffectStriker : StatusEffect {
 
     int cooldownReduce = 10;
-    int stacks = 0;
     public StatusEffect_RoomTriggerEffectStriker()
     {
         this.statusName = "Striker";
@@ -34,11 +33,7 @@ public class StatusEffect_RoomTriggerEffectStriker : StatusEffect {
 
     public override void RemoveEffect(GameObject g)
     {
-        stacks--;
-        if(stacks <= 0)
-        { 
-            g.GetComponent<Statusmanager>().onRoomEnterEffects.Remove(this);
-        }
+         g.GetComponent<Statusmanager>().onRoomEnterEffects.Remove(this);
     }
 
     public override void OnAdditionalApplication(GameObject g, StatusEffect s)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item_ShadowStrike : Item {
 
-    public int strengthBonus = 75;
+    public int strengthBonus = 40;
 
     public Item_ShadowStrike()
     {

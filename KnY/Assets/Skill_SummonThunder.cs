@@ -25,7 +25,7 @@ class Skill_ThunderStrike : Skill
         this.AllowsMovement = allowsMovement;
         this.delayBetweenStrikes = delayBetweenStrikes;
         this.Name = "Summon Thunder";
-        this.Description = "Strikes the targeted Area " + numberOfStrikes + " times for 10% magic power and 90% <Color=Blue>INT</color> each strike.";
+        this.Description = "Strikes the targeted Area " + numberOfStrikes + " times for 10% magic power and 140% <Color=Blue>INT</color> each strike.";
         this.SpCost = 50;
         this.numberOfStrikes = numberOfStrikes;
         this.FxMaterial = fxMaterial;
@@ -74,7 +74,7 @@ class Skill_ThunderStrike : Skill
         int strikesCompleted = 0;
         while (strikesCompleted < numberOfStrikes)
         {
-            int damage = (int)(s.TotalMagicPower * 0.1f + s.Intellect * 0.9f);
+            int damage = (int)(s.TotalMagicPower * 0.1f + s.Intellect * 1.4f);
             GameObject projectile = GameObject.Instantiate(PublicGameResources.GetResource().damageObject, Position, Quaternion.identity);
             projectile.GetComponent<DamageObject>().SetValues(damage, s.criticalStrikeChance, 0, 0.5f, source, 6);
             projectile.transform.GetChild(5).GetComponent<CircleCollider2D>().radius = 0.15f;

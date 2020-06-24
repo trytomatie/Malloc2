@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StatusEffect_Glass : StatusEffect {
 
     int cooldownReduce = 10;
+    public int stacks;
+
     public StatusEffect_Glass()
     {
         this.statusName = "Glass";
@@ -12,6 +15,7 @@ public class StatusEffect_Glass : StatusEffect {
         this.image = new Item_LightCoin().image;
         this.type = Type.Buff;
         this.duration = 36000;
+        this.stacks = 1;
     }
 
     public override void ApplyEffect(GameObject g)
@@ -28,16 +32,18 @@ public class StatusEffect_Glass : StatusEffect {
 
     public override void RemoveEffect(GameObject g)
     {
-        if (effectApplied)
-        {
-            g.GetComponent<Statusmanager>().HpMultiplier += 0.5f;
-            g.GetComponent<Statusmanager>().MagicPowerMultiplier -= 0.5f;
-            g.GetComponent<Statusmanager>().TotalAttackDamageMultiplyier -= 0.5f;
-        }
+            if (effectApplied)
+            {
+                g.GetComponent<Statusmanager>().HpMultiplier += 0.5f;
+                g.GetComponent<Statusmanager>().MagicPowerMultiplier -= 0.5f;
+                g.GetComponent<Statusmanager>().TotalAttackDamageMultiplyier -= 0.5f;
+                duration = 0;
+                effectApplied = false;
+            }
     }
 
     public override void OnAdditionalApplication(GameObject g, StatusEffect s)
     {
-
+        stacks++;
     }
 }

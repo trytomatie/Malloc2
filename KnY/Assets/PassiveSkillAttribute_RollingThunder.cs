@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class PassiveSkillAttribute_RollingThunder : PassiveSkillAttribute
 {
-    private StatusEffect_RollingThunder myEffectRefference;
+    private StatusEffect myEffectRefference;
     
     public PassiveSkillAttribute_RollingThunder()
     {
@@ -20,13 +20,14 @@ public class PassiveSkillAttribute_RollingThunder : PassiveSkillAttribute
         if(myEffectRefference == null)
         {
             myEffectRefference = new StatusEffect_RollingThunder();
-            source.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectRefference);
+            myEffectRefference = source.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectRefference);
         }
     }
 
     public override void RemoveEffect(GameObject source)
     {
-        if(myEffectRefference != null)
+        myEffectRefference.RemoveStacks(1);
+        if (myEffectRefference.stacks == 0)
         {
             myEffectRefference.duration = 0;
             myEffectRefference = null;

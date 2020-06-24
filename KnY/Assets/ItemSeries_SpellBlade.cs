@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemSeries_SpellBlade : ItemSeries
 {
-    public StatusEffect_ItemSeriesSpellBlade myEffectRefference;
+    public StatusEffect myEffectRefference;
     public ItemSeries_SpellBlade()
     {
         this.id = 8;
@@ -20,7 +20,7 @@ public class ItemSeries_SpellBlade : ItemSeries
         if(conditionsNeeded[0] <= totalConditionsMet && myEffectRefference == null)
         {
             myEffectRefference = new StatusEffect_ItemSeriesSpellBlade();
-            g.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectRefference);
+            myEffectRefference = g.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectRefference);
             UI_InfoTitleManager.Show("Series Aquired: " + seriesName, description[0], 3);
         }
     }

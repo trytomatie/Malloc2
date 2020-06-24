@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item_OhLawdHeComin : Item {
 
-    public int hpGain = 1000;
+    public int hpGain = 125;
     public Item_OhLawdHeComin()
     {
         this.itemId = 33;

@@ -87,7 +87,7 @@ class Skill_BasicAttack : Skill
                 attackPhase = 2;
             }
             damageObject.GetComponent<DamageObject>().SetValues(damage, sourceStatus.CriticalStrikeChance, 0.1f, 0.2f, source, 2);
-            damageObject.GetComponent<DamageObject>().SetKnockbackParameters(0.3f, 0.15f);
+            damageObject.GetComponent<DamageObject>().SetKnockbackParameters(0.5f, 0.15f);
             sourceStatus.ApplyStatusEffect(new StatusEffect_HiddenSlow(Casttime ,0.65f));
 
             if (attackPhase == 4)

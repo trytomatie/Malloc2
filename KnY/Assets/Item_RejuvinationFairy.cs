@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Item_RejuvinationFairy : Item {
 
-    public int shieldAmount = 50;
+    public int shieldAmount = 25;
     public float refreshRate = 5;
     public StatusEffect_RejuvinationFairyShield myEffectReference;
     public Item_RejuvinationFairy()

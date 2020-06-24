@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item_BoneSickle : Item {
 
-    public int damageIncrease = 25;
+    public int damageIncrease = 10;
     public Item_BoneSickle()
     {
         this.itemId = 46;

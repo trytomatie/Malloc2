@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Item_DarkFairy : Item {
 
-    public int attackDamageBonus = 25;
+    public int attackDamageBonus = 10;
     public Item_DarkFairy()
     {
         this.itemId = 26;

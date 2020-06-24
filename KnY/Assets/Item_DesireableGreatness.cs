@@ -5,8 +5,8 @@ using UnityEngine;
 public class Item_DesireableGreatness : Item
 {
 
-    public int attackDamagePerStack = 50;
-    public int healthPerStack = 150;
+    public int attackDamagePerStack = 20;
+    public int healthPerStack = 50;
     public Item_DesireableGreatness()
     {
         this.itemId = 27;

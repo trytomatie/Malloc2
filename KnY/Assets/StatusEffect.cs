@@ -12,6 +12,7 @@ public class StatusEffect {
     public bool effectApplied = false;
     public bool hidden = false;
     public Type type;
+    public int stacks;
     public enum Type
     {
         Buff,
@@ -30,6 +31,15 @@ public class StatusEffect {
     public virtual void RemoveEffect(GameObject g)
     {
         
+    }
+
+    public virtual void RemoveStacks(int reduce)
+    {
+        stacks -= reduce;
+        if(stacks <= 0)
+        {
+            duration = 0;
+        }
     }
 
     public virtual void OnAdditionalApplication(GameObject g,StatusEffect s)

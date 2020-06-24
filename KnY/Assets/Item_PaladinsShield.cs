@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item_PaladinsShield : Item {
 
-    public int magicPower = 75;
+    public int magicPower = 40;
     public int defence = 10;
     public Item_PaladinsShield()
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item_BigChonkerFairy : Item {
 
-    public int hpGain = 250;
+    public int hpGain = 75;
     public Item_BigChonkerFairy()
     {
         this.itemId = 32;

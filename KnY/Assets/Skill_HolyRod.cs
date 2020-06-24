@@ -11,7 +11,7 @@ class Skill_HolyRod : Skill
 
     private Material initialMaterial;
     private float animationTimer = 0;
-    private float percantage = 1f;
+    private float percantage = 1.5f;
     /// <summary>
     /// Initializes base Skill Atributes
     /// </summary>

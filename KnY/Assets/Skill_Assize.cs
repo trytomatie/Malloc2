@@ -11,6 +11,7 @@ class Skill_Assize : Skill
 {
 
     public float range = 1.5f;
+    public float scaling = 1;
     /// <summary>
     /// Initializes base Skill Atributes
     /// </summary>
@@ -23,7 +24,7 @@ class Skill_Assize : Skill
         this.BaseCasttime = casttime;
         this.AllowsMovement = allowsMovement;
         this.Name = "Assize";
-        this.Description = "Deals 75% Piety to all close enemys. Heal for 50% of the damage done.";
+        this.Description = "Deals 100% Piety to all close enemys. Heal for 50% of the damage done.";
         this.SpCost = 50;
         this.Image = ItemIcons.GetSkillIcon(18);
     }
@@ -70,8 +71,7 @@ class Skill_Assize : Skill
         Statusmanager[] entities = GameObject.FindObjectsOfType<Statusmanager>();
         List<GameObject> fxList = new List<GameObject>();
         List<GameObject> removalList = new List<GameObject>();
-        int damage = (int)(s.Piety * 0.75f);
-        int healAmount = 0;
+        int damage = (int)(s.Piety * scaling);
         foreach(Statusmanager entity in entities)
         {
             if(entity.faction != s.faction && entity.Hp > 0 && Vector2.Distance(source.transform.position,entity.transform.position) < range)

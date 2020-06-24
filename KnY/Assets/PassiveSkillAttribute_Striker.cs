@@ -19,7 +19,7 @@ public class PassiveSkillAttribute_Striker : PassiveSkillAttribute
         if(myEffectRefference == null)
         {
             myEffectRefference = new StatusEffect_RoomTriggerEffectStriker();
-            source.GetComponent<Statusmanager>().ApplyOnRoomEnterEffects(myEffectRefference);
+            myEffectRefference = (StatusEffect_RoomTriggerEffectStriker)source.GetComponent<Statusmanager>().ApplyOnRoomEnterEffects(myEffectRefference);
         }
     }
 
@@ -28,7 +28,11 @@ public class PassiveSkillAttribute_Striker : PassiveSkillAttribute
         if(myEffectRefference != null)
         {
             myEffectRefference.RemoveEffect(source);
-            myEffectRefference = null;
+            if (myEffectRefference.stacks == 0)
+            {
+                myEffectRefference.duration = 0;
+                myEffectRefference = null;
+            }
         }
     }
 }

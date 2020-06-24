@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item_DivineClockwork : Item {
 
-    public int dexterity = 60;
+    public int dexterity = 20;
     public Item_DivineClockwork()
     {
         this.itemId = 24;
