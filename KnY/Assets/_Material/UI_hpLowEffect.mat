@@ -41,7 +41,7 @@ Material:
     - Vector1_72D43B52: 0.237
     - Vector1_A269E10C: 72
     - _fade: 1
-    - _isVisible: 1
+    - _isVisible: 0
     m_Colors:
     - _color: {r: 1, g: 0, b: 0, a: 0}
     - _hurtColor: {r: 0, g: 0, b: 0, a: 0}

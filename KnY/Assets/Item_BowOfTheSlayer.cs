@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item_BowOfTheSlayer : Item {
 
-    public int dexterity = 25;
+    public int dexterity = 40;
     public Item_BowOfTheSlayer()
     {
         this.itemId = 47;
