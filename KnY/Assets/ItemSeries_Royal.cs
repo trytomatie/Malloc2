@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ItemSeries_Royal : ItemSeries
 {
-    public StatusEffect_ItemSeriesRoyal myEffectRefference;
-    public StatusEffect_ItemSeriesRoyal2 myEffectRefference2;
+    public StatusEffect myEffectRefference;
+    public StatusEffect myEffectRefference2;
     public ItemSeries_Royal()
     {
         this.id = 5;
@@ -25,7 +25,7 @@ public class ItemSeries_Royal : ItemSeries
         if(conditionsNeeded[0] <= totalConditionsMet && myEffectRefference == null)
         {
                 myEffectRefference = new StatusEffect_ItemSeriesRoyal();
-                g.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectRefference);
+            myEffectRefference = g.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectRefference);
                 UI_InfoTitleManager.Show("Series Aquired: " + seriesName, description[0], 3);
         }
         if (conditionsNeeded[1] <= totalConditionsMet && myEffectRefference2 == null)

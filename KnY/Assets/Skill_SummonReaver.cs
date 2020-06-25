@@ -25,7 +25,7 @@ class Skill_SummonReaver : Skill
         this.BaseCasttime = casttime;
         this.AllowsMovement = allowsMovement;
         this.Name = "Summon: Manareaver";
-        this.Description = "Summon an Manareaver";
+        this.Description = "Summon an Manareaver (Max 5)";
         this.SpCost = 100;
         this.FxMaterial = PublicGameResources.GetResource().poisonMaterial;
         this.Image = ItemIcons.GetSkillIcon(12);
@@ -70,14 +70,18 @@ class Skill_SummonReaver : Skill
     IEnumerator Spell(GameObject source)
     {
         yield return new WaitForSeconds(0.4f);
-        GameObject follower = GameObject.Instantiate(PublicGameResources.GetResource().corruptedAmethystFollower, source.transform.position, Quaternion.identity);
-        follower.GetComponent<AI_GenericFollower>().followTarget = source;
-        follower.GetComponent<Statusmanager>().faction = source.GetComponent<Statusmanager>().faction;
-        follower.GetComponent<Statusmanager>().level = source.GetComponent<Statusmanager>().level;
-        companionList.Add(follower);
-        source.GetComponent<Statusmanager>().AddFollower(follower);
-        yield return new WaitForSeconds(0.4f);
-        source.GetComponent<SpriteRenderer>().material = initialMaterial;
+        companionList.RemoveAll(item => item == null);
+        if (companionList.Count < 5)
+        { 
+            GameObject follower = GameObject.Instantiate(PublicGameResources.GetResource().corruptedAmethystFollower, source.transform.position, Quaternion.identity);
+            follower.GetComponent<AI_GenericFollower>().followTarget = source;
+            follower.GetComponent<Statusmanager>().faction = source.GetComponent<Statusmanager>().faction;
+            follower.GetComponent<Statusmanager>().level = source.GetComponent<Statusmanager>().level;
+            companionList.Add(follower);
+            source.GetComponent<Statusmanager>().AddFollower(follower);
+            yield return new WaitForSeconds(0.4f);
+            source.GetComponent<SpriteRenderer>().material = initialMaterial;
+        }
     }
 
 

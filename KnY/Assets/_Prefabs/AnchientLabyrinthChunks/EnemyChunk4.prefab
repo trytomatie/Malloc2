@@ -26905,6 +26905,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 522e9d47f975b4b459ead53995e16df4, type: 2}
   - {fileID: 11400000, guid: 2bd356185308c1a408db4668c0e2a758, type: 2}
   - {fileID: 11400000, guid: f54709d7225896f42b010aa3b6f4f298, type: 2}
+  - {fileID: 11400000, guid: 914ec995b9d22b44fb76363419bd6001, type: 2}
   mapGenerator: {fileID: 0}
   enemyList: []
   hasBeenTriggerd: 0

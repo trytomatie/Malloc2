@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item_WitchsHeart : Item {
 
-    public int hpGain = 50;
+    public int hpGain = 30;
     public Item_WitchsHeart()
     {
         this.itemId = 21;

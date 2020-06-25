@@ -45,6 +45,7 @@ public class Api
     public static void AddKill()
     {
         Kills++;
+        TotalKills++;
         AddManaGem(1);
     }
     public static void AddDamageDone(int value)
@@ -127,7 +128,7 @@ public class GameData
         save.ManaGems = Api.ManaGems;
         save.Kills = Api.TotalKills;
         save.DamageDone = Api.TotalDamageDone;
-        save.DamageTaken = Api.DamageTaken;
+        save.DamageTaken = Api.TotalDamageTaken;
         save.HealingDone = Api.TotalHealingDone;
         save.ContractUnlocks = Api.ContractUnlocks;
 

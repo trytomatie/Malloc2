@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
@@ -12,8 +13,10 @@ public class Director : MonoBehaviour {
     private GameObject canvas;
     public GameObject cursor;
     public GameObject miniHpBar;
+    public GameObject statusEffectIndicator;
     public GameObject groundAoeIndicator;
     public GameObject laserFx;
+    public GameObject sound;
 
     public float timeScale = 1;
     public System.Random globalRandom;
@@ -32,8 +35,9 @@ public class Director : MonoBehaviour {
     public static string damageColorText = "<Color=orange>";
     public static string variableColorText = "<Color=blue>";
     public static string colorEndText = "</Color>";
+    public static NumberFormatInfo numberFormat = new NumberFormatInfo { NumberDecimalSeparator = ",", NumberGroupSeparator = ".", CurrencySymbol = "" };
 
-    public TimeSpan timePassed = new TimeSpan(0, 0, 0, 0, 0);
+public TimeSpan timePassed = new TimeSpan(0, 0, 0, 0, 0);
 
     public GameObject Canvas
     {
@@ -73,7 +77,7 @@ public class Director : MonoBehaviour {
         Statusmanager.PlayerFactionEntities = new List<GameObject>();
         Physics.IgnoreLayerCollision(12, 0);
         Physics.IgnoreLayerCollision(12, 12);
-        Options.RestorePlayerPrefs();
+        Options.ReadOptionsData();
 
     }
 
@@ -327,12 +331,29 @@ public class Director : MonoBehaviour {
         return new Vector2(x, y);
     }
 
+    public static void CreateSound(GameObject source,int soundId,float pitchOffset)
+    {
+        GameObject soundObject = Instantiate(instance.sound, source.transform.position, Quaternion.identity);
+        AudioClip clip = PublicGameResources.GetResource().sounds[soundId];
+        soundObject.GetComponent<AudioSource>().volume = Options.soundVolume;
+        soundObject.GetComponent<AudioSource>().pitch += pitchOffset + UnityEngine.Random.Range(-0.05f, 0.05f);
+        soundObject.GetComponent<AudioSource>().clip = clip;
+        soundObject.GetComponent<AudioSource>().Play();
+        Destroy(soundObject, clip.length + 0.2f);
+
+    }
 
     #region Options
     public static void SetMusicVolume(Slider slider)
     {
         Options.musicVolume = slider.value;
-        Options.SavePlayerPrefs();
+        Options.SaveCurrent();
+    }
+
+    public static void SetSoundVolume(Slider slider)
+    {
+        Options.soundVolume = slider.value;
+        Options.SaveCurrent();
     }
 
     public static void SetDetailedDescription(Toggle toggle)
@@ -345,7 +366,7 @@ public class Director : MonoBehaviour {
         {
             Options.detailedDescriptions = 0;
         }
-        Options.SavePlayerPrefs();
+        Options.SaveCurrent();
 
     }
     #endregion

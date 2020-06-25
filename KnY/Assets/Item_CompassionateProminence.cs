@@ -6,7 +6,7 @@ public class Item_CompassionateProminence : Item
 {
 
     public int flatDamageReduction = 5;
-    public float healthRegeneration = 1.5f;
+    public float healthRegeneration = 2.5f;
     public Item_CompassionateProminence()
     {
         this.itemId = 28;

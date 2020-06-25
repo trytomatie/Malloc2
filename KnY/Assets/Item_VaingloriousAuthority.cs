@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item_VaingloriousAuthority : Item {
 
-    public int hpGain = 50;
+    public int hpGain = 25;
     public int spGain = 10;
     public Item_VaingloriousAuthority()
     {

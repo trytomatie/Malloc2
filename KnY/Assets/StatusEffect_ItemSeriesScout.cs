@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class StatusEffect_ItemSeriesScout : StatusEffect {
+
     public StatusEffect_ItemSeriesScout()
     {
         this.statusName = new ItemSeries_Scout().seriesName;
@@ -10,6 +11,7 @@ public class StatusEffect_ItemSeriesScout : StatusEffect {
         this.image = new Item_BootsOfFlight().image;
         this.type = Type.Series;
         this.duration = 36000;
+        this.stacks = 1;
     }
 
     public override void ApplyEffect(GameObject g)
@@ -24,11 +26,12 @@ public class StatusEffect_ItemSeriesScout : StatusEffect {
     {
         if (effectApplied)
         {
+            effectApplied = false;
         }
     }
 
     public override void OnAdditionalApplication(GameObject g, StatusEffect s)
     {
-
+        stacks++;
     }
 }

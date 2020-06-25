@@ -27,30 +27,36 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         myStatus = GetComponent<Statusmanager>();
+
+
         skillManager = GetComponent<SkillManager>();
         skillManager.AddActiveSkill(new Skill_BasicAttack(0.4f, 0.4f, false),-2);
         skillManager.AddActiveSkill(new Skill_Dodge(0.7f, 0.4f, false),-1);
-        skillManager.AddActiveSkill(new Skill_Drainage(5, 0.5f, false), 0);
+
+        // Test skill
+        skillManager.AddActiveSkill(new Skill_ElShamac(2, 0.2f, false), 0);
+
+
         if (myStatus.characterClass == Statusmanager.CharacterClass.Warrior)
         { 
-            skillManager.AddActiveSkill(new Skill_AoeDash(10f, 0.4f, false),0);
+            skillManager.AddActiveSkill(new Skill_AoeDash(22f, 0.4f, false),0);
         }
         else if (myStatus.characterClass == Statusmanager.CharacterClass.Mage)
         {
-            skillManager.AddActiveSkill(new Skill_LesserThunder(5, 0.1f, false, GetComponent<SpriteRenderer>().material), 0);
+            skillManager.AddActiveSkill(new Skill_LesserThunder(7, 0.1f, false, GetComponent<SpriteRenderer>().material), 0);
         }
         else if (myStatus.characterClass == Statusmanager.CharacterClass.Priest)
         {
-            skillManager.AddActiveSkill(new Skill_HolyRod(6, 0.1f, false), 0);
-            skillManager.AddActiveSkill(new Skill_Cure(20f, 1.8f, false),1);
+            skillManager.AddActiveSkill(new Skill_HolyRod(8, 0.1f, false), 0);
+            skillManager.AddActiveSkill(new Skill_Cure(40f, 1.8f, false),1);
         }
         else if (myStatus.characterClass == Statusmanager.CharacterClass.Summoner)
         {
-            skillManager.AddActiveSkill(new Skill_SummonReaver(20f, 2f, false),0);
+            skillManager.AddActiveSkill(new Skill_SummonReaver(40f, 2f, false),0);
         }
         else if (myStatus.characterClass == Statusmanager.CharacterClass.Paladin)
         {
-            skillManager.AddActiveSkill(new Skill_Solatii(30, 2f, false), 0);
+            skillManager.AddActiveSkill(new Skill_Solatii(90, 2f, false), 0);
             skillManager.AddActiveSkill(new Skill_Guard(30f, 1f, false), 1);
         }
 

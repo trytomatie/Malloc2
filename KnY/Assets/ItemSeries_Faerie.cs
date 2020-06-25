@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ItemSeries_Faerie : ItemSeries
 {
-    public StatusEffect_ItemSeriesFaerie myEffectRefference;
-    public StatusEffect_ItemSeriesFaerie2 myEffectRefference2;
+    public StatusEffect myEffectRefference;
+    public StatusEffect myEffectRefference2;
     public ItemSeries_Faerie()
     {
         this.id = 4;
@@ -23,13 +23,13 @@ public class ItemSeries_Faerie : ItemSeries
         if(conditionsNeeded[0] <= totalConditionsMet && myEffectRefference == null)
         {
                 myEffectRefference = new StatusEffect_ItemSeriesFaerie();
-                g.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectRefference);
+            myEffectRefference = g.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectRefference);
                 UI_InfoTitleManager.Show("Series Aquired: " + seriesName, description[0], 3);
         }
         if (conditionsNeeded[1] <= totalConditionsMet && myEffectRefference2 == null)
         {
             myEffectRefference2 = new StatusEffect_ItemSeriesFaerie2();
-            g.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectRefference2);
+            myEffectRefference2 = g.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectRefference2);
             UI_InfoTitleManager.Show("Series Aquired: " + seriesName, description[1], 3);
         }
     }

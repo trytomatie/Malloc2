@@ -42,7 +42,7 @@ public class UI_SkillDisplay : MonoBehaviour, IPointerEnterHandler, IPointerExit
         }
         if (mouseEntered)
         {
-            DescriptionDisplay.transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            DescriptionDisplay.transform.position = transform.position + new Vector3(0, 0.25f, 0);
         }
 
         if(Skill.CooldownTimer > 0)

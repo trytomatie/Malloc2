@@ -24,7 +24,7 @@ class Skill_SpreadingEruption : Skill
         this.BaseCasttime = casttime;
         this.AllowsMovement = allowsMovement;
         this.projectileSpeed = projectileSpeed;
-        this.SpCost = 240;
+        this.SpCost = 75;
         this.Name = "Spreading Erruption";
         this.Description = String.Format("Summons multiple small eruptions for {0}% Magic damage and 1 Big erruption at the end for {1} % Magic damage, and splits into more errupions on destination that deal equivivalant damage", smalDamage * 100,damage*100);
         this.Image = ItemIcons.GetSkillIcon(15);

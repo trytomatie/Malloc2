@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class PassiveSkillAttribute_Scout : PassiveSkillAttribute
 {
-    private StatusEffect_ItemSeriesScout myEffectRefference;
+    private StatusEffect myEffectRefference;
     
     public PassiveSkillAttribute_Scout()
     {
@@ -19,7 +19,7 @@ public class PassiveSkillAttribute_Scout : PassiveSkillAttribute
         if(myEffectRefference == null)
         {
             myEffectRefference = new StatusEffect_ItemSeriesScout();
-            source.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectRefference);
+            myEffectRefference = source.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectRefference);
         }
     }
 
@@ -27,8 +27,13 @@ public class PassiveSkillAttribute_Scout : PassiveSkillAttribute
     {
         if(myEffectRefference != null)
         {
-            myEffectRefference.duration = 0;
-            myEffectRefference = null;
+            myEffectRefference.RemoveStacks(1);
+            if(myEffectRefference.stacks == 0)
+            {
+                myEffectRefference.duration = 0;
+                myEffectRefference = null;
+            }
+
         }
     }
 }

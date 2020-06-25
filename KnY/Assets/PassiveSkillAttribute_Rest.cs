@@ -22,7 +22,7 @@ public class PassiveSkillAttribute_Rest : PassiveSkillAttribute
         if(myEffectRefference == null)
         {
             myEffectRefference = new StatusEffect_RoomTriggerEffectRest(Healing);
-            source.GetComponent<Statusmanager>().ApplyOnRoomEnterEffects(myEffectRefference);
+            myEffectRefference= (StatusEffect_RoomTriggerEffectRest)source.GetComponent<Statusmanager>().ApplyOnRoomEnterEffects(myEffectRefference);
         }
     }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Item_DreadnoughtArmor : Item {
 
     public float healthRegenerationBonus = 7f;
-    public int hpBonus = 150;
+    public int hpBonus = 50;
     public int defence = 10;
 
     public Item_DreadnoughtArmor()

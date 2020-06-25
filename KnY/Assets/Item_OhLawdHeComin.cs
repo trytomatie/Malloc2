@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Item_OhLawdHeComin : Item {
 
-    public int hpGain = 1000;
+    public int hpGain = 125;
     public Item_OhLawdHeComin()
     {
         this.itemId = 33;
         this.attribute = "Light";
         this.itemName = "oh lawd he comin";
-        this.description = "Just Look at this chonky boi, Increasing your hp by a thousand";
+        this.description = "Just Look at this chonky boi, Increasing your hp by a 125";
         this.detailedDescription = "Increases Max Hp by " + hpGain + " per stack";
         this.series.Add(ItemSeries.Series.Curse);
         this.series.Add(ItemSeries.Series.Faerie);

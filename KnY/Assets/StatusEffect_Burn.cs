@@ -23,7 +23,7 @@ public class StatusEffect_Burn : StatusEffect {
         tickRateTimer+= Time.deltaTime;
         if(tickRateTimer >= tickRate)
         {
-            int damageDealt = DamageObject.CalculateDamageDealt(g.GetComponent<Statusmanager>(), damage, false);
+            int damageDealt = DamageObject.CalculateDamageDealt(g.GetComponent<Statusmanager>(),null, damage, false);
             g.GetComponent<Statusmanager>().Hp -= damageDealt;
             Director.GetInstance().SpawnDamageText(damageDealt.ToString(), g.transform, PublicGameResources.GetResource().afflictionDamageColor, false);
             tickRateTimer = 0;
@@ -42,4 +42,10 @@ public class StatusEffect_Burn : StatusEffect {
             duration = s.duration;
         }
     }
+
+    public override StatusEffect Copy()
+    {
+        return new StatusEffect_Burn(duration, damage);
+    }
+
 }

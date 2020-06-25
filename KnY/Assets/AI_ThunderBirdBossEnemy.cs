@@ -25,7 +25,7 @@ public class AI_ThunderBirdBossEnemy : AI_BaseAI
         if ((mode != Mode.AttackPrep && mode != Mode.Attack && mode != Mode.Idle && mode != Mode.IdleAfterAttack && mode != Mode.Wander) )
         {
             TurnToTarget(SearchTarget());
-            if (CheckLineOfSight())
+            if (CheckLineOfSightPathfinding())
             {
                 mode = Mode.RegularFollow;
             }
@@ -39,7 +39,7 @@ public class AI_ThunderBirdBossEnemy : AI_BaseAI
                 rb.velocity = Vector2.zero;
             }
         }
-        handleEffects();
+        HandleEffects();
         switch(mode)
         {
             case Mode.Idle:

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemSeries_Minonmancer : ItemSeries
 {
-    public StatusEffect_ItemSeriesMinionmancer myEffectRefference;
+    public StatusEffect myEffectRefference;
     public ItemSeries_Minonmancer()
     {
         this.id = 7;
@@ -20,7 +20,7 @@ public class ItemSeries_Minonmancer : ItemSeries
         if(conditionsNeeded[0] <= totalConditionsMet && myEffectRefference == null)
         {
                 myEffectRefference = new StatusEffect_ItemSeriesMinionmancer();
-                g.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectRefference);
+            myEffectRefference = g.GetComponent<Statusmanager>().ApplyStatusEffect(myEffectRefference);
                 UI_InfoTitleManager.Show("Series Aquired: " + seriesName, description[0], 3);
         }
     }

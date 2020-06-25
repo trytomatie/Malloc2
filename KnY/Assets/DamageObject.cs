@@ -6,6 +6,7 @@ using UnityEngine;
 public class DamageObject : MonoBehaviour {
 
     public GameObject origin;
+    public GameObject conditionalTarget;
     public int damage = 0;
     public int critPercantage = 0;
     private float timeAlive = 0;
@@ -15,7 +16,7 @@ public class DamageObject : MonoBehaviour {
     public Dictionary<GameObject, bool> damagedObjects = new Dictionary<GameObject, bool>();
 
     public Collider2D myCollider;
-    public StatusEffect applyStatusEffect;
+    public StatusEffect applyStatusEffect = null;
     public double procCoefficient = 1;
     private float _knockbackStrenght;
     private float _knockbackDurration;
@@ -80,7 +81,7 @@ public class DamageObject : MonoBehaviour {
             return;
         }
         // Damage Calculation
-        int damageDealt = CalculateDamageDealt(otherStatus, damage);
+        int damageDealt = CalculateDamageDealt(otherStatus,origin.GetComponent<Statusmanager>(), damage);
         // Apply crit
         int critChance = UnityEngine.Random.Range(1, 101);
         bool hasCrit = false;
@@ -116,9 +117,9 @@ public class DamageObject : MonoBehaviour {
             ApplyKnockbackOnTarget(other);
         }
         // Apply Set Statuseffect
-        if(applyStatusEffect != null)
+        if(applyStatusEffect != null && applyStatusEffect.statusName != "")
         {
-            other.GetComponent<Statusmanager>().ApplyStatusEffect(applyStatusEffect);
+            other.GetComponent<Statusmanager>().ApplyStatusEffect(applyStatusEffect.Copy());
         }
         // Apply Bleed Effect
         float distance = Vector2.Distance(other.transform.position, origin.transform.position);
@@ -133,17 +134,22 @@ public class DamageObject : MonoBehaviour {
     /// <summary>
     /// Calculates damage in accordance to armor
     /// </summary>
-    public static int CalculateDamageDealt(Statusmanager otherStatus, int damage)
+    public static int CalculateDamageDealt(Statusmanager otherStatus, Statusmanager myStatus, int damage)
     {        
         // Get Armor damage Reduction
         float damageMultiplier = 0;
-        if (otherStatus.defence >= 0)
+        int defenceAfterPenetration = otherStatus.defence;
+        if (myStatus != null)
+        {
+            defenceAfterPenetration = otherStatus.defence - myStatus.armorPenetration;
+        }
+        if (defenceAfterPenetration >= 0)
         { 
-            damageMultiplier = 100f / (100f + otherStatus.defence);
+            damageMultiplier = 100f / (100f + defenceAfterPenetration);
         }
         else
         {
-            damageMultiplier = 2 - (100f / (100f - otherStatus.defence));
+            damageMultiplier = 2 - (100f / (100f - defenceAfterPenetration));
         }
         // Calculat damage
         int damageDealt = Mathf.RoundToInt((damage * damageMultiplier) + UnityEngine.Random.Range(0, 10) - otherStatus.flatDamageReduction);
@@ -153,23 +159,28 @@ public class DamageObject : MonoBehaviour {
 
 
 
-    public static int CalculateDamageDealt(Statusmanager otherStatus, int damage,bool randomFactor)
+    public static int CalculateDamageDealt(Statusmanager otherStatus, Statusmanager myStatus, int damage,bool randomFactor)
     {
         int rndDamage = 0;
-        if(randomFactor == true)
+
+        if (randomFactor == true)
         {
             rndDamage = UnityEngine.Random.Range(0, 10);
         }
-
+        int defenceAfterPenetration = otherStatus.defence;
+        if (myStatus != null)
+        { 
+            defenceAfterPenetration = otherStatus.defence - myStatus.armorPenetration;
+        }
         // Get Armor damage Reduction
         float damageMultiplier = 0;
-        if (otherStatus.defence >= 0)
+        if (defenceAfterPenetration >= 0)
         {
-            damageMultiplier = 100f / (100f + otherStatus.defence);
+            damageMultiplier = 100f / (100f + defenceAfterPenetration);
         }
         else
         {
-            damageMultiplier = 2 - (100f / (100f - otherStatus.defence));
+            damageMultiplier = 2 - (100f / (100f - defenceAfterPenetration));
         }
         // Calculat damage
         int damageDealt = Mathf.RoundToInt((damage * damageMultiplier) + rndDamage);

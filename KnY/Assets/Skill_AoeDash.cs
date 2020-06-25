@@ -24,7 +24,7 @@ class Skill_AoeDash : Skill
         this.Name = "Spin Dash";
         this.Description = "Dashes forward and deals damage in an area for " + Director.damageColorText + damageMutliplicator * 100 + Director.colorEndText + " % Strength";
         this.SpCost = 40;
-        this.Image = ItemIcons.GetSkillIcon(1);
+        this.Image = ItemIcons.GetSkillIcon(22);
     }
 
 

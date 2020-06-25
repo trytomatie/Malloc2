@@ -25,10 +25,10 @@ public class PassiveSkill
     {
         attributeNumberWeight[0] = 0;
         attributeNumberWeight[1] = 0;
-        attributeNumberWeight[2] = 20;
-        attributeNumberWeight[3] = 40;
-        attributeNumberWeight[4] = 65;
-        attributeNumberWeight[5] = 100;
+        attributeNumberWeight[2] = 60;
+        attributeNumberWeight[3] = 90;
+        attributeNumberWeight[4] = 105;
+        attributeNumberWeight[5] = 140;
     }
 
     public void ApplyEffects(GameObject source)
@@ -48,90 +48,145 @@ public class PassiveSkill
     }
 
 
-    public void AddRandomAttribute(int currentFloor)
+    public void AddRandomAttribute(int level)
     {
-
         int i = UnityEngine.Random.Range(0, PassiveSkillAttribute.TotalWeight);
-        PassiveSkillAttribute psa = new PassiveSkillAttribute_IncreaseHP(UnityEngine.Random.Range(10 * currentFloor, 50 * currentFloor));
+        PassiveSkillAttribute psa = new PassiveSkillAttribute_IncreaseHP(UnityEngine.Random.Range(10 * level, 50 * level));
         if(i > 0 && i < PassiveSkillAttribute.Weight(ref i,"PassiveSkillAttribute_IncreaseHP"))
         {
-            psa = new PassiveSkillAttribute_IncreaseHP(UnityEngine.Random.Range(10 * currentFloor, 50 * currentFloor));
+
+            int baseValue = 100 + level * 12;
+            psa = new PassiveSkillAttribute_IncreaseHP((int)UnityEngine.Random.Range(baseValue,baseValue*1.1f));
+            PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseHP"] /= 2;
         }
         else if (i > 0 && i < PassiveSkillAttribute.Weight(ref i, "PassiveSkillAttribute_IncreaseSP"))
         {
-            psa = new PassiveSkillAttribute_IncreaseSP(UnityEngine.Random.Range(1 * currentFloor, 6 * currentFloor));
+            int baseValue = 10 + level * 6;
+            psa = new PassiveSkillAttribute_IncreaseSP((int)UnityEngine.Random.Range(baseValue, baseValue * 1.1f));
+            PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseSP"] /= 2;
         }
         else if (i > 0 && i < PassiveSkillAttribute.Weight(ref i, "PassiveSkillAttribute_IncreaseATK"))
         {
-            psa = new PassiveSkillAttribute_IncreaseATK(UnityEngine.Random.Range(1 * currentFloor, 10 * currentFloor));
+            int baseValue = 10 + level * 8;
+            psa = new PassiveSkillAttribute_IncreaseATK((int)UnityEngine.Random.Range(baseValue, baseValue * 1.1f));
+            PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseATK"] /= 2;
         }
         else if (i > 0 && i < PassiveSkillAttribute.Weight(ref i, "PassiveSkillAttribute_IncreaseDEF"))
         {
-            psa = new PassiveSkillAttribute_IncreaseDEF(UnityEngine.Random.Range(1 * currentFloor, 4 * currentFloor));
+            int baseValue = 16 + level * 4;
+            psa = new PassiveSkillAttribute_IncreaseDEF((int)UnityEngine.Random.Range(baseValue, baseValue * 1.1f));
+            PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseDEF"] /= 2;
         }
         else if (i > 0 && i < PassiveSkillAttribute.Weight(ref i, "PassiveSkillAttribute_Scout"))
         {
             psa = new PassiveSkillAttribute_Scout();
+            PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_Scout"] = 0;
         }
         else if (i > 0 && i < PassiveSkillAttribute.Weight(ref i, "PassiveSkillAttribute_RoadOfThorns"))
         {
             psa = new PassiveSkillAttribute_RoadOfThorns();
+            PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_RoadOfThorns"] = 0;
         }
         else if (i > 0 && i < PassiveSkillAttribute.Weight(ref i, "PassiveSkillAttribute_RollingThunder"))
         {
             psa = new PassiveSkillAttribute_RollingThunder();
+            PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_RollingThunder"] = 0;
         }
         else if (i > 0 && i < PassiveSkillAttribute.Weight(ref i, "PassiveSkillAttribute_Striker"))
         {
             psa = new PassiveSkillAttribute_Striker();
+            PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_Striker"] = 0;
         }
         else if (i > 0 && i < PassiveSkillAttribute.Weight(ref i, "PassiveSkillAttribute_Rest"))
         {
-            psa = new PassiveSkillAttribute_Rest(UnityEngine.Random.Range(40 * currentFloor, 70 * currentFloor));
+            int baseValue = 100 + level * 12;
+            psa = new PassiveSkillAttribute_Rest((int)UnityEngine.Random.Range(baseValue, baseValue * 1.1f));
+            PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_Rest"] = 0;
         }
         else if (i > 0 && i < PassiveSkillAttribute.Weight(ref i, "PassiveSkillAttribute_Glass"))
         {
             psa = new PassiveSkillAttribute_Glass();
+            PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_Glass"] = 0;
         }
         else if (i > 0 && i < PassiveSkillAttribute.Weight(ref i, "PassiveSkillAttribute_IncreaseMagicAttack"))
         {
-            psa = new PassiveSkillAttribute_IncreaseMagicAttack(UnityEngine.Random.Range(5 * currentFloor, 10 * currentFloor));
+            int baseValue = 10 + level * 9;
+            psa = new PassiveSkillAttribute_IncreaseMagicAttack((int)UnityEngine.Random.Range(baseValue, baseValue * 1.1f));
+            PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseMagicAttack"] /= 2;
         }
         else if (i > 0 && i < PassiveSkillAttribute.Weight(ref i, "PassiveSkillAttribute_IncreaseSTR"))
         {
-            psa = new PassiveSkillAttribute_IncreaseSTR(UnityEngine.Random.Range(5 * currentFloor, 20 * currentFloor));
+            int baseValue = 10 + level * 10;
+            psa = new PassiveSkillAttribute_IncreaseSTR((int)UnityEngine.Random.Range(baseValue, baseValue * 1.1f));
+            PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseSTR"] /= 2;
         }
         else if (i > 0 && i < PassiveSkillAttribute.Weight(ref i, "PassiveSkillAttribute_IncreaseINT"))
         {
-            psa = new PassiveSkillAttribute_IncreaseINT(UnityEngine.Random.Range(5 * currentFloor, 20 * currentFloor));
+            int baseValue = 10 + level * 10;
+            psa = new PassiveSkillAttribute_IncreaseINT((int)UnityEngine.Random.Range(baseValue, baseValue * 1.1f));
+            PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseINT"] /= 2;
         }
         else if (i > 0 && i < PassiveSkillAttribute.Weight(ref i, "PassiveSkillAttribute_IncreaseDEX"))
         {
-            psa = new PassiveSkillAttribute_IncreaseDEX(UnityEngine.Random.Range(5 * currentFloor, 20 * currentFloor));
+            int baseValue = 10 + level * 11;
+            psa = new PassiveSkillAttribute_IncreaseDEX((int)UnityEngine.Random.Range(baseValue, baseValue * 1.1f));
+            PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseDEX"] /= 2;
         }
         else if (i > 0 && i < PassiveSkillAttribute.Weight(ref i, "PassiveSkillAttribute_IncreasePIE"))
         {
-            psa = new PassiveSkillAttribute_IncreasePIE(UnityEngine.Random.Range(5 * currentFloor, 20 * currentFloor));
+            int baseValue = 10 + level * 11;
+            psa = new PassiveSkillAttribute_IncreasePIE((int)UnityEngine.Random.Range(baseValue, baseValue * 1.1f));
+            PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreasePIE"] /= 2;
         }
         AddAtribute(psa);
     }
 
-    public static PassiveSkill GenerateRandomPassive(int currentFloor,Statusmanager.CharacterClass cClass)
+    public static PassiveSkill GenerateRandomPassive(int level,Statusmanager.CharacterClass cClass)
     {
-        int rndInt = UnityEngine.Random.Range(1, Mathf.Clamp((currentFloor+7) * 10, currentFloor, 100 + (currentFloor * 2)));
+        int rarity = UnityEngine.Random.Range(0, 101);
+        int bonus = 0;
+        string color = "<color=white>";
+        if (rarity < 80)
+        {
+            bonus = 0;
+            color = "<color=white>";
+        }
+        else if (rarity < 90)
+        {
+            bonus = 2;
+            color = "<color=green>";
+        }
+        else if (rarity < 98)
+        {
+            bonus = 4;
+            color = "<color=blue>";
+        }
+        else if (rarity < 100)
+        {
+            bonus = 7;
+            color = "<color=purple>";
+        }
+        else if (rarity < 101)
+        {
+            bonus = 9;
+            color = "<color=orange>";
+        }
+        level += bonus;
+        int rndInt = UnityEngine.Random.Range(1, Mathf.Clamp((level+7) * 10, level, 100 + (level * 2)));
         PassiveSkill p = new PassiveSkill();
         p.Type1 = ((Type)UnityEngine.Random.Range(0, 2));
         if(p.Type1 == Type.Weapon)
         {
-            p.Name = "Iron Sword";
+            p.Name = color+ "Iron Sword</color>";
             p.ImageId = 7;
         }
         else if(p.Type1 == Type.Accessoire)
         {
-            p.Name = "Bracelet";
+            p.Name = color+"Bracelet</color>";
             p.ImageId = 8;
         }
         int skip = 0;
+        int baseValue = 0;
         PassiveSkillAttribute.RestoreAttributeWeights();
         switch(cClass)
         {
@@ -140,7 +195,7 @@ public class PassiveSkill
                 {
                     if (weight < rndInt)
                     {
-                        p.AddRandomAttribute(currentFloor);
+                        p.AddRandomAttribute(level);
                     }
                 }
                 break;
@@ -156,9 +211,10 @@ public class PassiveSkill
                 p.attributeNumberWeight[2] = 0;
                 p.attributeNumberWeight[3] = 10;
 
-
-                p.AddAtribute(new PassiveSkillAttribute_IncreaseSTR(UnityEngine.Random.Range(10 * currentFloor, 50 * currentFloor)));
-                p.AddAtribute(new PassiveSkillAttribute_IncreaseHP(UnityEngine.Random.Range(10 * currentFloor, 10 * currentFloor)));
+                baseValue = 10 + level * 10;
+                p.AddAtribute(new PassiveSkillAttribute_IncreaseSTR((int)UnityEngine.Random.Range(baseValue, baseValue * 1.1f)));
+                baseValue = 50 + level * 12;
+                p.AddAtribute(new PassiveSkillAttribute_IncreaseHP((int)UnityEngine.Random.Range(baseValue, baseValue * 1.1f)));
                 skip = 2;
                 foreach (float weight in p.attributeNumberWeight)
                 {
@@ -169,7 +225,7 @@ public class PassiveSkill
                     }
                     if (weight < rndInt)
                     {
-                        p.AddRandomAttribute(currentFloor);
+                        p.AddRandomAttribute(level);
                     }
                 }
                 break;
@@ -180,52 +236,8 @@ public class PassiveSkill
                 PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseSP"] = 120;
                 PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseMagicAttack"] = 100;
                 PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_Glass"] = 20;
-                p.AddAtribute(new PassiveSkillAttribute_IncreaseINT(UnityEngine.Random.Range(10 * currentFloor, 50 * currentFloor)));
-                p.AddAtribute(new PassiveSkillAttribute_IncreaseSP(UnityEngine.Random.Range(10 * currentFloor, 50 * currentFloor)));
-                skip = 2;
-                foreach (float weight in p.attributeNumberWeight)
-                {
-                    if (skip > 0)
-                    {
-                        skip--;
-                        continue;
-                    }
-                    if (weight < rndInt)
-                    {
-                        p.AddRandomAttribute(currentFloor);
-                    }
-                }
-                break;
-            case Statusmanager.CharacterClass.Priest:
-                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseATK"] = 40;
-                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreasePIE"] = 150;
-                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseINT"] = 70;
-                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseSP"] = 100;
-                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseHP"] = 120;
-                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseMagicAttack"] = 70;
-                p.AddAtribute(new PassiveSkillAttribute_IncreasePIE(UnityEngine.Random.Range(30 + 10 * currentFloor, 50 * currentFloor)));
-                p.AddAtribute(new PassiveSkillAttribute_IncreaseSP(UnityEngine.Random.Range(20 * currentFloor, 70 * currentFloor)));
-                skip = 2;
-                foreach (float weight in p.attributeNumberWeight)
-                {
-                    if (skip > 0)
-                    {
-                        skip--;
-                        continue;
-                    }
-                    if (weight < rndInt)
-                    {
-                        p.AddRandomAttribute(currentFloor);
-                    }
-                }
-                break;
-            case Statusmanager.CharacterClass.Summoner:
-                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_MinionRest"] = 100;
-                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseATK"] = 40;
-                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseMagicAttack"] = 40;
-                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseHP"] = 190;
-                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_Scout"] = 40;
-                p.AddAtribute(new PassiveSkillAttribute_MinionRest(UnityEngine.Random.Range(60 * currentFloor, 200 * currentFloor)));
+                baseValue = 10 + level * 10;
+                p.AddAtribute(new PassiveSkillAttribute_IncreaseINT((int)UnityEngine.Random.Range(baseValue, baseValue * 1.1f)));
                 skip = 1;
                 foreach (float weight in p.attributeNumberWeight)
                 {
@@ -236,7 +248,51 @@ public class PassiveSkill
                     }
                     if (weight < rndInt)
                     {
-                        p.AddRandomAttribute(currentFloor);
+                        p.AddRandomAttribute(level);
+                    }
+                }
+                break;
+            case Statusmanager.CharacterClass.Priest:
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseATK"] = 40;
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreasePIE"] = 150;
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseINT"] = 30;
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseSP"] = 100;
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseHP"] = 120;
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseMagicAttack"] = 70;
+                baseValue = 10 + level * 11;
+                p.AddAtribute(new PassiveSkillAttribute_IncreasePIE((int)UnityEngine.Random.Range(baseValue, baseValue * 1.1f)));
+                skip = 1;
+                foreach (float weight in p.attributeNumberWeight)
+                {
+                    if (skip > 0)
+                    {
+                        skip--;
+                        continue;
+                    }
+                    if (weight < rndInt)
+                    {
+                        p.AddRandomAttribute(level);
+                    }
+                }
+                break;
+            case Statusmanager.CharacterClass.Summoner:
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_MinionRest"] = 100;
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseATK"] = 40;
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseMagicAttack"] = 40;
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseHP"] = 190;
+                PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_Scout"] = 40;
+                p.AddAtribute(new PassiveSkillAttribute_MinionRest(UnityEngine.Random.Range(100 + 60 * level, 100 + 70 * level)));
+                skip = 1;
+                foreach (float weight in p.attributeNumberWeight)
+                {
+                    if (skip > 0)
+                    {
+                        skip--;
+                        continue;
+                    }
+                    if (weight < rndInt)
+                    {
+                        p.AddRandomAttribute(level);
                     }
                 }
                 break;
@@ -247,8 +303,10 @@ public class PassiveSkill
                 PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseMagicAttack"] = 40;
                 PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseHP"] = 250;
                 PassiveSkillAttribute.AttributeWeights["PassiveSkillAttribute_IncreaseDEF"] = 250;
-                p.AddAtribute(new PassiveSkillAttribute_IncreaseHP(UnityEngine.Random.Range(10 * currentFloor, 100 * currentFloor)));
-                p.AddAtribute(new PassiveSkillAttribute_IncreaseDEF(UnityEngine.Random.Range(5 * currentFloor, 30 * currentFloor)));
+                baseValue = 10 + level * 8;
+                p.AddAtribute(new PassiveSkillAttribute_IncreaseDEF((int)UnityEngine.Random.Range(baseValue, baseValue * 1.1f)));
+                baseValue = 50 + level * 12;
+                p.AddAtribute(new PassiveSkillAttribute_IncreaseHP((int)UnityEngine.Random.Range(baseValue, baseValue * 1.1f)));
                 skip = 2;
                 foreach (float weight in p.attributeNumberWeight)
                 {
@@ -259,7 +317,7 @@ public class PassiveSkill
                     }
                     if (weight < rndInt)
                     {
-                        p.AddRandomAttribute(currentFloor);
+                        p.AddRandomAttribute(level);
                     }
                 }
                 break;

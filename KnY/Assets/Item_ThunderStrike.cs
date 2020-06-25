@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item_ThunderStrike : Item {
 
-    public int intellectBonus = 100;
+    public int intellectBonus = 30;
 
     public Item_ThunderStrike()
     {

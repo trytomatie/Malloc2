@@ -19,10 +19,10 @@ GameObject:
   - component: {fileID: 8276288782881259568}
   - component: {fileID: 8276288782881259566}
   - component: {fileID: 8276288782881259567}
-  - component: {fileID: 8276288782881259573}
-  - component: {fileID: -2021765811203077152}
+  - component: {fileID: 1860170497}
+  - component: {fileID: 5165161000230948954}
   m_Layer: 0
-  m_Name: GunnerEnemy
+  m_Name: ThunderCasterEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7485339953407939490, guid: dae6a6c132a26124f9dc7f47b3f2b554,
+  m_Sprite: {fileID: 3027982253892342044, guid: d7c32b6124bf22a4e99c897a3b3f2632,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -104,7 +104,7 @@ Animator:
   m_GameObject: {fileID: 8276288782881259578}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c322d6fd305405f45a26cf9fe6a92a4a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 78c6a7cba0cd8604698ed16587706807, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -168,7 +168,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 6.96
+  m_LinearDrag: 9.75
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -237,6 +237,7 @@ MonoBehaviour:
   healthRegeneration: 0
   healthRegenerationPercentage: 1
   barrier: 0
+  armorPenetration: 0
   movementSpeed: 0.31
   movementSpeedFlatAdjustments: 0
   movementSpeedMultiplier: 1
@@ -249,8 +250,7 @@ MonoBehaviour:
   bonusAttackSpeed: 0
   baseAttackDamage: 20
   baseAttackDamageMultiplyier: 1
-  totalAttackDamage: 0
-  magicPower: 0
+  magicPower: 200
   criticalStrikeChance: 1
   damageOverTimeDamageMultiplier: 1
   experienceGainMultiplier: 1
@@ -265,7 +265,8 @@ MonoBehaviour:
   baseAttackDamageGrowth: 20
   defenceGrwoth: 0
   movementSpeedGrowth: 0
-  magicPowerGrowth: 0
+  magicPowerGrowth: 200
+  armorPenetrationGrowth: 10
   gameObjectThatDamagedMeLast: {fileID: 0}
   uiHeigthOffset: 0.16
 --- !u!58 &8276288782881259568
@@ -309,7 +310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0110b0aa907d622489be76af7f462f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8276288782881259573
+--- !u!114 &1860170497
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -318,7 +319,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8276288782881259578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df6cb13f0f8ed6247a0b7cdecc640e1d, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a7c64e6215d4e3439d50b4fef04ce3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 5
@@ -326,15 +327,15 @@ MonoBehaviour:
   rb: {fileID: 0}
   attackingAnimators: []
   isAttacking: 0
-  aggroRadius: 1.51
-  attackRadius: 1.79
-  attackDelay: 0.65
+  aggroRadius: 2.24
+  attackRadius: 0.99
+  attackDelay: 0.5
   attackDelayTimer: 0
   attackCooldown: 1
   attackCooldownTimer: 0
   attackSpeedTimer: 0
   attackDirection: {x: 0, y: 0}
-  fxMaterial: {fileID: 2100000, guid: fcc2bba536fbdfe4dbeecdf5a667f722, type: 2}
+  fxMaterial: {fileID: 2100000, guid: 86f7c5495e1cb414289c9ac3e5f7dbcf, type: 2}
   wanderCooldownTimer: 0
   wanderPosition: {x: 0, y: 0}
   pathfinding: 1
@@ -347,7 +348,7 @@ MonoBehaviour:
   disableMovement: 0
   targetIsFollowTarget: 1
   bodyTransform: {fileID: 0}
---- !u!114 &-2021765811203077152
+--- !u!114 &5165161000230948954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

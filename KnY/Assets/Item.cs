@@ -71,7 +71,8 @@ public class Item
 
     public enum LegendaryItems
     {
-        Item_OhLawdHeComin = 33
+        Item_OhLawdHeComin = 33,
+        Item_ThunderInABottle = 49
     }
     public enum UniqueItems
     {
@@ -321,6 +322,9 @@ public class Item
                 return item;
             case 48:
                 item = new Item_DrinkingPouch();
+                return item;
+            case 49:
+                item = new Item_ThunderInABottle();
                 return item;
             default:
                 return null;

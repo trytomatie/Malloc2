@@ -22,7 +22,7 @@ public class AI_GenericFollower : AI_BaseFollowerAI
             TurnToTarget(Target);
             if(Target != followTarget)
             {
-                if (CheckLineOfSight())
+                if (CheckLineOfSightPathfinding())
                 {
                     mode = Mode.RegularFollow;
                 }
@@ -37,7 +37,7 @@ public class AI_GenericFollower : AI_BaseFollowerAI
                 }
             }
         }
-        handleEffects();
+        HandleEffects();
         switch (mode)
         {
             case Mode.Idle:
@@ -128,25 +128,6 @@ public class AI_GenericFollower : AI_BaseFollowerAI
     }
 
 
-    internal void handleEffects()
-    {
-
-        if (statusEffect_Stunned)
-        {
-            GetComponent<AIPath>().enabled = false;
-            rb.velocity = Vector2.zero;
-            cancleUpdate = true;
-        }
-        else
-        {
-            if(cancleUpdate == true)
-            {
-                GetComponent<AIPath>().enabled = true;
-            }
-            cancleUpdate = false;
-
-        }
-    }
     public bool AttackPlayer()
     {
         if (Target != null && 0.3f > Vector2.Distance(bodyTransform.position, Target.transform.position))

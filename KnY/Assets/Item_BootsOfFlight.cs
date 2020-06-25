@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item_BootsOfFlight : Item {
 
-    public int dexterity = 40;
+    public int dexterity = 15;
 
     public Item_BootsOfFlight()
     {

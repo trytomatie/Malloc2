@@ -17,6 +17,7 @@ public class PublicGameResources : MonoBehaviour {
     public Material[] itemMaterials;
     public Material[] itemDescriptionMaterials;
     public Material[] statusEffectMaterials;
+    public AudioClip[] sounds;
     public Material healingMaterial;
     public Material defenceSpellMaterial;
     public Material poisonMaterial;

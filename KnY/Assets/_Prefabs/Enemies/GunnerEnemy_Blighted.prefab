@@ -25,6 +25,11 @@ PrefabInstance:
       propertyPath: hpGrowth
       value: 474
       objectReference: {fileID: 0}
+    - target: {fileID: 8276288782881259569, guid: 87719d6cd09db594ea94f2bf2510c98b,
+        type: 3}
+      propertyPath: armorPenetrationGrowth
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8276288782881259570, guid: 87719d6cd09db594ea94f2bf2510c98b,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -23,6 +23,7 @@ public class Statusmanager : MonoBehaviour {
     public float healthRegeneration = 0;
     public float healthRegenerationPercentage = 1;
     public int barrier = 0;
+    public int armorPenetration = 0;
 
     private int strength;
     private int dexterity;
@@ -79,6 +80,7 @@ public class Statusmanager : MonoBehaviour {
     public int defenceGrwoth;
     public float movementSpeedGrowth;
     public int magicPowerGrowth;
+    public int armorPenetrationGrowth = 0;
 
     public GameObject gameObjectThatDamagedMeLast;
 
@@ -262,7 +264,7 @@ public class Statusmanager : MonoBehaviour {
         }
     }
 
-    public void ApplyStatusEffect(StatusEffect statusEffect)
+    public StatusEffect ApplyStatusEffect(StatusEffect statusEffect)
     {
         foreach(StatusEffect s in statusEffects)
         {
@@ -271,12 +273,13 @@ public class Statusmanager : MonoBehaviour {
                 if(s.duration > 0)
                 { 
                     s.OnAdditionalApplication(gameObject,statusEffect);
-                    return;
+                    return s;
                 }
             }
         }
         statusEffect.ApplyEffect(gameObject);
         statusEffects.Add(statusEffect);
+        return statusEffect;
     }
 
     public bool ContainsStatusEffect(StatusEffect statusEffect)
@@ -292,6 +295,21 @@ public class Statusmanager : MonoBehaviour {
             }
         }
         return false;
+    }
+
+    public StatusEffect GetStatusEffectReference(StatusEffect statusEffect)
+    {
+        foreach (StatusEffect s in statusEffects)
+        {
+            if (s.statusName == statusEffect.statusName)
+            {
+                if (s.duration > 0)
+                {
+                    return s;
+                }
+            }
+        }
+        return null;
     }
 
     public bool ContainsStatusEffect(String statusEffectName)
@@ -334,17 +352,18 @@ public class Statusmanager : MonoBehaviour {
         }
     }
 
-    public void ApplyOnRoomEnterEffects(StatusEffect statuseffect)
+    public StatusEffect ApplyOnRoomEnterEffects(StatusEffect statuseffect)
     {
         foreach (StatusEffect s in onRoomEnterEffects)
         {
             if (s.statusName == statuseffect.statusName)
             {
                 s.OnAdditionalApplication(gameObject, statuseffect);
-                return;
+                return s;
             }
         }
         onRoomEnterEffects.Add(statuseffect);
+        return statuseffect;
     }
 
     public void TriggerOnRoomEnterEffects()
@@ -493,16 +512,8 @@ public class Statusmanager : MonoBehaviour {
         MagicPower += magicPowerGrowth;
         long prevMaxExperinece = maxExperience;
         if(level < 25)
-        { 
-
-            maxExperience = (int)(50 * Mathf.Pow((1.55f), (level-1)));
-        }
-        if(GetComponent<Inventory>() != null)
         {
-            foreach(Item item in GetComponent<Inventory>().ActiveItemList())
-            {
-                item.RefreshEffect(gameObject);
-            }
+            maxExperience = (int)(maxExperience * 1.3f);
         }
         Experinece -= prevMaxExperinece;
 
@@ -624,8 +635,22 @@ public class Statusmanager : MonoBehaviour {
             experinece = value;
             if(experinece>maxExperience)
             {
+                if (GetComponent<Inventory>() != null)
+                {
+                    foreach (Item item in GetComponent<Inventory>().ActiveItemList())
+                    {
+                        item.RemoveEffect(gameObject);
+                    }
+                }
                 level++;
                 LevelUp();
+                if (GetComponent<Inventory>() != null)
+                {
+                    foreach (Item item in GetComponent<Inventory>().ActiveItemList())
+                    {
+                        item.ApplyEffect(gameObject);
+                    }
+                }
             }
         }
     }

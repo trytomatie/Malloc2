@@ -23,10 +23,12 @@ public class AI_Kicker : AI_BaseAI
     }
 	// Update is called once per frame
 	void Update () {
-        handleEffects();
+        HandleEffects();
         UpdateTimers();
         switch(mode)
         {
+            case Mode.Wander:
+            case Mode.Idle:
             case Mode.Ftarget_RegularFollow:
                 mode = Mode.Attack;
                 break;
@@ -41,25 +43,6 @@ public class AI_Kicker : AI_BaseAI
     }
 
 
-    internal void handleEffects()
-    {
-
-        if (statusEffect_Stunned)
-        {
-            GetComponent<AIPath>().enabled = false;
-            rb.velocity = Vector2.zero;
-            cancleUpdate = true;
-        }
-        else
-        {
-            if(cancleUpdate == true)
-            {
-                GetComponent<AIPath>().enabled = true;
-            }
-            cancleUpdate = false;
-
-        }
-    }
     public bool AttackPlayer()
     {
         if (Target != null && 0.3f > Vector2.Distance(bodyTransform.position, Target.transform.position))

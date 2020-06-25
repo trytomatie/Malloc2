@@ -88,7 +88,7 @@ class Skill_Laser : Skill
             {
                 tickRateTimer -= tickRate;
                 GameObject laserFx2 = GameObject.Instantiate(PublicGameResources.GetResource().damageFx, Target.transform.position, Quaternion.identity);
-                Target.GetComponent<Statusmanager>().ApplyDamage(DamageObject.CalculateDamageDealt(Target.GetComponent<Statusmanager>(),source.GetComponent<Statusmanager>().TotalAttackDamage,false), source, false);
+                Target.GetComponent<Statusmanager>().ApplyDamage(DamageObject.CalculateDamageDealt(Target.GetComponent<Statusmanager>(), source.GetComponent<Statusmanager>(), source.GetComponent<Statusmanager>().TotalAttackDamage,false), source, false);
                 laserFx2.GetComponent<Animator>().SetFloat("DamageAnimation", 7);
                 laserFx2.GetComponent<SpriteRenderer>().material = laserFx.GetComponent<SpriteRenderer>().material;
                 GameObject.Destroy(laserFx2, tickRate);

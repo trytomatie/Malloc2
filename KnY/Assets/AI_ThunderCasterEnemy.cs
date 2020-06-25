@@ -20,13 +20,14 @@ public class AI_ThunderCasterEnemy : AI_BaseAI
             skill.Anim = GetComponent<Animator>();
         }
     }
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update()
+    {
         AttackCooldownTimerUpdate();
         TurnToTarget(SearchTarget());
-        if ((mode != Mode.AttackPrep && mode != Mode.Attack && mode != Mode.Idle && mode != Mode.IdleAfterAttack && mode != Mode.Wander) )
+        if ((mode != Mode.AttackPrep && mode != Mode.Attack && mode != Mode.Idle && mode != Mode.IdleAfterAttack && mode != Mode.Wander))
         {
-            if (CheckLineOfSight())
+            if (CheckLineOfSightPathfinding())
             {
                 mode = Mode.RegularFollow;
             }
@@ -43,8 +44,8 @@ public class AI_ThunderCasterEnemy : AI_BaseAI
                 rb.velocity = Vector2.zero;
             }
         }
-        handleEffects();
-        switch(mode)
+        HandleEffects();
+        switch (mode)
         {
             case Mode.Idle:
                 if (Target != null && !CheckAttackConditions()) // If I can attack, I will go in range
@@ -76,7 +77,7 @@ public class AI_ThunderCasterEnemy : AI_BaseAI
                 rb.velocity = Vector2.zero; // Not even a little bit
                 break;
             case Mode.PathfinderFollow:
-                if(IsMyTargetDead(Target))  // Is my target dead? Back to Full Idle
+                if (IsMyTargetDead(Target))  // Is my target dead? Back to Full Idle
                 {
                     mode = Mode.Idle;
                     Target = null;
@@ -96,9 +97,9 @@ public class AI_ThunderCasterEnemy : AI_BaseAI
                 break;
             case Mode.AttackPrep:
                 PathFindingActive(false);  // not gonna move
-                if(skills[0].CooldownTimer <=0)
+                if (skills[0].CooldownTimer <= 0)
                 {
-                    skills[0].ActivateSkill(gameObject, Vector2.zero, (Vector2)target.transform.position + new Vector2(UnityEngine.Random.Range(-0.3f,0.3f), UnityEngine.Random.Range(-0.3f, 0.3f)), null);
+                    skills[0].ActivateSkill(gameObject, Vector2.zero, (Vector2)target.transform.position + new Vector2(UnityEngine.Random.Range(-0.3f, 0.3f), UnityEngine.Random.Range(-0.3f, 0.3f)), null);
                     break;
                 }
                 if (!disableMovement)
@@ -112,38 +113,17 @@ public class AI_ThunderCasterEnemy : AI_BaseAI
                 GoToWanderPositon(); // Off i go!
                 if (Target == null) // I don't have a target? I have to search target, uga buga!
                 {
-                    if(null != CheckAggroRadius())
+                    if (null != CheckAggroRadius())
                     {
                         mode = Mode.RegularFollow;
                     }
                 }
                 break;
             case Mode.Attack:
-                
+
                 break;
         }
         UpdateTimers();
-    }
-
-
-    internal void handleEffects()
-    {
-
-        if (statusEffect_Stunned)
-        {
-            GetComponent<AIPath>().enabled = false;
-            rb.velocity = Vector2.zero;
-            cancleUpdate = true;
-        }
-        else
-        {
-            if(cancleUpdate == true)
-            {
-                GetComponent<AIPath>().enabled = true;
-            }
-            cancleUpdate = false;
-
-        }
     }
     public bool AttackPlayer()
     {

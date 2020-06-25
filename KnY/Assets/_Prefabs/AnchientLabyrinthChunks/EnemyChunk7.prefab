@@ -26955,7 +26955,7 @@ GameObject:
   - component: {fileID: 8704029449105912340}
   - component: {fileID: -8805323473362893613}
   m_Layer: 2
-  m_Name: TreasureChunk 4
+  m_Name: EnemyChunk7
   m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29717,6 +29717,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2bd356185308c1a408db4668c0e2a758, type: 2}
   - {fileID: 11400000, guid: af75f18baed5d7c4aa5f34aae87ee924, type: 2}
   - {fileID: 11400000, guid: ab49cbb238367184ab91c2e0f3357e5f, type: 2}
+  - {fileID: 11400000, guid: 914ec995b9d22b44fb76363419bd6001, type: 2}
   mapGenerator: {fileID: 0}
   enemyList: []
   hasBeenTriggerd: 0

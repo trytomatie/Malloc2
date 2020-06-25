@@ -23,7 +23,7 @@ class Skill_Erruption : Skill
         this.BaseCasttime = casttime;
         this.AllowsMovement = allowsMovement;
         this.projectileSpeed = projectileSpeed;
-        this.SpCost = 110;
+        this.SpCost = 50;
         this.Name = "Erruption";
         this.Description = String.Format("Summons multiple small eruptions for {0}% Magic damage and 1 Big erruption at the end for {1} % Magic damage.", smalDamage * 100,damage*100);
         this.Image = ItemIcons.GetSkillIcon(15);

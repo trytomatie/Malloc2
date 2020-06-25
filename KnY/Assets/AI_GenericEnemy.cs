@@ -20,7 +20,7 @@ public class AI_GenericEnemy : AI_BaseAI
         if ((mode != Mode.AttackPrep && mode != Mode.Attack && mode != Mode.Idle && mode != Mode.IdleAfterAttack && mode != Mode.Wander) )
         {
             TurnToTarget(SearchTarget());
-            if (CheckLineOfSight())
+            if (CheckLineOfSightPathfinding())
             {
                 mode = Mode.RegularFollow;
             }
@@ -34,7 +34,7 @@ public class AI_GenericEnemy : AI_BaseAI
                 rb.velocity = Vector2.zero;
             }
         }
-        handleEffects();
+        HandleEffects();
         switch(mode)
         {
             case Mode.Idle:
@@ -116,26 +116,6 @@ public class AI_GenericEnemy : AI_BaseAI
         }
     }
 
-
-    internal void handleEffects()
-    {
-
-        if (statusEffect_Stunned)
-        {
-            GetComponent<AIPath>().enabled = false;
-            rb.velocity = Vector2.zero;
-            cancleUpdate = true;
-        }
-        else
-        {
-            if(cancleUpdate == true)
-            {
-                GetComponent<AIPath>().enabled = true;
-            }
-            cancleUpdate = false;
-
-        }
-    }
     public bool AttackPlayer()
     {
         if (Target != null && 0.3f > Vector2.Distance(bodyTransform.position, Target.transform.position))

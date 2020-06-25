@@ -105,6 +105,18 @@ public class AI_BaseAI : MonoBehaviour
     {
     }
 
+    public virtual void HandleEffects()
+    {
+        if (GetComponent<Statusmanager>() != null)
+        {
+            Statusmanager s = GetComponent<Statusmanager>();
+            if(s.ContainsStatusEffect(new StatusEffect_ShamacInfulenced(0)))
+            {
+                mode = Mode.Wander;
+                Target = null;
+            }
+        }
+    }
     public void MoveToPlayer()
     {
         if (direction != null)
@@ -315,7 +327,7 @@ public class AI_BaseAI : MonoBehaviour
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, targetDirection);
         foreach (RaycastHit2D hit in hits)
         {
-            if (hit.collider.gameObject.layer == 8) // Note: 8 == "MapCollision"
+            if (hit.collider.gameObject.layer == 11)  // Note: 8 == "MapCollision"
             {
                 return false;
             }
@@ -333,11 +345,30 @@ public class AI_BaseAI : MonoBehaviour
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position + offset, targetDirection);
         foreach(RaycastHit2D hit in hits)
         {
-            if (hit.collider.gameObject.layer == 8) // Note: 8 == "MapCollision"
+            if (hit.collider.gameObject.layer == 11) // Note: 8 == "MapCollision"
             {
                 return false;
             }
             else if(hit.collider.gameObject == customTarget)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool CheckLineOfSightPathfinding()
+    {
+        // If target is destroyed it throws an error here! FIX That TODO!
+        Vector2 targetDirection = CalculateNormalizedDirection(transform.position, (Vector2)Target.transform.position + Target.GetComponent<Collider2D>().offset);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, targetDirection);
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.collider.gameObject.layer == 8) // Note: 8 == "MapCollision"
+            {
+                return false;
+            }
+            else if (hit.collider.gameObject == Target)
             {
                 return true;
             }

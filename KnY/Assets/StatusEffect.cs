@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class StatusEffect {
     public bool effectApplied = false;
     public bool hidden = false;
     public Type type;
+    public int stacks;
     public enum Type
     {
         Buff,
@@ -32,9 +34,24 @@ public class StatusEffect {
         
     }
 
+    public virtual void RemoveStacks(int reduce)
+    {
+        stacks -= reduce;
+        if(stacks <= 0)
+        {
+            duration = 0;
+        }
+    }
+
     public virtual void OnAdditionalApplication(GameObject g,StatusEffect s)
     {
 
+    }
+
+    public virtual StatusEffect Copy()
+    {
+        Debug.LogError("Trying to copy a Statuseffect that can't be copied / ");
+        return null;
     }
 
 }

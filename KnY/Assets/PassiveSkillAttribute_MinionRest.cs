@@ -22,7 +22,7 @@ public class PassiveSkillAttribute_MinionRest : PassiveSkillAttribute
         if(myEffectRefference == null)
         {
             myEffectRefference = new StatusEffect_RoomTriggerEffectMinionRest(Healing);
-            source.GetComponent<Statusmanager>().ApplyOnRoomEnterEffects(myEffectRefference);
+            myEffectRefference = (StatusEffect_RoomTriggerEffectMinionRest)source.GetComponent<Statusmanager>().ApplyOnRoomEnterEffects(myEffectRefference);
         }
     }
 

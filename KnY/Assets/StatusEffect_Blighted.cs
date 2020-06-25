@@ -23,7 +23,7 @@ public class StatusEffect_Blighted : StatusEffect {
         tickRateTimer+= Time.deltaTime;
         if(tickRateTimer >= tickRate)
         {
-            int damageDealt = DamageObject.CalculateDamageDealt(g.GetComponent<Statusmanager>(), damage, false);
+            int damageDealt = DamageObject.CalculateDamageDealt(g.GetComponent<Statusmanager>(),null, damage, false);
             g.GetComponent<Statusmanager>().Hp -= damageDealt;
             Director.GetInstance().SpawnDamageText(damageDealt.ToString(), g.transform, PublicGameResources.GetResource().blightDamageColor, false);
             tickRateTimer = 0;

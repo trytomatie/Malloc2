@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item_ManaSprite : Item {
 
-    public int spGain = 75;
+    public int spGain = 45;
     public Item_ManaSprite()
     {
         this.itemId = 31;

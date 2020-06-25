@@ -31,7 +31,7 @@ public class AI_CrystalSpiderSpawner : AI_BaseAI
                 rb.velocity = Vector2.zero;
             }
         }
-        handleEffects();
+        HandleEffects();
         switch(mode)
         {
             case Mode.Idle:
@@ -113,26 +113,6 @@ public class AI_CrystalSpiderSpawner : AI_BaseAI
         UpdateTimers();
     }
 
-
-    internal void handleEffects()
-    {
-
-        if (statusEffect_Stunned)
-        {
-            GetComponent<AIPath>().enabled = false;
-            rb.velocity = Vector2.zero;
-            cancleUpdate = true;
-        }
-        else
-        {
-            if(cancleUpdate == true)
-            {
-                GetComponent<AIPath>().enabled = true;
-            }
-            cancleUpdate = false;
-
-        }
-    }
     public bool AttackPlayer()
     {
         if (Target != null && 0.3f > Vector2.Distance(bodyTransform.position, Target.transform.position))
