@@ -40,3 +40,4 @@ Material:
     - _color: {r: 0.06851653, g: 0.06851653, b: 0.06851653, a: 0}
     - _hurtColo: {r: 0, g: 0, b: 0, a: 0}
     - _hurtColor: {r: 0, g: 0, b: 0, a: 1}
+  m_BuildTextureStacks: []

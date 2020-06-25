@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Item_Amethyst : Item {
 
-    public int damageIncrease = 40;
+    public int damageIncrease = 20;
     public Item_Amethyst()
     {
         this.itemId = 40;

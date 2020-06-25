@@ -43,3 +43,4 @@ Material:
     m_Colors:
     - Color_91C9DB1B: {r: 0, g: 0.17380863, b: 4.9245777, a: 0}
     - _color: {r: 5.7685785, g: 5.7685785, b: 5.7685785, a: 0}
+  m_BuildTextureStacks: []
