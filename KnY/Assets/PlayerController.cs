@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
         skillManager.AddActiveSkill(new Skill_Dodge(0.7f, 0.4f, false),-1);
 
         // Test skill
-        skillManager.AddActiveSkill(new Skill_ElShamac(2, 0.2f, false), 0);
+        //skillManager.AddActiveSkill(new Skill_ElShamac(2, 0.2f, false), 0);
 
 
         if (myStatus.characterClass == Statusmanager.CharacterClass.Warrior)

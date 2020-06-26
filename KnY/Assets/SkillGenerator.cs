@@ -30,6 +30,8 @@ public class SkillGenerator
         { "Skill_Smite",100 },
         { "Skill_Assize",100 },
         { "Skill_Drainage",100 },
+        { "Skill_Slurp",70 },
+        { "Skill_ElShamac",50 },
     };
 
     public static Skill GetRandomSkill(GameObject target)
@@ -61,6 +63,7 @@ public class SkillGenerator
                 skillWeightRef["Skill_Slam"] = 60;
                 skillWeightRef["Skill_BurnSlash"] = 100;
                 skillWeightRef["Skill_Slice"] = 20;
+                skillWeightRef["Skill_Slurp"] = 80;
             }
             if (characterClass == Statusmanager.CharacterClass.Priest)
             {
@@ -72,7 +75,8 @@ public class SkillGenerator
                 skillWeightRef["Skill_Slam"] = 70;
                 skillWeightRef["Skill_BurnSlash"] = 20;
                 skillWeightRef["Skill_Smite"] = 80;
-                skillWeightRef["Skill_Assize"] = 80;
+                skillWeightRef["Skill_Slurp"] = 40;
+                skillWeightRef["Skill_Assize"] = 50;
             }
             if (characterClass == Statusmanager.CharacterClass.Summoner)
             {
@@ -82,6 +86,7 @@ public class SkillGenerator
                 skillWeightRef["Skill_SummonReaver"] = 100;
                 skillWeightRef["Skill_SummonThySpiders"] = 70;
                 skillWeightRef["Skill_BurnSlash"] = 20;
+                skillWeightRef["Skill_ElShamac"] = 40;
             }
             if (characterClass == Statusmanager.CharacterClass.Paladin)
             {
@@ -103,84 +108,92 @@ public class SkillGenerator
     public static Skill PickSkill(GameObject target)
     {
 
-        int i = UnityEngine.Random.Range(0, PassiveSkillAttribute.TotalWeight);
+        int i = UnityEngine.Random.Range(0, TotalWeight);
         Skill skill = new Skill_ThunderStrike(70, 0.8f, 0.25f, 3, false, target.GetComponent<SpriteRenderer>().material);
 
-        if (i > 0 && i <Weight(ref i, "Skill_SummonThunder"))
+        if (i > 0 && Weight(ref i, "Skill_SummonThunder"))
         {
-            skill = new Skill_ThunderStrike(10, 0.8f, 0.25f, 3, false, target.GetComponent<SpriteRenderer>().material);
+            skill = new Skill_ThunderStrike(15, 0.8f, 0.25f, 3, false, target.GetComponent<SpriteRenderer>().material);
         }
-        else if (i > 0 && i < Weight(ref i, "Skill_BurnSlash"))
+        else if (i > 0 && Weight(ref i, "Skill_BurnSlash"))
         {
             skill = new Skill_BurnSlash(8f, 0.2f, false);
         }
-        else if (i > 0 && i < Weight(ref i, "Skill_AoeDash"))
+        else if (i > 0 &&  Weight(ref i, "Skill_AoeDash"))
         {
-            skill = new Skill_AoeDash(10f, 0.4f, false);
+            skill = new Skill_AoeDash(24f, 0.4f, false);
         }
-        else if (i > 0 && i < Weight(ref i, "Skill_Cure"))
+        else if (i > 0 &&  Weight(ref i, "Skill_Cure"))
         {
-            skill = new Skill_Cure(20, 1.8f, false);
+            skill = new Skill_Cure(50, 1.8f, false);
         }
-        else if (i > 0 && i < Weight(ref i, "Skill_Rampart"))
+        else if (i > 0 &&  Weight(ref i, "Skill_Rampart"))
         {
             skill = new Skill_Rampart(30f, 0.1f, false);
         }
-        else if (i > 0 && i < Weight(ref i, "Skill_PoisonSting"))
+        else if (i > 0 && Weight(ref i, "Skill_PoisonSting"))
         {
             skill = new Skill_PoisonSting(8f, 0.2f, false);
         }
-        else if (i > 0 && i < Weight(ref i, "Skill_Slam"))
+        else if (i > 0 &&  Weight(ref i, "Skill_Slam"))
         {
-            skill = new Skill_Slam(6, 0.1f, false);
+            skill = new Skill_Slam(8, 0.1f, false);
         }
-        else if (i > 0 && i < Weight(ref i, "Skill_Guard"))
+        else if (i > 0 &&Weight(ref i, "Skill_Guard"))
         {
             skill = new Skill_Guard(30f, 0.1f, false);
         }
-        else if (i > 0 && i < Weight(ref i, "Skill_SummonReaver"))
+        else if (i > 0 &&  Weight(ref i, "Skill_SummonReaver"))
         {
-            skill = new Skill_SummonReaver(20f, 1f, false);
+            skill = new Skill_SummonReaver(50f, 1f, false);
         }
-        else if (i > 0 && i < Weight(ref i, "Skill_Solatii"))
+        else if (i > 0 &&  Weight(ref i, "Skill_Solatii"))
         {
-            skill = new Skill_Solatii(30, 2f, false);
+            skill = new Skill_Solatii(90, 2f, false);
         }
-        else if (i > 0 && i < Weight(ref i, "Skill_Slice"))
+        else if (i > 0 &&  Weight(ref i, "Skill_Slice"))
         {
-            skill = new Skill_Slice(6, 0.1f, false);
+            skill = new Skill_Slice(8, 0.1f, false);
         }
-        else if (i > 0 && i < Weight(ref i, "Skill_Erruption"))
+        else if (i > 0 && Weight(ref i, "Skill_Erruption"))
         {
-            skill = new Skill_Erruption(15f, 0.4f, 0.05f, false);
+            skill = new Skill_Erruption(55f, 0.4f, 0.05f, false);
         }
-        else if (i > 0 && i < Weight(ref i, "Skill_SpreadingEruption"))
+        else if (i > 0 && Weight(ref i, "Skill_SpreadingEruption"))
         {
-            skill = new Skill_SpreadingEruption(23f, 0.4f, 0.05f, false);
+            skill = new Skill_SpreadingEruption(70f, 0.4f, 0.05f, false);
         }
-        else if (i > 0 && i < Weight(ref i, "Skill_SummonThySpiders"))
+        else if (i > 0 &&  Weight(ref i, "Skill_SummonThySpiders"))
         {
             skill = new Skill_SummonThySpiders(15, 1f, false);
         }
-        else if (i > 0 && i < Weight(ref i, "Skill_LesserThunder"))
+        else if (i > 0 && Weight(ref i, "Skill_LesserThunder"))
         {
-            skill = new Skill_LesserThunder(5, 0.1f, false, target.GetComponent<SpriteRenderer>().material);
+            skill = new Skill_LesserThunder(8, 0.1f, false, target.GetComponent<SpriteRenderer>().material);
         }
-        else if (i > 0 && i < Weight(ref i, "Skill_HolyRod"))
+        else if (i > 0 &&  Weight(ref i, "Skill_HolyRod"))
         {
-            skill = new Skill_HolyRod(6, 0.1f, false);
+            skill = new Skill_HolyRod(8, 0.1f, false);
         }
-        else if (i > 0 && i < Weight(ref i, "Skill_Smite"))
+        else if (i > 0 &&  Weight(ref i, "Skill_Smite"))
         {
-            skill = new Skill_Smite(7, 0.3f,8, false);
+            skill = new Skill_Smite(12, 0.3f,8, false);
         }
-        else if (i > 0 && i < Weight(ref i, "Skill_Assize"))
+        else if (i > 0 && Weight(ref i, "Skill_Assize"))
         {
-            skill = new Skill_Assize(18, 0.7f, false);
+            skill = new Skill_Assize(45, 0.7f, false);
         }
-        else if (i > 0 && i < Weight(ref i, "Skill_Drainage"))
+        else if (i > 0 &&Weight(ref i, "Skill_Drainage"))
         {
-            skill = new Skill_Drainage(12, 0.6f, false);
+            skill = new Skill_Drainage(30, 0.6f, false);
+        }
+        else if (i > 0 &&  Weight(ref i, "Skill_Drainage"))
+        {
+            skill = new Skill_Slurp(60, 0.6f, false);
+        }
+        else if (i > 0 && Weight(ref i, "Skill_Drainage"))
+        {
+            skill = new Skill_ElShamac(70, 0.6f, false);
         }
         return skill;
 
@@ -247,10 +260,14 @@ public class SkillGenerator
         return (list);
     }
 
-    public static int Weight(ref int i, String value)
+    public static bool Weight(ref int i, String value)
     {
+        if(i < skillWeights[value])
+        {
+            return true;
+        }
         i -= skillWeights[value];
-        return skillWeights[value];
+        return false;
     }
 
 }

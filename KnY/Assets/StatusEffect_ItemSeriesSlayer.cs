@@ -7,7 +7,7 @@ public class StatusEffect_ItemSeriesSlayer : StatusEffect {
     public StatusEffect_ItemSeriesSlayer(int hpIncrease)
     {
         this.statusName = new ItemSeries_Slayer().seriesName;
-        this.description = "Increases hp by" + hpIncrease;
+        this.description = "Increases hp by " + hpIncrease;
         this.image = new Item_DreadnoughtArmor().image;
         this.hpIncrease = hpIncrease;
         this.type = Type.Series;

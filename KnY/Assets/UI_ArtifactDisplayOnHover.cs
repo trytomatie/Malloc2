@@ -54,7 +54,7 @@ public class UI_ArtifactDisplayOnHover : MonoBehaviour, IPointerEnterHandler, IP
         string series = "";
         foreach(ItemSeries.Series s in item.series)
         {
-            series += s.ToString();
+            series += s.ToString() + " ";
         }
         mouseEntered = true;
         DescriptionDisplay.GetComponent<RectTransform>().localScale = transform.parent.GetComponent<RectTransform>().localScale;

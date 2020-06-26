@@ -29,3 +29,17 @@ v0.05
 - Reworked skill system
 - New skills added
 - And more stuff i can't think off
+
+
+Alpha 1.0
+- added divine protections
+- added more items
+- added more skills
+- added more equipment atributes
+- added more enemys
+- added more rooms
+- added new boss
+- overhauled stat system
+- added new api functionality
+- added an options menu
+- added detailed description for most artifacts

@@ -663,10 +663,10 @@ public class MapGenerator : MonoBehaviour
 
     private bool CheckForSpecialSeed(int globalRandomSeed)
     {
-        if(globalRandomSeed == 88)
-        {
-            return true;
-        }
+        //if(globalRandomSeed == 88)
+        //{
+        //    return true;
+        //}
         return false;
     }
 
