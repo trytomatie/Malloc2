@@ -9,7 +9,7 @@ Interact1:		E
 Interact2:		R  
 Skills: 		1/2/3/4  
 
-Debug:   	
+Debug:   	  
 Spawn Level 1 mob: 	F 	  
 Spawn Common Chest: 	G  
 Spawn Misc : 		H  
