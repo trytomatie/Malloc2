@@ -1,46 +1,29 @@
 # Malloc2
 Welcome to Malloc Quest 2
 
-Controlls:
+Controlls:  
+Movement:		WASD  
+Attack: 		Mouse1  
+Dodge: 			Space  
+Interact1:		E  
+Interact2:		R  
+Skills: 		1/2/3/4  
 
-Movement:		WASD
-
-Attack: 		Mouse1
-
-Dodge: 			Space
-
-Interact1:		E
-
-Interact2:		R
-
-Skills: 		1/2/3/4
-
-Debug: 	
-
-Spawn Level 1 mob: 	F 	
-
-Spawn Common Chest: 	G
-
-Spawn Misc : 		H
-
-Get 10000 Mana: 	L
-
-Next Floor: 		N
+Debug:   	
+Spawn Level 1 mob: 	F 	  
+Spawn Common Chest: 	G  
+Spawn Misc : 		H  
+Get 10000 Mana: 	L  
+Next Floor: 		N  
 
 
-Stats:
-
-Attack Damage: Increases your basic attack damage
-
-Magic Power: Increases damage of abilties that scale with magic power
-
-Strength: Increases damage of abilties that scale with strength, also increases attack damage by 0.5 per strength
-
-Dexterity: Increases damage of abilties that scale with dexterity, also increases attack damage by 0.33 per dexterity
-
-Intellect: Increases damage of abilties that scale with intellect, also increases magic power by 1 per intellect
-
-Piety: Increases damage of abilties that scale with piety, also increases magic power by 0.5 per piety
+Stats:  
+Attack Damage: Increases your basic attack damage  
+Magic Power: Increases damage of abilties that scale with magic power  
+Strength: Increases damage of abilties that scale with strength, also increases attack damage by 0.5 per strength  
+Dexterity: Increases damage of abilties that scale with dexterity, also increases attack damage by 0.33 per dexterity  
+Intellect: Increases damage of abilties that scale with intellect, also increases magic power by 1 per intellect  
+Piety: Increases damage of abilties that scale with piety, also increases magic power by 0.5 per piety  
 
 
 
