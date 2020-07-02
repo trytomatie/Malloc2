@@ -31866,7 +31866,7 @@ Tilemap:
   - m_RefCount: 182
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
-  m_AnimationFrameRate: 1
+  m_AnimationFrameRate: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -91, y: -39, z: 0}
   m_Size: {x: 120, y: 92, z: 1}
@@ -31957,9 +31957,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0703ec255de276e4897f60d370c3c5e9, type: 2}
   mobPool:
   - {fileID: 11400000, guid: a6df44ecb5855d04894d4ce20abe22ec, type: 2}
-  spawnLocations: []
-  interactableSpawnLocations:
-  - {fileID: 1200573550206723482}
   mapGenerator: {fileID: 0}
   enemyList: []
   hasBeenTriggerd: 0

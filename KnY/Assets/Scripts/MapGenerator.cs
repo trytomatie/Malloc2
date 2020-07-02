@@ -37,7 +37,8 @@ public class MapGenerator : MonoBehaviour
     public Dictionary<Vector2, GameObject> exploredChunks = new Dictionary<Vector2, GameObject>(); // The Chunks the player Has visited physicaly
     public Dictionary<Vector2, int> tunnelMap = new Dictionary<Vector2, int>(); // Map of the tunnels where chunks are supposed to be able to spawn
     public Vector2 currentCameraCoords = new Vector2();
-    private float CHUNKSIZE = 4.8f;
+    private float CHUNKSIZE_X = 4.80f;
+    private float CHUNKSIZE_Y = 3.2f;
     public int currentFloor = 0;
 
 
@@ -53,15 +54,7 @@ public class MapGenerator : MonoBehaviour
             if(value != currentCameraCoords)
             {
                 currentCameraCoords = value;
-                if (!debug_GenerateWholeMap)
-                { 
-                    StartCoroutine(LoadingAndUnloading(currentCameraCoords, value));
-                }
-                else // To assure that The Pathfinding stll works
-                {
-                    AstarPath.active.data.gridGraph.center = currentCameraCoords * CHUNKSIZE;
-                    AstarPath.active.Scan();
-                }
+                StartCoroutine(LoadingAndUnloading(currentCameraCoords, value));
             }
         }
     }
@@ -117,7 +110,7 @@ public class MapGenerator : MonoBehaviour
             }
         }
         UI_AncientLabyrnith_Minimap.UpdateMinimap(chunkMap, CurrentCameraCoords,exploredChunks,currentFloor);
-        AstarPath.active.data.gridGraph.center = currentCameraCoords * CHUNKSIZE;
+        AstarPath.active.data.gridGraph.center = new Vector2(currentCameraCoords.x * CHUNKSIZE_X,currentCameraCoords.y* CHUNKSIZE_Y);
         AstarPath.active.Scan();
     }
     
@@ -139,8 +132,8 @@ public class MapGenerator : MonoBehaviour
         Debug.Log(Director.globalRandomSeed);
         SetSeeds();
         GenerateNewMap();
-        int x = (int)Mathf.Round((Camera.main.transform.position.x / CHUNKSIZE));
-        int y = (int)Mathf.Round((Camera.main.transform.position.y / CHUNKSIZE));
+        int x = (int)Mathf.Round((Camera.main.transform.position.x / CHUNKSIZE_X));
+        int y = (int)Mathf.Round((Camera.main.transform.position.y / CHUNKSIZE_Y));
         CurrentCameraCoords = new Vector2(x, y);
     }
 
@@ -211,8 +204,8 @@ public class MapGenerator : MonoBehaviour
         {
             GenerateNewMap();
         }
-        int x = (int) Mathf.Round((Camera.main.transform.position.x / CHUNKSIZE));
-        int y = (int)Mathf.Round((Camera.main.transform.position.y / CHUNKSIZE));
+        int x = (int) Mathf.Round((Camera.main.transform.position.x / CHUNKSIZE_X));
+        int y = (int)Mathf.Round((Camera.main.transform.position.y / CHUNKSIZE_Y));
         CurrentCameraCoords = new Vector2(x, y);
     }
 
@@ -236,12 +229,16 @@ public class MapGenerator : MonoBehaviour
         bool roomIsLeft = false;
         GetRoomOpeningsNeeded(coords, ref roomIsUp, ref roomIsDown, ref roomIsRight, ref roomIsLeft);
 
-        GameObject chunk = Instantiate(chunkTiles[id], coords * CHUNKSIZE, Quaternion.identity, mapParent);
+        GameObject chunk = Instantiate(chunkTiles[id], new Vector2(coords.x * CHUNKSIZE_X, coords.y * CHUNKSIZE_Y), Quaternion.identity, mapParent);
         chunk.GetComponent<ChunkSettings>().AdjustExits(roomIsUp, roomIsDown, roomIsRight, roomIsLeft);
         chunk.GetComponent<ChunkSettings>().mapDebugInfo += debugMessage;
         int x, y;
         GetSeedsOutOfSeedMap(coords, out x, out y);
         chunk.GetComponent<ChunkSettings>().myRandom = new System.Random(((int)x / 100) + ((int)y / 100));
+        if(debug_GenerateWholeMap)
+        { 
+            chunk.SetActive(false);
+        }
         chunkMap.Add(coords, chunk);
         debugMessage = "";
     }
@@ -709,8 +706,8 @@ public class MapGenerator : MonoBehaviour
             {
                 myMap[v] = 5;
                 spawnChunkSet = true;
-                GameObject.Find("Player").transform.position = v * CHUNKSIZE;
-                GameObject.Find("Camera Holder").transform.position = v * CHUNKSIZE;
+                GameObject.Find("Player").transform.position = new Vector2(v.x * CHUNKSIZE_X,v.y * CHUNKSIZE_Y);
+                GameObject.Find("Camera Holder").transform.position = new Vector2(v.x * CHUNKSIZE_X, v.y * CHUNKSIZE_Y);
                 CurrentCameraCoords = new Vector2(1000, 1000);
             }
         }

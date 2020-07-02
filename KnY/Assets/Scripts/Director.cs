@@ -37,7 +37,11 @@ public class Director : MonoBehaviour {
     public static string colorEndText = "</Color>";
     public static NumberFormatInfo numberFormat = new NumberFormatInfo { NumberDecimalSeparator = ",", NumberGroupSeparator = ".", CurrencySymbol = "" };
 
-public TimeSpan timePassed = new TimeSpan(0, 0, 0, 0, 0);
+    public TimeSpan timePassed = new TimeSpan(0, 0, 0, 0, 0);
+
+
+    private static MapGenerator mapGenerator;
+
 
     public GameObject Canvas
     {
@@ -94,38 +98,29 @@ public TimeSpan timePassed = new TimeSpan(0, 0, 0, 0, 0);
 
     // Update is called once per frame
     void Update () {
-        Animator[] anims = GameObject.FindObjectsOfType<Animator>();
-		foreach(Animator a in anims)
-        {
-            float bonusSpeed = 0;
-            try
-            {
-                bonusSpeed =  a.GetFloat("SpeedIncrease");
-            }
-            catch
-            {
-
-            }
-            a.speed = timeScale + bonusSpeed;
-        }
         timePassed += new TimeSpan(0, 0, 0, 0, (int)(Time.deltaTime *1000));
 	}
+
+
 
     public static Director GetInstance()
     {
         return instance;
     }
 
+
+
     public static float TimeScale()
     {
         return GetInstance().timeScale;
     }
-    public static float TimeScale(float value)
-    {
-        GetInstance().timeScale = value;
-        return GetInstance().timeScale;
-    }
 
+
+    /// <summary>
+    /// Spawns damage text
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="position"></param>
     public void SpawnDamageText(string text,Transform position)
     {
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(position.position);
@@ -135,6 +130,13 @@ public TimeSpan timePassed = new TimeSpan(0, 0, 0, 0, 0);
 
     }
 
+
+    /// <summary>
+    /// Spawns damage text
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="position"></param>
+    /// <param name="color"></param>
     public void SpawnDamageText(string text, Transform position,Color color)
     {
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(position.position);
@@ -144,6 +146,15 @@ public TimeSpan timePassed = new TimeSpan(0, 0, 0, 0, 0);
         textObject.transform.GetChild(0).GetComponent<DamageTextAnimation>().origin = position.position;
 
     }
+
+
+    /// <summary>
+    /// Spawns damage text
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="position"></param>
+    /// <param name="color"></param>
+    /// <param name="crit"></param>
     public void SpawnDamageText(string text, Transform position, Color color,bool crit)
     {
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(position.position);
@@ -158,6 +169,16 @@ public TimeSpan timePassed = new TimeSpan(0, 0, 0, 0, 0);
         }
 
     }
+
+
+    /// <summary>
+    /// Spawns damage text
+    /// </summary>
+    /// <param name="text"></param>
+    /// <param name="position"></param>
+    /// <param name="color"></param>
+    /// <param name="crit"></param>
+    /// <param name="direction"></param>
     public void SpawnDamageText(string text, Transform position, Color color, bool crit, Vector2 direction)
     {
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(position.position);
@@ -173,6 +194,14 @@ public TimeSpan timePassed = new TimeSpan(0, 0, 0, 0, 0);
 
     }
 
+
+    /// <summary>
+    /// Spawns an mini-hpbar ui element
+    /// </summary>
+    /// <param name="statusmanager"></param>
+    /// <param name="time"></param>
+    /// <param name="heightOffset"></param>
+    /// <returns></returns>
     public GameObject SpawnMiniHpBar(Statusmanager statusmanager, float time, float heightOffset)
     {
         GameObject hpBar = Instantiate(miniHpBar, Canvas.transform);
@@ -182,11 +211,23 @@ public TimeSpan timePassed = new TimeSpan(0, 0, 0, 0, 0);
         return hpBar;
 
     }
+
+    /// <summary>
+    /// Darken level in a seperate thread
+    /// </summary>
+    /// <param name="time"></param>
     public void DarkenLevel(float time)
     {
         darkenLevel_coroutine = DarkenLevelThread(time);
         StartCoroutine(darkenLevel_coroutine);
     }
+
+
+    /// <summary>
+    /// Darkens the level
+    /// </summary>
+    /// <param name="time"></param>
+    /// <returns></returns>
     IEnumerator DarkenLevelThread(float time)
     {
         GameObject[] bgObjects = GameObject.FindGameObjectsWithTag("Background");
@@ -223,6 +264,14 @@ public TimeSpan timePassed = new TimeSpan(0, 0, 0, 0, 0);
         }
     }
 
+
+    /// <summary>
+    /// Fades a material in a seperate thread
+    /// </summary>
+    /// <param name="fadeStart"></param>
+    /// <param name="fadeEnd"></param>
+    /// <param name="material"></param>
+    /// <param name="time"></param>
     public void SetFadeMaterial(float fadeStart, float fadeEnd, Material material, float time)
     {
         if(currentFadeMaterial == material)
@@ -231,6 +280,15 @@ public TimeSpan timePassed = new TimeSpan(0, 0, 0, 0, 0);
         }
         StartCoroutine(SetFadeMaterialCoroutine(fadeStart, fadeEnd, material,time));
     }
+
+    /// <summary>
+    /// Thread to fade material
+    /// </summary>
+    /// <param name="fadeStart"></param>
+    /// <param name="fadeEnd"></param>
+    /// <param name="material"></param>
+    /// <param name="time"></param>
+    /// <returns></returns>
     IEnumerator SetFadeMaterialCoroutine(float fadeStart, float fadeEnd, Material material,float time)
     {
         while(endFadeInstantly)
@@ -261,6 +319,11 @@ public TimeSpan timePassed = new TimeSpan(0, 0, 0, 0, 0);
         endFadeInstantly = false;
         currentFadeMaterial = null;
     }
+
+
+    /// <summary>
+    /// Brightens the level
+    /// </summary>
     public void BrightenLevel()
     {
         StopCoroutine(darkenLevel_coroutine);
@@ -287,29 +350,41 @@ public TimeSpan timePassed = new TimeSpan(0, 0, 0, 0, 0);
         }
     }
 
-    public static float RoundToGrid(float number)
-    {
-        double dnumber = Math.Round((double)number, 2);
-        return (float)dnumber;
-    }
 
+    /// <summary>
+    /// Sets the timescale
+    /// </summary>
+    /// <param name="number"></param>
     public static void SetTimeScale(float number)
     {
         Time.timeScale = number;
         Time.fixedDeltaTime = number * 0.02f;
     }
 
+
+    /// <summary>
+    /// Sets the difficulty (MainMenu)
+    /// </summary>
     public static void SetDifficulty()
     {
         int i = GameObject.Find("DifficultyDropDown").GetComponent<Dropdown>().value;
         GetInstance().difficultyScaling = i;
     }
 
+
+    /// <summary>
+    /// Sets the contract (MainMenu)
+    /// </summary>
+    /// <param name="i"></param>
     public static void SetContact(int i)
     {
         GetInstance().characterClass = (Statusmanager.CharacterClass)i;
     }
 
+
+    /// <summary>
+    /// Sets the global seed
+    /// </summary>
     public static void SetGlobalSeed()
     {
         string seedString = GameObject.Find("SeedInputField").GetComponent<InputField>().text;
@@ -324,13 +399,14 @@ public TimeSpan timePassed = new TimeSpan(0, 0, 0, 0, 0);
         }
     }
 
-    public static Vector2 RotateDirectionalVector(Vector2 direction,float angle)
-    {
-        float x = direction.x * Mathf.Cos(angle) + direction.y * Mathf.Sin(angle);
-        float y = -direction.x * Mathf.Sin(angle) + direction.y * Mathf.Cos(angle);
-        return new Vector2(x, y);
-    }
 
+
+    /// <summary>
+    /// Creates a sound
+    /// </summary>
+    /// <param name="source"></param>
+    /// <param name="soundId"></param>
+    /// <param name="pitchOffset"></param>
     public static void CreateSound(GameObject source,int soundId,float pitchOffset)
     {
         GameObject soundObject = Instantiate(instance.sound, source.transform.position, Quaternion.identity);
@@ -341,6 +417,19 @@ public TimeSpan timePassed = new TimeSpan(0, 0, 0, 0, 0);
         soundObject.GetComponent<AudioSource>().Play();
         Destroy(soundObject, clip.length + 0.2f);
 
+    }
+
+
+    public static MapGenerator MapGenerator
+    {
+       get
+       {
+            if(mapGenerator == null)
+            {
+                mapGenerator = GameObject.FindObjectOfType<MapGenerator>();
+            }
+            return mapGenerator;
+       }
     }
 
     #region Options

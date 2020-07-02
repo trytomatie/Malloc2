@@ -125,84 +125,75 @@ public class Statusmanager : MonoBehaviour {
         }
     }
 	
-	// Update is called once per frame
-	void LateUpdate () {
-        foreach(Animator anim in anims)
-        { 
-            if(anim != null)
-            { 
-                anim.SetBool("Hurt", false);
-            }
-        }
-        if(Hp <= 0)
+
+    private void SetStatusToDead()
+    {
+        if (isDead == false)
         {
-            if(isDead == false)
-            { 
-                isDead = true;
-                GetComponent<Collider2D>().enabled = false;
-                if (gameObjectThatDamagedMeLast != null)
+            isDead = true;
+            GetComponent<Collider2D>().enabled = false;
+            if (gameObjectThatDamagedMeLast != null)
+            {
+                if (gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().faction == Faction.PlayerFaction)
                 {
-                    if(gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().faction == Faction.PlayerFaction)
-                    {
-                        GameObject.FindObjectOfType<PlayerController>().GetComponent<Statusmanager>().Mana += (int)(Mana * gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().manaGainMuliplier);
-                        GameObject.FindObjectOfType<PlayerController>().GetComponent<Statusmanager>().Experinece += (int)(Mana * gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().experienceGainMultiplier);
-                    }
-                    else
-                    { 
-                        gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().Mana += (int)(Mana * gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().manaGainMuliplier);
-                        gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().Experinece += (int)(Mana * gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().experienceGainMultiplier);
-                    }
-                }
-                if (GetComponent<PlayerController>() != null)
-                {
-                    GetComponent<PlayerController>().enabled = false;
-                    GetComponent<Statusmanager>().hp = -999999;
-                }
-                if((gameObjectThatDamagedMeLast.GetComponent<PlayerController>() != null || gameObjectThatDamagedMeLast.GetComponent<AI_EyeFollower>() != null || gameObjectThatDamagedMeLast.GetComponent<AI_GenericFollower>() != null) && Mana > 0)
-                {
-                    Api.AddKill();
-                }
-                GetComponent<DepthSorter>().enabled = false;
-                GetComponent<SpriteRenderer>().sortingOrder = PublicGameResources.FLOOR_LAYER + 1;
-
-                GetComponent<KnockbackHandler>().enabled = false;
-                GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-                tag = "Untagged";
-                foreach (StatusEffect s in statusEffects)
-                {
-                    s.duration = 0;
-                }
-
-                if (GetComponent<PlayerController>() != null)
-                {
-                    GetComponent<Animator>().SetInteger("DeathAnimation", 1);
-                    GetComponent<Animator>().SetInteger("AnimationState", -1);
-                    GameObject.Find("PC_UI").SetActive(false);
-                    Director.GetInstance().SetFadeMaterial(0, 1, GameObject.Find("DeathBackground").GetComponent<SpriteRenderer>().material, 2);
-                    gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Foreground";
-                    gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2998;
-                    GameObject.FindObjectOfType<UI_InputManager>().deathUI.SetActive(true);
-                    GameObject.FindObjectOfType<UI_InputManager>().deathUI.transform.Find("Stats").GetComponent<Text>().text = String.Format("Kills: {0}\nDamageDone: {1}\nDamageTaken: {2}", Api.Kills,Api.DamageDone,Api.DamageTaken);
-                    Api.SaveCurrent();
+                    GameObject.FindObjectOfType<PlayerController>().GetComponent<Statusmanager>().Mana += (int)(Mana * gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().manaGainMuliplier);
+                    GameObject.FindObjectOfType<PlayerController>().GetComponent<Statusmanager>().Experinece += (int)(Mana * gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().experienceGainMultiplier);
                 }
                 else
                 {
-                    GetComponent<Animator>().SetInteger("DeathAnimation", UnityEngine.Random.Range(1, 4));
-                    GetComponent<Animator>().SetInteger("AnimationState", -1);
-                    GetComponent<AI_BaseAI>().mode = AI_BaseAI.Mode.Dead;
-                    GetComponent<AI_BaseAI>().enabled = false;
-                    GetComponent<AIPath>().enabled = false;
-
-                    Camera.main.transform.parent.GetComponent<CameraFollow>().ActivateScreenShake(0.25f);
-                    Material mat = GetComponent<SpriteRenderer>().material;
-                    Director.GetInstance().SetFadeMaterial(1, 0, mat, 0.5f);
-                    Destroy(gameObject, 10);
+                    gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().Mana += (int)(Mana * gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().manaGainMuliplier);
+                    gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().Experinece += (int)(Mana * gameObjectThatDamagedMeLast.GetComponent<Statusmanager>().experienceGainMultiplier);
                 }
-
-
-
-
             }
+            if (GetComponent<PlayerController>() != null)
+            {
+                GetComponent<PlayerController>().enabled = false;
+                GetComponent<Statusmanager>().hp = -999999;
+            }
+            if ((gameObjectThatDamagedMeLast.GetComponent<PlayerController>() != null || gameObjectThatDamagedMeLast.GetComponent<AI_EyeFollower>() != null || gameObjectThatDamagedMeLast.GetComponent<AI_GenericFollower>() != null) && Mana > 0)
+            {
+                Api.AddKill();
+            }
+            GetComponent<DepthSorter>().enabled = false;
+            GetComponent<SpriteRenderer>().sortingOrder = PublicGameResources.FLOOR_LAYER + 1;
+
+            GetComponent<KnockbackHandler>().enabled = false;
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            tag = "Untagged";
+            foreach (StatusEffect s in statusEffects)
+            {
+                s.duration = 0;
+            }
+
+            if (GetComponent<PlayerController>() != null)
+            {
+                GetComponent<Animator>().SetInteger("DeathAnimation", 1);
+                GetComponent<Animator>().SetInteger("AnimationState", -1);
+                GameObject.Find("PC_UI").SetActive(false);
+                Director.GetInstance().SetFadeMaterial(0, 1, GameObject.Find("DeathBackground").GetComponent<SpriteRenderer>().material, 2);
+                gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Foreground";
+                gameObject.GetComponent<SpriteRenderer>().sortingOrder = 2998;
+                GameObject.FindObjectOfType<UI_InputManager>().deathUI.SetActive(true);
+                GameObject.FindObjectOfType<UI_InputManager>().deathUI.transform.Find("Stats").GetComponent<Text>().text = String.Format("Kills: {0}\nDamageDone: {1}\nDamageTaken: {2}", Api.Kills, Api.DamageDone, Api.DamageTaken);
+                Api.SaveCurrent();
+            }
+            else
+            {
+                GetComponent<Animator>().SetInteger("DeathAnimation", UnityEngine.Random.Range(1, 4));
+                GetComponent<Animator>().SetInteger("AnimationState", -1);
+                GetComponent<AI_BaseAI>().mode = AI_BaseAI.Mode.Dead;
+                GetComponent<AI_BaseAI>().enabled = false;
+                GetComponent<AIPath>().enabled = false;
+
+                Camera.main.transform.parent.GetComponent<CameraFollow>().ActivateScreenShake(0.25f);
+                Material mat = GetComponent<SpriteRenderer>().material;
+                Director.GetInstance().SetFadeMaterial(1, 0, mat, 0.5f);
+                Destroy(gameObject, 10);
+            }
+
+
+
+
         }
     }
 
@@ -423,10 +414,6 @@ public class Statusmanager : MonoBehaviour {
             }
         }
         StartCoroutine(damageTakenAnimation());
-        foreach (Animator anim in anims)
-        {
-            anim.SetBool("Hurt", true);
-        }
         Color color = Color.white;
         if(GetComponent<PlayerController>() != null)
         {
@@ -619,6 +606,10 @@ public class Statusmanager : MonoBehaviour {
                 {
                     myHpBar.UpdateUI(3);
                 }
+            }
+            if (hp <= 0)
+            {
+                SetStatusToDead();
             }
         }
     }

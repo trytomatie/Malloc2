@@ -71,17 +71,17 @@ public class DamageObject : MonoBehaviour {
     {
         Color color = Color.white;
         // TEMP ?
-        
+
         if (otherStatus.faction == Statusmanager.Faction.PlayerFaction)
         {
             color = Color.red;
         }
-        if(otherStatus.Intangible)
+        if (otherStatus.Intangible)
         {
             return;
         }
         // Damage Calculation
-        int damageDealt = CalculateDamageDealt(otherStatus,origin.GetComponent<Statusmanager>(), damage);
+        int damageDealt = CalculateDamageDealt(otherStatus, origin.GetComponent<Statusmanager>(), damage);
         // Apply crit
         int critChance = UnityEngine.Random.Range(1, 101);
         bool hasCrit = false;
@@ -91,22 +91,22 @@ public class DamageObject : MonoBehaviour {
             damageDealt *= 2;
         }
         // Apply Damage
-        otherStatus.ApplyDamage(damageDealt, origin,hasCrit);
+        otherStatus.ApplyDamage(damageDealt, origin, hasCrit);
         // Apply Procs
-        if(procCoefficient > 0 && origin.GetComponent<Inventory>() != null)
+        if (procCoefficient > 0 && origin.GetComponent<Inventory>() != null)
         {
             int rnd = UnityEngine.Random.Range(1, 101);
             List<Item> items = origin.GetComponent<Inventory>().ActiveItemList();
             foreach (Item item in items)
             {
-                if(item.GetType().BaseType == typeof(ProcItem))
+                if (item.GetType().BaseType == typeof(ProcItem))
                 {
                     ProcItem procItem = (ProcItem)item;
                     if (procItem.procChance >= rnd)
                     {
                         procItem.ProcEffect(other.gameObject);
                     }
-                        
+
                 }
             }
         }
@@ -117,7 +117,7 @@ public class DamageObject : MonoBehaviour {
             ApplyKnockbackOnTarget(other);
         }
         // Apply Set Statuseffect
-        if(applyStatusEffect != null && applyStatusEffect.statusName != "")
+        if (applyStatusEffect != null && applyStatusEffect.statusName != "")
         {
             other.GetComponent<Statusmanager>().ApplyStatusEffect(applyStatusEffect.Copy());
         }
@@ -126,10 +126,19 @@ public class DamageObject : MonoBehaviour {
 
         Vector2 heading = other.transform.position - origin.transform.position;
         Vector2 direction = heading / distance;
-        GameObject g = Instantiate(PublicGameResources.GetResource().bloodFx, other.transform.position, Quaternion.identity);
-        g.GetComponent<BloodSplaterEffectMain>().velocity = direction * 5;
+        SpawnBleedEffect(other, direction);
+
         damagedObjects.Add(otherStatus.gameObject, true);
     }
+
+    private static void SpawnBleedEffect(Collider2D other, Vector2 direction)
+    {
+        GameObject g = Instantiate(PublicGameResources.GetResource().bloodFx, other.transform.position, Quaternion.identity);
+        g.GetComponent<BloodSplaterEffectMain>().velocity = direction * 5;
+    }
+
+
+
 
     /// <summary>
     /// Calculates damage in accordance to armor
@@ -199,25 +208,6 @@ public class DamageObject : MonoBehaviour {
             myCollider = transform.GetChild(hitboxType - 1).gameObject.GetComponent<Collider2D>();
         }
         
-    }
-
-    internal static void SoftDestory(GameObject go)
-    {
-        Destroy(go, 1.5f);
-        go.GetComponent<DamageObject>().StartCoroutine(go.GetComponent<DamageObject>().Fade());
-    }
-
-    IEnumerator Fade()
-    {
-        float timer = 0.5f;
-        float intervalls = 0.1f;
-        while(timer >= 0f)
-        { 
-            Color c= GetComponent<SpriteRenderer>().color;
-            GetComponent<SpriteRenderer>().color = new Color(c.r, c.g, c.b, timer*2);
-            timer -= intervalls;
-            yield return new WaitForSeconds(intervalls);
-        }
     }
 
     private void ApplyKnockbackOnTarget(Collider2D other)

@@ -20,6 +20,7 @@ public class ChunkSettings : MonoBehaviour
     public System.Random myRandom;
     public int weight = 100;
     public UnityEvent conclusionEvent;
+    public bool isFertile = false;
 
 
     public enum ChunkType
@@ -96,6 +97,7 @@ public class ChunkSettings : MonoBehaviour
 
         set
         {
+            CameraFollow.Borders(false);
             conclusionEvent.Invoke();
             concluded = value;
         }

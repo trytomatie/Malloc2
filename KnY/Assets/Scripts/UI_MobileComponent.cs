@@ -12,6 +12,10 @@ public class UI_MobileComponent : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+        else
+        {
+            gameObject.SetActive(true);
+        }
             
     }
 

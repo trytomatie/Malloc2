@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
     private Color baseSwordGlowColor;
     public Color blended;
 
+
+    // Mobile Stuff
+    private VariableJoystick joystick;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -76,8 +80,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         MovementInput();
-        BattleInput(0);
-        InteractionInput();
+        if (!Director.GetInstance().isMobile)
+        {
+            BattleInput(0);
+            InteractionInput();
+        }
     }
 
 
@@ -88,16 +95,20 @@ public class PlayerController : MonoBehaviour
     {
         float x = 0;
         float y = 0;
+
+
         if(Director.GetInstance().isMobile)
         {
-            x = GameObject.FindObjectOfType<VariableJoystick>().Direction.x;
-            y = GameObject.FindObjectOfType<VariableJoystick>().Direction.y;
+            x = Joystick.Direction.x;
+            y = Joystick.Direction.y;
         }
         else
         { 
             x = Input.GetAxis("Horizontal");
             y = Input.GetAxis("Vertical");
         }
+
+
         if (x == 0 || y == 0) // Checks if the player is moving diagonaly, Reduces Movement speed acordingly
         {
             movementSpeedMod = GetComponent<Statusmanager>().TotalMovementSpeed;
@@ -107,11 +118,17 @@ public class PlayerController : MonoBehaviour
 
             movementSpeedMod = GetComponent<Statusmanager>().TotalMovementSpeed * DIAGONAL_SPEED;
         }
+
+
         movementDirection = new Vector2(x, y);
+
+
         if (!skillManager.disableMovement)
         {
             rb.velocity = movementDirection * movementSpeedMod;
         }
+
+
         // Set Parameter for Animator
         if (x != 0 || y != 0)
         {
@@ -124,6 +141,8 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("IsMoving", false);
         }
+
+
         anim.SetFloat("DirX", x);
         anim.SetFloat("DirY", y);
         // Set Position for Interaction Radius
@@ -275,6 +294,17 @@ public class PlayerController : MonoBehaviour
         {
             m.SetColor("_color", baseSwordGlowColor);
         }
+    }
+
+
+    public VariableJoystick Joystick { get
+        {
+            if (joystick == null)
+            {
+                joystick = GameObject.FindObjectOfType<VariableJoystick>();
+            }
+            return joystick;
+        }  
     }
 
 }

@@ -129,7 +129,7 @@ MonoBehaviour:
   timeScale: 1
   difficultyScaling: 2
   characterClass: 0
-  isMobile: 0
+  isMobile: 1
 --- !u!114 &1447885622279541043
 MonoBehaviour:
   m_ObjectHideFlags: 0

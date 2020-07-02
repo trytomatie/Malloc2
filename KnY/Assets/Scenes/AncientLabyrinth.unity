@@ -175,6 +175,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &329594565 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 794403646, guid: 0569a9e23b97956469374cb303821481,
+    type: 3}
+  m_PrefabInstance: {fileID: 1887257618308914335}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &329594569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 329594565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27d6fa1a9d796b74da9e215db3f5c5bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &443708609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -239,6 +257,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1447885622279541040, guid: c7343dc8775d8694aa10a13be3563cfa,
+        type: 3}
+      propertyPath: isMobile
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1447885622279541041, guid: c7343dc8775d8694aa10a13be3563cfa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -459,7 +482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAIIez3K17sWwIAAAIFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMzg1jEzBJb60hpAeSTGgnF1+EtcYaZMmjjwDJ8N+7km3s0smJ5e3b3bcf8ifh0tSQW6VXmrO1YkC+j4i3ybdR73yEI90pueEf0HHeOLOlJ9HAeaWWK8RjH2ZUBVbz/IfcCU+OEHSSF0pXS7aDVBlrEC6oMIAurayPlgh9jsgRf27ufcgJrcncWx9o3UejM5o5SAu6p3bEjtawnMwFrWpgXnJPjqPxtOV7M1AlNtSyonF050soIbhpBRF7qkPDKa2Nw3aQwDjFBoOKaBzPECmB70rr9Y6T22GK56IwYFt9mp4WXOO0mtzkp2pGWFGzb0S+U+F8tXlyF8Q1edf/+SezJPgLrarHrnYc+SK25Pn+lZ5yauxgyEN40euPw7AOVOzpVsBbCfJJrbRykqHTaudDnYHJov976S0tId/3eKO1A7u6rv56Vzfx6HwO/R9TwattM88G2AgV5h4uATQu6RcqDndiWt2Iehl/DPymu+FBtY4Hro1FV0uXXt9WOe2pZBmG5ttxNlVagh5mqEFSYU8vmMdeb/HK93XUA/Vvp63e+roncRUS4J4fRVeuF3W4rMuU6rAGUz47K7iEfgHe8YSDSpWUzZENW+rCNk4XNB+E7Rxn/14XobPJNoniWZ7Q6TyJ6A3c386mEUzzSXI3md8yEq6PS+yTipdGaDseXJvsk0u8tO6TMlppWoeDZ5oeVvyjUqZnclmoTa4B5HOT4SIcNBbBF8qWjOOANmAtl2Hh5DMjQuV7YNklURY6XR6tplmfJSM1f1fWIxlJwzckI2dy/gtQSwMEFAAACAgAAAgh7FEMgQ1tAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTVUVBKL0osyCgGihiCOKWZKSB2tFKiqVGSmYGhabJZoom5mUGibqqlsamJQapJspGZhZG5cYpSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAAgh7PcrXuxbAgAAAgUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7FEMgQ1tAAAAeAAAAAkAJAAAAAAAAAAAAAAAqAIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABgAwAAAAA=
+    dataString: UEsDBBQAAAgIAAAIIeynrH4RZQIAAAoFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VEtz2jAQ/iuMzoWxDRjSW2sI6SGPCe3k4ouw11iDLHn0CJAM/70r2cYumZ5Yvv1299uH/EmY0DVkRqqNYvmjzIF8HxFnk2+j3vkAJ7qXYss+oOO8sdyUjkQ955UaJhEPXZiWFRjFsh9izx05QNAKVkhVrfM9JFIbjXBBuQZ0KWlctEDoc0RO+DO+cyFntKKFsz7QugtGFzQzEAZUT+2IHa1hWZFxWtWQO8k9edaSZ54ksJXWH0yCpUsuOWe6lULMufatJrTWFhtBQs4otubrB5NwjkgJbF8ap3QST4cpnotCg2mVKXpeMYVzanKTn7IZXkX1oZH3Trl11aJlGHt1TeLHr4R54y+UrB664mHgqpiSZYdXes6oNoP5DuFV30Do53Sk/EB3HN5KEE9yo6QVOTqNsi7UaohW/d9rc0kJ2aHHG60d2NW19dc1RZPpchYu42m8HgeLdmfjcHS5+GmcEs6qXTPdBthy6bfgLwIUruwXyvf3otsmEHWa/mj4TffDw2od90xpg66WLpzYnbTKUcnaT9D1Zk0ilQA1zFCDoNycXzCPud3pje//UffUvaG2euvrnsZNiId7fhDcuF7k8bo7XcrjI+jy2RrOBPTbcI4nHFQihWhObthSF7a1qqDZIGxvWf7vqRE6j3ZxEM6zmM4WcUDHcDedzwKYZVG8jBbTnPhTZAL7pPylEdqOB9cm+uQCz677tIw2itb+/HNFjxv2UUndM5ko5DZTAOK5yXAVDgqL4HvN1znDAW3BGCb8wslnSrjMDpCn10Sp73R9MoqmfZaU1OxdGoekJPHfkpRcyOUvUEsDBBQAAAgIAAAIIexRDIENbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM01VFQSi9KLMgoBooYgjilmSkgdrRSoqlRkpmBoWmyWaKJuZlBom6qpbGpiUGqSbKRmYWRuXGKUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAAAIIeynrH4RZQIAAAoFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAAIIexRDIENbQAAAHgAAAAJACQAAAAAAAAAAAAAALICAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAagMAAAAA
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -578,25 +601,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapParent: {fileID: 1520492995}
   chunkTiles:
-  - {fileID: 4901484312855246618, guid: e85ea7ae02a0587429ff7692ea8b3d03, type: 3}
-  - {fileID: 4901484312855246618, guid: 2195b437239475f4f9a2a12a34137ae4, type: 3}
-  - {fileID: 4901484312855246618, guid: 8c22b58510e758d4a8739b5401fea88f, type: 3}
-  - {fileID: 4901484312855246618, guid: 196fe9f2623da684799064960d1ac937, type: 3}
-  - {fileID: 4901484312855246618, guid: 0c094ee88550ad44faf1f563a491faab, type: 3}
-  - {fileID: 4901484312855246618, guid: e6de81c3003fbf14dbbf1b340e44e0d7, type: 3}
-  - {fileID: 4901484312855246618, guid: b11ea0fb9eb70724c919384e00cfd489, type: 3}
-  - {fileID: 4901484312855246618, guid: cd36fdc708739a94c84a8781c16647cf, type: 3}
-  - {fileID: 4901484312855246618, guid: e69ddacd14e413c44b07ff1136410dfd, type: 3}
-  - {fileID: 4901484312855246618, guid: 5c40f42172a7123498ce1a10123ba56e, type: 3}
-  - {fileID: 4901484312855246618, guid: 8295aa43a8731014981584cf20b87c09, type: 3}
-  - {fileID: 4901484312855246618, guid: 72d1f75777f1cd84f88a1949eebbbc3e, type: 3}
-  - {fileID: 4901484312855246618, guid: dcf9f8b2b67f6444fa47fe1107c2bf62, type: 3}
-  - {fileID: 4901484312855246618, guid: 5a3bf8e8adcfad0469e95b6c44c427a5, type: 3}
-  - {fileID: 4901484312855246618, guid: 79456dc825eef5b43bc55b9080ab1af3, type: 3}
-  - {fileID: 4901484312855246618, guid: 72335cfc659397c40a57f7fd4cbb009f, type: 3}
-  - {fileID: 4901484312855246618, guid: 8e4444024139bcb4095cce003b16dbbe, type: 3}
-  - {fileID: 4901484312855246618, guid: 9570da68025930d4da00540ddd102e34, type: 3}
-  mapSpawnCard: {fileID: 11400000, guid: 29176116c4ba8e44daa439428e981fda, type: 2}
+  - {fileID: 4901484312855246618, guid: e6dc6436f0c491a4eba84997ad3ccdea, type: 3}
+  - {fileID: 4901484312855246618, guid: 146052c7cc6e0024cb7b950416e73681, type: 3}
+  - {fileID: 4901484312855246618, guid: 44aefe260dbb5ce44af13d29fc1e1415, type: 3}
+  mapSpawnCard: {fileID: 11400000, guid: 3efb4ec76ed8e294abd07481c1800867, type: 2}
   spawnTable:
   - {fileID: 11400000, guid: 35b52c857c5a8af45a70bd391e91d7d4, type: 2}
   - {fileID: 11400000, guid: 35b52c857c5a8af45a70bd391e91d7d4, type: 2}
@@ -823,6 +831,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1887257620313748275, guid: 0569a9e23b97956469374cb303821481,
+        type: 3}
+      propertyPath: maxExperience
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1887257620313748277, guid: 0569a9e23b97956469374cb303821481,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1012,6 +1025,18 @@ PrefabInstance:
       propertyPath: inventorysThatHavePermission.Array.data[0]
       value: 
       objectReference: {fileID: 2021715887}
+    - target: {fileID: 1504607590, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504607590, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504607590, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1634909221, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
       propertyPath: inventorysThatHavePermission.Array.data[0]
       value: 
@@ -1197,6 +1222,11 @@ PrefabInstance:
       propertyPath: inventorysThatHavePermission.Array.data[0]
       value: 
       objectReference: {fileID: 2021715887}
+    - target: {fileID: 6447316974306657415, guid: 8e7ed1752d676c04abdb20f6920127cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6466175838229391768, guid: 8e7ed1752d676c04abdb20f6920127cb,
         type: 3}
       propertyPath: inventorysThatHavePermission.Array.data[0]
@@ -1387,7 +1417,8 @@ PrefabInstance:
       propertyPath: inventorysThatHavePermission.Array.data[0]
       value: 
       objectReference: {fileID: 2021715887}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 416207224025168099, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8e7ed1752d676c04abdb20f6920127cb, type: 3}
 --- !u!1001 &8003006591178570981
 PrefabInstance:
