@@ -93,6 +93,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -102,8 +103,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -124,6 +125,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -508,6 +511,22 @@ TextureImporter:
     secondaryTextures:
     - texture: {fileID: 2800000, guid: 67f0a433d65d87f40a4e27039bc74236, type: 3}
       name: _emission
+    nameFileIdTable:
+      CrystalSpider_attack_1: 1975375632476112352
+      CrystalSpider_attack_11: 6163357635753134079
+      CrystalSpider_attack_12: 4809097229170113590
+      CrystalSpider_attack_4: -2659318895756308357
+      CrystalSpider_attack_3: -7576502905321318709
+      CrystalSpider_attack_0: -4476256005548364222
+      CrystalSpider_attack_5: 3349529886944305669
+      CrystalSpider_attack_13: 4519456403270946444
+      CrystalSpider_attack_8: 3152908011702156342
+      CrystalSpider_attack_2: -6366210084363029304
+      CrystalSpider_attack_14: 2845154126397901178
+      CrystalSpider_attack_7: -3137184052373369784
+      CrystalSpider_attack_10: 7507152396296144696
+      CrystalSpider_attack_9: -1909262729821188801
+      CrystalSpider_attack_6: 5877601498930381435
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

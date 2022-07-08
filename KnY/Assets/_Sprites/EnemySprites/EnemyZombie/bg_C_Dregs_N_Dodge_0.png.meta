@@ -59,6 +59,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -68,8 +70,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -90,9 +92,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -398,6 +403,19 @@ TextureImporter:
     secondaryTextures:
     - texture: {fileID: 2800000, guid: 5a12f9a30d752844eabbeeff90efc196, type: 3}
       name: _emission
+    nameFileIdTable:
+      bg_C_Dregs_N_Dodge_0_7: -8150431412843766175
+      bg_C_Dregs_N_Dodge_0_9: -3583463914058712830
+      bg_C_Dregs_N_Dodge_0_6: -6489819382211448260
+      bg_C_Dregs_N_Dodge_0_0: 2207781911664186659
+      bg_C_Dregs_N_Dodge_0_8: -298013187376875518
+      bg_C_Dregs_N_Dodge_0_3: 5993947970930724348
+      bg_C_Dregs_N_Dodge_0_2: -2931829985198104333
+      bg_C_Dregs_N_Dodge_0_11: -2767016521071094300
+      bg_C_Dregs_N_Dodge_0_1: 2494347823547716979
+      bg_C_Dregs_N_Dodge_0_5: 9174222398558556609
+      bg_C_Dregs_N_Dodge_0_4: -5330077990309744445
+      bg_C_Dregs_N_Dodge_0_10: 2030823287439040064
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

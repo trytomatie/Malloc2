@@ -48,6 +48,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -57,8 +58,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -79,6 +80,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -152,7 +155,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 9d6584776abd122b0800000000000000
-      internalID: -5610962152714643751
+      internalID: 5980674022551628904
       vertices: []
       indices: 
       edges: []
@@ -173,7 +176,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d9e4bb1daf55d3740800000000000000
-      internalID: 5133353686021131933
+      internalID: 6014865193257663317
       vertices: []
       indices: 
       edges: []
@@ -194,7 +197,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 3fb7659358de37b20800000000000000
-      internalID: 3131107322401029107
+      internalID: -3909966847893664977
       vertices: []
       indices: 
       edges: []
@@ -215,7 +218,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: b5e2795c9dba83ce0800000000000000
-      internalID: -1425200330251489701
+      internalID: 1518360418963868732
       vertices: []
       indices: 
       edges: []
@@ -232,6 +235,11 @@ TextureImporter:
     secondaryTextures:
     - texture: {fileID: 2800000, guid: 590b29412e2277a459b25a808b81a753, type: 3}
       name: _emission
+    nameFileIdTable:
+      Player_prepareCast_3: 1518360418963868732
+      Player_prepareCast_2: -3909966847893664977
+      Player_prepareCast_1: 6014865193257663317
+      Player_prepareCast_0: 5980674022551628904
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

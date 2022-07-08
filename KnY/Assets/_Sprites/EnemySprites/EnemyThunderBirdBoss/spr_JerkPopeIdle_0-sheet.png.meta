@@ -53,6 +53,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -62,8 +64,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -84,9 +86,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -348,6 +353,17 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      spr_JerkPopeIdle_0-sheet_9: 1137389998343772663
+      spr_JerkPopeIdle_0-sheet_8: 8016207404793435168
+      spr_JerkPopeIdle_0-sheet_3: -145392232221847507
+      spr_JerkPopeIdle_0-sheet_0: 6783544245196630047
+      spr_JerkPopeIdle_0-sheet_6: -4265734535563910750
+      spr_JerkPopeIdle_0-sheet_5: -6934165014709168331
+      spr_JerkPopeIdle_0-sheet_7: -7940477897493422024
+      spr_JerkPopeIdle_0-sheet_2: -4033478710058265003
+      spr_JerkPopeIdle_0-sheet_4: -1357443888031560741
+      spr_JerkPopeIdle_0-sheet_1: 8158716240792421276
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

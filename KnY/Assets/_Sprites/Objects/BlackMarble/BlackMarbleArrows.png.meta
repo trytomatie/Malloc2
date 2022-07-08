@@ -47,6 +47,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -56,8 +58,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -78,9 +80,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -302,6 +307,15 @@ TextureImporter:
     secondaryTextures:
     - texture: {fileID: 2800000, guid: 7b0558039afa0e54fbe8d3394e2fae56, type: 3}
       name: _emission
+    nameFileIdTable:
+      BlackMarbleArrows_0: -5170694500342912701
+      BlackMarbleArrows_1: 7921320486564389543
+      BlackMarbleArrows_2: -6803188497176691698
+      BlackMarbleArrows_6: 2008963521471937187
+      BlackMarbleArrows_7: -6885254472504262124
+      BlackMarbleArrows_5: 6154902842759521993
+      BlackMarbleArrows_4: 6224878763360455318
+      BlackMarbleArrows_3: -417918170992855695
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

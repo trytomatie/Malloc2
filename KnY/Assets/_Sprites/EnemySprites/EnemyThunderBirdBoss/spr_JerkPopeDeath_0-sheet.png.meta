@@ -197,6 +197,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -206,8 +208,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -228,9 +230,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -1500,6 +1505,65 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      spr_JerkPopeDeath_0-sheet_43: 6651409916264105946
+      spr_JerkPopeDeath_0-sheet_7: -8263633669305554147
+      spr_JerkPopeDeath_0-sheet_8: -2197668351433824798
+      spr_JerkPopeDeath_0-sheet_16: 8924059570470727522
+      spr_JerkPopeDeath_0-sheet_28: -8588933328440486460
+      spr_JerkPopeDeath_0-sheet_36: -8844264927151639597
+      spr_JerkPopeDeath_0-sheet_22: 8382608831449517359
+      spr_JerkPopeDeath_0-sheet_34: 1034154612329266715
+      spr_JerkPopeDeath_0-sheet_26: -3176412963855854945
+      spr_JerkPopeDeath_0-sheet_48: 6270705346543739574
+      spr_JerkPopeDeath_0-sheet_54: 3096577028154371821
+      spr_JerkPopeDeath_0-sheet_57: -1322595100906118252
+      spr_JerkPopeDeath_0-sheet_1: -6931193285274654852
+      spr_JerkPopeDeath_0-sheet_25: 1270236811920011432
+      spr_JerkPopeDeath_0-sheet_29: 6420674965778539423
+      spr_JerkPopeDeath_0-sheet_53: -6803267472321327234
+      spr_JerkPopeDeath_0-sheet_5: -3079602053641084183
+      spr_JerkPopeDeath_0-sheet_14: 1279631062122551794
+      spr_JerkPopeDeath_0-sheet_56: -2686653067074390992
+      spr_JerkPopeDeath_0-sheet_13: 5176068208064396042
+      spr_JerkPopeDeath_0-sheet_23: 710048148291393504
+      spr_JerkPopeDeath_0-sheet_46: 5227296179629760722
+      spr_JerkPopeDeath_0-sheet_55: -2589556625072472860
+      spr_JerkPopeDeath_0-sheet_39: -8205235819364555742
+      spr_JerkPopeDeath_0-sheet_30: 2561158286442731310
+      spr_JerkPopeDeath_0-sheet_17: 4459078599535243280
+      spr_JerkPopeDeath_0-sheet_3: -3064339516551204139
+      spr_JerkPopeDeath_0-sheet_18: -3224858385954112034
+      spr_JerkPopeDeath_0-sheet_33: -641661973860065567
+      spr_JerkPopeDeath_0-sheet_41: -2965937329254976317
+      spr_JerkPopeDeath_0-sheet_24: -8875623837933126346
+      spr_JerkPopeDeath_0-sheet_42: -2618070342707985681
+      spr_JerkPopeDeath_0-sheet_0: 3234288784071851281
+      spr_JerkPopeDeath_0-sheet_31: -5845528344937852226
+      spr_JerkPopeDeath_0-sheet_52: -8834765857262003941
+      spr_JerkPopeDeath_0-sheet_38: 4142915762871832885
+      spr_JerkPopeDeath_0-sheet_37: 3994178176366294273
+      spr_JerkPopeDeath_0-sheet_2: -2763103300843488411
+      spr_JerkPopeDeath_0-sheet_9: 2346290793820549656
+      spr_JerkPopeDeath_0-sheet_47: 1420417908534628569
+      spr_JerkPopeDeath_0-sheet_49: -4136457001217377831
+      spr_JerkPopeDeath_0-sheet_4: 3692697995433158887
+      spr_JerkPopeDeath_0-sheet_12: -6612962834825610653
+      spr_JerkPopeDeath_0-sheet_10: 9217664754563560759
+      spr_JerkPopeDeath_0-sheet_20: -1646870060589245301
+      spr_JerkPopeDeath_0-sheet_6: 2572609560430651495
+      spr_JerkPopeDeath_0-sheet_15: -7277144764861570135
+      spr_JerkPopeDeath_0-sheet_44: 5695880986025485228
+      spr_JerkPopeDeath_0-sheet_32: -8529099380502924433
+      spr_JerkPopeDeath_0-sheet_50: 7266756769061213150
+      spr_JerkPopeDeath_0-sheet_35: -4620877927067023036
+      spr_JerkPopeDeath_0-sheet_21: -5932255334497427772
+      spr_JerkPopeDeath_0-sheet_45: 6055796056998234348
+      spr_JerkPopeDeath_0-sheet_40: 6841933249065845946
+      spr_JerkPopeDeath_0-sheet_11: 6021096502805432903
+      spr_JerkPopeDeath_0-sheet_51: -7064256275627256273
+      spr_JerkPopeDeath_0-sheet_19: 3964543144325273414
+      spr_JerkPopeDeath_0-sheet_27: -2822998281899438389
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

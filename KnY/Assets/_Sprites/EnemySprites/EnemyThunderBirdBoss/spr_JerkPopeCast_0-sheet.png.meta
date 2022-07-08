@@ -62,6 +62,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -71,8 +73,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -93,9 +95,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -420,6 +425,20 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      spr_JerkPopeCast_0-sheet_4: 3944674455942335709
+      spr_JerkPopeCast_0-sheet_5: -8486884927561468125
+      spr_JerkPopeCast_0-sheet_2: 4397109670817492036
+      spr_JerkPopeCast_0-sheet_6: 2406304304824299774
+      spr_JerkPopeCast_0-sheet_10: 3995913069094623406
+      spr_JerkPopeCast_0-sheet_8: 4274882938498743821
+      spr_JerkPopeCast_0-sheet_11: 3673061318853422936
+      spr_JerkPopeCast_0-sheet_1: -5679893763282261532
+      spr_JerkPopeCast_0-sheet_7: -731401499491852127
+      spr_JerkPopeCast_0-sheet_12: -5048390392443459263
+      spr_JerkPopeCast_0-sheet_0: 8239624793129469991
+      spr_JerkPopeCast_0-sheet_3: 5910329653153057834
+      spr_JerkPopeCast_0-sheet_9: 1233402416755147067
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

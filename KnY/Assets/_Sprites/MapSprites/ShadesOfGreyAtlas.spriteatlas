@@ -28,10 +28,11 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 1
       enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: 57c023af47031a34897b99f0e2f559f0, type: 3}
-    totalSpriteSurfaceArea: 7
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -52,5 +53,6 @@ SpriteAtlas:
   - ShadesOfGrey_6
   - ShadesOfGrey_4
   - ShadesOfGrey_5
+  m_RenderDataMap: {}
   m_Tag: ShadesOfGreyAtlas
   m_IsVariant: 0

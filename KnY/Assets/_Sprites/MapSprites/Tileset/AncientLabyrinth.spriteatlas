@@ -40,10 +40,11 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 1
       enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: 09276f9ff0d14cb4f84b40516514ebb6, type: 3}
-    totalSpriteSurfaceArea: 8448
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -116,5 +117,6 @@ SpriteAtlas:
   - Basic_tileset_19
   - Basic_tileset_7
   - Basic_tileset_6
+  m_RenderDataMap: {}
   m_Tag: AncientLabyrinth
   m_IsVariant: 0

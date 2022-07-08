@@ -38,7 +38,7 @@ public class MapGenerator : MonoBehaviour
     public Dictionary<Vector2, int> tunnelMap = new Dictionary<Vector2, int>(); // Map of the tunnels where chunks are supposed to be able to spawn
     public Vector2 currentCameraCoords = new Vector2();
     private float CHUNKSIZE_X = 4.80f;
-    private float CHUNKSIZE_Y = 3.2f;
+    private float CHUNKSIZE_Y = 4.80f;
     public int currentFloor = 0;
 
 

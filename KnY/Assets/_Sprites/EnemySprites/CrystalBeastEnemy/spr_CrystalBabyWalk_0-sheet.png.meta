@@ -201,6 +201,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -210,8 +211,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -232,6 +233,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -826,6 +829,32 @@ TextureImporter:
     secondaryTextures:
     - texture: {fileID: 2800000, guid: 472e30af595fc7f44ab211e8d77db5ff, type: 3}
       name: _emission
+    nameFileIdTable:
+      spr_CrystalBabyWalk_0-sheet_7: 7703613383505769332
+      spr_CrystalBabyWalk_0-sheet_0: 2869540361070405974
+      spr_CrystalBabyWalk_0-sheet_13: 4358189544320823257
+      spr_CrystalBabyWalk_0-sheet_23: -8130855418375177288
+      spr_CrystalBabyWalk_0-sheet_10: 8856484097442872094
+      spr_CrystalBabyWalk_0-sheet_24: 440580609586379426
+      spr_CrystalBabyWalk_0-sheet_15: -6487120469779031101
+      spr_CrystalBabyWalk_0-sheet_8: 77890658954237382
+      spr_CrystalBabyWalk_0-sheet_20: 4075207761015024589
+      spr_CrystalBabyWalk_0-sheet_11: 2182285810711948739
+      spr_CrystalBabyWalk_0-sheet_22: 3613910803984328106
+      spr_CrystalBabyWalk_0-sheet_6: 4095094514586426311
+      spr_CrystalBabyWalk_0-sheet_5: -6485657333427234106
+      spr_CrystalBabyWalk_0-sheet_4: -6471125666405084540
+      spr_CrystalBabyWalk_0-sheet_2: 8319448156082560661
+      spr_CrystalBabyWalk_0-sheet_12: -7226902299215554097
+      spr_CrystalBabyWalk_0-sheet_19: -3823847462312600612
+      spr_CrystalBabyWalk_0-sheet_17: -7274147789549645898
+      spr_CrystalBabyWalk_0-sheet_21: 6597921355975665076
+      spr_CrystalBabyWalk_0-sheet_9: -4518943467034025028
+      spr_CrystalBabyWalk_0-sheet_16: 2243730199592465389
+      spr_CrystalBabyWalk_0-sheet_3: 6917026754154638712
+      spr_CrystalBabyWalk_0-sheet_18: 2101809442086466254
+      spr_CrystalBabyWalk_0-sheet_14: -7513313141947850372
+      spr_CrystalBabyWalk_0-sheet_1: 3233119145304531954
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

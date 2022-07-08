@@ -51,6 +51,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -60,8 +61,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -82,6 +83,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -340,6 +343,16 @@ TextureImporter:
     secondaryTextures:
     - texture: {fileID: 2800000, guid: 04ca7c44f4793f04aa5d3faf0b3e1124, type: 3}
       name: _emission
+    nameFileIdTable:
+      spr_SocKidKick_0-sheet_2: 6641784644978553675
+      spr_SocKidKick_0-sheet_0: 2453384159676895408
+      spr_SocKidKick_0-sheet_3: -6075167948139055230
+      spr_SocKidKick_0-sheet_7: 4115845202455770736
+      spr_SocKidKick_0-sheet_6: -4366654844347769509
+      spr_SocKidKick_0-sheet_8: 4547365330376517432
+      spr_SocKidKick_0-sheet_1: 6818481366012098912
+      spr_SocKidKick_0-sheet_4: 6961210607186257334
+      spr_SocKidKick_0-sheet_5: -5951596424197408926
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

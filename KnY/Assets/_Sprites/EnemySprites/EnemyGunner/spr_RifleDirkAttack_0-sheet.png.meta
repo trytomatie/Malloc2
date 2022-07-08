@@ -41,6 +41,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -50,8 +52,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -72,9 +74,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -254,6 +259,13 @@ TextureImporter:
     secondaryTextures:
     - texture: {fileID: 2800000, guid: d119ceb9f79a4d2409928d530ceece33, type: 3}
       name: _emission
+    nameFileIdTable:
+      spr_RifleDirkAttack_0-sheet_4: 4910069069766876437
+      spr_RifleDirkAttack_0-sheet_5: -7142595051523009780
+      spr_RifleDirkAttack_0-sheet_0: 3929619899259329249
+      spr_RifleDirkAttack_0-sheet_2: 6093103232788328246
+      spr_RifleDirkAttack_0-sheet_1: -8976260101703177040
+      spr_RifleDirkAttack_0-sheet_3: -8626805226656018531
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

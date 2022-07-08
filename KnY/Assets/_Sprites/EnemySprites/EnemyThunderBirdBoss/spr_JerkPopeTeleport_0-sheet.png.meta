@@ -116,6 +116,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -125,8 +127,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -147,9 +149,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -852,6 +857,38 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      spr_JerkPopeTeleport_0-sheet_5: -4531460396251157328
+      spr_JerkPopeTeleport_0-sheet_16: 7585189061076048581
+      spr_JerkPopeTeleport_0-sheet_22: 7739820146306498059
+      spr_JerkPopeTeleport_0-sheet_19: 1704994809088699077
+      spr_JerkPopeTeleport_0-sheet_10: -1347484578341822725
+      spr_JerkPopeTeleport_0-sheet_27: 7265056061815470078
+      spr_JerkPopeTeleport_0-sheet_7: 7561630563722635406
+      spr_JerkPopeTeleport_0-sheet_14: -6305093150927802953
+      spr_JerkPopeTeleport_0-sheet_13: -2891852959224249436
+      spr_JerkPopeTeleport_0-sheet_18: -3616693695108506611
+      spr_JerkPopeTeleport_0-sheet_20: 6203989075764639356
+      spr_JerkPopeTeleport_0-sheet_15: 197134129258417609
+      spr_JerkPopeTeleport_0-sheet_23: -3163488414067701406
+      spr_JerkPopeTeleport_0-sheet_4: -5624164693868597063
+      spr_JerkPopeTeleport_0-sheet_30: 2001338694361919792
+      spr_JerkPopeTeleport_0-sheet_21: 2770497061263812813
+      spr_JerkPopeTeleport_0-sheet_1: 2600745467657462579
+      spr_JerkPopeTeleport_0-sheet_2: 1281716707512701575
+      spr_JerkPopeTeleport_0-sheet_8: 1261626761084995567
+      spr_JerkPopeTeleport_0-sheet_3: 1009414222161110574
+      spr_JerkPopeTeleport_0-sheet_17: -8018245196984724156
+      spr_JerkPopeTeleport_0-sheet_24: 7157731245625712459
+      spr_JerkPopeTeleport_0-sheet_6: 1681695301288574340
+      spr_JerkPopeTeleport_0-sheet_12: 4798362189063147384
+      spr_JerkPopeTeleport_0-sheet_25: -8067980438362282653
+      spr_JerkPopeTeleport_0-sheet_29: 1172329905012377358
+      spr_JerkPopeTeleport_0-sheet_28: -7863076575517268835
+      spr_JerkPopeTeleport_0-sheet_0: -194518499948968784
+      spr_JerkPopeTeleport_0-sheet_11: -6953654323259337153
+      spr_JerkPopeTeleport_0-sheet_9: 85679050020607863
+      spr_JerkPopeTeleport_0-sheet_26: -4492306013745972231
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

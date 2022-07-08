@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
+
 
 public class Interactable_Goetze : MonoBehaviour {
 
@@ -62,7 +62,7 @@ public class Interactable_Goetze : MonoBehaviour {
             // heal target
             UI_InfoTitleManager.Show("The Götze did Nothing", "", 3);
         }
-        GetComponent<Light2D>().enabled = false;
+        GetComponent<UnityEngine.Rendering.Universal.Light2D>().enabled = false;
     }
 
     public static StatusEffect GetDivineProtection(int rndVal2)

@@ -62,6 +62,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -71,8 +73,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -93,9 +95,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -420,6 +425,20 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      spr_CultBirdIdle_0-sheet_8: -1832561863846507311
+      spr_CultBirdIdle_0-sheet_12: 489446858403503793
+      spr_CultBirdIdle_0-sheet_6: -6762078289843546051
+      spr_CultBirdIdle_0-sheet_2: -3870950738696406468
+      spr_CultBirdIdle_0-sheet_0: 3027982253892342044
+      spr_CultBirdIdle_0-sheet_11: -7006132536619838374
+      spr_CultBirdIdle_0-sheet_4: 5275172708694259212
+      spr_CultBirdIdle_0-sheet_7: -196040337812567186
+      spr_CultBirdIdle_0-sheet_5: -4874405070309245332
+      spr_CultBirdIdle_0-sheet_10: 9131542997432151697
+      spr_CultBirdIdle_0-sheet_1: 6826224496251568626
+      spr_CultBirdIdle_0-sheet_3: -2937776192591371954
+      spr_CultBirdIdle_0-sheet_9: -7697529514688156328
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

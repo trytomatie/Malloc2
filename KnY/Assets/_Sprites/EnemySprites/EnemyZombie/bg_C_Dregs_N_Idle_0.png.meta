@@ -185,6 +185,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -194,8 +196,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -216,9 +218,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -1364,6 +1369,59 @@ TextureImporter:
     secondaryTextures:
     - texture: {fileID: 2800000, guid: aad17ffdfdfb1be459f02a817e8ed3f1, type: 3}
       name: _emission
+    nameFileIdTable:
+      bg_C_Dregs_N_Idle_0_49: -2306347756430241303
+      bg_C_Dregs_N_Idle_0_15: 5925949802316093118
+      bg_C_Dregs_N_Idle_0_11: 5618970389667589750
+      bg_C_Dregs_N_Idle_0_50: -7401035178398254747
+      bg_C_Dregs_N_Idle_0_40: -2492214696458830550
+      bg_C_Dregs_N_Idle_0_18: -6838493533574937063
+      bg_C_Dregs_N_Idle_0_36: 2447701406701837264
+      bg_C_Dregs_N_Idle_0_48: 6012158210502552653
+      bg_C_Dregs_N_Idle_0_7: 6447330914809967442
+      bg_C_Dregs_N_Idle_0_24: -6883859008884902674
+      bg_C_Dregs_N_Idle_0_33: 799256656078323767
+      bg_C_Dregs_N_Idle_0_29: 3062874111756856723
+      bg_C_Dregs_N_Idle_0_27: 3580693360999955801
+      bg_C_Dregs_N_Idle_0_13: 3127450348402152342
+      bg_C_Dregs_N_Idle_0_51: -7297811124594129601
+      bg_C_Dregs_N_Idle_0_16: 4082446538750923839
+      bg_C_Dregs_N_Idle_0_14: 8247366270595504152
+      bg_C_Dregs_N_Idle_0_6: -7661406876571359211
+      bg_C_Dregs_N_Idle_0_45: -2220673195973681858
+      bg_C_Dregs_N_Idle_0_23: -8637628797916396809
+      bg_C_Dregs_N_Idle_0_22: -5753001735486730554
+      bg_C_Dregs_N_Idle_0_10: -7544302641771924631
+      bg_C_Dregs_N_Idle_0_4: -4038581064056927935
+      bg_C_Dregs_N_Idle_0_21: 530629196605901290
+      bg_C_Dregs_N_Idle_0_1: -5508538888675090780
+      bg_C_Dregs_N_Idle_0_2: -2180004423542721493
+      bg_C_Dregs_N_Idle_0_34: -5212505846188521868
+      bg_C_Dregs_N_Idle_0_20: 3897949211158997119
+      bg_C_Dregs_N_Idle_0_32: -5020524409233572366
+      bg_C_Dregs_N_Idle_0_5: 2144284101829692848
+      bg_C_Dregs_N_Idle_0_39: 5901373324960255543
+      bg_C_Dregs_N_Idle_0_19: -1849603448628339211
+      bg_C_Dregs_N_Idle_0_38: 6932163342392903731
+      bg_C_Dregs_N_Idle_0_26: -81707935973292666
+      bg_C_Dregs_N_Idle_0_43: 2862478158295946250
+      bg_C_Dregs_N_Idle_0_12: 7071114603691534578
+      bg_C_Dregs_N_Idle_0_9: 1174996011176488380
+      bg_C_Dregs_N_Idle_0_37: -1110970763706375925
+      bg_C_Dregs_N_Idle_0_41: -9153983088474810751
+      bg_C_Dregs_N_Idle_0_0: 1343303099923775013
+      bg_C_Dregs_N_Idle_0_35: -2833309744330475261
+      bg_C_Dregs_N_Idle_0_3: 340112212559678938
+      bg_C_Dregs_N_Idle_0_30: -8772321709435554232
+      bg_C_Dregs_N_Idle_0_46: 6583727737319111343
+      bg_C_Dregs_N_Idle_0_8: -1257608802483882937
+      bg_C_Dregs_N_Idle_0_28: 6346296765607366416
+      bg_C_Dregs_N_Idle_0_25: -7936331370891905617
+      bg_C_Dregs_N_Idle_0_42: 5110406593391849645
+      bg_C_Dregs_N_Idle_0_17: -6542984725848967900
+      bg_C_Dregs_N_Idle_0_47: -2316288350287370563
+      bg_C_Dregs_N_Idle_0_44: -7095504082841652526
+      bg_C_Dregs_N_Idle_0_31: -2425150335042720933
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -149,6 +149,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -158,8 +160,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -180,9 +182,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -1116,6 +1121,49 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_7: 961340238262585848
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_27: 608842702528800274
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_1: -5356406957223323761
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_5: -6397987199173849146
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_19: -8672805129366747578
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_0: -4648599678752774786
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_28: -1294673885400133443
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_15: 4384100166008083421
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_36: -909045236594329922
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_6: 172522415262899582
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_18: -3313828567748719146
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_38: -205477687794793426
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_41: 8141709454959162181
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_4: 2707633927008791404
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_29: -6409679687569663573
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_40: 7501961708940764043
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_21: 5326678027024487383
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_33: 4566146865551910897
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_39: -6322301649291629567
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_2: -6874482298314607143
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_32: -8765489887849011716
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_11: -2823948612848258554
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_12: 7646371728002982783
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_8: 924094755539539312
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_10: -5593761616252005564
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_9: 1961137398246869409
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_23: 1643724619245356292
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_14: 5602702471960420835
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_22: 2970812769878778866
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_26: 8426656323167224685
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_25: 8359082133074470239
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_31: -9137462076296156822
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_20: -5719659862484806052
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_17: -1703101251645201291
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_24: -4944967033223146461
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_3: 5902342858259461589
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_16: 4575906282343648879
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_30: 2378924341331779223
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_13: -7996670984330756248
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_35: -43634104104643614
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_37: -8795189203803477174
+      spr_NPC_bkrRich_idleDrinkchat_0-sheet_34: -822134913288964367
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

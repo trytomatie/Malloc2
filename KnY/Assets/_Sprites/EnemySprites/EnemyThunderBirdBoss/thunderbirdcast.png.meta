@@ -71,6 +71,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -80,8 +82,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -102,9 +104,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -492,6 +497,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      thunderbirdcast_15: -8396601199036322870
+      thunderbirdcast_3: 7534914295096502178
+      thunderbirdcast_7: 9019105056382011451
+      thunderbirdcast_5: -1997755963656573056
+      thunderbirdcast_9: -3017780704078688770
+      thunderbirdcast_13: 6374498771280689098
+      thunderbirdcast_12: 8451961019035387052
+      thunderbirdcast_4: 7816833359804811668
+      thunderbirdcast_8: 4397477175620255567
+      thunderbirdcast_14: -620065024044032701
+      thunderbirdcast_2: 7843979758374202401
+      thunderbirdcast_1: 9131113499424525672
+      thunderbirdcast_0: -3626312947287054008
+      thunderbirdcast_6: -865889168641232407
+      thunderbirdcast_10: 6062751335813261903
+      thunderbirdcast_11: 6841504253696182234
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -86,6 +86,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -95,8 +97,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -117,9 +119,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
@@ -614,6 +619,28 @@ TextureImporter:
     secondaryTextures:
     - texture: {fileID: 2800000, guid: 2f4eaa981a2139a4da4438d49c27fee8, type: 3}
       name: _emission
+    nameFileIdTable:
+      bg_C_Dregs_S_Overlay_0_10: 8421014854443882365
+      bg_C_Dregs_S_Overlay_0_4: -8766314481391286321
+      bg_C_Dregs_S_Overlay_0_9: 4598118857495117786
+      bg_C_Dregs_S_Overlay_0_15: 536093692756188784
+      bg_C_Dregs_S_Overlay_0_1: 1563107380718224086
+      bg_C_Dregs_S_Overlay_0_18: 1904871820467869393
+      bg_C_Dregs_S_Overlay_0_14: 5378718097717594061
+      bg_C_Dregs_S_Overlay_0_17: 5232202464344574558
+      bg_C_Dregs_S_Overlay_0_0: -4270560691084048291
+      bg_C_Dregs_S_Overlay_0_6: -1005646232885029210
+      bg_C_Dregs_S_Overlay_0_3: -1934500079512225497
+      bg_C_Dregs_S_Overlay_0_7: -95990995852208881
+      bg_C_Dregs_S_Overlay_0_8: -6388459372077743264
+      bg_C_Dregs_S_Overlay_0_5: -6564689022572093677
+      bg_C_Dregs_S_Overlay_0_19: 4712398700709822557
+      bg_C_Dregs_S_Overlay_0_20: -1364604960871638787
+      bg_C_Dregs_S_Overlay_0_12: 3566180744962245990
+      bg_C_Dregs_S_Overlay_0_13: -8128145405490108476
+      bg_C_Dregs_S_Overlay_0_11: 4347017799416719180
+      bg_C_Dregs_S_Overlay_0_2: 6605716881026880445
+      bg_C_Dregs_S_Overlay_0_16: -1501106406793901863
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
